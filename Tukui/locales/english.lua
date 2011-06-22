@@ -230,11 +230,12 @@ L.install_header_3 = "2. Unitframes"
 L.install_header_4 = "3. Features"
 L.install_header_5 = "4. Things you should know!"
 L.install_header_6 = "5. Commands"
-L.install_header_7 = "6. Finished"
-L.install_header_8 = "1. Essential Settings"
-L.install_header_9 = "2. Social"
-L.install_header_10= "3. Frames"
-L.install_header_11= "4. Success!"
+L.install_header_7 = "5. Commands"
+L.install_header_8 = "6. Finished"
+L.install_header_9 = "1. Essential Settings"
+L.install_header_10 = "2. Social"
+L.install_header_11= "3. Frames"
+L.install_header_12= "4. Success!"
 
 -- install
 L.install_init_line_1 = "Thank you for choosing Tukui!"
@@ -261,10 +262,10 @@ L.tutorial_step_3_line_3 = "Users may want to visit our extra mods section into 
 L.tutorial_step_3_line_4 = ""
 
 -- tutorial 4
-L.tutorial_step_4_line_1 = "To set how many bars you want, mouseover on left or right of bottom action bar background. Do the same on the right, via top and bottom. To copy text from the chat frame, click the button show on mouseover on the right corner of chat frames."
+L.tutorial_step_4_line_1 = "To set how many bars you want, mouseover on left or right of bottom action bar background. Mouseover the right chat frame header to view more options. To copy text from the chat frame, click the copy button on the right corner of chat frames."
 L.tutorial_step_4_line_2 = "The minimap border changes colour. It is green when you have new mail, red when you have a new calendar invite, and orange when you have both."
-L.tutorial_step_4_line_3 = "You can left-click thought 80% of datatext to show various panels from Blizzard. Friend and Guild Datatext have right-click features aswell."
-L.tutorial_step_4_line_4 = "There is some dropdown menu available. Right-clicking on [X] (Close) bag button will show a dropdown menu to show bags, sort items, show keyring, etc. Middle-clicking thought Minimap will show the micro menu."
+L.tutorial_step_4_line_3 = "You can left-click through 80% of datatext to show various panels from Blizzard. Friend and Guild Datatext have right-click features aswell."
+L.tutorial_step_4_line_4 = "There are some dropdown menus available. Right-clicking on [X] (Close) bag button will show a dropdown menu to show bags, sort items, show keyring, etc. Middle-clicking through Minimap will show the micro menu."
 
 -- tutorial 5
 L.tutorial_step_5_line_1 = "Lastly, Tukui includes useful slash commands. Below is a list."
@@ -273,10 +274,16 @@ L.tutorial_step_5_line_3 = "/tt lets you whisper your target. /rc initiates a re
 L.tutorial_step_5_line_4 = "/gm toggles the Help frame. /install, /resetui or /tutorial loads this installer. /frame print the name and parent of the frame below the cursor respectively with additionnal information."
 
 -- tutorial 6
-L.tutorial_step_6_line_1 = "The tutorial is complete. You can choose to reconsult it at any time by typing /tutorial."
-L.tutorial_step_6_line_2 = "I suggest you have a look through config/config.lua or by typing /Tukui to customize the UI to your needs."
-L.tutorial_step_6_line_3 = "You can now continue install the UI if it's not done yet or if you want to reset to default!"
+L.tutorial_step_6_line_1 = "Additional skin support is incuded with this version. Consult the config file for details."
+L.tutorial_step_6_line_2 = "/scp will allow you to move the combo points bar (if enabled)."
+L.tutorial_step_6_line_3 = "/ali will enable an onscreen grid for help aligning your moveable frames."
 L.tutorial_step_6_line_4 = ""
+
+-- tutorial 7
+L.tutorial_step_7_line_1 = "The tutorial is complete. You can choose to reconsult it at any time by typing /tutorial."
+L.tutorial_step_7_line_2 = "I suggest you have a look through config/config.lua or by typing /Tukui to customize the UI to your needs."
+L.tutorial_step_7_line_3 = "You can now continue to install the UI if it's not done yet or if you want to reset to default!"
+L.tutorial_step_7_line_4 = ""
 
 -- install step 1
 L.install_step_1_line_1 = "These steps will apply the correct CVar settings for Tukui."

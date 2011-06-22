@@ -248,8 +248,7 @@ local function Shared(self, unit)
 
 			-- show druid mana when shapeshifted in bear, cat or whatever
 			if C["unitframes"].classbar then
-				--if T.myclass == "DRUID" then
-				if T.myclass == "DRUID" and C["unitframes"].druid then
+			if T.myclass == "DRUID" and C["unitframes"].druid then
 
 					local eclipseBar = CreateFrame('Frame', nil, self)
 					eclipseBar:Point("BOTTOMLEFT", self, "TOPLEFT", 9, 11)
@@ -348,7 +347,7 @@ local function Shared(self, unit)
 				end	
 
 				-- deathknight runes
-					if T.myclass == "DEATHKNIGHT" then
+					if T.myclass == "DEATHKNIGHT" and C["unitframes"].deathknight then
 					
 					local Runes = CreateFrame("Frame", nil, self)
 					Runes:Point("BOTTOMLEFT", health, "TOPLEFT", 25, 12)
@@ -393,7 +392,7 @@ local function Shared(self, unit)
                 end
 				
 				-- shaman totem bar
-				if T.myclass == "SHAMAN" then
+				if T.myclass == "SHAMAN" and C["unitframes"].shaman then
 				local TotemBar = {}
 					TotemBar.Destroy = true
 					for i = 1, 4 do

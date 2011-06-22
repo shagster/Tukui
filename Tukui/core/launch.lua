@@ -389,15 +389,15 @@ local step1 = function()
 	SetCVar("alwaysShowActionBars", 0)
 end
 
-local tut6 = function()
+local tut7 = function()
 	sb:SetValue(6)
 	header:SetText(L.install_header_7)
-	text1:SetText(L.tutorial_step_6_line_1)
-	text2:SetText(L.tutorial_step_6_line_2)
-	text3:SetText(L.tutorial_step_6_line_3)
-	text4:SetText(L.tutorial_step_6_line_4)
+	text1:SetText(L.tutorial_step_7_line_1)
+	text2:SetText(L.tutorial_step_7_line_2)
+	text3:SetText(L.tutorial_step_7_line_3)
+	text4:SetText(L.tutorial_step_7_line_4)
 
-	sbt:SetText("6/6")
+	sbt:SetText("7/7")
 
 	option1:Show()
 
@@ -410,6 +410,19 @@ local tut6 = function()
 	option2:SetScript("OnClick", step1)
 end
 
+local tut6 = function()
+	sb:SetValue(5)
+	header:SetText(L.install_header_6)
+	text1:SetText(L.tutorial_step_6_line_1)
+	text2:SetText(L.tutorial_step_6_line_2)
+	text3:SetText(L.tutorial_step_6_line_3)
+	text4:SetText(L.tutorial_step_6_line_4)
+
+	sbt:SetText("6/7")
+
+	option2:SetScript("OnClick", tut7)
+end
+
 local tut5 = function()
 	sb:SetValue(5)
 	header:SetText(L.install_header_6)
@@ -418,7 +431,7 @@ local tut5 = function()
 	text3:SetText(L.tutorial_step_5_line_3)
 	text4:SetText(L.tutorial_step_5_line_4)
 
-	sbt:SetText("5/6")
+	sbt:SetText("5/7")
 
 	option2:SetScript("OnClick", tut6)
 end
@@ -431,7 +444,7 @@ local tut4 = function()
 	text3:SetText(L.tutorial_step_4_line_3)
 	text4:SetText(L.tutorial_step_4_line_4)
 
-	sbt:SetText("4/6")
+	sbt:SetText("4/7")
 
 	option2:SetScript("OnClick", tut5)
 end
@@ -444,7 +457,7 @@ local tut3 = function()
 	text3:SetText(L.tutorial_step_3_line_3)
 	text4:SetText(L.tutorial_step_3_line_4)
 
-	sbt:SetText("3/6")
+	sbt:SetText("3/7")
 
 	option2:SetScript("OnClick", tut4)
 end
@@ -457,13 +470,13 @@ local tut2 = function()
 	text3:SetText(L.tutorial_step_2_line_3)
 	text4:SetText(L.tutorial_step_2_line_4)
 
-	sbt:SetText("2/6")
+	sbt:SetText("2/7")
 
 	option2:SetScript("OnClick", tut3)
 end
 
 local tut1 = function()
-	sb:SetMinMaxValues(0, 6)
+	sb:SetMinMaxValues(0, 7)
 	sb:Show()
 	close:Show()
 	sb:SetValue(1)
@@ -473,7 +486,7 @@ local tut1 = function()
 	text2:SetText(L.tutorial_step_1_line_2)
 	text3:SetText(L.tutorial_step_1_line_3)
 	text4:SetText(L.tutorial_step_1_line_4)
-	sbt:SetText("1/6")
+	sbt:SetText("1/7")
 	option1:Hide()
 	option2.Text:SetText(L.install_button_next)
 	option2:SetScript("OnClick", tut2)
@@ -584,7 +597,7 @@ TukuiOnLogon:SetScript("OnEvent", function(self, event)
 		StaticPopup_Show("TUKUIDISABLE_RAID")
 	end
 	print("Tukui, |cff6A5ACDShagster's Edit|r - "  .. T.version)
-	print("|cffFF1493WTF..")
+	print("|cffFF1493/uihelp for help..")
 end)
 
 SLASH_TUTORIAL1 = "/uihelp"
