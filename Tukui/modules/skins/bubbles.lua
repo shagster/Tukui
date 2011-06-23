@@ -1,5 +1,5 @@
 local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
-if C["general"].skinblizz ~= true then return end
+
 if (IsAddOnLoaded("BossEncounter2")) then return end --> i don't know wtf this addon is doing but it broke my bubble script.
 
 local chatbubblehook = CreateFrame("Frame", nil, UIParent)

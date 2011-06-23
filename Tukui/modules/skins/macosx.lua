@@ -1,5 +1,5 @@
 local T, C, L = unpack(select(2, ...))
-if C["general"].skinblizz ~= true then return end
+
 local function LoadSkin()
 	-- mac menu/option panel, made by affli.
 	if IsMacClient() then

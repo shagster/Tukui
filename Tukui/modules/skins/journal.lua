@@ -1,5 +1,5 @@
 local T, C, L = unpack(select(2, ...))
-if C["general"].skinblizz ~= true then return end
+
 local function LoadSkin()
 	if T.toc >= 40200 then
 		EncounterJournal:StripTextures(true)

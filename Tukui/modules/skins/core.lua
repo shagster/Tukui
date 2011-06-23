@@ -1,5 +1,5 @@
 local T, C, L = unpack(select(2, ...)) -- Import Functions/Constants, Config, Locales
-if not C.general.skinblizz then return end
+
 T.SkinFuncs = {}
 T.SkinFuncs["Tukui"] = {}
 
