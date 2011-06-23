@@ -79,6 +79,7 @@
 	<Script file="modules\maps\zonemap.lua"/>
 	
 	<Script file="modules\panels\panels.lua"/>
+	<Script file="modules\panels\extra_panels.lua"/>
 		
 	<Script file="modules\datatext\armor.lua"/>
 	<Script file="modules\datatext\avoidance.lua"/>

@@ -72,8 +72,10 @@ C["unitframes"] = {
 	["weakenedsoulbar"] = false,                        -- show weakened soul bar
 	
 	-- class bar
-	["classbar"] = true,				    			-- enable tukui classbar over player unit
-	["druid"] = false,									-- enable druid only classbar
+	["classbar"] = true,				    			-- enable tukui classbar over player unit. Must be enabled if you want any individual classbars enabled.
+		["druid"] = false,								-- enable druid only classbar
+		["deathknight"] = true,							-- enable deathknight only classbar
+		["shaman"] = true,								-- enable shaman only classbar
 }
 
 C["arena"] = {
