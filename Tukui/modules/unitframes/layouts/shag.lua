@@ -128,16 +128,12 @@ local function Shared(self, unit)
 
 		-- power
 		local power = CreateFrame('StatusBar', nil, self)
-		--power:Height(17)
 		power:Height(28)
-		--power:Width(256)
 		power:Width(260)
 		if unit == "player" then
 			power:Point("CENTER", health, "CENTER")
-			--power:Point("TOPRIGHT", health, "BOTTOMRIGHT", 5, -2)
 		elseif unit == "target" then
 			power:Point("CENTER", health, "CENTER")
-			--power:Point("TOPRIGHT", health, "BOTTOMRIGHT", 5, -2)
 		end
 		power:SetStatusBarTexture(normTex)
 		power:SetFrameLevel(self.Health:GetFrameLevel() + 2)
@@ -150,7 +146,6 @@ local function Shared(self, unit)
 		PowerBorder:SetTemplate("Default")
 		PowerBorder:SetBackdropColor(0,0,0,1)
 		--PowerBorder:CreateShadow("Default")
-		--PowerBorder.shadow:Point("TOPLEFT", -3, 0)
 		PowerBorder:SetFrameLevel(power:GetFrameLevel() - 1)
 		self.PowerBorder = PowerBorder
 		
@@ -178,7 +173,7 @@ local function Shared(self, unit)
 			power.colorTapping = true
 			power.colorClass = true
 			power.colorReaction = true
-			powerBG.multiplier = 0.1				
+			powerBG.multiplier = .1				
 		else
 			power.colorPower = true
 		end
@@ -1025,6 +1020,7 @@ local function Shared(self, unit)
 		if C["unitframes"].unicolor == true then
 			health.colorDisconnected = false
 			health.colorClass = false
+			health.colorReaction = false
 			health:SetStatusBarColor(.155, .155, .155, 1)
 			healthBG:SetVertexColor(0, 0, 0, 1)		
 		else
@@ -1046,6 +1042,7 @@ local function Shared(self, unit)
 			power:SetFrameLevel(self.Health:GetFrameLevel() - 1)
 
 			power.frequentUpdates = true
+			power.colorReaction = true
 			power.colorPower = true
 			if C["unitframes"].showsmooth == true then
 				power.Smooth = true
