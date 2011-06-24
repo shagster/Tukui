@@ -275,9 +275,9 @@ L.tutorial_step_5_line_4 = "/gm toggles the Help frame. /install, /resetui or /t
 
 -- tutorial 6
 L.tutorial_step_6_line_1 = "Additional skin support is incuded with this version. Consult the config file for details."
-L.tutorial_step_6_line_2 = "/scp will allow you to move the combo points bar (if enabled)."
+L.tutorial_step_6_line_2 = "/scp will allow you to move the sCombo points bar (if enabled) *Smelly*."
 L.tutorial_step_6_line_3 = "/ali will enable an onscreen grid for help aligning your moveable frames."
-L.tutorial_step_6_line_4 = ""
+L.tutorial_step_6_line_4 = "Mouseover the top of the right chat frame for additional buttons."
 
 -- tutorial 7
 L.tutorial_step_7_line_1 = "The tutorial is complete. You can choose to reconsult it at any time by typing /tutorial."
