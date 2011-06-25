@@ -88,7 +88,7 @@ local function Shared(self, unit)
 		local HealthBorder = CreateFrame("Frame", nil, health)
 		HealthBorder:SetPoint("TOPLEFT", health, "TOPLEFT", T.Scale(-2), T.Scale(2))
 		HealthBorder:SetPoint("BOTTOMRIGHT", health, "BOTTOMRIGHT", T.Scale(2), T.Scale(-2))
-		HealthBorder:SetTemplate("Default")
+		HealthBorder:SetTemplate("Thin")
 		--HealthBorder:CreateShadow("Default")
 		HealthBorder:SetBackdropColor(0,0,0,1)
 		HealthBorder:SetFrameLevel(2)
@@ -128,8 +128,8 @@ local function Shared(self, unit)
 
 		-- power
 		local power = CreateFrame('StatusBar', nil, self)
-		power:Height(28)
-		power:Width(260)
+		power:Height(25)
+		power:Width(258)
 		if unit == "player" then
 			power:Point("CENTER", health, "CENTER")
 		elseif unit == "target" then
@@ -246,7 +246,7 @@ local function Shared(self, unit)
 			if T.myclass == "DRUID" and C["unitframes"].druid then
 
 					local eclipseBar = CreateFrame('Frame', nil, self)
-					eclipseBar:Point("BOTTOMLEFT", self, "TOPLEFT", 9, 11)
+					eclipseBar:Point("BOTTOMLEFT", self, "TOPLEFT", 9, 10)
 					eclipseBar:Size(228, 5)
 					eclipseBar:SetFrameStrata("MEDIUM")
 					eclipseBar:SetFrameLevel(8)
@@ -296,7 +296,7 @@ local function Shared(self, unit)
 		
 					local bars = CreateFrame("Frame", nil, self)
                     			bars:Size(200, 5)
-					bars:Point("TOP", health, "TOP", 1, 16)
+					bars:Point("TOP", health, "TOP", 1, 15)
 					bars:SetBackdropBorderColor(0,0,0,1)
 					bars:SetFrameLevel(self:GetFrameLevel() + 3)
 					bars:SetFrameStrata("MEDIUM")
@@ -345,7 +345,7 @@ local function Shared(self, unit)
 					if T.myclass == "DEATHKNIGHT" and C["unitframes"].deathknight then
 					
 					local Runes = CreateFrame("Frame", nil, self)
-					Runes:Point("BOTTOMLEFT", health, "TOPLEFT", 25, 12)
+					Runes:Point("BOTTOMLEFT", health, "TOPLEFT", 25, 11)
 					Runes:Size(120, 5)
 					Runes:SetFrameLevel(self:GetFrameLevel() + 3)
 					Runes:SetFrameStrata("MEDIUM")
@@ -394,7 +394,7 @@ local function Shared(self, unit)
 					TotemBar[i] = CreateFrame("StatusBar", self:GetName().."_TotemBar"..i, self)
 					TotemBar[i]:SetFrameLevel(self:GetFrameLevel() + 3)
 					if (i == 1) then
-					TotemBar[i]:Point("BOTTOMLEFT", health, "TOPLEFT", 25, 12)					else
+					TotemBar[i]:Point("BOTTOMLEFT", health, "TOPLEFT", 25, 11)					else
 					TotemBar[i]:SetPoint("TOPLEFT", TotemBar[i-1], "TOPRIGHT", T.Scale(7), 0)
 					end
 					TotemBar[i]:SetStatusBarTexture(normTex)
@@ -548,7 +548,7 @@ local function Shared(self, unit)
 					castbar:SetWidth(246)
 				end
 				castbar:SetHeight(18)
-				castbar:Point("TOPRIGHT", self, "BOTTOMRIGHT", -1, 0)   -- SHAG
+				castbar:Point("TOPRIGHT", self, "BOTTOMRIGHT", -1, -1)   -- SHAG
 			end
 			castbar:SetFrameLevel(6)
 
@@ -687,7 +687,7 @@ local function Shared(self, unit)
 		local HealthBorder = CreateFrame("Frame", nil, health)
 		HealthBorder:SetPoint("TOPLEFT", health, "TOPLEFT", T.Scale(-2), T.Scale(2))
 		HealthBorder:SetPoint("BOTTOMRIGHT", health, "BOTTOMRIGHT", T.Scale(2), T.Scale(-2))
-		HealthBorder:SetTemplate("Default")
+		HealthBorder:SetTemplate("Thin")
 		HealthBorder:SetBackdropColor(0,0,0,1)
 		--HealthBorder:CreateShadow("Default")
 		HealthBorder:SetFrameLevel(2)
@@ -715,8 +715,8 @@ local function Shared(self, unit)
 			
 		-- power
 		local power = CreateFrame('StatusBar', nil, self)
-		power:Height(23)
-		power:Width(135)
+		power:Height(20)
+		power:Width(133)
 		power:Point("CENTER", health, "CENTER")
 		--power:Point("TOPRIGHT", health, "BOTTOMRIGHT", -9, -2)
 		power:SetStatusBarTexture(normTex)
@@ -830,7 +830,7 @@ local function Shared(self, unit)
 		local HealthBorder = CreateFrame("Frame", nil, health)
 		HealthBorder:SetPoint("TOPLEFT", health, "TOPLEFT", T.Scale(-2), T.Scale(2))
 		HealthBorder:SetPoint("BOTTOMRIGHT", health, "BOTTOMRIGHT", T.Scale(2), T.Scale(-2))
-		HealthBorder:SetTemplate("Default")
+		HealthBorder:SetTemplate("Thin")
 		HealthBorder:SetBackdropColor(0,0,0,1)
 		--HealthBorder:CreateShadow("Default")
 		HealthBorder:SetFrameLevel(2)
@@ -867,8 +867,8 @@ local function Shared(self, unit)
 		-- power
 		if C["unitframes"].extendedpet == true then
 			local power = CreateFrame('StatusBar', nil, self)
-			power:Height(20)
-			power:Width(135)
+			power:Height(18)
+			power:Width(133)
 			power:Point("CENTER", health, "CENTER")
 			--power:Point("TOPRIGHT", health, "BOTTOMRIGHT", -7, -1)
 			power:SetStatusBarTexture(normTex)
@@ -997,7 +997,7 @@ local function Shared(self, unit)
 		local HealthBorder = CreateFrame("Frame", nil, health)
 		HealthBorder:SetPoint("TOPLEFT", health, "TOPLEFT", T.Scale(-2), T.Scale(2))
 		HealthBorder:SetPoint("BOTTOMRIGHT", health, "BOTTOMRIGHT", T.Scale(2), T.Scale(-2))
-		HealthBorder:SetTemplate("Default")
+		HealthBorder:SetTemplate("Thin")
 		HealthBorder:SetBackdropColor(0,0,0,1)
 		--HealthBorder:CreateShadow("Default")
 		HealthBorder:SetFrameLevel(2)
@@ -1034,8 +1034,8 @@ local function Shared(self, unit)
 		
 		-- power
 			local power = CreateFrame('StatusBar', nil, self)
-			power:Height(23)
-			power:Width(135)
+			power:Height(20)
+			power:Width(133)
 			power:Point("CENTER", health, "CENTER")
 			--power:Point("TOPRIGHT", health, "BOTTOMRIGHT", -7, -1)
 			power:SetStatusBarTexture(normTex)
@@ -1691,28 +1691,28 @@ oUF:RegisterStyle('Tukui', Shared)
 -- player
 local player = oUF:Spawn('player', "TukuiPlayer")
 --player:SetPoint("BOTTOMRIGHT", InvTukuiActionBarBackground, "BOTTOM", -134,150)
-player:Size(250, 28)  --- 246 44
+player:Size(250, 25)  
 
 -- target
 local target = oUF:Spawn('target', "TukuiTarget")
 --target:SetPoint("BOTTOMLEFT", InvTukuiActionBarBackground, "BOTTOM", 134,150)
-target:Size(250, 28)
+target:Size(250, 25)
 
 -- tot
 local tot = oUF:Spawn('targettarget', "TukuiTargetTarget")
 --	tot:SetPoint("LEFT", player, "RIGHT", 70, -30)
-	tot:Size(125, 15)
+	tot:Size(125, 20)
 
 -- pet
 local pet = oUF:Spawn('pet', "TukuiPet")
 --	pet:SetPoint("LEFT", player, "RIGHT", 70, 0)
-	pet:Size(125, 13)
+	pet:Size(125, 18)
 	
 -- pettarget
 
 	local pettarget = oUF:Spawn('pettarget', "TukuiPettarget")
 --	pettarget:SetPoint("BOTTOMLEFT", TukuiPet, "TOPLEFT", 0, 5)
-	pettarget:Size(125, 15)
+	pettarget:Size(125, 20)
 
 -- focus
 	local focus = oUF:Spawn('focus', "TukuiFocus")
@@ -1745,9 +1745,9 @@ f:SetScript("OnEvent", function(self, event, addon)
 		else
 			player:SetPoint("TOPRIGHT", InvTukuiActionBarBackground, "TOP", -134, 88)
 			target:SetPoint("TOPLEFT", InvTukuiActionBarBackground, "TOP", 134, 88)
-			tot:SetPoint("LEFT", player, "RIGHT", 72, -24)
-			pet:SetPoint("LEFT", player, "RIGHT", 72, 5)
-			pettarget:SetPoint("BOTTOMLEFT", TukuiPet, "TOPLEFT", 0, 15) ---- SHAG pettarg
+			tot:SetPoint("LEFT", player, "RIGHT", 72, -28)
+			pet:SetPoint("LEFT", player, "RIGHT", 72, 1)
+			pettarget:SetPoint("BOTTOMLEFT", TukuiPet, "TOPLEFT", 0, 11) ---- SHAG pettarg
 			focus:SetPoint("BOTTOMLEFT", InvTukuiActionBarBackground, "BOTTOM", 200,400)
 			focustarget:SetPoint("TOP", focus, "BOTTOM", 0, -25)
 		

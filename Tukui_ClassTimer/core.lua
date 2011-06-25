@@ -1368,14 +1368,14 @@ elseif ( LAYOUT == 4 ) then
 	local playerFrame = CreateAuraBarFrame( playerDataSource, TukuiPlayer );
 	playerFrame:SetHiddenHeight( -yOffset );
 	if ( playerClass == "DEATHKNIGHT" or playerClass == "SHAMAN" or playerClass == "PALADIN" or playerClass == "WARLOCK") and C["unitframes"].classbar then
-		playerFrame:SetPoint( "BOTTOMLEFT", TukuiPlayer, "TOPLEFT", 0, yOffset + 14 );
-		playerFrame:SetPoint( "BOTTOMRIGHT", TukuiPlayer, "TOPRIGHT", 0, yOffset + 14 );
+		playerFrame:SetPoint( "BOTTOMLEFT", TukuiPlayer, "TOPLEFT", 0, yOffset + 13 );
+		playerFrame:SetPoint( "BOTTOMRIGHT", TukuiPlayer, "TOPRIGHT", 0, yOffset + 13 );
 	elseif  (playerClass == "DRUID") and C["unitframes"].druid then
-			playerFrame:SetPoint( "BOTTOMLEFT", TukuiPlayer, "TOPLEFT", 0, yOffset + 14 );
-			playerFrame:SetPoint( "BOTTOMRIGHT", TukuiPlayer, "TOPRIGHT", 0, yOffset + 14 );
+			playerFrame:SetPoint( "BOTTOMLEFT", TukuiPlayer, "TOPLEFT", 0, yOffset + 13 );
+			playerFrame:SetPoint( "BOTTOMRIGHT", TukuiPlayer, "TOPRIGHT", 0, yOffset + 13 );
 	else
-		playerFrame:SetPoint( "BOTTOMLEFT", TukuiPlayer, "TOPLEFT", 0, yOffset + 4 );
-		playerFrame:SetPoint( "BOTTOMRIGHT", TukuiPlayer, "TOPRIGHT", 0, yOffset + 4 );
+		playerFrame:SetPoint( "BOTTOMLEFT", TukuiPlayer, "TOPLEFT", 0, yOffset + 3 );
+		playerFrame:SetPoint( "BOTTOMRIGHT", TukuiPlayer, "TOPRIGHT", 0, yOffset + 3 );
 	end
 	playerFrame:Show();
 
@@ -1386,10 +1386,8 @@ elseif ( LAYOUT == 4 ) then
 	trinketFrame:Show();
 	
 	local targetFrame = CreateAuraBarFrame( targetDataSource, TukuiTarget );
-	--targetFrame:SetPoint( "BOTTOMLEFT", TukuiTarget, "TOPLEFT", 0, 8 + ( 32 * 3 ) );
-	--targetFrame:SetPoint( "BOTTOMRIGHT", TukuiTarget, "TOPRIGHT", 0, 8 + ( 32 * 3 ) );
-	targetFrame:SetPoint( "BOTTOMLEFT", TukuiTarget, "TOPLEFT", 0, 9 + ( 1 ) );   --- SHAG
-	targetFrame:SetPoint( "BOTTOMRIGHT", TukuiTarget, "TOPRIGHT", 0, 9 + ( 1 ) );  --- SHAG
+	targetFrame:SetPoint( "BOTTOMLEFT", TukuiTarget, "TOPLEFT", 0, 9 + ( 0 ) );   --- SHAG
+	targetFrame:SetPoint( "BOTTOMRIGHT", TukuiTarget, "TOPRIGHT", 0, 9 + ( 0 ) );  --- SHAG
 	targetFrame:Show();
 else
 	error( "Undefined layout " .. tostring( LAYOUT ) );
