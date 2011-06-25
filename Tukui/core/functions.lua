@@ -80,11 +80,11 @@ T.PP = function(p, obj)
 	end--]]
 end
 -- Classcolored Panel Text  -- SHAG
---if C["datatext"].classpanel == true then
+if C["datatext"].classpanel then
 	C["media"].statcolor = T.oUF_colors.class[T.myclass]
---	else
---	C["media"].statcolor = C.media.statcolor
---end
+	else
+	C["media"].statcolor = C.datatext.statcolor
+end
 
 -- Classcolored Datatext
 if C["datatext"].classcolored == true then
