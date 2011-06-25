@@ -54,8 +54,6 @@ C["media"] = {
 	["backdropcolor"] = C.general.backdropcolor or {.1,.1,.1,1}, -- background color of tukui panels
 	["buttonhover"] = [[Interface\AddOns\Tukui\medias\textures\button_hover]],
 
-	--["statcolor"] = {0.2, 0.2, 1}, -- stats color of tukui panels
-	--["statcolor"] = {0, 1, 0}, -- stats color of tukui panels
 	-- sound
 	["whisper"] = [[Interface\AddOns\Tukui\medias\sounds\whisper.mp3]],
 	["warning"] = [[Interface\AddOns\Tukui\medias\sounds\warning.mp3]],
