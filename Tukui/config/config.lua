@@ -166,13 +166,12 @@ C["datatext"] = {
 	["micromenu"] = 0,                                  -- add a micro menu thought datatext
 	["regen"] = 0,					    				-- show mana regeneration
 	["specswitcher"] = 1,				    			-- show current spec and allows mouse-click spec change. Set to position 1 for best results.
-	--["specbutton"] = 0,				    			-- show standalone spec button (not implemented)
-	
+		
 	-- Color Datatext
 	["classcolored"] = false,			    			-- classcolored datatext
 	["color"] = {0, 1, 0},					    		-- datatext color (if classcolored = false)
 	-- Color Panel Text
-	["classpanel"] = true,								-- set the extra panels to class colored
+	["classpanel"] = false,								-- set the extra panels to class colored
 	["statcolor"] = {0, 1, 0},							-- color of extra panels if classpanel is False
 	
 	["battleground"] = true,                            -- enable 3 stats in battleground only that replace stat1,stat2,stat3.
