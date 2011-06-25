@@ -29,6 +29,7 @@ local function LoadTalentTrees()
 		talent[i] = {} -- init talent group table
 		for j = 1, GetNumTalentTabs(false, false) do
 			talent[i][j] = select(5, GetTalentTabInfo(j, false, false, i))
+			Text:SetText(T.panelcolor..L.datatext_notalents) 
 		end
 	end
 end
@@ -39,7 +40,7 @@ local function Update(self, t)
 	if int > 0 or not GetPrimaryTalentTree() then return end
 
 	active = GetActiveTalentGroup(false, false)
-	Text:SetFormattedText(talentString, select(2, GetTalentTabInfo(GetPrimaryTalentTree(false, false, active))), talent[active][1], talent[active][2], talent[active][3])
+	Text:SetText(select(2,GetTalentTabInfo(GetPrimaryTalentTree(false, false, active)))..": "..T.panelcolor..talent[active][1].."/"..talent[active][2].."/"..talent[active][3])
 	int = 1
 
 	-- disable script	
