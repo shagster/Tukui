@@ -170,10 +170,11 @@ C["datatext"] = {
 	
 	-- Color Datatext
 	["classcolored"] = false,			    			-- classcolored datatext
-	--["color"] = {0.2, 0.2, 1},			    		-- datatext color (if classcolored = false) -- 0.15, 0.49, 0.69
-	["color"] = {0, 1, 0},
+	["color"] = {0, 1, 0},					    		-- datatext color (if classcolored = false)
 	-- Color Panel Text
-	--["classpanel"] = true,
+	["classpanel"] = true,								-- set the extra panels to class colored
+	["statcolor"] = {0, 1, 0},							-- color of extra panels if classpanel is False
+	
 	["battleground"] = true,                            -- enable 3 stats in battleground only that replace stat1,stat2,stat3.
 	["time24"] = false,                                 -- set time to 24h format.
 	["localtime"] = true,                               -- set time to local time instead of server time.
