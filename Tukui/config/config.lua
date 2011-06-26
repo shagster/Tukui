@@ -43,7 +43,7 @@ C["unitframes"] = {
 	["onlyselfdebuffs"] = true,                         -- display only our own debuffs applied on target
 	["bordercolor"] = {  0, 0, 0, 1  },                 -- unit frames panel border color
 	["extendedpet"] = true,                             -- extended pet frame
-	["showsolo"] = false,                        	    -- show raid frames when solo (heal only)
+	["showsolo"] = false,                        	    -- show raid frames when solo (DPS only)
 		
 	-- raid layout (if one of them is enabled)
 	["showrange"] = true,                               -- show range opacity on raidframes
