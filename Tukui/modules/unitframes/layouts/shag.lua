@@ -177,32 +177,47 @@ local function Shared(self, unit)
 		else
 			power.colorPower = true
 		end
-		
+
 		-- portraits
 		if (C["unitframes"].charportrait == true) then
-			local portrait = CreateFrame("PlayerModel", nil, health)
-			portrait.PostUpdate = function(self) self:SetAlpha(0) self:SetAlpha(0.35) end -- edit the 0.15 to the alpha you want
-			portrait:SetAllPoints(health)
+			local portrait = CreateFrame("PlayerModel", self:GetName().."_Portrait", self)
+			portrait:SetFrameLevel(8)
+			portrait:SetHeight(25)
+			portrait:SetWidth(54)
+			portrait:SetAlpha(1)
+			if unit == "player" then
+				portrait:SetPoint("RIGHT", health, "LEFT", -9,0)
+			elseif unit == "target" then
+				portrait:SetPoint("LEFT", health, "RIGHT", 9,0)
+			end
 			table.insert(self.__elements, T.HidePortrait)
 			portrait.PostUpdate = T.PortraitUpdate --Worgen Fix (Hydra)
 			self.Portrait = portrait
+			
+			-- Border for Portrait
+			local PFrame = CreateFrame("Frame", nil, portrait)
+			PFrame:SetPoint("TOPLEFT", portrait, "TOPLEFT", -2, 2)
+			PFrame:SetPoint("BOTTOMRIGHT", portrait, "BOTTOMRIGHT", 2, -2)
+			PFrame:SetTemplate("Default")
+			PFrame:SetFrameLevel(2)
+			self.PFrame = PFrame
 		end
-
-		----- test
+		
+		----- Class Icon ------
 	if (C["unitframes"].classicon == true) then
 		local classicon = CreateFrame("Frame", self:GetName().."_ClassIconBorder", self)
 		
 		if unit == "player" then
 			if C.unitframes.charportrait then
-				classicon:CreatePanel("Default", 29, 29, "TOPRIGHT", health, "TOPLEFT", -8,6)
+				classicon:CreatePanel("Default", 29, 29, "LEFT", health, "RIGHT", 7,0)
 			else
-				classicon:CreatePanel("Default", 29, 29, "TOPRIGHT", health, "TOPLEFT", -8,6)
+				classicon:CreatePanel("Default", 29, 29, "RIGHT", health, "LEFT", -7,0)
 			end
 		elseif unit == "target" then
 			if C.unitframes.charportrait then
-				classicon:CreatePanel("Default", 29, 29, "TOPLEFT", health, "TOPRIGHT", 8,6)
+				classicon:CreatePanel("Default", 29, 29, "RIGHT", health, "LEFT", -7,0)
 			else
-				classicon:CreatePanel("Default", 29, 29, "TOPLEFT", health, "TOPRIGHT", 8,6)
+				classicon:CreatePanel("Default", 29, 29, "LEFT", health, "RIGHT", 7,0)
 			end
 		end
 
