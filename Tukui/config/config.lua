@@ -32,7 +32,7 @@ C["unitframes"] = {
 	["showtotalhpmp"] = false,                          -- change the display of info text on player and target with XXXX/Total.
 	["showsmooth"] = true,                              -- enable smooth bar
 	["charportrait"] = false,                           -- you do not want to turn it off if you are using "Asphyxia" or "Asphyxia2" style.
-	["classicon"] = false,								-- option to enable for "Ex2" layout
+	["classicon"] = false,								-- option to enable class icon on player/target
 	["maintank"] = false,                               -- enable maintank
 	["mainassist"] = false,                             -- enable mainassist
 	["unicolor"] = true,                                -- enable unicolor theme
@@ -41,13 +41,10 @@ C["unitframes"] = {
 	["playeraggro"] = false,                            -- color player border to red if you have aggro on current target.
 	["healcomm"] = false,                               -- enable healprediction support.
 	["onlyselfdebuffs"] = true,                         -- display only our own debuffs applied on target
-	--["debuffhighlight"] = true,							-- puts highlight border on Player/Target units you can cleanse
-	["showfocustarget"] = true,                         -- show focus target
 	["bordercolor"] = {  0, 0, 0, 1  },                 -- unit frames panel border color
 	["extendedpet"] = true,                             -- extended pet frame
 	["showsolo"] = false,                        	    -- show raid frames when solo (heal only)
-	["showpettarget"] = true,
-	
+		
 	-- raid layout (if one of them is enabled)
 	["showrange"] = true,                               -- show range opacity on raidframes
 	["raidalphaoor"] = 0.2,                             -- alpha of unitframes when unit is out of range
@@ -55,7 +52,6 @@ C["unitframes"] = {
 	["showsymbols"] = true,	                            -- show symbol.
 	["aggro"] = false,                                  -- show aggro on all raids layouts
 	["raidunitdebuffwatch"] = true,                     -- track important spell to watch in pve for grid mode.
-	--["raiddebuffhighlight"] = true,						-- puts highlight border on raid units you can cleanse
 	["gridhealthvertical"] = true,                      -- enable vertical grow on health bar for grid mode.
 	["showplayerinparty"] = true,                       -- show my player frame in party
 	["gridscale"] = 1,                                  -- set the healing grid scaling

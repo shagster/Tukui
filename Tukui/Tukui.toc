@@ -9,7 +9,7 @@
 ## Notes: UI of awesomeness!
 ## SavedVariables: TukuiData
 ## SavedVariablesPerCharacter: TukuiDataPerChar
-## OptionalDeps: Tukui_ConfigUI, !ClassColors, Clique, TinyDPS, Skada, Recount, Omen, KLE
+## OptionalDeps: Tukui_ConfigUI, !ClassColors, Clique, TinyDPS, Skada, Recount, Omen, KLE, EventAlert, DBM-Core
 ## X-oUF: oUFTukui
 
 Tukui.xml 

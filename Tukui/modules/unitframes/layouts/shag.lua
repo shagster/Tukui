@@ -181,13 +181,38 @@ local function Shared(self, unit)
 		-- portraits
 		if (C["unitframes"].charportrait == true) then
 			local portrait = CreateFrame("PlayerModel", nil, health)
-			portrait.PostUpdate = function(self) self:SetAlpha(0) self:SetAlpha(0.15) end -- edit the 0.15 to the alpha you want
+			portrait.PostUpdate = function(self) self:SetAlpha(0) self:SetAlpha(0.35) end -- edit the 0.15 to the alpha you want
 			portrait:SetAllPoints(health)
 			table.insert(self.__elements, T.HidePortrait)
 			portrait.PostUpdate = T.PortraitUpdate --Worgen Fix (Hydra)
 			self.Portrait = portrait
 		end
+
+		----- test
+	if (C["unitframes"].classicon == true) then
+		local classicon = CreateFrame("Frame", self:GetName().."_ClassIconBorder", self)
 		
+		if unit == "player" then
+			if C.unitframes.charportrait then
+				classicon:CreatePanel("Default", 29, 29, "TOPRIGHT", health, "TOPLEFT", -8,6)
+			else
+				classicon:CreatePanel("Default", 29, 29, "TOPRIGHT", health, "TOPLEFT", -8,6)
+			end
+		elseif unit == "target" then
+			if C.unitframes.charportrait then
+				classicon:CreatePanel("Default", 29, 29, "TOPLEFT", health, "TOPRIGHT", 8,6)
+			else
+				classicon:CreatePanel("Default", 29, 29, "TOPLEFT", health, "TOPRIGHT", 8,6)
+			end
+		end
+
+		local class = classicon:CreateTexture(self:GetName().."_ClassIcon", "ARTWORK")
+		class:Point("TOPLEFT", 2, -2)
+		class:Point("BOTTOMRIGHT", -2, 2)
+		self.ClassIcon = class
+	end			
+--- end test
+				
 		if T.myclass == "PRIEST" and C["unitframes"].weakenedsoulbar then
 			local ws = CreateFrame("StatusBar", self:GetName().."_WeakenedSoul", power)
 			ws:SetAllPoints(power)
@@ -1750,7 +1775,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 			pettarget:SetPoint("BOTTOMLEFT", TukuiPet, "TOPLEFT", 0, 11) ---- SHAG pettarg
 			focus:SetPoint("BOTTOMLEFT", InvTukuiActionBarBackground, "BOTTOM", 200,400)
 			focustarget:SetPoint("TOP", focus, "BOTTOM", 0, -25)
-		
 		end
 		
 	elseif addon == "Tukui_Raid_Healing" then
