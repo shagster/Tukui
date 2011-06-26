@@ -13,7 +13,7 @@ C["general"] = {
 C["unitframes"] = {
 
 	-- layout
-	["style"] = "Shag",                                 -- unitframe style, choose from ("Asphyxia", "Asphyxia2", "Asphyxia3", or "Shag")
+	["style"] = "Shag",                                 -- unitframe style, choose from ("Shag")
 
 	-- general options
 	["enable"] = true,                                  -- do i really need to explain this?
