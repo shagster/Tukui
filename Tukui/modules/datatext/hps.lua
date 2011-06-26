@@ -11,12 +11,12 @@ if C["datatext"].hps_text and C["datatext"].hps_text > 0 then
  
 	local hText = TukuiInfoLeft:CreateFontString(nil, "OVERLAY")
 	hText:SetFont(C.media.pixelfont, C["datatext"].fontsize, "THINOUTLINE")
-	hText:SetText(L.datatext_hps,T.panelcolor," 0.0 ")
+	hText:SetText(L.datatext_hps,T.panelcolor, " 0.0 ")
  
 	T.PP(C["datatext"].hps_text, hText)
  
 	HPS_FEED:EnableMouse(true)
-	HPS_FEED:SetFrameStrata("BACKGROUND")
+	HPS_FEED:SetFrameStrata("HIGH")
 	HPS_FEED:SetFrameLevel(3)
 	HPS_FEED:Height(20)
 	HPS_FEED:Width(100)
@@ -53,8 +53,13 @@ if C["datatext"].hps_text and C["datatext"].hps_text > 0 then
 		-- only use events from the player
 		local id = select(4, ...)
 		if id == player_id then
-			amount_healed = select(13, ...)
-			amount_over_healed = select(14, ...)
+			if T.toc < 40200 then
+				amount_healed = select(13, ...)
+				amount_over_healed = select(14, ...)
+			else
+				amount_healed = select(15, ...)
+				amount_over_healed = select(16, ...)			
+			end
 			-- add to the total the healed amount subtracting the overhealed amount
 			actual_heals_total = actual_heals_total + math.max(0, amount_healed - amount_over_healed)
 		end
@@ -76,7 +81,7 @@ if C["datatext"].hps_text and C["datatext"].hps_text > 0 then
  
 	function get_hps()
 		if (actual_heals_total == 0) then
-			return (L.datatext_hps..T.panelcolor.." 0.0 ")
+			return (L.datatext_hps..T.panelcolor.. " 0.0 ")
 		else
 			return string.format(L.datatext_hps..T.panelcolor.. "%.1f ", (actual_heals_total or 0) / (cmbt_time or 1))
 		end

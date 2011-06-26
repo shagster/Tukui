@@ -19,7 +19,7 @@ if C["datatext"].dps_text and C["datatext"].dps_text > 0 then
 	T.PP(C["datatext"].dps_text, dText)
 
 	DPS_FEED:EnableMouse(true)
-	DPS_FEED:SetFrameStrata("BACKGROUND")
+	DPS_FEED:SetFrameStrata("HIGH")
 	DPS_FEED:SetFrameLevel(3)
 	DPS_FEED:Height(20)
 	DPS_FEED:Width(100)
@@ -61,9 +61,17 @@ if C["datatext"].dps_text and C["datatext"].dps_text > 0 then
 		   
 		if id == player_id or id == pet_id then
 			if select(2, ...) == "SWING_DAMAGE" then
-				last_dmg_amount = select(10, ...)
+				if T.toc < 40200 then
+					last_dmg_amount = select(10, ...)
+				else
+					last_dmg_amount = select(12, ...)
+				end
 			else
-				last_dmg_amount = select(13, ...)
+				if T.toc < 40200 then
+					last_dmg_amount = select(13, ...)
+				else
+					last_dmg_amount = select(15, ...)
+				end
 			end
 			dmg_total = dmg_total + last_dmg_amount
 		end       
