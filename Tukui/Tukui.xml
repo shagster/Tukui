@@ -175,7 +175,7 @@
 	<Script file="modules\skins\help.lua"/>
 	<Script file="modules\skins\inspect.lua"/>
 	<Script file="modules\skins\itemtext.lua"/>
-	<!--<Script file="modules\skins\journal.lua"/-->
+	<Script file="modules\skins\journal.lua"/>
 	<Script file="modules\skins\lfd.lua"/>
 	<Script file="modules\skins\lfg.lua"/>
 	<Script file="modules\skins\lfr.lua"/>

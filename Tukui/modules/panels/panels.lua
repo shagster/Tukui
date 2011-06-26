@@ -82,7 +82,6 @@ if C.actionbar.bgPanel then
 		--_G["TukuiBar"..i]:CreateShadow()
 		_G["TukuiBar"..i]:SetBackdropColor(0,0,0,1)
 	end
-	
 	petbg:SetTemplate("Default")
 	--petbg:CreateShadow()
 	petbg:SetBackdropColor(0,0,0,1)
