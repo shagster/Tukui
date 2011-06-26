@@ -183,7 +183,7 @@ if button == TukuiBar5ButtonAD then
 				
 			if not T.lowversion then buttonad.text:SetText(T.StatColor.."Addons") end		
 		end
--- my test end
+
 end
 
 local function DrPepper(self, bar) -- guess what! :P
@@ -266,11 +266,10 @@ TukuiBar5ButtonAD:RegisterForClicks("AnyUp")
 TukuiBar5ButtonAD:SetAlpha(0)
 TukuiBar5ButtonAD:SetScript("OnEnter", function(self) self:SetAlpha(1) end)
 TukuiBar5ButtonAD:SetScript("OnLeave", function(self) self:SetAlpha(0) end)
-TukuiBar5ButtonAD.text = T.SetFontString(TukuiBar5ButtonAD, C.media.pixelfont, 10, "OUTLINE")
+TukuiBar5ButtonAD.text = T.SetFontString(TukuiBar5ButtonAD, C.media.pixelfont, 10, "THINOUTLINE")
 TukuiBar5ButtonAD.text:Point("CENTER", 1, 1)
 TukuiBar5ButtonAD.text:SetText(T.StatColor.."Addons")
 TukuiBar5ButtonAD:SetBackdropBorderColor(unpack(C["media"].bordercolor))
-
 --my test ends here			
 
 -- exit vehicle button on left side of bottom action bar

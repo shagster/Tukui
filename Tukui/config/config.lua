@@ -181,6 +181,7 @@ C["chat"] = {
 	["enable"] = true,                                  -- blah
 	["whispersound"] = true,                            -- play a sound when receiving whisper
 	["background"] = true,								-- Dont make it false!!!
+	["layout_switch"] = false,							-- Enable the layout switcher button thing on right chat tab
 }
 
 
