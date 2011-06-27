@@ -1384,11 +1384,19 @@ elseif ( LAYOUT == 4 ) then
 	trinketFrame:SetPoint( "BOTTOMLEFT", playerFrame, "TOPLEFT", 0, yOffset );
 	trinketFrame:SetPoint( "BOTTOMRIGHT", playerFrame, "TOPRIGHT", 0, yOffset );
 	trinketFrame:Show();
-	
-	local targetFrame = CreateAuraBarFrame( targetDataSource, TukuiTarget );
-	targetFrame:SetPoint( "BOTTOMLEFT", TukuiTarget, "TOPLEFT", 0, 9 + ( 0 ) );   --- SHAG
-	targetFrame:SetPoint( "BOTTOMRIGHT", TukuiTarget, "TOPRIGHT", 0, 9 + ( 0 ) );  --- SHAG
-	targetFrame:Show();
+	--epic addition
+	if C["unitframes"].targetauras == true then
+	local targetFrame = CreateAuraBarFrame( targetDataSource, TukuiPlayer )
+	targetFrame:SetHiddenHeight( -yOffset )
+	targetFrame:Point( "BOTTOMLEFT", trinketFrame, "TOPLEFT", 0, yOffset )
+	targetFrame:Point( "BOTTOMRIGHT", trinketFrame, "TOPRIGHT", 0, yOffset )
+else
+	local targetFrame = CreateAuraBarFrame( targetDataSource, TukuiTarget )
+	targetFrame:SetHiddenHeight( -yOffset )
+	targetFrame:Point( "BOTTOMLEFT", TukuiTarget, "TOPLEFT", 0, 9 )
+	targetFrame:Point( "BOTTOMRIGHT", TukuiTarget, "TOPRIGHT", 0, 9 )
+end
+
 else
 	error( "Undefined layout " .. tostring( LAYOUT ) );
 end
