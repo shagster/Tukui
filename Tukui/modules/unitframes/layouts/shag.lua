@@ -1730,42 +1730,24 @@ oUF:RegisterStyle('Tukui', Shared)
 
 -- player
 local player = oUF:Spawn('player', "TukuiPlayer")
---player:SetPoint("BOTTOMRIGHT", InvTukuiActionBarBackground, "BOTTOM", -134,150)
 player:Size(250, 25)  
 
 -- target
 local target = oUF:Spawn('target', "TukuiTarget")
---target:SetPoint("BOTTOMLEFT", InvTukuiActionBarBackground, "BOTTOM", 134,150)
 target:Size(250, 25)
 
 -- tot
 local tot = oUF:Spawn('targettarget', "TukuiTargetTarget")
---	tot:SetPoint("LEFT", player, "RIGHT", 70, -30)
-	tot:Size(125, 20)
+tot:Size(125, 20)
 
 -- pet
 local pet = oUF:Spawn('pet', "TukuiPet")
---	pet:SetPoint("LEFT", player, "RIGHT", 70, 0)
-	pet:Size(125, 18)
-	
+pet:Size(125, 18)
+
 -- pettarget
-
 	local pettarget = oUF:Spawn('pettarget', "TukuiPettarget")
---	pettarget:SetPoint("BOTTOMLEFT", TukuiPet, "TOPLEFT", 0, 5)
 	pettarget:Size(125, 20)
-
--- focus
-	local focus = oUF:Spawn('focus', "TukuiFocus")
---	focus:SetPoint("BOTTOMLEFT", InvTukuiActionBarBackground, "BOTTOM", 200,400)
-	focus:Size(180, 28)
-
--- focus target
-	local focustarget = oUF:Spawn("focustarget", "TukuiFocusTarget")
---	focustarget:SetPoint("BOTTOM", focus, "TOP", 0, 40)
-	focustarget:Size(180, 28)
-
-
-
+	
 -- SHAG edit here
 local f = CreateFrame("Frame")
 f:RegisterEvent("ADDON_LOADED")
@@ -1773,48 +1755,34 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 	if addon == "Tukui_Raid" then
 		--[ DPS ]--
-		-- points
-		if T.lowversion then
-			player:SetPoint("BOTTOMRIGHT", InvTukuiActionBarBackground, "TOP", -134,150)
-			target:SetPoint("BOTTOMLEFT", InvTukuiActionBarBackground, "BOTTOM", 134,150)
-			tot:SetPoint("LEFT", player, "RIGHT", 70, -22)
-			pet:SetPoint("LEFT", player, "RIGHT", 70, 5)
-			pettarget:SetPoint("BOTTOMLEFT", TukuiPet, "TOPLEFT", 0, 5) ---- SHAG pettarg
-			focus:SetPoint("BOTTOMLEFT", InvTukuiActionBarBackground, "BOTTOM", 200,400)
-			focustarget:SetPoint("TOP", focus, "BOTTOM", 0, -25)
-		else
 			player:SetPoint("TOPRIGHT", InvTukuiActionBarBackground, "TOP", -134, 88)
 			target:SetPoint("TOPLEFT", InvTukuiActionBarBackground, "TOP", 134, 88)
 			tot:SetPoint("LEFT", player, "RIGHT", 72, -28)
 			pet:SetPoint("LEFT", player, "RIGHT", 72, 1)
+			if C.unitframes.showpettarget then
 			pettarget:SetPoint("BOTTOMLEFT", TukuiPet, "TOPLEFT", 0, 11) ---- SHAG pettarg
-			focus:SetPoint("BOTTOMLEFT", InvTukuiActionBarBackground, "BOTTOM", 200,400)
-			focustarget:SetPoint("TOP", focus, "BOTTOM", 0, -25)
-		end
-		
+			end
 	elseif addon == "Tukui_Raid_Healing" then
 		--[ HEAL ]--
-		-- points
-		if T.lowversion then
-			player:Point("BOTTOMRIGHT", InvTukuiActionBarBackground, "BOTTOM", -219,150)
-			target:Point("BOTTOMLEFT", InvTukuiActionBarBackground, "BOTTOM", 219,150)
-			tot:Point("TOPLEFT", target, "BOTTOMLEFT", 0, -30)
-			pet:Point("TOPLEFT", player, "BOTTOMLEFT", 0, -30)
-			--pettarget:Point("LEFT", TukuiPet, "RIGHT", 5, 0) ---- SHAG pettarg
-			focus:Point("BOTTOMLEFT", InvTukuiActionBarBackground, "BOTTOM", 200,400)
-			focustarget:Point("BOTTOM", focus, "TOP", 0, -25)
-		else
 			player:Point("BOTTOMRIGHT", InvTukuiActionBarBackground, "BOTTOM", -219,150)
 			target:Point("BOTTOMLEFT", InvTukuiActionBarBackground, "BOTTOM", 219,150)
 			tot:Point("TOPLEFT", target, "BOTTOMLEFT", 0, -30)
 			--pet:Point("TOPLEFT", player, "BOTTOMLEFT", 0, -30)
-			--pettarget:Point("LEFT", TukuiPet, "RIGHT", 5, 0) ---- SHAG pettarg
-			focus:Point("BOTTOMLEFT", InvTukuiActionBarBackground, "BOTTOM", 200,400)
-			focustarget:Point("TOP", focus, "BOTTOM", 0, -25)
 		end
-	end
-end)
+	end)
 
+
+-- focus
+	local focus = oUF:Spawn('focus', "TukuiFocus")
+	focus:SetPoint("BOTTOMLEFT", InvTukuiActionBarBackground, "BOTTOM", 200,400)
+	focus:Size(180, 28)
+
+-- focus target
+if C.unitframes.showfocustarget then	
+	local focustarget = oUF:Spawn("focustarget", "TukuiFocusTarget")
+	focustarget:SetPoint("TOP", focus, "BOTTOM", 0, -25)
+	focustarget:Size(180, 28)
+end
 -- SHAG edit end here
 if C.arena.unitframes then
 	local arena = {}
