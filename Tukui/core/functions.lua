@@ -1072,6 +1072,30 @@ if C["unitframes"].raidunitdebuffwatch == true then
 			SpellName(67479), -- Impale
 
 		--CATA DEBUFFS
+		--Firelands
+			--Beth'tilac
+			SpellName(99506), -- Widow's Kiss
+		
+			--Alysrazor
+			SpellName(101296), -- Fiero Blast
+			SpellName(100723), -- Gushing Wound
+			
+			--Shannox
+			SpellName(99837), -- Crystal Prison
+			SpellName(99937), -- Jagged Tear
+			
+			--Baleroc
+			SpellName(99403), -- Tormented
+			
+			--Lord Rhyolith
+			--<< NONE KNOWN YET >>
+
+			--Majordomo Staghelm
+			--<< NONE KNOWN YET >>
+
+			--Ragnaros
+			--<< NONE KNOWN YET >>
+		
 		--Baradin Hold
 			SpellName(95173), -- Consuming Darkness
 
@@ -1136,8 +1160,8 @@ if C["unitframes"].raidunitdebuffwatch == true then
 				--Rohash <Lord of the East Wind>
 				SpellName(93058), --Slicing Gale
 			--Al'Akir
-			SpellName(93260), -- Ice Storm
-			SpellName(93295), -- Lightning Rod
+				SpellName(93260), -- Ice Storm
+				SpellName(93295), -- Lightning Rod
 		}
 
 		T.ReverseTimer = {
