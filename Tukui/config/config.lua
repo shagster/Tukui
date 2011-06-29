@@ -13,7 +13,7 @@ C["general"] = {
 C["unitframes"] = {
 
 	-- layout
-	["style"] = "Shag",                                 -- unitframe style, choose from ("Shag")
+	["style"] = "Smelly",                                 -- unitframe style, choose from ("Shag")
 
 	-- general options
 	["enable"] = true,                                  -- do i really need to explain this?
@@ -34,7 +34,7 @@ C["unitframes"] = {
 	["charportrait"] = false,                           -- you do not want to turn it off if you are using "Asphyxia" or "Asphyxia2" style.
 	["classicon"] = false,								-- option to enable class icon on player/target
 	["showfocustarget"] = true,							-- Do you want to see the focus' target?
-	["showpettarget"] = true,							-- Do you want to see zee pet's target?
+	["showpettarget"] = true,							-- Do you want to see zee pet's target? Only for Shag style
 	["maintank"] = false,                               -- enable maintank
 	["mainassist"] = false,                             -- enable mainassist
 	["unicolor"] = true,                                -- enable unicolor theme

@@ -25,7 +25,12 @@ local function Shared(self, unit)
 	health:SetPoint("TOPLEFT")
 	health:SetPoint("TOPRIGHT")
 	health:Height(28*C["unitframes"].gridscale*T.raidscale)
+	if C["unitframes"].style == "Shag" then
 	health:SetStatusBarTexture(C["media"].normTex)
+	elseif C["unitframes"].style == "Smelly" then
+	health:SetStatusBarTexture(C["media"].empathTex)
+	end
+	--health:SetStatusBarTexture(C["media"].normTex)
 	self.Health = health
 	self:HighlightUnit(0,.8,0) -- R,G,B
 	if C["unitframes"].gridhealthvertical == true then
@@ -87,7 +92,12 @@ local function Shared(self, unit)
 	power:SetHeight(3*C["unitframes"].gridscale*T.raidscale)
 	power:Point("TOPLEFT", self.Health, "BOTTOMLEFT", 9, 0)
 	power:Point("TOPRIGHT", self.Health, "BOTTOMRIGHT", -9, 0)
+	if C["unitframes"].style == "Shag" then
 	power:SetStatusBarTexture(C["media"].normTex)
+	elseif C["unitframes"].style == "Smelly" then
+	power:SetStatusBarTexture(C["media"].empathTex)
+	end
+	--power:SetStatusBarTexture(C["media"].normTex)
 	power:SetFrameLevel(self.Health:GetFrameLevel() + 2)
 	self.Power = power
 

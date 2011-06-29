@@ -28,7 +28,12 @@ local function Shared(self, unit)
 	health:SetPoint("TOPLEFT")
 	health:SetPoint("TOPRIGHT")
 	health:Height(27*T.raidscale)
-	health:SetStatusBarTexture(normTex)
+	if C["unitframes"].style == "Shag" then
+	health:SetStatusBarTexture(C["media"].normTex)
+	elseif C["unitframes"].style == "Smelly" then
+	health:SetStatusBarTexture(C["media"].empathTex)
+	end
+	--health:SetStatusBarTexture(normTex)
 	self.Health = health
 	self:HighlightUnit(0,.8,0) -- R,G,B
 	health.bg = health:CreateTexture(nil, 'BORDER')
@@ -64,7 +69,12 @@ local function Shared(self, unit)
 	power:Height(4*T.raidscale)
 	power:Point("TOPLEFT", health, "BOTTOMLEFT", 0, -1)
 	power:Point("TOPRIGHT", health, "BOTTOMRIGHT", 0, -1)
-	power:SetStatusBarTexture(normTex)
+	if C["unitframes"].style == "Shag" then
+	power:SetStatusBarTexture(C["media"].normTex)
+	elseif C["unitframes"].style == "Smelly" then
+	power:SetStatusBarTexture(C["media"].empathTex)
+	end
+	--power:SetStatusBarTexture(normTex)
 	self.Power = power
 	
 	power.frequentUpdates = true

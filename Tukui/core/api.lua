@@ -359,7 +359,37 @@ local function HighlightUnit(f, r, g, b)
 	f.HighlightTarget:Hide()
 	f:RegisterEvent("PLAYER_TARGET_CHANGED", HighlightTarget)
 end
-
+--smelly border function
+local function CreateBorder(f, i, o)
+	if i then
+		if f.iborder then return end
+		local border = CreateFrame("Frame", f:GetName() and f:GetName() .. "InnerBorder" or nil, f)
+		border:Point("TOPLEFT", mult, -mult)
+		border:Point("BOTTOMRIGHT", -mult, mult)
+		border:SetBackdrop({
+			edgeFile = C["media"].blank, 
+			edgeSize = mult, 
+			insets = { left = mult, right = mult, top = mult, bottom = mult }
+		})
+		border:SetBackdropBorderColor(unpack(C["media"].backdropcolor))
+		f.iborder = border
+	end
+	
+	if o then
+		if f.oborder then return end
+		local border = CreateFrame("Frame", f:GetName() and f:GetName() .. "OuterBorder" or nil, f)
+		border:Point("TOPLEFT", -mult, mult)
+		border:Point("BOTTOMRIGHT", mult, -mult)
+		border:SetFrameLevel(f:GetFrameLevel() + 1)
+		border:SetBackdrop({
+			edgeFile = C["media"].blank, 
+			edgeSize = mult, 
+			insets = { left = mult, right = mult, top = mult, bottom = mult }
+		})
+		border:SetBackdropBorderColor(unpack(C["media"].backdropcolor))
+		f.oborder = border
+	end
+end
 local function addapi(object)
 	local mt = getmetatable(object).__index
 	if not object.Size then mt.Size = Size end
@@ -376,6 +406,7 @@ local function addapi(object)
 	if not object.Height then mt.Height = Height end
 	if not object.FontString then mt.FontString = FontString end
 	if not object.HighlightUnit then mt.HighlightUnit = HighlightUnit end
+	if not object.CreateBorder then mt.CreateBorder = CreateBorder end
 end
 
 local handled = {["Frame"] = true}

@@ -1,5 +1,5 @@
 local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
-
+--[[
 T.IsPTRVersion = function()
 	if T.toc > 40200 then
 		return true
@@ -7,7 +7,7 @@ T.IsPTRVersion = function()
 		return false
 	end
 end
-
+--]]
 -- just for creating text
 T.SetFontString = function(parent, fontName, fontHeight, fontStyle)
 	local fs = parent:CreateFontString(nil, "OVERLAY")
@@ -541,7 +541,7 @@ T.PostNamePosition = function(self)
 	end
 end
 --]]
---smelly 
+--[[smelly 
 T.PostNamePosition = function(self)
 	self.Name:ClearAllPoints()
 	if (self.Power.value:GetText() and UnitIsEnemy("player", "target") and C["unitframes"].targetpowerpvponly == true) or (self.Power.value:GetText() and C["unitframes"].targetpowerpvponly == false) then
@@ -551,15 +551,15 @@ T.PostNamePosition = function(self)
 		self.Name:SetPoint("CENTER", self.panel, "CENTER", 0, 0)
 	end
 end
-
+]]
 T.PostNamePosition = function(self)
 	self.Name:ClearAllPoints()
 	if (self.Power.value:GetText() and UnitIsEnemy("player", "target") and C["unitframes"].targetpowerpvponly == true) or (self.Power.value:GetText() and C["unitframes"].targetpowerpvponly == false) then
 		self.Name:SetPoint("CENTER", self.Health, "CENTER", 0, 1)
 	else
-		if C["unitframes"].style == "Asphyxia" then
-			self.Power.value:SetAlpha(0)
-			self.Name:SetPoint("LEFT", self.Health, "LEFT", 4, 1)
+		if C["unitframes"].style == "Smelly" then
+			self.Power.value:SetAlpha(1)
+			self.Name:SetPoint("CENTER", self.panel, "CENTER", 0, 2)
 		else		
 			self.Power.value:SetAlpha(0)
 			self.Name:SetPoint("LEFT", self.Health, "LEFT", 4, 1)

@@ -7,7 +7,11 @@ local player = TukuiPlayer
 
 -- used for anchor totembar or shapeshiftbar
 local TukuiShift = CreateFrame("Frame","TukuiShiftBar",UIParent)
+if C["unitframes"].style == "Shag" then
 TukuiShift:SetPoint("BOTTOMLEFT", InvTukuiActionBarBackground, "TOP", -385.31, 44)
+elseif C["unitframes"].style == "Smelly" then
+TukuiShift:SetPoint("TOPLEFT", UIParent, "TOPLEFT", 10, -17)
+end
 TukuiShift:SetWidth((T.petbuttonsize * 5) + (T.petbuttonsize * 4))
 TukuiShift:SetHeight(T.petbuttonsize/2)
 TukuiShift:SetFrameStrata("MEDIUM")
