@@ -1,0 +1,9 @@
+## Interface: 40100
+## Title: |cffC495DDTukui_Auctionator_Skin|r
+## Notes: Editless Auctionator Skin
+## Author: Jasje
+## Version: 1.01
+## OptionalDeps: Tukui, ElvUI
+
+Tukui_Auctionator_Skin.lua
+
