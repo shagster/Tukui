@@ -122,15 +122,13 @@ local TENTHS_TRESHOLD = 1
 -- Trinket filter - mostly for trinket procs, delete or wrap into comment block --[[  ]] if you dont want to track those
 local TRINKET_FILTER = {
 		
-		CreateSpellEntry( 2825, true ), CreateSpellEntry( 32182, true ), CreateSpellEntry( 80353, true), -- Bloodlust/Heroism/Timewarp
+		CreateSpellEntry( 2825, true, {0.80, 0, 0, 1} ), CreateSpellEntry( 32182, true, {0.80, 0, 0, 1} ), CreateSpellEntry( 80353, true, {0.67, 0.51, 1, 1} ), -- Bloodlust/Heroism/Timewarp
 		CreateSpellEntry( 90355, true ), -- Ancient Hysteria, bloodlust from hunters pet
-		CreateSpellEntry( 26297 ), -- Berserking (troll racial)
-		CreateSpellEntry( 33702 ), CreateSpellEntry( 33697 ), CreateSpellEntry( 20572 ), -- Blood Fury (orc racial)
+		--CreateSpellEntry( 26297 ), -- Berserking (troll racial)
+		--CreateSpellEntry( 33702 ), CreateSpellEntry( 33697 ), CreateSpellEntry( 20572 ), -- Blood Fury (orc racial)
 		CreateSpellEntry( 57933 ), -- Tricks of Trade (15% dmg buff)
 		CreateSpellEntry( 86211, false, {1, 1, 0, 1}, nil, nil, 30108 ), -- Soul Swap
-		--CreateSpellEntry( 79318, nil, {0, 1, 0, 1} ),  -- Dominion
-		CreateSpellEntry( 80627, nil, {0, 1, 0, 1} ),  -- Stolen Power
-		--CreateSpellEntry( 79339, nil, {0, 1, 0, 1} ),  -- Explosive Cinders
+		CreateSpellEntry( 96228, false, {0.62, 0.19, 1, 1} ), --Synapse Springs
 		
 		-- Racials
 		CreateSpellEntry( 20954 ), -- Stoneform (Dwarf)
@@ -139,15 +137,21 @@ local TRINKET_FILTER = {
 		CreateSpellEntry( 68992 ), -- Darkflight (Worgen)
 		CreateSpellEntry( 7744 ), -- Will of the Forsaken (Undead)
 		CreateSpellEntry( 20577 ), -- Cannibalize (Undead)
-		CreateSpellEntry( 26297 ), -- Berserking (Troll)
-		CreateSpellEntry( 20572 ), -- Blood Fury for Attack Power (Orc)
-		CreateSpellEntry( 33702 ), -- Blood Fury for Spell Power (Orc)
-		CreateSpellEntry( 33697 ), -- Blood Fury for Both (Orc)
+		CreateSpellEntry( 26297, false, {0.93, 0, 0, 1} ), -- Berserking (Troll)
+		CreateSpellEntry( 20572, false, {0.93, 0, 0, 1} ), -- Blood Fury for Attack Power (Orc)
+		CreateSpellEntry( 33702, false, {0.93, 0, 0, 1} ), -- Blood Fury for Spell Power (Orc)
+		CreateSpellEntry( 33697, false, {0.93, 0, 0, 1} ), -- Blood Fury for Both (Orc)
 		
 		--Darkmoon Cards
 		CreateSpellEntry( 89181 ), -- Earthquake
 		CreateSpellEntry( 89182 ), -- Tsunami
 		--CreateSpellEntry( 89091 ), -- Volcano
+		
+		--Valor Vendor
+		CreateSpellEntry( 92104, false, {0.12, 0.56, 1, 1} ), -- River of Death (Fluid Death)
+		
+		--Baradin Hold
+		CreateSpellEntry( 92222, false, {0.72, 0, 0, 1} ), -- Mirror Of Broken Images
 		
 		-- Blackwing Descent
 		CreateSpellEntry( 91322 ), -- Jar of Ancient Remedies Normal
@@ -156,7 +160,13 @@ local TRINKET_FILTER = {
 		CreateSpellEntry( 91816 ), -- Heart of Rage
 		CreateSpellEntry( 92235 ), -- Symbiotic Worm
 		
+		--BWD Nef Debuff
+		CreateSpellEntry( 79318, true, {0.60, 0.98, 0.60, 1} ), --Dominion
+		CreateSpellEntry( 94211, true, {0.60, 0.98, 0.60, 1} ), --Dominion
+		CreateSpellEntry( 95900, true, {0.60, 0.98, 0.60, 1} ), --Dominion
+		
 		--The Bastion of Twilight
+		CreateSpellEntry( 59473, false, {0.12, 0.56, 1, 1} ), -- Twisted (Essence of the Cyclone)
 		CreateSpellEntry( 92126 ), -- Essence of the Cyclone Normal
 		CreateSpellEntry( 92351 ), -- Essence of the Cyclone Heroic
 		CreateSpellEntry( 91184 ), -- Fall of mortality
@@ -167,6 +177,8 @@ local TRINKET_FILTER = {
 		CreateSpellEntry( 91041 ), -- Heart of Ignacious on use
 		
 		--Throne of the Four Winds
+		--HM Nef
+		CreateSpellEntry( 80627, nil, {1, 0.08, 0.58, 1} ), --Stolen Power
 		
 		
 		--T11 set procs
@@ -346,12 +358,13 @@ local CLASS_FILTERS = {
 				CreateSpellEntry( 82654 ), -- Widow Venom
 				CreateSpellEntry( 34490 ), -- Silencing Shot
 				CreateSpellEntry( 37506 ), -- Scatter Shot
-				CreateSpellEntry( 88691 ), -- Marker for death
+				CreateSpellEntry( 88691, nil, {1, 0.50, 0.14} ), -- Marked for death
 				CreateSpellEntry( 1130, nil, {1, 0.50, 0.14} ), -- Hunters mark
 				CreateSpellEntry( 88453, nil, {0.63, 0.80, 0.35, 1} ), --Serpent Sting
 				CreateSpellEntry( 88466, nil, {0.63, 0.80, 0.35, 1} ), --Serpent Sting
 				CreateSpellEntry( 1978, nil, {0.63, 0.80, 0.35, 1} ), --Serpent sting
-				CreateSpellEntry( 63468 ), -- Hunters mark
+				CreateSpellEntry( 63468, nil, {1, 0.50, 0.14} ), -- Hunters mark
+				CreateSpellEntry( 64803, nil, {0, 0, 1, 1} ), --Entrapment
 				},
 			player = {
 				CreateSpellEntry( 82749 ), -- killing streak
@@ -366,12 +379,13 @@ local CLASS_FILTERS = {
 				CreateSpellEntry( 56453 ), -- Lock and Load
 				CreateSpellEntry( 82692 ), --Focus Fire
 				CreateSpellEntry( 35099 ), --Rapid Killing Rank 2
-				CreateSpellEntry( 53220 ), -- Improved Steadyshot
-				CreateSpellEntry( 89388 ), -- sic'em
+				CreateSpellEntry( 53220, nil, {0, 1, 0, 1} ), -- Improved Steadyshot
+				CreateSpellEntry( 89388, nil, {1, 0.65, 0, 1} ), -- sic'em
 				CreateSpellEntry( 94007 ), -- Killing Streak
 				CreateSpellEntry( 70893 ), -- Culling the herd
-				CreateSpellEntry( 82925 ), --Ready, Set, Aim
-				CreateSpellEntry( 82926 ), --Fire
+				CreateSpellEntry( 82925, nil, {0.49, 0, 1, 1} ), --Ready, Set, Aim
+				CreateSpellEntry( 82926, nil, {0.72, 0, 0, 1} ), --Fire
+				CreateSpellEntry( 63087, nil, {0.72, 0, 0, 1} ), --Raptor Strike
 			},
 		},
 		MAGE = {
@@ -470,7 +484,7 @@ local CLASS_FILTERS = {
             },
             player = {
                 CreateSpellEntry( 10060 ), -- Power Infusion
-                --CreateSpellEntry( 588 ), -- Inner Fire
+                CreateSpellEntry( 588 ), -- Inner Fire
 				CreateSpellEntry( 73413 ), -- Inner Will
                 CreateSpellEntry( 47585 ), -- Dispersion
 				CreateSpellEntry( 81700 ), -- Archangel
@@ -582,15 +596,13 @@ local CLASS_FILTERS = {
 				--CreateSpellEntry( 17941 ), -- Shadow trance 
 				--CreateSpellEntry( 64371 ), -- Eradication
 				CreateSpellEntry( 85383, false, {1, .647, 0, 1}, nil, nil, 85383 ),  --ISF Buff
-				--CreateSpellEntry( 79339, nil, {0, 1, 0, 1} ),  -- Explosive Cinders
 			},
 			procs = {
 				--CreateSpellEntry( 86121 ), -- Soul Swap
 				--CreateSpellEntry( 54274 ), CreateSpellEntry( 54276 ), CreateSpellEntry( 54277 ), -- Backdraft rank 1/2/3
 				--CreateSpellEntry( 71165 ), -- Molten Cor
 				--CreateSpellEntry( 63167 ), -- Decimation
-				--CreateSpellEntry( 47283 ), -- Empowered Imp 
-				
+				--CreateSpellEntry( 47283 ), -- Empowered Imp         
 			},
 		},
 		WARRIOR = { 
@@ -1384,9 +1396,15 @@ elseif ( LAYOUT == 4 ) then
 	trinketFrame:SetPoint( "BOTTOMLEFT", playerFrame, "TOPLEFT", 0, yOffset );
 	trinketFrame:SetPoint( "BOTTOMRIGHT", playerFrame, "TOPRIGHT", 0, yOffset );
 	trinketFrame:Show();
+	
+	
 	--epic addition
 	if C["unitframes"].targetauras == true then
 	local targetFrame = CreateAuraBarFrame( targetDataSource, TukuiPlayer )
+
+
+
+
 	targetFrame:SetHiddenHeight( -yOffset )
 	targetFrame:Point( "BOTTOMLEFT", trinketFrame, "TOPLEFT", 0, yOffset )
 	targetFrame:Point( "BOTTOMRIGHT", trinketFrame, "TOPRIGHT", 0, yOffset )

@@ -28,7 +28,7 @@ T.PP = function(p, obj)
 	if p == 1 then
 		obj:SetParent(left)
 		obj:SetHeight(left:GetHeight())
-		obj:SetPoint("LEFT", left, 30, 0)
+		obj:SetPoint("LEFT", left, 20, 0)
 		obj:SetPoint('TOP', left)
 		obj:SetPoint('BOTTOM', left)
 	elseif p == 2 then
