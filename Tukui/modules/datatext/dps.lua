@@ -61,22 +61,14 @@ if C["datatext"].dps_text and C["datatext"].dps_text > 0 then
 		   
 		if id == player_id or id == pet_id then
 			if select(2, ...) == "SWING_DAMAGE" then
-				if T.toc < 40200 then
-					last_dmg_amount = select(10, ...)
-				else
 					last_dmg_amount = select(12, ...)
-				end
 			else
-				if T.toc < 40200 then
-					last_dmg_amount = select(13, ...)
-				else
 					last_dmg_amount = select(15, ...)
 				end
 			end
 			dmg_total = dmg_total + last_dmg_amount
 		end       
-	end
-     
+	     
 	function getDPS()
 		if (dmg_total == 0) then
 			return (L.datatext_dps..T.panelcolor.. " 0.0 ")

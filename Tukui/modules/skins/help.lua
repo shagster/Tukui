@@ -82,11 +82,7 @@ local function LoadSkin()
 	HelpFrameKnowledgebaseSearchBox:ClearAllPoints()
 	HelpFrameKnowledgebaseSearchBox:Point("TOPLEFT", HelpFrameMainInset, "TOPLEFT", 13, -10)
 	HelpFrameKnowledgebaseNavBarOverlay:Kill()
-
-	if T.toc >= 40200 then
-		HelpFrameKnowledgebaseNavBar:StripTextures()
-	end
-
+	HelpFrameKnowledgebaseNavBar:StripTextures()
 	HelpFrame:StripTextures(true)
 	HelpFrame:CreateBackdrop("Transparent")
 	T.SkinEditBox(HelpFrameKnowledgebaseSearchBox)

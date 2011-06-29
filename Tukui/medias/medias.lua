@@ -40,6 +40,8 @@ C["media"] = {
 	
 	-- textures
 	["normTex"] = [[Interface\AddOns\Tukui\medias\textures\normTex]], -- texture used for tukui healthbar/powerbar/etc
+	["empath"] = [[Interface\AddOns\Tukui\medias\textures\normTexEmpath]],
+	["empath2"] = [[Interface\AddOns\Tukui\medias\textures\normTexEmpath2]],
 	["glowTex"] = [[Interface\AddOns\Tukui\medias\textures\glowTex]], -- the glow text around some frame.
 	["bubbleTex"] = [[Interface\AddOns\Tukui\medias\textures\bubbleTex]], -- unitframes combo points
 	["copyicon"] = [[Interface\AddOns\Tukui\medias\textures\copy]], -- copy icon
@@ -60,7 +62,6 @@ C["media"] = {
 
 -- pet action icons
 PET_DEFENSIVE_TEXTURE = [[Interface\AddOns\Tukui\medias\textures\icon_defensive]]
-PET_AGGRESSIVE_TEXTURE = [[Interface\AddOns\Tukui\medias\textures\icon_aggressive]]  -- < 4.2 pre 4.2 icon
 PET_PASSIVE_TEXTURE = [[Interface\AddOns\Tukui\medias\textures\icon_passive]]
 PET_ATTACK_TEXTURE = [[Interface\AddOns\Tukui\medias\textures\icon_attack]]
 PET_FOLLOW_TEXTURE = [[Interface\AddOns\Tukui\medias\textures\icon_follow]]

@@ -1,7 +1,6 @@
 local T, C, L = unpack(select(2, ...))
 
 local function LoadSkin()
-	if T.toc >= 40200 then
 		EncounterJournal:StripTextures(true)
 		
 		EncounterJournal.backdrop = EncounterJournal:CreateTexture(nil, "BACKGROUND")
@@ -103,6 +102,6 @@ local function LoadSkin()
 		EncounterJournalEncounterFrameInfoLootTab:GetDisabledTexture():SetTexture(nil)
 		EncounterJournalEncounterFrameInfoLootTab:GetHighlightTexture():SetTexture(nil)		
 	end
-end
+
 
 tinsert(T.SkinFuncs["Tukui"], LoadSkin)

@@ -953,43 +953,7 @@ end
 function Stuffing:PLAYER_ENTERING_WORLD()
 	-- please don't do anything after 1 player_entering_world event.
 	Stuffing:UnregisterEvent("PLAYER_ENTERING_WORLD")
-	
-	if T.toc >= 40200 then return end
-	
-	-- hooking and setting key ring bag
-	-- this is just a reskin of Blizzard key bag to fit Tukui
-	-- hooking OnShow because sometime key max slot changes.
-	ContainerFrame1:HookScript("OnShow", function(self)
-		local keybackdrop = CreateFrame("Frame", nil, self)
-		keybackdrop:Point("TOPLEFT", 9, -40)
-		keybackdrop:Point("BOTTOMLEFT", 0, 0)
-		keybackdrop:Size(179,215)
-		keybackdrop:SetTemplate("Default")
-		ContainerFrame1CloseButton:Hide()
-		ContainerFrame1Portrait:Hide()
-		ContainerFrame1Name:Hide()
-		ContainerFrame1BackgroundTop:SetAlpha(0)
-		ContainerFrame1BackgroundMiddle1:SetAlpha(0)
-		ContainerFrame1BackgroundMiddle2:SetAlpha(0)
-		ContainerFrame1BackgroundBottom:SetAlpha(0)
-		for i=1, GetKeyRingSize() do
-			local slot = _G["ContainerFrame1Item"..i]
-			local t = _G["ContainerFrame1Item"..i.."IconTexture"]
-			slot:SetPushedTexture("")
-			slot:SetNormalTexture("")
-			t:SetTexCoord(.08, .92, .08, .92)
-			t:Point("TOPLEFT", slot, 2, -2)
-			t:Point("BOTTOMRIGHT", slot, -2, 2)
-			slot:SetTemplate("Default")
-			slot:SetBackdropColor(0, 0, 0, 0)
-			slot:StyleButton()
-		end		
-	end)
-	
-	ContainerFrame1:ClearAllPoints()
-	ContainerFrame1:Point("BOTTOMRIGHT", TukuiInfoRight, "TOPRIGHT", 4, 5)
-	ContainerFrame1.ClearAllPoints = T.dummy
-	ContainerFrame1.SetPoint = T.dummy
+
 end
 
 function Stuffing:PLAYERBANKSLOTS_CHANGED(id)
@@ -1468,26 +1432,6 @@ function Stuffing.Menu(self, level)
 
 	end
 	UIDropDownMenu_AddButton(info, level)
-
-	if T.toc < 40200 then
-		wipe(info)
-		info.text = KEYRING
-		info.checked = function()
-			return key_ring == 1
-		end
-
-		info.func = function()
-			if key_ring == 1 then
-				key_ring = 0
-			else
-				key_ring = 1
-			end
-			Stuffing_Toggle()
-			ToggleKeyRing()
-			Stuffing:Layout()
-		end
-		UIDropDownMenu_AddButton(info, level)
-	end
 
 	wipe(info)
 	info.disabled = nil

@@ -141,6 +141,7 @@ local function LoadSkin()
 		"InterfaceOptionsFrameDefaults", 
 		"InterfaceOptionsFrameOkay", 
 		"InterfaceOptionsFrameCancel",
+		"InterfaceOptionsHelpPanelResetTutorials",
 		"ReadyCheckFrameYesButton",
 		"ReadyCheckFrameNoButton",
 		"StackSplitOkayButton",

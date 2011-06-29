@@ -53,18 +53,13 @@ if C["datatext"].hps_text and C["datatext"].hps_text > 0 then
 		-- only use events from the player
 		local id = select(4, ...)
 		if id == player_id then
-			if T.toc < 40200 then
-				amount_healed = select(13, ...)
-				amount_over_healed = select(14, ...)
-			else
 				amount_healed = select(15, ...)
 				amount_over_healed = select(16, ...)			
 			end
 			-- add to the total the healed amount subtracting the overhealed amount
 			actual_heals_total = actual_heals_total + math.max(0, amount_healed - amount_over_healed)
 		end
-	end
- 
+	 
 	function HPS_FEED:PLAYER_REGEN_ENABLED()
 		hText:SetText(get_hps)
 	end

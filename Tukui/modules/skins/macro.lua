@@ -8,6 +8,8 @@ local function LoadSkin()
 	local buttons = {
 		"MacroDeleteButton",
 		"MacroNewButton",
+		"MacroSaveButton",
+		"MacroCancelButton",
 		"MacroExitButton",
 		"MacroEditButton",
 		"MacroFrameTab1",
