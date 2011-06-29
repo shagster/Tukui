@@ -541,6 +541,16 @@ T.PostNamePosition = function(self)
 	end
 end
 --]]
+--smelly 
+T.PostNamePosition = function(self)
+	self.Name:ClearAllPoints()
+	if (self.Power.value:GetText() and UnitIsEnemy("player", "target") and C["unitframes"].targetpowerpvponly == true) or (self.Power.value:GetText() and C["unitframes"].targetpowerpvponly == false) then
+		self.Name:SetPoint("CENTER", self.panel, "CENTER", 0, 0)
+	else
+		self.Power.value:SetAlpha(0)
+		self.Name:SetPoint("CENTER", self.panel, "CENTER", 0, 0)
+	end
+end
 
 T.PostNamePosition = function(self)
 	self.Name:ClearAllPoints()
@@ -1091,10 +1101,13 @@ if C["unitframes"].raidunitdebuffwatch == true then
 			--<< NONE KNOWN YET >>
 
 			--Majordomo Staghelm
-			--<< NONE KNOWN YET >>
+			SpellName(98450), -- Searing Seeds
 
 			--Ragnaros
 			--<< NONE KNOWN YET >>
+			
+			--Trash
+			SpellName(99532), -- Melt Armor
 		
 		--Baradin Hold
 			SpellName(95173), -- Consuming Darkness
