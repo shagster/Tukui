@@ -87,7 +87,7 @@ do
 		border:SetFrameLevel(0)
 
 		local text = frame:CreateFontString(nil, 'OVERLAY')
-		text:SetFont(C["media"].font, 12, "THINOUTLINE")
+		text:SetFont(C["media"].uffont, 10, "THINOUTLINE")
 		text:SetShadowOffset(.5, -.5)
 		text:SetShadowColor(0, 0, 0, 1)
 

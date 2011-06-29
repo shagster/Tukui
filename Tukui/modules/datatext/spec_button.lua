@@ -2,7 +2,7 @@ local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, vari
 if C["datatext"].specswitcher == 1 then
 
 local talenticon = CreateFrame("Frame", "TukuiTalentIcon", TukuiInfoLeft)
-talenticon:CreatePanel("Default", 14, 14, "LEFT", TukuiInfoLeft, "LEFT", 10, 0)
+talenticon:CreatePanel("Default", 14, 14, "LEFT", TukuiInfoLeft, "LEFT", 1, 0)
 --talenticon:SetFrameLevel(2)
 talenticon:SetFrameStrata("LOW")
 talenticon:SetTemplate("Thin")
