@@ -117,6 +117,8 @@ hooksecurefunc("GameTooltip_SetDefaultAnchor", function(self, parent)
 	if C["tooltip"].cursor == true then
 		if IsAddOnLoaded("Tukui_Raid_Healing") and parent ~= UIParent then
 			self:SetOwner(parent, "ANCHOR_NONE")
+		elseif IsAddOnLoaded("Tukui_Raid") and parent ~= UIParent then
+			self:SetOwner(parent, "ANCHOR_NONE")
 		else
 			self:SetOwner(parent, "ANCHOR_CURSOR")
 		end
