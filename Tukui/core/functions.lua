@@ -1104,7 +1104,7 @@ if C["unitframes"].raidunitdebuffwatch == true then
 			SpellName(98450), -- Searing Seeds
 
 			--Ragnaros
-			--<< NONE KNOWN YET >>
+			SpellName(99399), -- Burning Wound
 			
 			--Trash
 			SpellName(99532), -- Melt Armor

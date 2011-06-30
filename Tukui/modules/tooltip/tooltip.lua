@@ -58,6 +58,7 @@ local function UpdateTooltip(self)
 		-- h4x for world object tooltip border showing last border color 
 		-- or showing background sometime ~blue :x		
 		if NeedBackdropBorderRefresh then
+			self:ClearAllPoints()
 			NeedBackdropBorderRefresh = false			
 			self:SetBackdropColor(unpack(C.media.backdropcolor))
 			if not C["tooltip"].cursor then
