@@ -212,8 +212,8 @@ local function Shared(self, unit)
 	return self
 end
 
-oUF:RegisterStyle('TukuiHealR01R15', Shared)
-oUF:Factory(function(self)
+	oUF:RegisterStyle('TukuiHealR01R15', Shared)
+	oUF:Factory(function(self)
 	oUF:SetActiveStyle("TukuiHealR01R15")
 
 	local raid = self:SpawnHeader("oUF_TukuiHealRaid0115", nil, "custom [@raid16,exists] hide;show", 
