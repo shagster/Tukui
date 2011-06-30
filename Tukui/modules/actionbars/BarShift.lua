@@ -1,17 +1,24 @@
 local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
 if not C["actionbar"].enable == true then return end
-local player = TukuiPlayer
+local TukuiPlayer = TukuiPlayer
 ---------------------------------------------------------------------------
 -- Setup Shapeshift Bar
 ---------------------------------------------------------------------------
 
 -- used for anchor totembar or shapeshiftbar
 local TukuiShift = CreateFrame("Frame","TukuiShiftBar",UIParent)
-if C["unitframes"].style == "Shag" then
-TukuiShift:SetPoint("BOTTOMLEFT", InvTukuiActionBarBackground, "TOP", -385.31, 44)
-elseif C["unitframes"].style == "Smelly" then
-TukuiShift:SetPoint("TOPLEFT", UIParent, "TOPLEFT", 10, -17)
+TukuiShift:RegisterEvent("ADDON_LOADED")
+TukuiShift:SetScript("OnEvent", function(self, event, addon)
+if C["unitframes"].style == "Shag" and addon == "Tukui_Raid" then
+TukuiShift:SetPoint("BOTTOMLEFT", InvTukuiActionBarBackground, "TOP", -385, 44)
+elseif C["unitframes"].style == "Shag" and addon == "Tukui_Raid_Healing" then
+TukuiShift:SetPoint("BOTTOMLEFT", InvTukuiActionBarBackground, "TOP", -470, 68)
+elseif C["unitframes"].style == "Smelly" and addon == "Tukui_Raid" then
+TukuiShift:SetPoint("TOP", UIParent, "BOTTOM", -178, 162)
+elseif C["unitframes"].style == "Smelly" and addon == "Tukui_Raid_Healing" then
+TukuiShift:SetPoint("TOP", UIParent, "BOTTOM", -308, 260)
 end
+end)
 TukuiShift:SetWidth((T.petbuttonsize * 5) + (T.petbuttonsize * 4))
 TukuiShift:SetHeight(T.petbuttonsize/2)
 TukuiShift:SetFrameStrata("MEDIUM")

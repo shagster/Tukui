@@ -272,14 +272,14 @@ local function Shared(self, unit)
 					local lunarBar = CreateFrame('StatusBar', nil, eclipseBar)
 					lunarBar:SetPoint('LEFT', eclipseBar, 'LEFT', 0, 0)
 					lunarBar:SetSize(eclipseBar:GetWidth(), eclipseBar:GetHeight())
-					lunarBar:SetStatusBarTexture(normTex)
+					lunarBar:SetStatusBarTexture(empathTex)
 					lunarBar:SetStatusBarColor(.30, .52, .90)
 					eclipseBar.LunarBar = lunarBar
 
 					local solarBar = CreateFrame('StatusBar', nil, eclipseBar)
 					solarBar:SetPoint('LEFT', lunarBar:GetStatusBarTexture(), 'RIGHT', 0, 0)
 					solarBar:SetSize(eclipseBar:GetWidth(), eclipseBar:GetHeight())
-					solarBar:SetStatusBarTexture(normTex)
+					solarBar:SetStatusBarTexture(empathTex)
 					solarBar:SetStatusBarColor(.80, .82,  .60)
 					eclipseBar.SolarBar = solarBar
 
@@ -318,7 +318,7 @@ local function Shared(self, unit)
 					for i = 1, 3 do					
 						bars[i]=CreateFrame("StatusBar", self:GetName().."_Shard"..i, bars)
 						bars[i]:Height(3)					
-						bars[i]:SetStatusBarTexture(normTex)
+						bars[i]:SetStatusBarTexture(empathTex)
 						bars[i]:GetStatusBarTexture():SetHorizTile(false)
 						
 						if T.myclass == "WARLOCK" then
@@ -375,7 +375,7 @@ local function Shared(self, unit)
                     Runes[i]:SetPoint("LEFT", Runes[i-1], "RIGHT", T.Scale(5), 0)
 					Runes[i]:SetWidth(T.Scale(176 /6))
                     end
-                    Runes[i]:SetStatusBarTexture(normTex)
+                    Runes[i]:SetStatusBarTexture(empathTex)
                     Runes[i]:GetStatusBarTexture():SetHorizTile(false)
 					Runes[i]:SetBackdrop(backdrop)
                     Runes[i]:SetBackdropColor(0,0,0)
@@ -383,7 +383,7 @@ local function Shared(self, unit)
                     
                     Runes[i].bg = Runes[i]:CreateTexture(nil, "BORDER")
                     Runes[i].bg:SetAllPoints(Runes[i])
-                    Runes[i].bg:SetTexture(normTex)
+                    Runes[i].bg:SetTexture(empathTex)
                     Runes[i].bg.multiplier = 0.3
 					
 					Runes[i].border = CreateFrame("Frame", nil, Runes[i])
@@ -411,7 +411,7 @@ local function Shared(self, unit)
 					TotemBar[i]:Point("BOTTOMLEFT", health, "TOPLEFT", 25, 6)					else
 					TotemBar[i]:SetPoint("TOPLEFT", TotemBar[i-1], "TOPRIGHT", T.Scale(7), 0)
 					end
-					TotemBar[i]:SetStatusBarTexture(normTex)
+					TotemBar[i]:SetStatusBarTexture(empathTex)
 					TotemBar[i]:SetHeight(T.Scale(5))
 					TotemBar[i]:SetWidth(T.Scale(180) / 4)
 					TotemBar[i]:SetFrameLevel(4)
@@ -422,7 +422,7 @@ local function Shared(self, unit)
 
 					TotemBar[i].bg = TotemBar[i]:CreateTexture(nil, "BORDER")
 					TotemBar[i].bg:SetAllPoints(TotemBar[i])
-					TotemBar[i].bg:SetTexture(normTex)
+					TotemBar[i].bg:SetTexture(empathTex)
 					TotemBar[i].bg.multiplier = 0.2
 					
 					TotemBar[i].border = CreateFrame("Frame", nil, TotemBar[i])
@@ -540,11 +540,11 @@ local function Shared(self, unit)
 		if (C["unitframes"].unitcastbar == true) then
 			-- castbar of player and target
 			local castbar = CreateFrame("StatusBar", self:GetName().."CastBar", self)
-			castbar:SetStatusBarTexture(normTex)
+			castbar:SetStatusBarTexture(empathTex)
 			
 			castbar.bg = castbar:CreateTexture(nil, "BORDER")
 			castbar.bg:SetAllPoints(castbar)
-			castbar.bg:SetTexture(normTex)
+			castbar.bg:SetTexture(empathTex)
 			castbar.bg:SetVertexColor(.05, .05, .05)
 			
 			if unit == "player" then
@@ -604,7 +604,7 @@ local function Shared(self, unit)
 			-- cast bar latency on player
 			if unit == "player" and C["unitframes"].cblatency == true then
 				castbar.safezone = castbar:CreateTexture(nil, "ARTWORK")
-				castbar.safezone:SetTexture(normTex)
+				castbar.safezone:SetTexture(empathTex)
 				castbar.safezone:SetVertexColor(0.8, 0.2, 0.2, 0.75)
 				castbar.SafeZone = castbar.safezone
 			end
@@ -653,7 +653,7 @@ local function Shared(self, unit)
 			else
 				mhpb:SetWidth(250)
 			end
-			mhpb:SetStatusBarTexture(normTex)
+			mhpb:SetStatusBarTexture(empathTex)
 			mhpb:SetStatusBarColor(0, 1, 0.5, 0.25)
 			mhpb:SetMinMaxValues(0,1)
 
@@ -661,7 +661,7 @@ local function Shared(self, unit)
 			ohpb:SetPoint('TOPLEFT', mhpb:GetStatusBarTexture(), 'TOPRIGHT', 0, 0)
 			ohpb:SetPoint('BOTTOMLEFT', mhpb:GetStatusBarTexture(), 'BOTTOMRIGHT', 0, 0)
 			ohpb:SetWidth(250)
-			ohpb:SetStatusBarTexture(normTex)
+			ohpb:SetStatusBarTexture(empathTex)
 			ohpb:SetStatusBarColor(0, 1, 0, 0.25)
 
 			self.HealPrediction = {
@@ -693,7 +693,7 @@ local function Shared(self, unit)
 		health.PostUpdate = T.PostUpdateHealth		
 		-- Unit name
 		local Name = T.SetFontString(health, font, 10, "THINOUTLINE")
-		Name:SetPoint("CENTER", panel, "CENTER", 0, 4)
+		Name:SetPoint("CENTER", panel, "CENTER", 0, 3)
 		Name:SetJustifyH("CENTER")
 
 		self:Tag(Name, '[Tukui:getnamecolor][Tukui:namemedium]')
@@ -754,7 +754,7 @@ local function Shared(self, unit)
 		power:Height(2)
 		
 		health.value = T.SetFontString(health, font, 10, "THINOUTLINE")
-		health.value:Point("RIGHT", health, "RIGHT", -4, 4)
+		health.value:Point("RIGHT", health, "RIGHT", -4, 3)
 		health.value:SetParent(self)
 		health.PostUpdate = T.PostUpdateHealth
 		
@@ -765,14 +765,14 @@ local function Shared(self, unit)
 			power.Smooth = true
 		end
 		power.value = T.SetFontString(health, font, 10, "THINOUTLINE")
-		power.value:Point("LEFT", health, "LEFT", 4, 4)
+		power.value:Point("LEFT", health, "LEFT", 4, 3)
 		power.value:SetParent(self)
 		power.PreUpdate = T.PreUpdatePower
 		power.PostUpdate = T.PostUpdatePower
 		
 		-- Unit name
 		local Name = T.SetFontString(health, font, 10, "THINOUTLINE")
-		Name:SetPoint("CENTER", health, "CENTER", 0, 4)
+		Name:SetPoint("CENTER", health, "CENTER", 0, 3)
 		Name:SetJustifyH("CENTER")
 
 		self:Tag(Name, '[Tukui:getnamecolor][Tukui:namemedium]')
@@ -785,7 +785,7 @@ local function Shared(self, unit)
 		castbar:SetPoint("BOTTOM", 0, -15)
 		
 		castbar:SetHeight(16)
-		castbar:SetStatusBarTexture(normTex)
+		castbar:SetStatusBarTexture(empathTex)
 		castbar:SetFrameLevel(6)
 		
 		castbar.bg = CreateFrame("Frame", nil, castbar)
@@ -839,7 +839,7 @@ local function Shared(self, unit)
 		power:Height(2)
 		
 		health.value = T.SetFontString(health, font, 10, "THINOUTLINE")
-		health.value:Point("RIGHT", health, "RIGHT", -4, 4)
+		health.value:Point("RIGHT", health, "RIGHT", -4, 3)
 		health.value:SetParent(self)
 		health.PostUpdate = T.PostUpdateHealth
 		health.frequentUpdates = true
@@ -848,14 +848,14 @@ local function Shared(self, unit)
 			power.Smooth = true
 		end
 		power.value = T.SetFontString(health, font, 10, "THINOUTLINE")
-		power.value:Point("LEFT", health, "LEFT", 4, 4)
+		power.value:Point("LEFT", health, "LEFT", 4, 3)
 		power.value:SetParent(self)
 		power.PreUpdate = T.PreUpdatePower
 		power.PostUpdate = T.PostUpdatePower
 		
 		-- Unit name
 		local Name = T.SetFontString(health, font, 10, "THINOUTLINE")
-		Name:SetPoint("CENTER", health, "CENTER", 0, 4)
+		Name:SetPoint("CENTER", health, "CENTER", 0, 3)
 		Name:SetJustifyH("CENTER")
 
 		self:Tag(Name, '[Tukui:getnamecolor][Tukui:namemedium]')
@@ -868,7 +868,7 @@ local function Shared(self, unit)
 		castbar:SetPoint("BOTTOM", 0, -15)
 		
 		castbar:SetHeight(16)
-		castbar:SetStatusBarTexture(normTex)
+		castbar:SetStatusBarTexture(empathTex)
 		castbar:SetFrameLevel(6)
 		
 		castbar.bg = CreateFrame("Frame", nil, castbar)
@@ -952,7 +952,7 @@ local function Shared(self, unit)
 			local AltPowerBar = CreateFrame("StatusBar", nil, self.Health)
 			AltPowerBar:SetFrameLevel(self.Health:GetFrameLevel() + 1)
 			AltPowerBar:Height(4)
-			AltPowerBar:SetStatusBarTexture(C.media.normTex)
+			AltPowerBar:SetStatusBarTexture(C.media.empath2)
 			AltPowerBar:GetStatusBarTexture():SetHorizTile(false)
 			AltPowerBar:SetStatusBarColor(1, 0, 0)
 
@@ -1033,7 +1033,7 @@ local function Shared(self, unit)
 		castbar:SetPoint("BOTTOM", 0, -15)
 		
 		castbar:SetHeight(16)
-		castbar:SetStatusBarTexture(normTex)
+		castbar:SetStatusBarTexture(empathTex)
 		castbar:SetFrameLevel(6)
 		
 		castbar.bg = CreateFrame("Frame", nil, castbar)
@@ -1091,7 +1091,7 @@ local function Shared(self, unit)
 		health:Height(20)
 		health:SetPoint("TOPLEFT")
 		health:SetPoint("TOPRIGHT")
-		health:SetStatusBarTexture(normTex)
+		health:SetStatusBarTexture(empathTex)
 		
 		local healthBG = health:CreateTexture(nil, 'BORDER')
 		healthBG:SetAllPoints()
@@ -1157,18 +1157,18 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 	if addon == "Tukui_Raid" then
 		--[ DPS ]--
-		player:Point("TOP", UIParent, "BOTTOM", -179 , 230)
-		target:Point("TOP", UIParent, "BOTTOM", 179, 230)
-		tot:Point("TOPRIGHT", TukuiTarget, "BOTTOMRIGHT", 0, -30)
-		pet:Point("TOPLEFT", TukuiPlayer, "BOTTOMLEFT", 0, -30)
+		player:Point("TOP", UIParent, "BOTTOM", -180 , 202)
+		target:Point("TOP", UIParent, "BOTTOM", 180, 202)
+		tot:Point("TOPRIGHT", TukuiTarget, "BOTTOMRIGHT", 0, -25)
+		pet:Point("TOPLEFT", TukuiPlayer, "BOTTOMLEFT", 0, -25)
 		focus:Point("TOP", UIParent, "BOTTOM", 350, 530)
 	elseif addon == "Tukui_Raid_Healing" then
 		--[ HEAL ]--
 		player:Point("TOP", UIParent, "BOTTOM", -310 , 300)
 		target:Point("TOP", UIParent, "BOTTOM", 310, 300)
-		tot:Point("TOPRIGHT", TukuiTarget, "BOTTOMRIGHT", 0, -7)
-		pet:Point("TOPLEFT", TukuiPlayer, "BOTTOMLEFT", 0, -7)
-		focus:Point("TOP", UIParent, "BOTTOM", -400, 400)
+		tot:Point("TOPRIGHT", TukuiTarget, "BOTTOMRIGHT", 0, -25)
+		pet:Point("TOPLEFT", TukuiPlayer, "BOTTOMLEFT", 0, -25)
+		focus:Point("TOP", UIParent, "BOTTOM", -400, 450)
 		
 	end
 end)
