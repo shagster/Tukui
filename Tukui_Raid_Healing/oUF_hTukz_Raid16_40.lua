@@ -12,6 +12,7 @@ local font2 = C["media"].uffont
 local font1 = C["media"].font
 local normTex = C["media"].normTex
 local font = C["media"].pixelfont
+local empathTex = C["media"].empath2
 
 local function Shared(self, unit)
 	self.colors = T.oUF_colors
@@ -26,9 +27,9 @@ local function Shared(self, unit)
 	health:SetPoint("TOPRIGHT")
 	health:Height(28*C["unitframes"].gridscale*T.raidscale)
 	if C["unitframes"].style == "Shag" then
-	health:SetStatusBarTexture(C["media"].normTex)
+	health:SetStatusBarTexture(normTex)
 	elseif C["unitframes"].style == "Smelly" then
-	health:SetStatusBarTexture(C["media"].empathTex)
+	health:SetStatusBarTexture(empathTex)
 	end
 	--health:SetStatusBarTexture(C["media"].normTex)
 	self.Health = health
@@ -39,7 +40,7 @@ local function Shared(self, unit)
 	
 	health.bg = health:CreateTexture(nil, 'BORDER')
 	health.bg:SetAllPoints(health)
-	health.bg:SetTexture(C["media"].blank)
+	health.bg:SetTexture(empathTex)
 	health.bg:SetTexture(.150, .150, .150)
 	health.bg.multiplier = (0.3)
 	self.Health.bg = health.bg
@@ -89,13 +90,13 @@ local function Shared(self, unit)
 	end
 		
 	local power = CreateFrame("StatusBar", nil, self)
-	power:SetHeight(3*C["unitframes"].gridscale*T.raidscale)
-	power:Point("TOPLEFT", self.Health, "BOTTOMLEFT", 9, 0)
-	power:Point("TOPRIGHT", self.Health, "BOTTOMRIGHT", -9, 0)
+	power:SetHeight(2*C["unitframes"].gridscale*T.raidscale)
+	power:Point("TOPLEFT", self.Health, "BOTTOMLEFT", 9, 3)
+	power:Point("TOPRIGHT", self.Health, "BOTTOMRIGHT", -9, 3)
 	if C["unitframes"].style == "Shag" then
-	power:SetStatusBarTexture(C["media"].normTex)
+	power:SetStatusBarTexture(normTex)
 	elseif C["unitframes"].style == "Smelly" then
-	power:SetStatusBarTexture(C["media"].empathTex)
+	power:SetStatusBarTexture(empathTex)
 	end
 	--power:SetStatusBarTexture(C["media"].normTex)
 	power:SetFrameLevel(self.Health:GetFrameLevel() + 2)
@@ -106,10 +107,10 @@ local function Shared(self, unit)
 
 	power.bg = power:CreateTexture(nil, "BORDER")
 	power.bg:SetAllPoints(power)
-	power.bg:SetTexture(C["media"].normTex)
+	power.bg:SetTexture(empathTex)
 	power.bg:SetAlpha(1)
 	power.bg.multiplier = 0.4
-	
+	--[[
 	local PowerBorder = CreateFrame("Frame", nil, power)
 	PowerBorder:SetPoint("TOPLEFT", power, "TOPLEFT", T.Scale(-2), T.Scale(2))
 	PowerBorder:SetPoint("BOTTOMRIGHT", power, "BOTTOMRIGHT", T.Scale(2), T.Scale(-2))
@@ -118,7 +119,7 @@ local function Shared(self, unit)
 	--PowerBorder:CreateShadow("Default")
 	PowerBorder:SetFrameLevel(power:GetFrameLevel() - 1)
 	self.PowerBorder = PowerBorder
-	
+	]]
 	if C.unitframes.unicolor == true then
 		power.colorClass = true
 		power.bg.multiplier = 0.1				

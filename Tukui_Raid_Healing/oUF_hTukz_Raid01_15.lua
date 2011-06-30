@@ -12,6 +12,7 @@ local font2 = C["media"].uffont
 local font1 = C["media"].font
 local font = C["media"].pixelfont
 local normTex = C["media"].normTex
+local empathTex = C["media"].empath2
 
 local function Shared(self, unit)
 	self.colors = T.oUF_colors
@@ -29,16 +30,16 @@ local function Shared(self, unit)
 	health:SetPoint("TOPRIGHT")
 	health:Height(27*T.raidscale)
 	if C["unitframes"].style == "Shag" then
-	health:SetStatusBarTexture(C["media"].normTex)
+	health:SetStatusBarTexture(normTex)
 	elseif C["unitframes"].style == "Smelly" then
-	health:SetStatusBarTexture(C["media"].empathTex)
+	health:SetStatusBarTexture(empathTex)
 	end
 	--health:SetStatusBarTexture(normTex)
 	self.Health = health
 	self:HighlightUnit(0,.8,0) -- R,G,B
 	health.bg = health:CreateTexture(nil, 'BORDER')
 	health.bg:SetAllPoints(health)
-	health.bg:SetTexture(normTex)
+	health.bg:SetTexture(empathTex)
 	health.bg:SetTexture(0.3, 0.3, 0.3)
 	health.bg.multiplier = 0.3
 	self.Health.bg = health.bg
@@ -66,13 +67,13 @@ local function Shared(self, unit)
 	end
 	
 	local power = CreateFrame("StatusBar", nil, self)
-	power:Height(4*T.raidscale)
-	power:Point("TOPLEFT", health, "BOTTOMLEFT", 0, -1)
-	power:Point("TOPRIGHT", health, "BOTTOMRIGHT", 0, -1)
+	power:Height(2*T.raidscale)
+	power:Point("TOPLEFT", health, "BOTTOMLEFT", 0, 3)
+	power:Point("TOPRIGHT", health, "BOTTOMRIGHT", 0, 3)
 	if C["unitframes"].style == "Shag" then
-	power:SetStatusBarTexture(C["media"].normTex)
+	power:SetStatusBarTexture(normTex)
 	elseif C["unitframes"].style == "Smelly" then
-	power:SetStatusBarTexture(C["media"].empathTex)
+	power:SetStatusBarTexture(empathTex)
 	end
 	--power:SetStatusBarTexture(normTex)
 	self.Power = power
@@ -82,7 +83,7 @@ local function Shared(self, unit)
 
 	power.bg = self.Power:CreateTexture(nil, "BORDER")
 	power.bg:SetAllPoints(power)
-	power.bg:SetTexture(normTex)
+	power.bg:SetTexture(empathTex)
 	power.bg:SetAlpha(1)
 	power.bg.multiplier = 0.4
 	self.Power.bg = power.bg
