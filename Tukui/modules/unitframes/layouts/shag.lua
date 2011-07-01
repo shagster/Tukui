@@ -1251,11 +1251,16 @@ local function Shared(self, unit)
 		
 		if (C["unitframes"].unitcastbar == true) then
 		local castbar = CreateFrame("StatusBar", self:GetName().."CastBar", self)
+		if C.unitframes.bigfocuscast then
+		castbar:SetHeight(34)
+		castbar:SetWidth(320)
+		castbar:SetPoint("CENTER", UIParent, "CENTER", 0, 380)
+		else
 		castbar:SetPoint("LEFT", 23, 0)
 		castbar:SetPoint("RIGHT", 0, 0)
 		castbar:SetPoint("BOTTOM", 0, -15)
-		
 		castbar:SetHeight(16)
+		end
 		castbar:SetStatusBarTexture(normTex)
 		castbar:SetFrameLevel(6)
 		
@@ -1418,6 +1423,57 @@ local function Shared(self, unit)
 		debuffs.PostCreateIcon = T.PostCreateAura
 		debuffs.PostUpdateIcon = T.PostUpdateAura
 		self.Debuffs = debuffs
+		
+		if (C["unitframes"].unitcastbar == true) and C.unitframes.showfocustarcast then
+		local castbar = CreateFrame("StatusBar", self:GetName().."CastBar", self)
+		castbar:SetPoint("LEFT", 23, 0)
+		castbar:SetPoint("RIGHT", 0, 0)
+		castbar:SetPoint("BOTTOM", 0, -15)
+		
+		castbar:SetHeight(16)
+		castbar:SetStatusBarTexture(empathTex)
+		castbar:SetFrameLevel(6)
+		
+		castbar.bg = CreateFrame("Frame", nil, castbar)
+		castbar.bg:SetTemplate("Default")
+		castbar.bg:SetBackdropColor(0,0,0,1)
+		--castbar.bg:CreateShadow("Default")
+		--castbar.bg:SetBackdropBorderColor(unpack(C["media"].altbordercolor))
+		castbar.bg:Point("TOPLEFT", -2, 2)
+		castbar.bg:Point("BOTTOMRIGHT", 2, -2)
+		castbar.bg:SetFrameLevel(5)
+		
+		castbar.time = T.SetFontString(castbar,font, 10, "THINOUTLINE")
+		castbar.time:Point("RIGHT", castbar, "RIGHT", -4, 0)
+		castbar.time:SetTextColor(1, 1, 1)
+		castbar.time:SetJustifyH("RIGHT")
+		castbar.CustomTimeText = T.CustomCastTimeText
+
+		castbar.Text = T.SetFontString(castbar,font, 10, "THINOUTLINE")
+		castbar.Text:SetPoint("LEFT", castbar, "LEFT", 4, 0)
+		castbar.Text:SetTextColor(1, 1, 1)
+		
+		castbar.CustomDelayText = T.CustomCastDelayText
+		castbar.PostCastStart = T.CheckCast
+		castbar.PostChannelStart = T.CheckChannel
+								
+		castbar.button = CreateFrame("Frame", nil, castbar)
+		castbar.button:Height(castbar:GetHeight()+4)
+		castbar.button:Width(castbar:GetHeight()+4)
+		castbar.button:Point("RIGHT", castbar, "LEFT", -5, 0)
+		castbar.button:SetTemplate("Default")
+		castbar.button:SetBackdropColor(0,0,0,1)
+		--castbar.button:CreateShadow("Default")
+		--castbar.button:SetBackdropBorderColor(unpack(C["media"].altbordercolor))
+		castbar.icon = castbar.button:CreateTexture(nil, "ARTWORK")
+		castbar.icon:Point("TOPLEFT", castbar.button, 2, -2)
+		castbar.icon:Point("BOTTOMRIGHT", castbar.button, -2, 2)
+		castbar.icon:SetTexCoord(0.08, 0.92, 0.08, .92)
+
+		self.Castbar = castbar
+		self.Castbar.Time = castbar.time
+		self.Castbar.Icon = castbar.icon
+		end
 		
 	end
 

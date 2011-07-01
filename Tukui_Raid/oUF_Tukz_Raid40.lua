@@ -69,10 +69,15 @@ local function Shared(self, unit)
 	
 	health.frequentUpdates = true
 	
+	if C.unitframes.unicolor and C.unitframes.style == "Smelly" then	
+		health:SetStatusBarColor(.125, .125, .125)
+	elseif C.unitframes.unicolor and C.unitframes.style == "Shag" then
+		health:SetStatusBarColor(.155, .155, .155)
+	end
+	
 	if C.unitframes.unicolor == true then
 		health.colorDisconnected = false
 		health.colorClass = false
-		health:SetStatusBarColor(.150, .150, .150, 1)
 		health.bg:SetVertexColor(0, 0, 0, 1)		
 	else
 		health.colorDisconnected = true
@@ -81,7 +86,7 @@ local function Shared(self, unit)
 	end
 		
 	local power = CreateFrame("StatusBar", nil, self)
-	power:SetHeight(1*C["unitframes"].gridscale*T.raidscale)
+	power:SetHeight(1.5*C["unitframes"].gridscale*T.raidscale)
 	power:Point("TOPLEFT", self.Health, "BOTTOMLEFT", 2, 2)
 	power:Point("TOPRIGHT", self.Health, "BOTTOMRIGHT", -2, 2)
 	if C["unitframes"].style == "Shag" then

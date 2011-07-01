@@ -110,7 +110,7 @@ local function Shared(self, unit)
 		health.colorTapping = false
 		health.colorDisconnected = false
 		health.colorClass = false
-		health:SetStatusBarColor(.2, .2, .2)
+		health:SetStatusBarColor(.125, .125, .125)
 		healthBG:SetTexture(1, 1, 1)
 		healthBG:SetVertexColor(.05, .05, .05)	
 			
@@ -125,10 +125,7 @@ local function Shared(self, unit)
 		health.colorDisconnected = true
 		health.colorReaction = true
 		health.colorClass = true
-		if T.myclass == "HUNTER" then
-			health.colorHappiness = true
-		end
-		
+				
 		power.colorPower = true
 	end
 		
@@ -157,12 +154,12 @@ local function Shared(self, unit)
 		power:Height(2)
 		
 		health.value = T.SetFontString(health, font, 10, "THINOUTLINE")
-		health.value:Point("RIGHT", health, "RIGHT", -4, 0)
-		health.value:SetParent(self)
+		health.value:Point("RIGHT", health, "RIGHT", -4, 1)
+		--health.value:SetParent(self)
 		health.PostUpdate = T.PostUpdateHealth
 		
 		power.value = T.SetFontString(health, font, 10, "THINOUTLINE")
-		power.value:Point("LEFT", health, "LEFT", 6, 0)
+		power.value:Point("LEFT", health, "LEFT", 6, 1)
 		power.value:SetParent(self)
 		power.PreUpdate = T.PreUpdatePower
 		power.PostUpdate = T.PostUpdatePower
@@ -260,7 +257,7 @@ local function Shared(self, unit)
 			if T.myclass == "DRUID" and C["unitframes"].druid then
 
 					local eclipseBar = CreateFrame('Frame', nil, self)
-					eclipseBar:Point("BOTTOMLEFT", self, "TOPLEFT", 9, 5)
+					eclipseBar:Point("BOTTOMLEFT", self, "TOPLEFT", 0, 5)
 					eclipseBar:Size(225, 5)
 					eclipseBar:SetFrameStrata("MEDIUM")
 					eclipseBar:SetFrameLevel(8)
@@ -359,7 +356,7 @@ local function Shared(self, unit)
 					if T.myclass == "DEATHKNIGHT" and C["unitframes"].deathknight then
 					
 					local Runes = CreateFrame("Frame", nil, self)
-					Runes:Point("BOTTOMLEFT", health, "TOPLEFT", 25, 6)
+					Runes:Point("BOTTOMLEFT", health, "TOPLEFT", 13, 6)
 					Runes:Size(120, 5)
 					Runes:SetFrameLevel(self:GetFrameLevel() + 3)
 					Runes:SetFrameStrata("MEDIUM")
@@ -408,7 +405,7 @@ local function Shared(self, unit)
 					TotemBar[i] = CreateFrame("StatusBar", self:GetName().."_TotemBar"..i, self)
 					TotemBar[i]:SetFrameLevel(self:GetFrameLevel() + 3)
 					if (i == 1) then
-					TotemBar[i]:Point("BOTTOMLEFT", health, "TOPLEFT", 25, 6)					else
+					TotemBar[i]:Point("BOTTOMLEFT", health, "TOPLEFT", 12, 6)					else
 					TotemBar[i]:SetPoint("TOPLEFT", TotemBar[i-1], "TOPRIGHT", T.Scale(7), 0)
 					end
 					TotemBar[i]:SetStatusBarTexture(empathTex)
@@ -461,11 +458,11 @@ local function Shared(self, unit)
 		if (unit == "target") then			
 			-- Unit name on target
 			local Name = T.SetFontString(health, font, 10, "THINOUTLINE")
-			Name:Point("CENTER", panel, "CENTER", 0, 0)
-			Name:SetJustifyH("LEFT")
+			--Name:SetPoint("CENTER", panel, "CENTER", 0, 2)
+			Name:SetJustifyH("CENTER")
 			Name:SetParent(self)
 
-			self:Tag(Name, '[Tukui:getnamecolor][Tukui:namemedium] [Tukui:diffcolor][level] [shortclassification]')
+			self:Tag(Name, '[Tukui:getnamecolor][Tukui:namemedium][Tukui:diffcolor] [level][shortclassification]')
 			self.Name = Name
 			
 			--combo points change to support sCombo
@@ -687,18 +684,20 @@ local function Shared(self, unit)
 	if (unit == "targettarget") then
 		health:Height(22)
 		power:Height(2)
-		health.value = T.SetFontString(health, font, 10, "THINOUTLINE")
+		--[[health.value = T.SetFontString(health, font, 10, "THINOUTLINE")
 		health.value:Point("RIGHT", health, "RIGHT", -4, 2)
 		health.value:SetParent(self)
 		health.PostUpdate = T.PostUpdateHealth		
+		]]
 		-- Unit name
 		local Name = T.SetFontString(health, font, 10, "THINOUTLINE")
-		Name:SetPoint("CENTER", panel, "CENTER", 0, 3)
+		Name:SetPoint("CENTER", panel, "CENTER", 0, 4)
 		Name:SetJustifyH("CENTER")
+		Name:SetParent(self)
 
 		self:Tag(Name, '[Tukui:getnamecolor][Tukui:namemedium]')
 		self.Name = Name
-		Name:SetJustifyH("CENTER")
+		
 		health.frequentUpdates = true
 		if C["unitframes"].showsmooth == true then
 			health.Smooth = true
@@ -734,6 +733,7 @@ local function Shared(self, unit)
 		local Name = T.SetFontString(health, font, 10, "THINOUTLINE")
 		Name:SetPoint("CENTER", health, "CENTER", 0, 4)
 		Name:SetJustifyH("CENTER")
+		Name:SetParent(self)
 
 		self:Tag(Name, '[Tukui:getnamecolor][Tukui:namemedium]')
 		self.Name = Name
@@ -744,7 +744,30 @@ local function Shared(self, unit)
 		self:RegisterEvent("UNIT_PET", T.updateAllElements)
 	end
 
+	------------------------------------------------------------------------
+	--	Pet target layout
+	------------------------------------------------------------------------
+	
+		if (unit == "pettarget") then
+		health:Height(22)
+		power:Height(2)
+						
+		-- Unit name
+		local Name = T.SetFontString(health, font, 10, "THINOUTLINE")
+		Name:SetPoint("CENTER", health, "CENTER", 0, 4)
+		Name:SetJustifyH("CENTER")
+		Name:SetParent(self)
 
+		self:Tag(Name, '[Tukui:getnamecolor][Tukui:nameshort]')
+		self.Name = Name
+		
+
+		
+		-- update pet name, this should fix "UNKNOWN" pet names on pet unit, health and bar color sometime being "grayish".
+		self:RegisterEvent("UNIT_PET", T.updateAllElements)
+	end
+	
+	
 	------------------------------------------------------------------------
 	--	Focus unit layout
 	------------------------------------------------------------------------
@@ -774,17 +797,24 @@ local function Shared(self, unit)
 		local Name = T.SetFontString(health, font, 10, "THINOUTLINE")
 		Name:SetPoint("CENTER", health, "CENTER", 0, 3)
 		Name:SetJustifyH("CENTER")
+		Name:SetParent(self)
 
 		self:Tag(Name, '[Tukui:getnamecolor][Tukui:namemedium]')
 		self.Name = Name
 		
 		if (C["unitframes"].unitcastbar == true) then
 		local castbar = CreateFrame("StatusBar", self:GetName().."CastBar", self)
+		if C.unitframes.bigfocuscast then
+		castbar:SetHeight(34)
+		castbar:SetWidth(320)
+		castbar:SetPoint("CENTER", UIParent, "CENTER", 0, 380)
+		else
+		castbar:SetHeight(16)
 		castbar:SetPoint("LEFT", 23, 0)
 		castbar:SetPoint("RIGHT", 0, 0)
 		castbar:SetPoint("BOTTOM", 0, -15)
-		
-		castbar:SetHeight(16)
+		end
+				
 		castbar:SetStatusBarTexture(empathTex)
 		castbar:SetFrameLevel(6)
 		
@@ -857,11 +887,12 @@ local function Shared(self, unit)
 		local Name = T.SetFontString(health, font, 10, "THINOUTLINE")
 		Name:SetPoint("CENTER", health, "CENTER", 0, 3)
 		Name:SetJustifyH("CENTER")
+		Name:SetParent(self)
 
 		self:Tag(Name, '[Tukui:getnamecolor][Tukui:namemedium]')
 		self.Name = Name
 		
-		if (C["unitframes"].unitcastbar == true) then
+		if (C["unitframes"].unitcastbar == true) and C.unitframes.showfocustarcast then
 		local castbar = CreateFrame("StatusBar", self:GetName().."CastBar", self)
 		castbar:SetPoint("LEFT", 23, 0)
 		castbar:SetPoint("RIGHT", 0, 0)
@@ -1135,13 +1166,14 @@ end
 --	Default position of Tukui unitframes
 ------------------------------------------------------------------------
 oUF:RegisterStyle('Tukui', Shared)
-T.Player, T.Target, T.ToT, T.Pet, T.Focus, T.Boss = 225, 225, 130, 130, 115, 200
+T.Player, T.Target, T.ToT, T.Pet, T.Focus, T.Boss, T.Pettarget = 225, 225, 130, 130, 115, 200, 100
 
 -- spawn
 local player = oUF:Spawn('player', "TukuiPlayer")
 local target = oUF:Spawn('target', "TukuiTarget")
 local tot = oUF:Spawn('targettarget', "TukuiTargetTarget")
 local pet = oUF:Spawn('pet', "TukuiPet")
+local pettarget = oUF:Spawn('pettarget', "TukuiPettarget")
 local focus = oUF:Spawn('focus', "TukuiFocus")
 
 -- sizes
@@ -1149,6 +1181,7 @@ player:Size(T.Player, player.Health:GetHeight() + player.Power:GetHeight() + pla
 target:Size(T.Target, target.Health:GetHeight() + target.Power:GetHeight() + target.panel:GetHeight() + 6)
 tot:SetSize(T.ToT, tot.Health:GetHeight() + tot.Power:GetHeight() + tot.panel:GetHeight() + 6)
 pet:SetSize(T.Pet, pet.Health:GetHeight() + pet.Power:GetHeight() + pet.panel:GetHeight() + 6)	
+pettarget:SetSize(T.Pettarget, pettarget.Health:GetHeight() + pettarget.Power:GetHeight() + pettarget.panel:GetHeight() + 6)
 focus:SetSize(180, 29)
 
 local f = CreateFrame("Frame")
@@ -1162,6 +1195,9 @@ f:SetScript("OnEvent", function(self, event, addon)
 		tot:Point("TOPRIGHT", TukuiTarget, "BOTTOMRIGHT", 0, -25)
 		pet:Point("TOPLEFT", TukuiPlayer, "BOTTOMLEFT", 0, -25)
 		focus:Point("TOP", UIParent, "BOTTOM", 350, 530)
+		if C.unitframes.showpettarget then
+		pettarget:SetPoint("TOPLEFT", TukuiPet, "BOTTOMLEFT", 0, 2) ---- SHAG pettarg
+		end
 	elseif addon == "Tukui_Raid_Healing" then
 		--[ HEAL ]--
 		player:Point("TOP", UIParent, "BOTTOM", -310 , 300)
@@ -1274,7 +1310,7 @@ do
 	UnitPopupMenus["FOCUS"] = { "RAID_TARGET_ICON", "CANCEL" }
 	UnitPopupMenus["BOSS"] = { "RAID_TARGET_ICON", "CANCEL" }
 end
-
+--[[
 local moveUFs = CreateFrame("Frame")
 moveUFs:RegisterEvent("PLAYER_ENTERING_WORLD")
 moveUFs:RegisterEvent("UNIT_NAME_UPDATE")
@@ -1282,7 +1318,8 @@ moveUFs:RegisterEvent("RAID_ROSTER_UPDATE")
 moveUFs:RegisterEvent("RAID_TARGET_UPDATE")
 moveUFs:RegisterEvent("PARTY_MEMBERS_CHANGED")
 moveUFs:SetScript("OnEvent", function(self)
-	if not IsAddOnLoaded("Tukui_Raid_Healing") or not C["unitframes"].actionbarpos then return end
+	
+	if not IsAddOnLoaded("Tukui_Raid_Healing") then return end
 
 	if TukuiGrid:IsVisible() then
 		TukuiBar1:SetWidth((T.buttonsize * 12) + (T.buttonspacing * 13) + 2)
@@ -1305,4 +1342,5 @@ moveUFs:SetScript("OnEvent", function(self)
 		target:SetPoint("BOTTOMRIGHT", InvTukuiActionBarBackground, "TOPRIGHT", 0,8+adjustXY)
 		tot:SetAlpha(1)
 	end
-end)
+	end)
+--]]
