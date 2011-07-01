@@ -611,6 +611,7 @@ local function Shared(self, unit)
 			castbar.Text = T.SetFontString(castbar,font, 10, "THINOUTLINE")
 			castbar.Text:Point("LEFT", castbar.bg, "LEFT", 4, 0)
 			castbar.Text:SetTextColor(1, 1, 1)
+			castbar.Text:SetWidth(castbar:GetWidth() * .75)
 			
 			if C["unitframes"].cbicons == true then
 				castbar.button = CreateFrame("Frame", nil, castbar)

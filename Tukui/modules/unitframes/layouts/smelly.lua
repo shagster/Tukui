@@ -458,11 +458,11 @@ local function Shared(self, unit)
 		if (unit == "target") then			
 			-- Unit name on target
 			local Name = T.SetFontString(health, font, 10, "THINOUTLINE")
-			--Name:SetPoint("CENTER", panel, "CENTER", 0, 2)
-			Name:SetJustifyH("CENTER")
+			--Name:Point("LEFT", panel, "LEFT", 0, 2)
+			Name:SetJustifyH("LEFT")
 			Name:SetParent(self)
 
-			self:Tag(Name, '[Tukui:getnamecolor][Tukui:namemedium][Tukui:diffcolor] [level][shortclassification]')
+			self:Tag(Name, '[Tukui:getnamecolor][Tukui:namemedium] [Tukui:diffcolor][level] [shortclassification]')
 			self.Name = Name
 			
 			--combo points change to support sCombo
@@ -583,6 +583,7 @@ local function Shared(self, unit)
 			castbar.Text = T.SetFontString(castbar, font, 10, "THINOUTLINE")
 			castbar.Text:Point("LEFT", castbar.bg, "LEFT", 4, 0)
 			castbar.Text:SetTextColor(1, 1, 1)
+			castbar.Text:SetWidth(castbar:GetWidth() * .75)
 			
 			if C["unitframes"].cbicons == true then
 				castbar.button = CreateFrame("Frame", nil, castbar)
@@ -1196,7 +1197,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		pet:Point("TOPLEFT", TukuiPlayer, "BOTTOMLEFT", 0, -25)
 		focus:Point("TOP", UIParent, "BOTTOM", 350, 530)
 		if C.unitframes.showpettarget then
-		pettarget:SetPoint("TOPLEFT", TukuiPet, "BOTTOMLEFT", 0, 2) ---- SHAG pettarg
+		pettarget:SetPoint("TOPLEFT", TukuiPet, "TOPRIGHT", 112, 0) ---- SHAG pettarg
 		end
 	elseif addon == "Tukui_Raid_Healing" then
 		--[ HEAL ]--
