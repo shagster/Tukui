@@ -6,6 +6,7 @@ local function LoadSkin()
 		"StaticPopup1",
 		"StaticPopup2",
 		"StaticPopup3",
+		"StaticPopup3Button1",
 		"GameMenuFrame",
 		"InterfaceOptionsFrame",
 		"VideoOptionsFrame",
