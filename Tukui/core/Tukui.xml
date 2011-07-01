@@ -129,7 +129,6 @@
 	<Script file="modules\unitframes\layouts\smelly.lua"/>
 	<Script file="modules\unitframes\layouts\surgency.lua"/>
 	<Script file="modules\unitframes\layouts\slim.lua"/>
-	<Script file="modules\notifications\hunterpethappiness.lua"/>	
 	<Script file="modules\misc\altpowerbar.lua"/>
 	<Script file="modules\misc\threatbar.lua"/>
 	<Script file="modules\blizzard\achievements.lua"/>
