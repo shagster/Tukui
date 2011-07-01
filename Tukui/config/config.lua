@@ -18,7 +18,7 @@ C["unitframes"] = {
 	-- general options
 	["enable"] = true,                                  -- do i really need to explain this?
 	["enemyhcolor"] = false,                            -- enemy target (players) color by hostility, very useful for healer.
-	["unitcastbar"] = true,                             -- enable tukui castbar
+	["unitcastbar"] = true,                             -- enable the tukui castbar
 	["bigfocuscast"] = false,							-- Enable larger than life focus castbar in middle of screen?
 	["showfocustarcast"] = false,						-- Show the focus target's castbar?
 	["petcastbar"] = false,				    			-- Pet castbar
@@ -26,8 +26,8 @@ C["unitframes"] = {
 	["cbicons"] = true,                                 -- enable icons on castbar
 	["auratimer"] = true,                               -- enable timers on buffs/debuffs
 	["auratextscale"] = 11,                             -- the font size of buffs/debuffs timers on unitframes
-	["playerauras"] = false,                            -- enable auras
-	["targetauras"] = false,                            -- enable auras on target unit frame
+	["playerauras"] = false,                            -- enable Player auras
+	["targetauras"] = false,                            -- enable Target auras
 	["lowThreshold"] = 20,                              -- global low threshold, for low mana warning.
 	["targetpowerpvponly"] = false,                     -- enable power text on pvp target only
 	["totdebuffs"] = false,                             -- enable tot debuffs (high reso only)
@@ -36,7 +36,7 @@ C["unitframes"] = {
 	["charportrait"] = false,                           -- little baby portraits
 	["classicon"] = false,								-- option to enable class icon on player/target
 	["showfocustarget"] = true,							-- Do you want to see the focus' target?
-	["showpettarget"] = true,							-- Do you want to see zee pet's target? Only for Shag style
+	["showpettarget"] = true,							-- Do you want to see zee pet's target?
 	["maintank"] = false,                               -- enable maintank
 	["mainassist"] = false,                             -- enable mainassist
 	["unicolor"] = true,                                -- enable unicolor theme
@@ -46,7 +46,7 @@ C["unitframes"] = {
 	["healcomm"] = false,                               -- enable healprediction support.
 	["onlyselfdebuffs"] = true,                         -- display only our own debuffs applied on target
 	["bordercolor"] = {  0, 0, 0, 1  },                 -- unit frames panel border color
-	["extendedpet"] = true,                             -- extended pet frame
+	["extendedpet"] = true,                             -- extended pet frame (only for Shag layout style)
 	["showsolo"] = false,                        	    -- show raid frames when solo (DPS only)
 		
 	-- raid layout (if one of them is enabled)
@@ -83,7 +83,7 @@ C["arena"] = {
 }
 
 C["auras"] = {
-	["player"] = true,                                  -- enable tukui buffs/debuffs
+	["player"] = true,                                  -- enable tukui buffs/debuffs by minimap
 }
 
 C["actionbar"] = {
@@ -109,6 +109,8 @@ C["Addon_Skins"] = {
 	["KLE"] = false,				    				-- Enable KLE Skin
 	["DBM"] = true,										-- Enable DBM Skin. Must run "/dbmskin apply" per character in game
 	["TinyDPS"] = true,				    				-- Enable TinyDPS Skin
+	["Auctionator"] = false,							-- Enable Auctionator Skin
+	["Bigwigs"] = true,									-- Enable Bigiwgs Skin
 }
 
 C["sCombo"] = {
