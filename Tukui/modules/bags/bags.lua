@@ -453,31 +453,6 @@ end
 	
 	f.b_close:HookScript("OnEnter", ModifiedBackdrop)
 	f.b_close:HookScript("OnLeave", OriginalBackdrop)
-
-
-	if w == "Bags" then
-	
-		-- KEYRING BUTTON
-		
-		f.b_key = CreateFrame("Button", "Stuffing_KeyButton" .. w, f)
-		f.b_key:SetWidth(f.b_close:GetWidth())
-		f.b_key:Height(20)
-		f.b_key:Point("TOPRIGHT", f.b_close, "TOPLEFT", -3, 0)
-		f.b_key:SetScript("OnMouseDown", function(self, btn)
-			ToggleKeyRing()
-		end)
-		
-		f.b_key:SetTemplate("Default")
-		f.b_key:SetFrameStrata("HIGH")
-		f.b_ktext = f.b_key:CreateFontString(nil, "OVERLAY")
-		f.b_ktext:SetFont(C.media.pixelfont, C["datatext"].fontsize)
-		f.b_ktext:SetPoint("CENTER", 1, 0)
-		f.b_ktext:SetText(T.panelcolor.."Keyring")
-		f.b_key:SetWidth(f.b_ktext:GetWidth() + 20)
-		
-		f.b_key:HookScript("OnEnter", ModifiedBackdrop)
-		f.b_key:HookScript("OnLeave", OriginalBackdrop)
-	end
 	
 	-- create the bags frame
 	local fb = CreateFrame ("Frame", n .. "BagsFrame", f)
@@ -953,7 +928,6 @@ end
 function Stuffing:PLAYER_ENTERING_WORLD()
 	-- please don't do anything after 1 player_entering_world event.
 	Stuffing:UnregisterEvent("PLAYER_ENTERING_WORLD")
-
 end
 
 function Stuffing:PLAYERBANKSLOTS_CHANGED(id)
