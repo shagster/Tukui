@@ -13,8 +13,8 @@ Kill:SetScript("OnEvent", function(self, event, addon)
 			InterfaceOptionsFrameCategoriesButton11:SetAlpha(0)
 			CompactUnitFrame_UpateVisible = T.dummy
 			CompactUnitFrame_UpdateAll = T.dummy
-			--CompactRaidFrameManager:Kill()  --raid utility fix?
-			--CompactRaidFrameContainer:Kill() --raid utility fix?
+			CompactRaidFrameManager:Kill()  --raid utility fix?
+			CompactRaidFrameContainer:Kill() --raid utility fix?
 		end	
 	else
 		if addon == "Blizzard_AchievementUI" then
