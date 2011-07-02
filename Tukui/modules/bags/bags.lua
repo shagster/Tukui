@@ -453,7 +453,7 @@ end
 	
 	f.b_close:HookScript("OnEnter", ModifiedBackdrop)
 	f.b_close:HookScript("OnLeave", OriginalBackdrop)
-	
+
 	-- create the bags frame
 	local fb = CreateFrame ("Frame", n .. "BagsFrame", f)
 	fb:Point("BOTTOMLEFT", f, "TOPLEFT", 0, 2)
@@ -535,7 +535,7 @@ function Stuffing:InitBags()
 
 	local gold = f:CreateFontString(nil, "ARTWORK", "GameFontHighlightLarge")
 	gold:SetJustifyH("RIGHT")
-	gold:Point("RIGHT", f.b_key, "LEFT", -5, 0)
+	gold:Point("RIGHT", f.b_close, "LEFT", -3, 0)
 
 	f:SetScript("OnEvent", function (self, e)
 		self.gold:SetText(GetMoneyString(GetMoney(), 12))
@@ -928,6 +928,7 @@ end
 function Stuffing:PLAYER_ENTERING_WORLD()
 	-- please don't do anything after 1 player_entering_world event.
 	Stuffing:UnregisterEvent("PLAYER_ENTERING_WORLD")
+
 end
 
 function Stuffing:PLAYERBANKSLOTS_CHANGED(id)

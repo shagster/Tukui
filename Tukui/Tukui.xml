@@ -209,7 +209,7 @@
 	
 	<Script file="modules\skins\addons\LoadSkins.lua"/>
 	<Script file="modules\skins\addons\addons.lua"/>
-	<Script file="modules\skins\addons\Auctionator.lua"/>
+	<Script file="modules\skins\addons\Auctionator_Skin.lua"/>
 	<Script file="modules\skins\addons\Bigwigs.lua"/>
 	<Script file="modules\skins\addons\Skada.lua"/>
 	<Script file="modules\skins\addons\Omen.lua"/>
