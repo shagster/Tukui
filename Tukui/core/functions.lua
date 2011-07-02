@@ -529,57 +529,28 @@ T.PostUpdatePetColor = function(health, unit, min, max)
 		if health.bg then health.bg:SetTexture(.1, .1, .1) end
 	end
 end
-
---[[
-T.PostNamePosition = function(self)
-	self.Name:ClearAllPoints()
-	if (self.Power.value:GetText() and UnitIsEnemy("player", "target") and C["unitframes"].targetpowerpvponly == true) or (self.Power.value:GetText() and C["unitframes"].targetpowerpvponly == false) then
-		self.Name:SetPoint("CENTER", self.panel, "CENTER", 0, 0)
-	else
-		self.Power.value:SetAlpha(0)
-		self.Name:SetPoint("LEFT", self.panel, "LEFT", 4, 0)
-	end
-end
---]]
---[[smelly 
-T.PostNamePosition = function(self)
-	self.Name:ClearAllPoints()
-	if (self.Power.value:GetText() and UnitIsEnemy("player", "target") and C["unitframes"].targetpowerpvponly == true) or (self.Power.value:GetText() and C["unitframes"].targetpowerpvponly == false) then
-		self.Name:SetPoint("CENTER", self.panel, "CENTER", 0, 0)
-	else
-		self.Power.value:SetAlpha(0)
-		self.Name:SetPoint("CENTER", self.panel, "CENTER", 0, 0)
-	end
-end
-
-T.PostNamePosition = function(self)
-	self.Name:ClearAllPoints()
-	if (self.Power.value:GetText() and UnitIsEnemy("player", "target") and C["unitframes"].targetpowerpvponly == true) or (self.Power.value:GetText() and C["unitframes"].targetpowerpvponly == false) then
-		self.Name:SetPoint("CENTER", self.Health, "CENTER", 0, 1)
-	else
-		if C["unitframes"].style == "Smelly" then
-			self.Power.value:SetAlpha(1)
-			self.Name:SetPoint("CENTER", self.Health, "CENTER", 0, 2)
-		elseif C["unitframes"].style == "Shag" then		
-			self.Power.value:SetAlpha(0)
-			self.Name:SetPoint("LEFT", self.Health, "LEFT", 4, 1)
-		end	
-	end
-end
-]]
+--[[ gonna fix this one day
 T.PostNamePosition = function(self)
 	self.Name:ClearAllPoints()
 	if C["unitframes"].style == "Shag" and C["unitframes"].targetpowerpvponly == true or C["unitframes"].style == "Shag" and C["unitframes"].targetpowerpvponly == false then
-		self.Name:SetPoint("CENTER", self.Health, "CENTER", 0, 1)
+		self.Name:SetPoint("CENTER", self.panel, "CENTER", 0, 1)
 	elseif C["unitframes"].style == "Smelly" and C["unitframes"].targetpowerpvponly == true or C["unitframes"].style == "Smelly" and C["unitframes"].targetpowerpvponly == false then
-		self.Name:SetPoint("CENTER", self.Health, "CENTER", 0, 2)
+		self.Name:SetPoint("CENTER", self.panel, "CENTER", -4, 2)
 	else
 		self.Power.value:SetAlpha(0)
-		self.Name:SetPoint("CENTER", self.Health, "CENTER", 0, 2)
+		self.Name:SetPoint("CENTER", self.panel, "CENTER", 0, 2)
 	end
 	end
-	
-
+]]
+T.PostNamePosition = function(self)
+	self.Name:ClearAllPoints()
+	if (self.Power.value:GetText() and UnitIsEnemy("player", "target") and C["unitframes"].targetpowerpvponly == true) or (self.Power.value:GetText() and C["unitframes"].targetpowerpvponly == false) then
+		self.Name:SetPoint("CENTER", self.panel, "CENTER", 0, 2)
+	else
+		self.Power.value:SetAlpha(0)
+		self.Name:SetPoint("LEFT", self.panel, "LEFT", 6, 2)
+	end
+end
 
 T.PreUpdatePower = function(power, unit)
 	local _, pType = UnitPowerType(unit)
@@ -1099,10 +1070,15 @@ if C["unitframes"].raidunitdebuffwatch == true then
 		--Firelands
 			--Beth'tilac
 			SpellName(99506), -- Widow's Kiss
+			SpellName(97202), -- Fiery Web Spin
+			SpellName(49026), -- Fixate
+			SpellName(97079), -- Seeping Venom
 		
 			--Alysrazor
 			SpellName(101296), -- Fiero Blast
 			SpellName(100723), -- Gushing Wound
+			SpellName(99389), -- Imprinted
+			SpellName(101729), -- Blazing Claw
 			
 			--Shannox
 			SpellName(99837), -- Crystal Prison
@@ -1110,6 +1086,8 @@ if C["unitframes"].raidunitdebuffwatch == true then
 			
 			--Baleroc
 			SpellName(99403), -- Tormented
+			SpellName(99252), -- Blaze of Glory
+			SpellName(99516), -- Countdown
 			
 			--Lord Rhyolith
 			--<< NONE KNOWN YET >>
@@ -1119,6 +1097,9 @@ if C["unitframes"].raidunitdebuffwatch == true then
 
 			--Ragnaros
 			SpellName(99399), -- Burning Wound
+			SpellName(100293), -- Lava Wave
+			SpellName(98313), -- Magma Blast
+			SpellName(100675), -- Dreadflame
 			
 			--Trash
 			SpellName(99532), -- Melt Armor

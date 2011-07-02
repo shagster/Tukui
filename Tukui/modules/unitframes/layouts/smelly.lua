@@ -154,16 +154,16 @@ local function Shared(self, unit)
 		power:Height(2)
 		
 		health.value = T.SetFontString(health, font, 10, "THINOUTLINE")
-		health.value:Point("RIGHT", health, "RIGHT", -4, 1)
-		--health.value:SetParent(self)
+		health.value:Point("RIGHT", self.panel, "RIGHT", -2, 2)
+		health.value:SetParent(self)
 		health.PostUpdate = T.PostUpdateHealth
 		
 		power.value = T.SetFontString(health, font, 10, "THINOUTLINE")
-		power.value:Point("LEFT", health, "LEFT", 6, 1)
+		power.value:Point("LEFT", self.panel, "LEFT", 6, 2)
 		power.value:SetParent(self)
 		power.PreUpdate = T.PreUpdatePower
 		power.PostUpdate = T.PostUpdatePower
-
+		
 		-- portraits
 		if (C["unitframes"].charportrait == true) then
 			local portrait = CreateFrame("PlayerModel", nil, health)
@@ -458,11 +458,11 @@ local function Shared(self, unit)
 		if (unit == "target") then			
 			-- Unit name on target
 			local Name = T.SetFontString(health, font, 10, "THINOUTLINE")
-			--Name:Point("LEFT", panel, "LEFT", 0, 2)
+			Name:Point("LEFT", panel, "LEFT", 0, 2)
 			Name:SetJustifyH("LEFT")
 			Name:SetParent(self)
 
-			self:Tag(Name, '[Tukui:getnamecolor][Tukui:namemedium] [Tukui:diffcolor][level] [shortclassification]')
+			self:Tag(Name, '[Tukui:getnamecolor][Tukui:namemedium] [Tukui:diffcolor][level][shortclassification]')
 			self.Name = Name
 			
 			--combo points change to support sCombo
@@ -538,7 +538,6 @@ local function Shared(self, unit)
 			-- castbar of player and target
 			local castbar = CreateFrame("StatusBar", self:GetName().."CastBar", self)
 			castbar:SetStatusBarTexture(empathTex)
-			
 			castbar.bg = castbar:CreateTexture(nil, "BORDER")
 			castbar.bg:SetAllPoints(castbar)
 			castbar.bg:SetTexture(empathTex)
@@ -562,7 +561,7 @@ local function Shared(self, unit)
 				castbar:Point("TOPRIGHT", self, "BOTTOMRIGHT", 0, 2)   -- SHAG
 			end
 			castbar:SetFrameLevel(6)
-
+			
 			-- Border
 			castbar.border = CreateFrame("Frame", nil, castbar)
 			castbar.border:CreatePanel("Default",1,1,"TOPLEFT", castbar, "TOPLEFT", -2, 2)
@@ -583,11 +582,15 @@ local function Shared(self, unit)
 			castbar.Text = T.SetFontString(castbar, font, 10, "THINOUTLINE")
 			castbar.Text:Point("LEFT", castbar.bg, "LEFT", 4, 0)
 			castbar.Text:SetTextColor(1, 1, 1)
-			castbar.Text:SetWidth(castbar:GetWidth() * .75)
+			castbar.Text:SetWidth(castbar:GetWidth() * .70)
 			
 			if C["unitframes"].cbicons == true then
 				castbar.button = CreateFrame("Frame", nil, castbar)
+				if unit == "player" then
+				castbar.button:Size(25)
+				else
 				castbar.button:Size(22)
+				end
 				castbar.button:SetTemplate("Default")
 				castbar.button:SetBackdropColor(0,0,0,1)
 				--castbar.button:CreateShadow("Default")
@@ -778,7 +781,7 @@ local function Shared(self, unit)
 		power:Height(2)
 		
 		health.value = T.SetFontString(health, font, 10, "THINOUTLINE")
-		health.value:Point("RIGHT", health, "RIGHT", -4, 3)
+		health.value:Point("RIGHT", self.panel, "RIGHT", -2, 3)
 		health.value:SetParent(self)
 		health.PostUpdate = T.PostUpdateHealth
 		
@@ -789,14 +792,14 @@ local function Shared(self, unit)
 			power.Smooth = true
 		end
 		power.value = T.SetFontString(health, font, 10, "THINOUTLINE")
-		power.value:Point("LEFT", health, "LEFT", 4, 3)
+		power.value:Point("LEFT", self.panel, "LEFT", 6, 3)
 		power.value:SetParent(self)
 		power.PreUpdate = T.PreUpdatePower
 		power.PostUpdate = T.PostUpdatePower
 		
 		-- Unit name
 		local Name = T.SetFontString(health, font, 10, "THINOUTLINE")
-		Name:SetPoint("CENTER", health, "CENTER", 0, 3)
+		Name:SetPoint("CENTER", self.panel, "CENTER", 0, 3)
 		Name:SetJustifyH("CENTER")
 		Name:SetParent(self)
 
@@ -836,6 +839,11 @@ local function Shared(self, unit)
 
 		castbar.Text = T.SetFontString(castbar,font, 10, "THINOUTLINE")
 		castbar.Text:SetPoint("LEFT", castbar, "LEFT", 4, 0)
+		if C.unitframes.bigfocuscast then
+		castbar.Text:SetWidth(250)
+		else
+		castbar.Text:SetWidth(120)
+		end
 		castbar.Text:SetTextColor(1, 1, 1)
 		
 		castbar.CustomDelayText = T.CustomCastDelayText
@@ -870,7 +878,7 @@ local function Shared(self, unit)
 		power:Height(2)
 		
 		health.value = T.SetFontString(health, font, 10, "THINOUTLINE")
-		health.value:Point("RIGHT", health, "RIGHT", -4, 3)
+		health.value:Point("RIGHT", self.panel, "RIGHT", -2, 3)
 		health.value:SetParent(self)
 		health.PostUpdate = T.PostUpdateHealth
 		health.frequentUpdates = true
@@ -879,14 +887,14 @@ local function Shared(self, unit)
 			power.Smooth = true
 		end
 		power.value = T.SetFontString(health, font, 10, "THINOUTLINE")
-		power.value:Point("LEFT", health, "LEFT", 4, 3)
+		power.value:Point("LEFT", self.panel, "LEFT", 6, 3)
 		power.value:SetParent(self)
 		power.PreUpdate = T.PreUpdatePower
 		power.PostUpdate = T.PostUpdatePower
 		
 		-- Unit name
 		local Name = T.SetFontString(health, font, 10, "THINOUTLINE")
-		Name:SetPoint("CENTER", health, "CENTER", 0, 3)
+		Name:SetPoint("CENTER", self.panel, "CENTER", 0, 3)
 		Name:SetJustifyH("CENTER")
 		Name:SetParent(self)
 
@@ -918,8 +926,9 @@ local function Shared(self, unit)
 		castbar.time:SetJustifyH("RIGHT")
 		castbar.CustomTimeText = T.CustomCastTimeText
 
-		castbar.Text = T.SetFontString(castbar,font, 10, "THINOUTLINE")
+		castbar.Text = T.SetFontString(castbar, font, 10, "THINOUTLINE")
 		castbar.Text:SetPoint("LEFT", castbar, "LEFT", 4, 0)
+		castbar.Text:SetWidth(100)
 		castbar.Text:SetTextColor(1, 1, 1)
 		
 		castbar.CustomDelayText = T.CustomCastDelayText
@@ -957,7 +966,7 @@ local function Shared(self, unit)
 		power:Height(2)
 		
 		health.value = T.SetFontString(health, font, 10, "THINOUTLINE")
-		health.value:Point("RIGHT", health, "RIGHT", -4, 4)
+		health.value:Point("RIGHT", self.panel, "RIGHT", -2, 4)
 		health.value:SetParent(self)
 		health.PostUpdate = T.PostUpdateHealth
 		health.frequentUpdates = true
@@ -966,14 +975,14 @@ local function Shared(self, unit)
 			power.Smooth = true
 		end
 		power.value = T.SetFontString(health, font, 10, "THINOUTLINE")
-		power.value:Point("LEFT", health, "LEFT", 4, 4)
+		power.value:Point("LEFT", self.panel, "LEFT", 6, 4)
 		power.value:SetParent(self)
 		power.PreUpdate = T.PreUpdatePower
 		power.PostUpdate = T.PostUpdatePower
 		
 		-- Unit name
 		local Name = T.SetFontString(health, font, 10, "THINOUTLINE")
-		Name:SetPoint("CENTER", health, "CENTER", 0, 4)
+		Name:SetPoint("CENTER", self.panel, "CENTER", 0, 4)
 		Name:SetJustifyH("CENTER")
 
 		self:Tag(Name, '[Tukui:getnamecolor][Tukui:namemedium]')
@@ -1043,7 +1052,7 @@ local function Shared(self, unit)
 			local Trinketbg = CreateFrame("Frame", nil, self)
 			Trinketbg:SetHeight(26)
 			Trinketbg:SetWidth(26)
-			Trinketbg:SetPoint("RIGHT", self, "LEFT", -6, 0)				
+			Trinketbg:Point("TOPRIGHT", self, "TOPLEFT", -4, 2)				
 			Trinketbg:SetTemplate("Default")
 			Trinketbg:SetFrameLevel(0)
 			self.Trinketbg = Trinketbg
@@ -1150,7 +1159,7 @@ local function Shared(self, unit)
 		
 		-- names
 		local Name = health:CreateFontString(nil, "OVERLAY")
-		Name:SetPoint("CENTER", health, "CENTER", 0, 0)
+		Name:SetPoint("CENTER", self.panel, "CENTER", 0, 0)
 		Name:SetJustifyH("CENTER")
 		Name:SetFont(font, 12, "OUTLINE")
 		Name:SetShadowColor(0, 0, 0)
