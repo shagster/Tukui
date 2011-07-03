@@ -10,13 +10,13 @@ local TukuiShift = CreateFrame("Frame","TukuiShiftBar",UIParent)
 TukuiShift:RegisterEvent("ADDON_LOADED")
 TukuiShift:SetScript("OnEvent", function(self, event, addon)
 if C["unitframes"].style == "Shag" and addon == "Tukui_Raid" then
-TukuiShift:SetPoint("BOTTOMLEFT", InvTukuiActionBarBackground, "TOP", -385, 44)
+TukuiShift:SetPoint("BOTTOMLEFT", InvTukuiActionBarBackground, "TOP", -313, 42)
 elseif C["unitframes"].style == "Shag" and addon == "Tukui_Raid_Healing" then
-TukuiShift:SetPoint("BOTTOMLEFT", InvTukuiActionBarBackground, "TOP", -470, 68)
+TukuiShift:SetPoint("TOP", UIParent, "BOTTOM", -305, 262)
 elseif C["unitframes"].style == "Smelly" and addon == "Tukui_Raid" then
-TukuiShift:SetPoint("TOP", UIParent, "BOTTOM", -178, 162)
+TukuiShift:SetPoint("TOP", UIParent, "BOTTOM", -175, 159)
 elseif C["unitframes"].style == "Smelly" and addon == "Tukui_Raid_Healing" then
-TukuiShift:SetPoint("TOP", UIParent, "BOTTOM", -308, 260)
+TukuiShift:SetPoint("TOP", UIParent, "BOTTOM", -305, 257)
 end
 end)
 TukuiShift:SetWidth((T.petbuttonsize * 5) + (T.petbuttonsize * 4))
@@ -104,9 +104,17 @@ bar:SetScript("OnEvent", function(self, event, ...)
 			end
 		end
 		T.TukuiShiftBarUpdate()
+		ShapeShiftBorder:Size(((ShapeshiftButton1:GetWidth()+T.buttonspacing)*GetNumShapeshiftForms() )+ T.buttonspacing, ShapeshiftButton1:GetHeight()+ 2*T.buttonspacing)
 	elseif event == "PLAYER_ENTERING_WORLD" then
 		T.StyleShift()
+		ShapeShiftBorder:Size(((ShapeshiftButton1:GetWidth()+T.buttonspacing)*GetNumShapeshiftForms() )+ T.buttonspacing, ShapeshiftButton1:GetHeight()+ 2*T.buttonspacing)
 	else
 		T.TukuiShiftBarUpdate()
 	end
 end)
+-- Border
+local ssborder = CreateFrame("Frame", "ShapeShiftBorder", ShapeshiftButton1)
+ssborder:SetTemplate("Default")
+ssborder:SetFrameLevel(1)
+ssborder:SetFrameStrata("BACKGROUND")
+ssborder:Point("LEFT", -T.buttonspacing, 0)

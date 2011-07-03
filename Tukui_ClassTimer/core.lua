@@ -1368,14 +1368,14 @@ elseif ( LAYOUT == 4 ) then
 	local playerFrame = CreateAuraBarFrame( playerDataSource, TukuiPlayer );
 	playerFrame:SetHiddenHeight( -yOffset );
 	if ( playerClass == "DEATHKNIGHT" or playerClass == "SHAMAN" or playerClass == "PALADIN" or playerClass == "WARLOCK") and C["unitframes"].classbar then
-		playerFrame:SetPoint( "BOTTOMLEFT", TukuiPlayer, "TOPLEFT", 0, yOffset + 13 );
-		playerFrame:SetPoint( "BOTTOMRIGHT", TukuiPlayer, "TOPRIGHT", 0, yOffset + 13 );
+		playerFrame:SetPoint( "BOTTOMLEFT", TukuiPlayer, "TOPLEFT", 0, yOffset + 8 );
+		playerFrame:SetPoint( "BOTTOMRIGHT", TukuiPlayer, "TOPRIGHT", 0, yOffset + 8 );
 	elseif  (playerClass == "DRUID") and C["unitframes"].druid then
-			playerFrame:SetPoint( "BOTTOMLEFT", TukuiPlayer, "TOPLEFT", 0, yOffset + 13 );
-			playerFrame:SetPoint( "BOTTOMRIGHT", TukuiPlayer, "TOPRIGHT", 0, yOffset + 13 );
+			playerFrame:SetPoint( "BOTTOMLEFT", TukuiPlayer, "TOPLEFT", 0, yOffset + 8 );
+			playerFrame:SetPoint( "BOTTOMRIGHT", TukuiPlayer, "TOPRIGHT", 0, yOffset + 8 );
 	else
-		playerFrame:SetPoint( "BOTTOMLEFT", TukuiPlayer, "TOPLEFT", 0, yOffset + 3 );
-		playerFrame:SetPoint( "BOTTOMRIGHT", TukuiPlayer, "TOPRIGHT", 0, yOffset + 3 );
+		playerFrame:SetPoint( "BOTTOMLEFT", TukuiPlayer, "TOPLEFT", 0, 4 );
+		playerFrame:SetPoint( "BOTTOMRIGHT", TukuiPlayer, "TOPRIGHT", 0, 4 );
 	end
 	playerFrame:Show();
 
@@ -1393,8 +1393,8 @@ elseif ( LAYOUT == 4 ) then
 else
 	local targetFrame = CreateAuraBarFrame( targetDataSource, TukuiTarget )
 	targetFrame:SetHiddenHeight( -yOffset )
-	targetFrame:Point( "BOTTOMLEFT", TukuiTarget, "TOPLEFT", 0, 9 )
-	targetFrame:Point( "BOTTOMRIGHT", TukuiTarget, "TOPRIGHT", 0, 9 )
+	targetFrame:Point( "BOTTOMLEFT", TukuiTarget, "TOPLEFT", 0, 4 )
+	targetFrame:Point( "BOTTOMRIGHT", TukuiTarget, "TOPRIGHT", 0, 4 )
 end
 
 else

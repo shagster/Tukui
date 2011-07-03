@@ -14,6 +14,7 @@ local Font = C["media"].font
 local pixel2 = C["media"].pixelfont2
 local empathTex = C["media"].empath2
 local normTex = C["media"].normTex
+local blankTex = C["media"].blank
 
 local function Shared(self, unit)
 	self.colors = T.oUF_colors

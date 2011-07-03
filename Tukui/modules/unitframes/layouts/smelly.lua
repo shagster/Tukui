@@ -163,23 +163,14 @@ local function Shared(self, unit)
 		power.value:SetParent(self)
 		power.PreUpdate = T.PreUpdatePower
 		power.PostUpdate = T.PostUpdatePower
-		
-		-- portraits
-		if (C["unitframes"].charportrait == true) then
+						
+		-- portraits  
+		if C["unitframes"].charportrait == true then
 			local portrait = CreateFrame("PlayerModel", nil, health)
-			portrait:SetFrameLevel(health:GetFrameLevel() + 1)
+			portrait.PostUpdate = function(self) self:SetAlpha(0) self:SetAlpha(0.15) end
 			portrait:SetAllPoints(health)
-			portrait.PostUpdate = T.PortraitUpdate 
+			table.insert(self.__elements, T.HidePortrait)
 			self.Portrait = portrait
-				
-			local overlay = CreateFrame("Frame", nil, self)
-			overlay:SetFrameLevel(self:GetFrameLevel() - 2)
-				
-			health.bg:ClearAllPoints()
-			health.bg:Point('BOTTOMLEFT', health:GetStatusBarTexture(), 'BOTTOMRIGHT')
-			health.bg:Point('TOPRIGHT', health)
-			health.bg:SetDrawLayer("OVERLAY", 7)
-			health.bg:SetParent(overlay)
 		end
 					----- Class Icon ------
 		if (C["unitframes"].classicon == true) then
@@ -1202,8 +1193,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 		--[ DPS ]--
 		player:Point("TOP", UIParent, "BOTTOM", -180 , 202)
 		target:Point("TOP", UIParent, "BOTTOM", 180, 202)
-		tot:Point("TOPRIGHT", TukuiTarget, "BOTTOMRIGHT", 0, -25)
-		pet:Point("TOPLEFT", TukuiPlayer, "BOTTOMLEFT", 0, -25)
+		tot:Point("TOPRIGHT", TukuiTarget, "BOTTOMRIGHT", 0, -30)
+		pet:Point("TOPLEFT", TukuiPlayer, "BOTTOMLEFT", 0, -30)
 		focus:Point("TOP", UIParent, "BOTTOM", 350, 530)
 		if C.unitframes.showpettarget then
 		pettarget:SetPoint("TOPLEFT", TukuiPet, "TOPRIGHT", 112, 0) ---- SHAG pettarg

@@ -48,6 +48,7 @@ print("Ali: ON")
 end
 end
 
+
 SLASH_FRAME1 = "/frame"
 SlashCmdList["FRAME"] = function(arg)
 	if arg ~= "" then
