@@ -155,7 +155,7 @@ local function Shared(self, unit)
 		power:Height(2)
 		
 		health.value = T.SetFontString(health, font, 10, "THINOUTLINE")
-		health.value:Point("RIGHT", self.panel, "RIGHT", -2, 2)
+		health.value:Point("RIGHT", self.panel, "RIGHT", -4, 2)
 		health.value:SetParent(self)
 		health.PostUpdate = T.PostUpdateHealth
 		
@@ -189,30 +189,6 @@ local function Shared(self, unit)
 		class:Point("BOTTOMRIGHT", -2, 2)
 		self.ClassIcon = class
 		end	
-		
-			--[[--- Class Icon ------
-	if (C["unitframes"].classicon == true) then
-		local classicon = CreateFrame("Frame", self:GetName().."_ClassIconBorder", self)
-		
-		if unit == "player" then
-			if C.unitframes.charportrait then
-				classicon:CreatePanel("Default", 29, 29, "LEFT", health, "RIGHT", 7,0)
-			else
-				classicon:CreatePanel("Default", 29, 29, "RIGHT", health, "LEFT", -7,0)
-			end
-		elseif unit == "target" then
-			if C.unitframes.charportrait then
-				classicon:CreatePanel("Default", 29, 29, "RIGHT", health, "LEFT", -7,0)
-			else
-				classicon:CreatePanel("Default", 29, 29, "LEFT", health, "RIGHT", 7,0)
-			end
-		end
-		local class = classicon:CreateTexture(self:GetName().."_ClassIcon", "ARTWORK")
-		class:Point("TOPLEFT", 2, -2)
-		class:Point("BOTTOMRIGHT", -2, 2)
-		self.ClassIcon = class
-	end	]]
-		
 		
 		if T.myclass == "PRIEST" and C["unitframes"].weakenedsoulbar then
 			local ws = CreateFrame("StatusBar", self:GetName().."_WeakenedSoul", power)
@@ -578,7 +554,7 @@ local function Shared(self, unit)
 				castbar:Point("TOPRIGHT", self, "BOTTOMRIGHT", 0, 2)   -- SHAG
 			end
 			castbar:SetFrameLevel(6)
-			
+						
 			-- Border
 			castbar.border = CreateFrame("Frame", nil, castbar)
 			castbar.border:CreatePanel("Default",1,1,"TOPLEFT", castbar, "TOPLEFT", -2, 2)
@@ -588,8 +564,8 @@ local function Shared(self, unit)
 			--castbar.border:SetBackdropBorderColor(unpack(C["media"].altbordercolor))
 			castbar.CustomTimeText = T.CustomCastTimeText
 			castbar.CustomDelayText = T.CustomCastDelayText
-			castbar.PostCastStart = T.CheckCast
-			castbar.PostChannelStart = T.CheckChannel
+			castbar.PostCastStart = T.PostCastStart
+			castbar.PostChannelStart = T.PostCastStart
 
 			castbar.time = T.SetFontString(castbar, font, 10, "THINOUTLINE")
 			castbar.time:Point("RIGHT", castbar.bg, "RIGHT", -4, 0)
@@ -599,8 +575,7 @@ local function Shared(self, unit)
 			castbar.Text = T.SetFontString(castbar, font, 10, "THINOUTLINE")
 			castbar.Text:Point("LEFT", castbar.bg, "LEFT", 4, 0)
 			castbar.Text:SetTextColor(1, 1, 1)
-			castbar.Text:SetWidth(castbar:GetWidth() * .70)
-			
+						
 			if C["unitframes"].cbicons == true then
 				castbar.button = CreateFrame("Frame", nil, castbar)
 				if unit == "player" then
@@ -864,8 +839,8 @@ local function Shared(self, unit)
 		castbar.Text:SetTextColor(1, 1, 1)
 		
 		castbar.CustomDelayText = T.CustomCastDelayText
-		castbar.PostCastStart = T.CheckCast
-		castbar.PostChannelStart = T.CheckChannel
+		castbar.PostCastStart = T.PostCastStart
+		castbar.PostChannelStart = T.PostCastStart
 								
 		castbar.button = CreateFrame("Frame", nil, castbar)
 		castbar.button:Height(castbar:GetHeight()+4)
@@ -949,8 +924,8 @@ local function Shared(self, unit)
 		castbar.Text:SetTextColor(1, 1, 1)
 		
 		castbar.CustomDelayText = T.CustomCastDelayText
-		castbar.PostCastStart = T.CheckCast
-		castbar.PostChannelStart = T.CheckChannel
+		castbar.PostCastStart = T.PostCastStart
+		castbar.PostChannelStart = T.PostCastStart
 								
 		castbar.button = CreateFrame("Frame", nil, castbar)
 		castbar.button:Height(castbar:GetHeight()+4)
@@ -1114,8 +1089,8 @@ local function Shared(self, unit)
 		castbar.Text:SetTextColor(1, 1, 1)
 		
 		castbar.CustomDelayText = T.CustomCastDelayText
-		castbar.PostCastStart = T.CheckCast
-		castbar.PostChannelStart = T.CheckChannel
+		castbar.PostCastStart = T.PostCastStart
+		castbar.PostChannelStart = T.PostCastStart
 								
 		castbar.button = CreateFrame("Frame", nil, castbar)
 		castbar.button:Height(castbar:GetHeight()+4)

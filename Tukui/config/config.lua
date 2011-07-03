@@ -2,7 +2,7 @@ local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, vari
 
 C["general"] = {
 	["autoscale"] = false,                              -- mainly enabled for users that don't want to mess with the config file
-	["uiscale"] = 0.71,                                 -- set your value (between 0.64 and 1) of your uiscale if autoscale is off
+	["uiscale"] = .7111111,                                 -- set your value (between 0.64 and 1) of your uiscale if autoscale is off
 	["overridelowtohigh"] = false,                      -- EXPERIMENTAL ONLY! override lower version to higher version on a lower reso.
 	["multisampleprotect"] = false,                     -- i don't recommend this because of shitty border but, voila!
 	["backdropcolor"] = { .05, .05, .05},            	-- default backdrop color of panels
@@ -13,7 +13,7 @@ C["general"] = {
 C["unitframes"] = {
 
 	-- layout
-	["style"] = "Smelly",                                 -- unitframe style, choose from ("Shag") or ("Smelly")
+	["style"] = "Shag",                                 -- unitframe style, choose from ("Shag") or ("Smelly")
 
 	-- general options
 	["enable"] = true,                                  -- do i really need to explain this?
@@ -100,6 +100,12 @@ C["actionbar"] = {
 	["bgPanel"] = true,				    				-- enable background panels for actionbars
 }
 
+C["castbar"] = { 
+	["classcolor"] = false, 							-- classcolor
+	["castbarcolor"] = { 1, 1, 0, 1 }, 					-- color if classcolor = false
+	["nointerruptcolor"] = { 1, 0, 0, 1 }, 				-- color of casts which can't be interrupted
+}
+
 C["Addon_Skins"] = {
 	["background"] = false,				    			-- Create a Panel that has the exactly same size as the left chat, placed at the bottomright (for addon placement)
 	["combat_toggle"] = false,			    			-- Shows the Addon Background, Omen, Recount & Skada infight, hides outfight
@@ -115,7 +121,7 @@ C["Addon_Skins"] = {
 
 C["sCombo"] = {
 	["enable"] = true,				    				-- Enable sCombo-Addon for combopoints instead of default cp-display
-	["energybar"] = false,				    			-- show energy-Bar below cp bar
+	["energybar"] = true,				    			-- show energy-Bar below cp bar
 }
 
 
@@ -213,6 +219,7 @@ C["tooltip"] = {
 C["merchant"] = {
 	["sellgrays"] = true,                               -- automaticly sell grays?
 	["autorepair"] = false,                             -- automaticly repair?
+	["guildrepair"] = true,								-- automatically use guild funds to repair (if available)
 	["sellmisc"] = false,                               -- sell defined items automatically
 }
 
