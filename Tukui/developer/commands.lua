@@ -1,4 +1,3 @@
--- a command to show frame you currently have mouseovered
 local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
 -- Align your shit, like a bawse.
 SLASH_ALI1 = "/ali"
@@ -13,6 +12,20 @@ function Grid()
 ali = CreateFrame('Frame', nil, UIParent)
 ali:SetFrameLevel(0)
 ali:SetFrameStrata("BACKGROUND")
+
+for i=-(w/2), w/2 do 
+local Alicv = ali:CreateTexture(nil, 'BACKGROUND')
+Alicv:SetTexture(1, 0, 0, 1)
+Alicv:Point("CENTER", UIParent, "CENTER", (i+1), 0)
+Alicv:SetSize(1,2)
+end
+for i =-(h/2), h/2 do 
+local Alich = ali:CreateTexture(nil, 'BACKGROUND')
+Alich:SetTexture(1, 0, 0, 1)
+Alich:Point("CENTER", UIParent, "CENTER", 0, (i+1))
+Alich:SetSize(2,1)
+end
+
 
 for i=-(w/x/2), w/x/2 do
 local Aliv = ali:CreateTexture(nil, 'BACKGROUND')
@@ -46,9 +59,9 @@ Grid()
 Ali = true
 print("Ali: ON")
 end
-end
 
 
+-- a command to show frame you currently have mouseovered
 SLASH_FRAME1 = "/frame"
 SlashCmdList["FRAME"] = function(arg)
 	if arg ~= "" then
@@ -120,4 +133,5 @@ end
 
 local mes = function(msg)
 	print("|cffFF6347-|r", tostring(msg))
+end
 end
