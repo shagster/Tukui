@@ -1,66 +1,4 @@
 local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
--- Align your shit, like a bawse.
-SLASH_ALI1 = "/ali"
-SlashCmdList["ALI"] = function(gridsize)
-
-local defsize = 16
-local w = tonumber(string.match(({GetScreenResolutions()})[GetCurrentResolution()], "(%d+)x+%d"))
-local h = tonumber(string.match(({GetScreenResolutions()})[GetCurrentResolution()], "%d+x(%d+)"))
-local x = tonumber(gridsize) or defsize
-
-function Grid()
-ali = CreateFrame('Frame', nil, UIParent)
-ali:SetFrameLevel(0)
-ali:SetFrameStrata("BACKGROUND")
-
-for i=-(w/2), w/2 do 
-local Alicv = ali:CreateTexture(nil, 'BACKGROUND')
-Alicv:SetTexture(1, 0, 0, 1)
-Alicv:Point("CENTER", UIParent, "CENTER", (i+1), 0)
-Alicv:SetSize(1,2)
-end
-for i =-(h/2), h/2 do 
-local Alich = ali:CreateTexture(nil, 'BACKGROUND')
-Alich:SetTexture(1, 0, 0, 1)
-Alich:Point("CENTER", UIParent, "CENTER", 0, (i+1))
-Alich:SetSize(2,1)
-end
-
-
-for i=-(w/x/2), w/x/2 do
-local Aliv = ali:CreateTexture(nil, 'BACKGROUND')
-Aliv:SetTexture(.5, 0, 0, 1)
-Aliv:Point("CENTER", UIParent, "CENTER", i*x, 0)
-Aliv:SetSize(1,h)
-end
-for i=-(h/x/2), h/x/2 do
-local Alih = ali:CreateTexture(nil, 'BACKGROUND')
-Alih:SetTexture(.5, 0, 0, 1)
-Alih:Point("CENTER", UIParent, "CENTER", 0, i*x)
-Alih:SetSize(w,1)
-end
-end
-
-if Ali then
-if ox ~= x then
-ox = x
-ali:Hide()
-Grid()
-Ali = true
-print("Ali: ON")
-else
-ali:Hide()
-print("Ali: OFF")
-Ali = false
-end
-else
-ox = x
-Grid()
-Ali = true
-print("Ali: ON")
-end
-
-
 -- a command to show frame you currently have mouseovered
 SLASH_FRAME1 = "/frame"
 SlashCmdList["FRAME"] = function(arg)
@@ -133,5 +71,65 @@ end
 
 local mes = function(msg)
 	print("|cffFF6347-|r", tostring(msg))
+end
+-- Align your shit, like a bawse.
+SLASH_ALI1 = "/ali"
+SlashCmdList["ALI"] = function(gridsize)
+
+local defsize = 16
+local w = tonumber(string.match(({GetScreenResolutions()})[GetCurrentResolution()], "(%d+)x+%d"))
+local h = tonumber(string.match(({GetScreenResolutions()})[GetCurrentResolution()], "%d+x(%d+)"))
+local x = tonumber(gridsize) or defsize
+
+function Grid()
+ali = CreateFrame('Frame', nil, UIParent)
+ali:SetFrameLevel(0)
+ali:SetFrameStrata("BACKGROUND")
+
+for i=-(w/2), w/2 do 
+local Alicv = ali:CreateTexture(nil, 'BACKGROUND')
+Alicv:SetTexture(1, 0, 0, 1)
+Alicv:Point("CENTER", UIParent, "CENTER", (i+1), 0)
+Alicv:SetSize(1,2)
+end
+for i =-(h/2), h/2 do 
+local Alich = ali:CreateTexture(nil, 'BACKGROUND')
+Alich:SetTexture(1, 0, 0, 1)
+Alich:Point("CENTER", UIParent, "CENTER", 0, (i+1))
+Alich:SetSize(2,1)
+end
+
+
+for i=-(w/x/2), w/x/2 do
+local Aliv = ali:CreateTexture(nil, 'BACKGROUND')
+Aliv:SetTexture(.5, 0, 0, 1)
+Aliv:Point("CENTER", UIParent, "CENTER", i*x, 0)
+Aliv:SetSize(1,h)
+end
+for i=-(h/x/2), h/x/2 do
+local Alih = ali:CreateTexture(nil, 'BACKGROUND')
+Alih:SetTexture(.5, 0, 0, 1)
+Alih:Point("CENTER", UIParent, "CENTER", 0, i*x)
+Alih:SetSize(w,1)
+end
+end
+
+if Ali then
+if ox ~= x then
+ox = x
+ali:Hide()
+Grid()
+Ali = true
+print("Ali: ON")
+else
+ali:Hide()
+print("Ali: OFF")
+Ali = false
+end
+else
+ox = x
+Grid()
+Ali = true
+print("Ali: ON")
 end
 end
