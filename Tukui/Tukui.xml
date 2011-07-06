@@ -107,6 +107,7 @@
 	
 	
 	<Script file="modules\extras\addonmanager.lua"/>
+	<Script file="modules\extras\bgannouncer.lua"/>
 	<Script file="modules\extras\mail.lua"/>
 	<Script file="modules\extras\tooltipicon.lua"/>
 	<Script file="modules\extras\raidutility.lua"/>

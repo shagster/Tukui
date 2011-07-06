@@ -102,7 +102,7 @@ C["actionbar"] = {
 
 C["castbar"] = { 
 	["classcolor"] = false, 							-- classcolor
-	["castbarcolor"] = { 1, 1, 0, 1 }, 					-- color if classcolor = false
+	["castbarcolor"] = { 1, .9, 0, 1 }, 					-- color if classcolor = false
 	["nointerruptcolor"] = { 1, 0, 0, 1 }, 				-- color of casts which can't be interrupted
 }
 
@@ -117,6 +117,11 @@ C["Addon_Skins"] = {
 	["TinyDPS"] = true,				    				-- Enable TinyDPS Skin
 	["Auctionator"] = false,							-- Enable Auctionator Skin
 	["Bigwigs"] = true,									-- Enable Bigiwgs Skin
+}
+
+C["im"] = {	--Integrated Modules						
+	["acpheight"] = 525,								-- addon control panel height
+	["acpwidth"] = 370,									-- addon control panel width
 }
 
 C["sCombo"] = {
@@ -183,6 +188,7 @@ C["datatext"] = {
 	["statcolor"] = {0, 1, 0},							-- color of extra panels if classpanel is False
 	
 	["battleground"] = true,                            -- enable 3 stats in battleground only that replace stat1,stat2,stat3.
+	["bgannouncer"] = true,								-- enable an announcer mod for BGs
 	["time24"] = false,                                 -- set time to 24h format.
 	["localtime"] = true,                               -- set time to local time instead of server time.
 	["fontsize"] = 10,                                  -- font size for panels.
