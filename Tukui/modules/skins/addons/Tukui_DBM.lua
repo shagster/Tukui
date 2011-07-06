@@ -44,7 +44,7 @@ local function SkinBars(self)
 
 				if not (icon1.overlay) then
 					icon1.overlay = CreateFrame("Frame", "$parentIcon1Overlay", tbar)
-					icon1.overlay:CreatePanel(template, buttonsize, buttonsize, "BOTTOMRIGHT", tbar, "BOTTOMLEFT", -buttonsize/4, -2)
+					icon1.overlay:CreatePanel("Default", buttonsize, buttonsize, "BOTTOMRIGHT", tbar, "BOTTOMLEFT", -buttonsize/4, -2)
 					if drawshadow then
 						icon1.overlay:CreateShadow("Default")
 					end
@@ -52,7 +52,7 @@ local function SkinBars(self)
 
 				if not (icon2.overlay) then
 					icon2.overlay = CreateFrame("Frame", "$parentIcon2Overlay", tbar)
-					icon2.overlay:CreatePanel(template, buttonsize, buttonsize, "BOTTOMLEFT", tbar, "BOTTOMRIGHT", buttonsize/4, -2)
+					icon2.overlay:CreatePanel("Default", buttonsize, buttonsize, "BOTTOMLEFT", tbar, "BOTTOMRIGHT", buttonsize/4, -2)
 					if drawshadow then
 						icon2.overlay:CreateShadow("Default")
 					end
@@ -64,8 +64,8 @@ local function SkinBars(self)
 					tbar:SetStatusBarColor(bar.owner.options.StartColorR, bar.owner.options.StartColorG, bar.owner.options.StartColorB)
 				end
 				
-				if bar.enlarged then frame:SetWidth(T.Scale(bar.owner.options.HugeWidth)) else frame:SetWidth(T.Scale(bar.owner.options.Width)) end
-				if bar.enlarged then tbar:SetWidth(T.Scale(bar.owner.options.HugeWidth)) else tbar:SetWidth(T.Scale(bar.owner.options.Width)) end
+				if bar.enlarged then frame:Width(bar.owner.options.HugeWidth) else frame:Width(bar.owner.options.Width) end
+				if bar.enlarged then tbar:Width(bar.owner.options.HugeWidth) else tbar:Width(bar.owner.options.Width) end
 
 				if not frame.styled then
 					frame:SetScale(1)
@@ -220,7 +220,7 @@ local SkinBoss=function()
 		
 		if not timer.styled then
 			timer:ClearAllPoints()
-			timer:Point("BOTTOMRIGHT", bar, "TOPRIGHT", 0, 2)
+			timer:Point("BOTTOMRIGHT", bar, "TOPRIGHT", 0, 3)
 			timer:SetFont(C["media"].font, 12, "OUTLINE")
 			timer:SetJustifyH("RIGHT")
 			timer:SetShadowColor(0, 0, 0, 0)
