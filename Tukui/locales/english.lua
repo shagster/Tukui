@@ -145,6 +145,8 @@ L.unitframes_ouf_starfirespell = "Starfire"
 
 L.tooltip_count = "Count"
 
+L.addon_dep = "|cffff4400Dependencies: |r"
+
 L.bags_noslots = "can't buy anymore slots!"
 L.bags_costs = "Cost: %.2f gold"
 L.bags_buyslots = "Buy new slot with /bags purchase yes"

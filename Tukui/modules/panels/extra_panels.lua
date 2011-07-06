@@ -56,35 +56,26 @@ if C.chat.background and C.chat.layout_switch then
 	swl.Text:SetText(T.panelcolor..L.datatext_switch_layout)
 end
 
---[[Addon Button bar 5
+-- ADDONS BUTTON
 if C.chat.background then
-	local adl = CreateFrame("Button", "ALButton", TukuiTabsRightBackground, "SecureActionButtonTemplate")
-	adl:Size(114, TukuiTabsRightBackground:GetHeight())
-	adl:Point("RIGHT", TukuiTabsRightBackground, "RIGHT", -105, 0)
-	adl:SetFrameStrata(TukuiTabsRightBackground:GetFrameStrata())
-	adl:SetFrameLevel(TukuiTabsRightBackground:GetFrameLevel())
-	--ad1:SetScript("OnEnter", function(self) self:SetAlpha(1) end)
-	--ad1:SetScript("OnLeave", function(self) self:SetAlpha(0) end)
-	adl:RegisterForClicks("AnyUp") adl:SetScript("OnClick", function()
-		if IsAddOnLoaded("Tukui_Raid") then
-			DisableAddOn("Tukui_Raid")
-			EnableAddOn("Tukui_Raid_Healing")
-			ReloadUI()
-		elseif IsAddOnLoaded("Tukui_Raid_Healing") then
-			DisableAddOn("Tukui_Raid_Healing")
-			EnableAddOn("Tukui_Raid")
-			ReloadUI()
-		elseif not IsAddOnLoaded("Tukui_Raid_Healing") and not IsAddOnLoaded("Tukui_Raid") then
-			EnableAddOn("Tukui_Raid")
-			ReloadUI()
-		end
-	end)
-
-	adl.Text = T.SetFontString(adl, C.media.pixelfont, 10, "THINOUTLINE")
-	adl.Text:Point("RIGHT", adl, "RIGHT", -5, 0.5)
-	adl.Text:SetText(T.panelcolor..L.datatext_addon_manager)
+local adbutton = CreateFrame("Button", "TukuiAddonsButton", TukuiTabsRightBackground, "SecureActionButtonTemplate")
+--adbutton:CreatePanel("TRANSPARENT", 20, 17, "TOPRIGHT", TukuiTabsRightBackground, "TOPRIGHT", -105, -1)
+adbutton:SetWidth(20)
+adbutton:Height(17)
+adbutton:SetAlpha(0)
+adbutton:Point("TOPRIGHT", TukuiTabsRightBackground, "TOPRIGHT", -105, -1)
+adbutton:CreateShadow("Default")
+adbutton:SetAttribute("type", "macro")
+adbutton:SetAttribute("macrotext", "/al")
+adbutton:SetFrameStrata("BACKGROUND")
+adbutton:RegisterForClicks("AnyUp")
+adbutton:SetScript("OnEnter", function(self) self:SetAlpha(1) end)
+adbutton:SetScript("OnLeave", function(self) self:SetAlpha(0) end)
+adbutton.Text = T.SetFontString(adbutton, C.media.pixelfont, 10, "THINOUTLINE")
+adbutton.Text:Point("CENTER", adbutton, "CENTER", 0, 0.5)
+adbutton.Text:SetText(T.StatColor..ADDONS)
 end
---]]
+
 -- World Frame 
 WorldStateAlwaysUpFrame:ClearAllPoints()
 WorldStateAlwaysUpFrame:SetPoint("TOP", UIParent, "TOP", -15, T.Scale(-35))

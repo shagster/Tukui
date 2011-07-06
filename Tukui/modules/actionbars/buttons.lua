@@ -174,16 +174,6 @@ if button == TukuiBar5ButtonTop then
 			if not T.lowversion then buttontop.text:SetText(T.StatColor.."Show") end
 		end	
 	end
--- my test
-if button == TukuiBar5ButtonAD then	
-		local buttonad = TukuiBar5ButtonAD
-		buttonad:ClearAllPoints()
-		buttonad:Size(20, 17)
-		buttonad:Point("TOPRIGHT", TukuiTabsRightBackground, "TOPRIGHT", -105, -1)
-				
-			if not T.lowversion then buttonad.text:SetText(T.StatColor.."Addons") end		
-		end
-
 end
 
 local function DrPepper(self, bar) -- guess what! :P
@@ -254,23 +244,6 @@ TukuiBar5ButtonTop.text = T.SetFontString(TukuiBar5ButtonTop, C.media.pixelfont,
 TukuiBar5ButtonTop.text:Point("CENTER", 1, 1)
 TukuiBar5ButtonTop.text:SetText(T.StatColor.."Hide")
 TukuiBar5ButtonTop:SetBackdropBorderColor(unpack(C["media"].bordercolor))	
-
---my test again
-local TukuiBar5ButtonAD = CreateFrame("Button", "TukuiBar5ButtonAD", UIParent, "SecureActionButtonTemplate")
-TukuiBar5ButtonAD:SetAttribute("type", "macro")
-TukuiBar5ButtonAD:SetAttribute("macrotext", "/al")
-TukuiBar5ButtonAD:SetWidth(20)
-TukuiBar5ButtonAD:Height(17)
-TukuiBar5ButtonAD:Point("TOPRIGHT", TukuiTabsRightBackground, "TOPRIGHT", -105, -1)
-TukuiBar5ButtonAD:RegisterForClicks("AnyUp")
-TukuiBar5ButtonAD:SetAlpha(0)
-TukuiBar5ButtonAD:SetScript("OnEnter", function(self) self:SetAlpha(1) end)
-TukuiBar5ButtonAD:SetScript("OnLeave", function(self) self:SetAlpha(0) end)
-TukuiBar5ButtonAD.text = T.SetFontString(TukuiBar5ButtonAD, C.media.pixelfont, 10, "THINOUTLINE")
-TukuiBar5ButtonAD.text:Point("CENTER", 1, 1)
-TukuiBar5ButtonAD.text:SetText(T.StatColor.."Addons")
-TukuiBar5ButtonAD:SetBackdropBorderColor(unpack(C["media"].bordercolor))
---my test ends here			
 
 -- exit vehicle button on left side of bottom action bar
 local vehicleleft = CreateFrame("Button", "TukuiExitVehicleButtonLeft", UIParent, "SecureHandlerClickTemplate")
