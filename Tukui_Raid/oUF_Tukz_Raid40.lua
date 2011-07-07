@@ -170,7 +170,7 @@ local function Shared(self, unit)
 		self:RegisterEvent('UNIT_THREAT_LIST_UPDATE', T.UpdateThreat)
 		self:RegisterEvent('UNIT_THREAT_SITUATION_UPDATE', T.UpdateThreat)
 	end
-	
+		
 	if C["unitframes"].showsymbols == true then
 		local RaidIcon = power:CreateTexture(nil, 'OVERLAY')
 		RaidIcon:Height(18*T.raidscale)
@@ -244,7 +244,17 @@ local function Shared(self, unit)
 			maxOverflow = 1,
 		}
 	end
-	
+	--Resurrect Indicator
+		local Resurrect = CreateFrame('Frame', nil, self)
+		Resurrect:SetFrameLevel(20)
+
+		local ResurrectIcon = Resurrect:CreateTexture(nil, "OVERLAY")
+		ResurrectIcon:Point(health.value:GetPoint())
+		ResurrectIcon:Size(25, 20)
+		ResurrectIcon:SetDrawLayer('OVERLAY', 7)
+
+		self.ResurrectIcon = ResurrectIcon
+
 	if C["unitframes"].raidunitdebuffwatch == true then
 		-- AuraWatch (corner icon)
 		T.createAuraWatch(self,unit)

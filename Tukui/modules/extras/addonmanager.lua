@@ -71,8 +71,8 @@ raid_addons:CreateShadow("Default")
 raid_addons:SetFrameStrata(aLoadFrame:GetFrameStrata())
 raid_addons:SetFrameLevel(aLoadFrame:GetFrameLevel() + 1)
 raid_addons:RegisterForClicks("AnyUp") raid_addons:SetScript("OnClick", function()
-	EnableAddOn("DBM-Core")
-	EnableAddOn("TinyDPS")
+	EnableAddOn("DBM-Core")   -- change this to your bossmod "BigWigs"
+	EnableAddOn("TinyDPS")    -- change this to your damage meters "recount" "skada"
 	ReloadUI()
 end)
 
@@ -89,8 +89,8 @@ solo_addons:CreateShadow("Default")
 solo_addons:SetFrameStrata(aLoadFrame:GetFrameStrata())
 solo_addons:SetFrameLevel(aLoadFrame:GetFrameLevel() + 1)
 solo_addons:RegisterForClicks("AnyUp") solo_addons:SetScript("OnClick", function()
-	DisableAddOn("DBM-Core")
-	DisableAddOn("TinyDPS")
+	DisableAddOn("DBM-Core")     -- change this to your bossmod "BigWigs"
+	DisableAddOn("TinyDPS")      -- change this to your damage meters "recount" "skada"
 	ReloadUI()
 end)
 

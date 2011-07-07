@@ -139,7 +139,7 @@ local function Shared(self, unit)
 		self:RegisterEvent('UNIT_THREAT_LIST_UPDATE', T.UpdateThreat)
 		self:RegisterEvent('UNIT_THREAT_SITUATION_UPDATE', T.UpdateThreat)
     end
-	
+		
 	if C["unitframes"].showsymbols == true then
 		local RaidIcon = health:CreateTexture(nil, 'OVERLAY')
 		RaidIcon:Height(18*T.raidscale)
@@ -177,6 +177,17 @@ local function Shared(self, unit)
 	--picon:SetTexture[[Interface\AddOns\Tukui\medias\textures\picon]]
 	--picon.Override = T.Phasing
 	--self.PhaseIcon = picon
+	
+	--Resurrect Indicator
+	local Resurrect = CreateFrame('Frame', nil, self)
+	Resurrect:SetFrameLevel(20)
+
+	local ResurrectIcon = Resurrect:CreateTexture(nil, "OVERLAY")
+	ResurrectIcon:Point(health.value:GetPoint())
+	ResurrectIcon:Size(30, 25)
+	ResurrectIcon:SetDrawLayer('OVERLAY', 7)
+
+	self.ResurrectIcon = ResurrectIcon
 	
 	if C["unitframes"].showrange == true then
 		local range = {insideAlpha = 1, outsideAlpha = C["unitframes"].raidalphaoor}
