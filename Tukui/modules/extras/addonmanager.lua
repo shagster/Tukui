@@ -26,7 +26,7 @@ tinsert(UISpecialFrames, "aLoadFrame")
 
 loadf.Text = T.SetFontString(loadf, font, fontsize, fontstyle)
 loadf.Text:SetPoint("TOPLEFT", 10, -8)
-loadf.Text:SetText(ADDONS..": "..T.StatColor..T.myname)
+loadf.Text:SetText(T.StatColor..ADDONS..": "..T.StatColor..T.myname)
 
 local savesetttings = CreateFrame("Button", "al_SaveSettings", aLoadFrame, "SecureActionButtonTemplate")
 savesetttings:CreatePanel("Default", 130, 23, "BOTTOMRIGHT", loadf, "BOTTOM", -2, 8)
@@ -34,7 +34,7 @@ savesetttings:SetFrameStrata("TOOLTIP")
 
 savesetttings.Text = T.SetFontString(savesetttings, font, fontsize, fontstyle)
 savesetttings.Text:Point("CENTER", savesetttings, "CENTER", 1, 0)
-savesetttings.Text:SetText(SAVE_CHANGES)
+savesetttings.Text:SetText(T.StatColor..SAVE_CHANGES)
 
 savesetttings:SetScript("OnClick", function() ReloadUI() end)
 savesetttings:HookScript("OnEnter", ModifiedBackdrop)
@@ -46,7 +46,7 @@ closewindow:SetFrameStrata("TOOLTIP")
 
 closewindow.Text = T.SetFontString(closewindow, font, fontsize, fontstyle)
 closewindow.Text:Point("CENTER", closewindow, "CENTER", 1, 0)
-closewindow.Text:SetText(CLOSE)
+closewindow.Text:SetText(T.StatColor..CLOSE)
 
 closewindow:SetScript("OnClick", function() loadf:Hide() end)
 closewindow:HookScript("OnEnter", ModifiedBackdrop)
@@ -81,7 +81,7 @@ raid_addons:HookScript("OnLeave", OriginalBackdrop)
 
 raid_addons.Text = T.SetFontString(raid_addons, C.media.pixelfont, 10)
 raid_addons.Text:Point("CENTER", raid_addons, "CENTER", 1, 1)
-raid_addons.Text:SetText(RAID)
+raid_addons.Text:SetText(T.StatColor..RAID)
 
 local solo_addons = CreateFrame("Button", "TukuiEnableSoloButton", aLoadFrame, "SecureActionButtonTemplate")
 solo_addons:CreatePanel("Default", 80, 17, "RIGHT", raid_addons, "LEFT", -3, 0)
@@ -99,7 +99,7 @@ solo_addons:HookScript("OnLeave", OriginalBackdrop)
 
 solo_addons.Text = T.SetFontString(solo_addons, C.media.pixelfont, 10)
 solo_addons.Text:Point("CENTER", solo_addons, "CENTER", 1, 1)
-solo_addons.Text:SetText(SOLO)
+solo_addons.Text:SetText(T.StatColor..SOLO)
 
 local makeList = function()
 	local self = mainf

@@ -1,12 +1,6 @@
 local T, C, L = unpack(select(2, ...))
 
 C["media"] = {
-	-- fonts (ENGLISH, SPANISH)
-	--["font"] = [=[Interface\Addons\Tukui\medias\fonts\normal_font.ttf]=], -- general font of tukui
-	--["uffont"] = [[Interface\AddOns\Tukui\medias\fonts\uf_font.ttf]], -- general font of unitframes
-	--["pixelfont"] = [=[Interface\Addons\Tukui\medias\fonts\visitor.ttf]=], -- pixel font of tukui
-	--["dmgfont"] = [[Interface\AddOns\Tukui\medias\fonts\combat_font.ttf]], -- general font of dmg / sct
-	--["pixelfont2"] = [=[Interface\Addons\Tukui\medias\fonts\visitor2.ttf]=],
 	
 	["font"] = [=[Interface\Addons\Tukui\medias\fonts\normal_font.ttf]=], -- general font of tukui
 	["uffont"] = [[Interface\AddOns\Tukui\medias\fonts\visitor.ttf]], -- general font of unitframes
