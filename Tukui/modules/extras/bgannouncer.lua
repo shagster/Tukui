@@ -18,9 +18,6 @@ local Text = TukuiInfoLeft:CreateFontString(nil, "OVERLAY")
 Text:SetFont(C.media.pixelfont, C["datatext"].fontsize, "THINOUTLINE")
 
 local curmapid = GetCurrentMapAreaID()
-
-local xpoint = 0
-local ypoint = 0	
 	
 -- Create Main Button Frame
 local buttonframe = CreateFrame("Frame", "BGAnnouncerButtonFrame", TukuiInfoRight)
@@ -36,7 +33,7 @@ button1:CreatePanel("pron", (TukuiInfoRight:GetWidth()-12)/6, TukuiInfoRight:Get
 button1:SetFrameLevel(buttonframe:GetFrameLevel() + 1)
 button1:SetFrameStrata("MEDIUM")
 button1:SetAttribute("type", "macro")
-button1:SetAttribute("macrotext", "/bg Light Attack Incoming to "..GetMinimapZoneText())
+button1:SetAttribute("macrotext", "/bg Light attack incoming to "..GetMinimapZoneText())
 
 local button1_text = button1:CreateFontString(nil,"Overlay")
 button1_text:SetFont(C.media.pixelfont, C["datatext"].fontsize, "THINOUTLINE")
@@ -66,7 +63,7 @@ button3:CreatePanel("pron", (TukuiInfoRight:GetWidth()-12)/6, TukuiInfoRight:Get
 button3:SetFrameLevel(buttonframe:GetFrameLevel() + 1)
 button3:SetFrameStrata("MEDIUM")
 button3:SetAttribute("type", "macro")
-button3:SetAttribute("macrotext", "/bg Heavy attack Incoming to "..GetMinimapZoneText())
+button3:SetAttribute("macrotext", "/bg Heavy Incoming to "..GetMinimapZoneText())
 	
 local button3_text = button3:CreateFontString(nil,"Overlay")
 button3_text:SetFont(C.media.pixelfont, C["datatext"].fontsize, "THINOUTLINE")
@@ -81,7 +78,7 @@ button4:CreatePanel("pron", (TukuiInfoRight:GetWidth()-12)/6, TukuiInfoRight:Get
 button4:SetFrameLevel(buttonframe:GetFrameLevel() + 1)
 button4:SetFrameStrata("MEDIUM")
 button4:SetAttribute("type", "macro")
-button4:SetAttribute("macrotext", "/bg Secure at "..GetMinimapZoneText())
+button4:SetAttribute("macrotext", "/bg All Secure at "..GetMinimapZoneText())
 	
 local button4_text = button4:CreateFontString(nil,"Overlay")
 button4_text:SetFont(C.media.pixelfont, C["datatext"].fontsize, "THINOUTLINE")
@@ -120,24 +117,21 @@ button6_text:SetText(T.StatColor.."Hidden")
 button6:SetScript("OnEnter", function(self) self:SetBackdropBorderColor(color.r, color.g, color.b) end)
 button6:SetScript("OnLeave", function(self) self:SetBackdropBorderColor(unpack(C.media.bordercolor)) end)
 
+local Stat = CreateFrame("Frame")
+Stat:EnableMouse(true)
+
 local UpdateZone = CreateFrame("Frame")
+UpdateZone:RegisterEvent("ZONE_CHANGED")
 UpdateZone:RegisterEvent("PLAYER_ENTERING_WORLD")
 UpdateZone:SetScript("OnEvent", OnEvent)
 UpdateZone:SetScript("OnUpdate", Update)
-UpdateZone:RegisterEvent("ZONE_CHANGED")
 UpdateZone:SetScript("OnEvent", function()
-	if curmapid == WSG or curmapid == TP or curmapid == AV or curmapid == SOTA or curmapid == IOC or 
-	curmapid == EOTS or curmapid == TBFG or curmapid == AB then
-		buttonframe:Show()
-	else
-		buttonframe:Hide() -- set to Show to show outside pvp area
-	end
-
 	button1:SetAttribute("macrotext", "/bg Light attack incoming to "..GetMinimapZoneText())
 	button2:SetAttribute("macrotext", "/bg Medium attack Incoming to "..GetMinimapZoneText())
 	button3:SetAttribute("macrotext", "/bg Heavy Incoming to "..GetMinimapZoneText())
-	button4:SetAttribute("macrotext", "/bg"..GetMinimapZoneText().." Secure")
+	button4:SetAttribute("macrotext", "/bg All Secure at "..GetMinimapZoneText())
 end)
+
 --hide text when not in an bg
 local function OnEvent(self, event)
 	if event == "PLAYER_ENTERING_WORLD" then
@@ -145,10 +139,13 @@ local function OnEvent(self, event)
 		if inInstance and (instanceType == "pvp") then
 			buttonframe:Show()
 		else
-			buttonframe:Show()
+			buttonframe:Hide()
 		end
 	end
 end
-UpdateZone:RegisterEvent("PLAYER_ENTERING_WORLD")
-UpdateZone:SetScript("OnEvent", OnEvent)
-UpdateZone:SetScript("OnUpdate", Update)
+
+Stat:RegisterEvent("PLAYER_ENTERING_WORLD")
+Stat:SetScript("OnEvent", OnEvent)
+Stat:SetScript("OnUpdate", Update)
+
+
