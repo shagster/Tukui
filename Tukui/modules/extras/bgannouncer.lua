@@ -3,15 +3,6 @@ local T, C, L = unpack(select(2, ...))
 --	Battleground Defence Announcer, By Azmara 
 -----------------------------------------------
 if not C["datatext"].bgannouncer then return end
---Map IDs
-local WSG = 443
-local TP = 626
-local AV = 401
-local SOTA = 512
-local IOC = 540
-local EOTS = 482
-local TBFG = 736
-local AB = 461
 
 local color = RAID_CLASS_COLORS[T.myclass]
 local Text = TukuiInfoLeft:CreateFontString(nil, "OVERLAY")
