@@ -230,13 +230,17 @@ local function SetupChatPosAndFont(self)
 		if i == 1 then
 			chat:Point("BOTTOMLEFT", TukuiInfoLeft, "TOPLEFT", 3, 6)
 			chat:Point("BOTTOMRIGHT", TukuiInfoLeft, "TOPRIGHT", -2, 6)
+			chat:SetParent(TukuiChatBackgroundLeft)
 			FCF_SavePositionAndDimensions(chat)
-		elseif i == 4 and name == LOOT then
+		elseif i == 2 or i == 3 or i == 4 then
+			chat:SetParent(TukuiChatBackgroundLeft)
+		elseif i == 5 and name == LOOT then
 			if not chat.isDocked then
 				chat:ClearAllPoints()
-				chat:Point("BOTTOMRIGHT", TukuiInfoRight, "TOPRIGHT", 0, 6)
-				chat:Point("BOTTOMLEFT", TukuiInfoRight, "TOPLEFT", 0, 6)
+				chat:Point("BOTTOMRIGHT", TukuiInfoRight, "TOPRIGHT", -2, 6)
+				chat:Point("BOTTOMLEFT", TukuiInfoRight, "TOPLEFT", 3, 6)
 				chat:SetJustifyH("LEFT") 
+				chat:SetParent(TukuiChatBackgroundRight)
 				FCF_SavePositionAndDimensions(chat)
 			end
 		end

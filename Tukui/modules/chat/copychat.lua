@@ -1,4 +1,4 @@
-local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
+local T, C, L = unpack(select(2, ...)) 
 -----------------------------------------------------------------------------
 -- Copy on chatframes feature
 -----------------------------------------------------------------------------
@@ -12,13 +12,15 @@ local isf = nil
 
 local function CreatCopyFrame()
 	frame = CreateFrame("Frame", "CopyFrame", UIParent)
-	frame:SetTemplate("Transparent")
-	--frame:Width(TukuiBar1:GetWidth())
-	frame:Width((TukuiBar1:GetWidth() * 2) + 20)  -- adjust copy box for smaller actionbars
+	frame:SetTemplate("Default")
+	if T.lowversion then
+		frame:Width(TukuiBar1:GetWidth() + 10)
+	else
+		frame:Width((TukuiBar1:GetWidth() * 2) + 20)
+	end
 	frame:Height(250)
 	frame:SetScale(1)
-	frame:Point("BOTTOM", TukuiBar1, "BOTTOM", 0, 0)
-	frame:CreateShadow("Default")
+	frame:Point("BOTTOM", UIParent, "BOTTOM", 0, 8)
 	frame:Hide()
 	frame:SetFrameStrata("DIALOG")
 
@@ -76,69 +78,16 @@ end
 local function ChatCopyButtons()
 	for i = 1, NUM_CHAT_WINDOWS do
 		local cf = _G[format("ChatFrame%d",  i)]
-		local button = CreateFrame("Button", format("ButtonCF%d", i), cf)
-		local id = cf:GetID()
-		local point = GetChatWindowSavedPosition(id)
-		button:Size(40, 17)
-		button:Point("TOPRIGHT", 0, 24)
-		button:SetFrameStrata("BACKGROUND")
-		button:SetBackdropBorderColor(unpack(C["media"].bordercolor))
-		button:SetBackdropColor(unpack(C["media"].backdropcolor))
-		
-		local buttontext = button:CreateFontString(nil,"OVERLAY",nil)
-		buttontext:SetFont(C.media.pixelfont, 10, "THINOUTLINE")
-		buttontext:SetText("Copy")
-		buttontext:SetTextColor(unpack(C["media"].statcolor))
-		buttontext:SetShadowColor(0, 0, 0)
-		buttontext:SetShadowOffset(1.25, -1.25)
-		buttontext:Point("CENTER", 1, 1)
-		buttontext:SetJustifyH("CENTER")
-		buttontext:SetJustifyV("CENTER")
-				
-		button:SetScript("OnMouseUp", function(self, btn)
-			if btn == "RightButton" then
-				ToggleFrame(ChatMenu)
-			else
-				Copy(cf)
-			end
-		end)
-		button:SetScript("OnEnter", function() button:SetAlpha(10) buttontext:SetText("Copy") end)
-		
-		local bnb = function() -- just to shorten the code
-			button:SetAlpha(10)
-			button:SetScript("OnLeave", function() button:SetAlpha(10) buttontext:SetText("Copy") end)
-			button:ClearAllPoints()
-			button:SetPoint("TOPRIGHT", 0, 22)
-		end
-		
-		-- check chat position
-		if point == "BOTTOMLEFT" or point == "LEFT" then
-			if C.chat.leftchatbackground then
-				button:SetScript("OnLeave", function() buttontext:SetText("Copy") end)
-				if i == 2 and GetChannelName("Log") and not IsAddOnLoaded("nibHideBlackBar") then
-					button:Point("TOPRIGHT", 0, 24)
-				end
-			else
-				bnb()
-			end
-		elseif point == "BOTTOMRIGHT" or point == "RIGHT" then
-			if C.chat.rightchatbackground then
-				button:SetScript("OnLeave", function() buttontext:SetText("Copy") end)
-				button:Point("TOPRIGHT", 0, 24)
-				
-			else
-				bnb()
-			end
-		else
-			if C.chat.leftchatbackground then
-				if i == 2 and GetChannelName("Log") then
-					button:Point("TOPRIGHT", 0, 48)
-				end
-				button:SetScript("OnLeave", function() buttontext:SetText("Copy") end)
-			else
-				bnb()
-			end
-		end
+		local button = CreateFrame("Button", format("TukuiButtonCF%d", i), cf)
+		button:SetPoint("TOPRIGHT", -1, -1)
+		button:Height(20)
+		button:Width(20)
+		button:SetNormalTexture(C.media.copyicon)
+		button:SetAlpha(0)
+		button:SetTemplate("Default")
+		button:SetScript("OnMouseUp", function(self) Copy(cf) end)
+		button:SetScript("OnEnter", function() button:SetAlpha(1) end)
+		button:SetScript("OnLeave", function() button:SetAlpha(0) end)
 	end
 end
 ChatCopyButtons()

@@ -59,12 +59,10 @@ end
 -- ADDONS BUTTON
 if C.chat.background then
 local adbutton = CreateFrame("Button", "TukuiAddonsButton", TukuiTabsRightBackground, "SecureActionButtonTemplate")
---adbutton:CreatePanel("TRANSPARENT", 20, 17, "TOPRIGHT", TukuiTabsRightBackground, "TOPRIGHT", -105, -1)
 adbutton:SetWidth(20)
 adbutton:Height(17)
 adbutton:SetAlpha(0)
 adbutton:Point("TOPRIGHT", TukuiTabsRightBackground, "TOPRIGHT", -105, -1)
-adbutton:CreateShadow("Default")
 adbutton:SetAttribute("type", "macro")
 adbutton:SetAttribute("macrotext", "/al")
 adbutton:SetFrameStrata("BACKGROUND")
@@ -78,4 +76,4 @@ end
 
 -- World Frame 
 WorldStateAlwaysUpFrame:ClearAllPoints()
-WorldStateAlwaysUpFrame:SetPoint("TOP", UIParent, "TOP", -15, T.Scale(-35))
+WorldStateAlwaysUpFrame:SetPoint("TOP", UIParent, "TOP", -20, T.Scale(-35))
