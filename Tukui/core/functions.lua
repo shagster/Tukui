@@ -1045,6 +1045,9 @@ if C["unitframes"].raidunitdebuffwatch == true then
 				{16177, "BOTTOMLEFT", {0.4, 0.7, 0.2}}, -- Ancestral Fortitude
 				{974, "BOTTOMRIGHT", {0.7, 0.4, 0}, true}, -- Earth Shield
 			},
+			WARLOCK = {
+				{85767, "TOPLEFT", {.804, .804, .804}}, -- Dark Intent Target
+			},
 			ALL = {
 				{14253, "RIGHT", {0, 1, 0}}, -- Abolish Poison
 				{23333, "LEFT", {1, 0, 0}}, -- Warsong flag xD
@@ -1111,7 +1114,11 @@ if C["unitframes"].raidunitdebuffwatch == true then
 			SpellName(99532), -- Melt Armor
 		
 		--Baradin Hold
+			--Occu'thar
+			SpellName(96913), -- Searing Shadows
+			--Argaloth
 			SpellName(95173), -- Consuming Darkness
+			
 
 		--Blackwing Descent
 			--Magmaw

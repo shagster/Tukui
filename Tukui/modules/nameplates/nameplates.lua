@@ -460,7 +460,6 @@ local function SkinObjects(frame)
 	--Reposition and Resize RaidIcon
 	raidicon:ClearAllPoints()
 	raidicon:SetPoint("BOTTOM", hp, "TOP", 0, 16)
-	--raidicon:SetSize(iconSize*1.4, iconSize*1.4)
 	raidicon:SetSize(iconSize*1.2, iconSize*1.2)
 	raidicon:SetTexture([[Interface\AddOns\Tukui\medias\textures\raidicons.blp]])
 	frame.raidicon = raidicon
