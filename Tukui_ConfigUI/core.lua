@@ -25,6 +25,7 @@ local ALLOWED_GROUPS = {
 	["im"]=1,
 	["sCombo"]=1,
 	["castbar"]=1,
+	["extra_panels"]=1,
 }
 
 --List of "Table Names" that we do not want to show in the config
@@ -125,7 +126,6 @@ local function Local(o)
 	-- unit frames
 	if o == "TukuiConfigUIunitframes" then o = TukuiL.option_unitframes_unitframes end
 	if o == "TukuiConfigUIunitframescombatfeedback" then o = TukuiL.option_unitframes_combatfeedback end
-	if o == "TukuiConfigUIunitframesrunebar" then o = TukuiL.option_unitframes_runebar end
 	if o == "TukuiConfigUIunitframesauratimer" then o = TukuiL.option_unitframes_auratimer end
 	if o == "TukuiConfigUIunitframestotemtimer" then o = TukuiL.option_unitframes_totembar end
 	if o == "TukuiConfigUIunitframesshowtotalhpmp" then o = TukuiL.option_unitframes_totalhpmp end
@@ -138,6 +138,7 @@ local function Local(o)
 	if o == "TukuiConfigUIunitframesplayeraggro" then o = TukuiL.option_unitframes_playeraggro end
 	if o == "TukuiConfigUIunitframesshowsmooth" then o = TukuiL.option_unitframes_smooth end
 	if o == "TukuiConfigUIunitframescharportrait" then o = TukuiL.option_unitframes_portrait end
+	if o == "TukuiConfigUIunitframesclassicon" then o = TukuiL.option_unitframes_classicon end
 	if o == "TukuiConfigUIunitframesenable" then o = TukuiL.option_unitframes_enable end
 	if o == "TukuiConfigUIunitframesws_show_target" then o = TukuiL.option_unitframes_wstarget end
 	if o == "TukuiConfigUIunitframestargetpowerpvponly" then o = TukuiL.option_unitframes_enemypower end
@@ -212,11 +213,7 @@ local function Local(o)
 	if o == "TukuiConfigUItooltiphideuf" then o = TukuiL.option_tooltip_hideuf end
 	if o == "TukuiConfigUItooltipcursor" then o = TukuiL.option_tooltip_cursor end
 	if o == "TukuiConfigUItooltipwhotargetting" then o = TukuiL.option_tooltip_whotargetting end
-	
-	-- others
-	if o == "TukuiConfigUIothers" then o = TukuiL.option_others end
-	if o == "TukuiConfigUIotherspvpautorelease" then o = TukuiL.option_others_bg end
-	
+			
 	-- reminder
 	if o == "TukuiConfigUIbuffreminder" then o = TukuiL.option_reminder end
 	if o == "TukuiConfigUIbuffreminderenable" then o = TukuiL.option_reminder_enable end
@@ -232,28 +229,19 @@ local function Local(o)
 	if o == "TukuiConfigUIactionbarhideshapeshift" then o = TukuiL.option_actionbar_hidess end
 	if o == "TukuiConfigUIactionbarshowgrid" then o = TukuiL.option_actionbar_showgrid end
 	if o == "TukuiConfigUIactionbarenable" then o = TukuiL.option_actionbar_enable end
-	if o == "TukuiConfigUIactionbarrightbarmouseover" then o = TukuiL.option_actionbar_rb end
 	if o == "TukuiConfigUIactionbarhotkey" then o = TukuiL.option_actionbar_hk end
-	if o == "TukuiConfigUIactionbarshapeshiftmouseover" then o = TukuiL.option_actionbar_ssmo end
 	if o == "TukuiConfigUIactionbarbottomrows" then o = TukuiL.option_actionbar_rbn end
 	if o == "TukuiConfigUIactionbarrightbars" then o = TukuiL.option_actionbar_rn end
 	if o == "TukuiConfigUIactionbarbuttonsize" then o = TukuiL.option_actionbar_buttonsize end
 	if o == "TukuiConfigUIactionbarbuttonspacing" then o = TukuiL.option_actionbar_buttonspacing end
 	if o == "TukuiConfigUIactionbarpetbuttonsize" then o = TukuiL.option_actionbar_petbuttonsize end
-	if o == "TukuiConfigUIactionbarmicrobar" then o = TukuiL.option_actionbar_microbar end
-	if o == "TukuiConfigUIactionbarmousemicro" then o = TukuiL.option_actionbar_mousemicro end
 	if o == "TukuiConfigUIactionbarverticalshapeshift" then o = TukuiL.option_actionbar_verticalshapeshift end
 	if o == "TukuiConfigUIactionbarmainbarWidth" then o = TukuiL.option_actionbar_mainbarwidth end
 	if o == "TukuiConfigUIactionbarsidebarWidth" then o = TukuiL.option_actionbar_sidebarwidth end
 	if o == "TukuiConfigUIactionbarbgPanel" then o = TukuiL.option_actionbar_bgpanel end
-	
-	-- quest watch frame
-	if o == "TukuiConfigUIwatchframe" then o = TukuiL.option_quest end
-	if o == "TukuiConfigUIwatchframemovable" then o = TukuiL.option_quest_movable end
-	
+		
 	-- arena
 	if o == "TukuiConfigUIarena" then o = TukuiL.option_arena end
-	if o == "TukuiConfigUIarenaspelltracker" then o = TukuiL.option_arena_st end
 	if o == "TukuiConfigUIarenaunitframes" then o = TukuiL.option_arena_uf end
 	
 	-- scombo
@@ -261,9 +249,11 @@ local function Local(o)
 	if o == "TukuiConfigUIsComboenable" then o = TukuiL.option_sCombo_enable end
 	if o == "TukuiConfigUIsComboenergybar" then o = TukuiL.option_sCombo_energybar end
 	
-	-- pvp
-	if o == "TukuiConfigUIpvp" then o = TukuiL.option_pvp end
-	if o == "TukuiConfigUIpvpinterrupt" then o = TukuiL.option_pvp_ii end
+	-- extra panels
+	if o == "TukuiConfigUIextra_panels" then o = TukuiL.option_extra_panels end
+	if o == "TukuiConfigUIextra_panelsbottompanel" then o = TukuiL.option_extra_panels_bottompanel end
+	if o == "TukuiConfigUIextra_panelstoppanel" then o = TukuiL.option_extra_panels_toppanel end
+	if o == "TukuiConfigUIextra_panelsthreatbar" then o = TukuiL.option_extra_panels_threatbar end
 	
 	-- cooldowns
 	if o == "TukuiConfigUIcooldown" then o = TukuiL.option_cooldown end

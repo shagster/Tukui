@@ -21,7 +21,6 @@ C["unitframes"] = {
 	["unitcastbar"] = true,                             -- enable the tukui castbar
 	["bigfocuscast"] = false,							-- Enable larger than life focus castbar in middle of screen?
 	["showfocustarcast"] = false,						-- Show the focus target's castbar?
-	["petcastbar"] = false,				    			-- Pet castbar
 	["cblatency"] = false,                              -- enable castbar latency
 	["cbicons"] = true,                                 -- enable icons on castbar
 	["auratimer"] = true,                               -- enable timers on buffs/debuffs
@@ -46,7 +45,6 @@ C["unitframes"] = {
 	["healcomm"] = false,                               -- enable healprediction support.
 	["onlyselfdebuffs"] = true,                         -- display only our own debuffs applied on target
 	["bordercolor"] = {  0, 0, 0, 1  },                 -- unit frames panel border color
-	["extendedpet"] = true,                             -- extended pet frame (only for Shag layout style)
 	["showsolo"] = false,                        	    -- show raid frames when solo (DPS only)
 		
 	-- raid layout (if one of them is enabled)
@@ -221,6 +219,7 @@ C["tooltip"] = {
 	["hidebuttons"] = true,                             -- always hide action bar buttons tooltip.
 	["hideuf"] = false,                                 -- hide tooltip on unitframes
 	["cursor"] = true,                                  -- tooltip via cursor only
+	["whotargetting"] = false,							-- show who is targetting the unit
 }
 
 C["merchant"] = {

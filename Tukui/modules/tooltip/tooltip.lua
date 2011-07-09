@@ -233,7 +233,36 @@ healthBarBG:SetFrameLevel(healthBar:GetFrameLevel() - 1)
 healthBarBG:Point("TOPLEFT", -2, 2)
 healthBarBG:Point("BOTTOMRIGHT", 2, -2)
 healthBarBG:SetTemplate("Default")
+-- Add "Targeted By" line
+local targetedList = {}
+local ClassColors = {};
+local token
+for class, color in next, RAID_CLASS_COLORS do
+	ClassColors[class] = ("|cff%.2x%.2x%.2x"):format(color.r*255,color.g*255,color.b*255);
+end
 
+local function AddTargetedBy()
+	local numParty, numRaid = GetNumPartyMembers(), GetNumRaidMembers();
+	if (numParty > 0 or numRaid > 0) then
+		for i = 1, (numRaid > 0 and numRaid or numParty) do
+			local unit = (numRaid > 0 and "raid"..i or "party"..i);
+			if (UnitIsUnit(unit.."target",token)) and (not UnitIsUnit(unit,"player")) then
+				local _, class = UnitClass(unit);
+				targetedList[#targetedList + 1] = ClassColors[class];
+				targetedList[#targetedList + 1] = UnitName(unit);
+				targetedList[#targetedList + 1] = "|r, ";
+			end
+		end
+		if (#targetedList > 0) then
+			targetedList[#targetedList] = nil;
+			GameTooltip:AddLine(" ",nil,nil,nil,1);
+			local line = _G["GameTooltipTextLeft"..GameTooltip:NumLines()];
+			if not line then return end
+			line:SetFormattedText(L.tooltip_targeted_by.." (|cffffffff%d|r): %s",(#targetedList + 1) / 3,table.concat(targetedList));
+			wipe(targetedList);
+		end
+	end
+end
 GameTooltip:HookScript("OnTooltipSetUnit", function(self)
 	local lines = self:NumLines()
 	local GMF = GetMouseFocus()
@@ -316,6 +345,7 @@ GameTooltip:HookScript("OnTooltipSetUnit", function(self)
 		GameTooltip:AddLine(UnitName(unit.."target"), r, g, b)
 	end
 	
+	if C["tooltip"].whotargetting == true then token = unit AddTargetedBy() end
 	-- Sometimes this wasn't getting reset, the fact a cleanup isn't performed at this point, now that it was moved to "OnTooltipCleared" is very bad, so this is a fix
 	self.fadeOut = nil
 end)
