@@ -2,6 +2,7 @@
 -- Launch Tukui Script
 ------------------------------------------------------------------------
 local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
+local myPlayerName  = UnitName("player")
 
 local function chatsetup()
 	-- setting chat frames if using Tukui chats.					
@@ -391,7 +392,7 @@ end
 
 local tut7 = function()
 	sb:SetValue(6)
-	header:SetText(L.install_header_7)
+	header:SetText(L.install_header_8)
 	text1:SetText(L.tutorial_step_7_line_1)
 	text2:SetText(L.tutorial_step_7_line_2)
 	text3:SetText(L.tutorial_step_7_line_3)
@@ -412,7 +413,7 @@ end
 
 local tut6 = function()
 	sb:SetValue(5)
-	header:SetText(L.install_header_6)
+	header:SetText(L.install_header_7)
 	text1:SetText(L.tutorial_step_6_line_1)
 	text2:SetText(L.tutorial_step_6_line_2)
 	text3:SetText(L.tutorial_step_6_line_3)
@@ -596,7 +597,7 @@ TukuiOnLogon:SetScript("OnEvent", function(self, event)
 	if (IsAddOnLoaded("Tukui_Raid") and IsAddOnLoaded("Tukui_Raid_Healing")) then
 		StaticPopup_Show("TUKUIDISABLE_RAID")
 	end
-	print("Tukui, |cff6A5ACDShagster's Edit|r - "  .. T.version)
+	print("Hey, |cffe45050"..myPlayerName.."|r. Welcome to |cffC495DDTukui|r, version "  .. T.version)
 	print("|cffFF1493/uihelp for help..")
 end)
 

@@ -1,5 +1,6 @@
 -- localization for enUS and enGB
 local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
+local myPlayerName  = UnitName("player")
 
 L.chat_BATTLEGROUND_GET = "[BG]"
 L.chat_BATTLEGROUND_LEADER_GET = "[BG]"
@@ -110,7 +111,7 @@ L.Slots = {
 }
 
 L.popup_disableui = "Tukui doesn't work for this resolution, do you want to disable Tukui? (Cancel if you want to try another resolution)"
-L.popup_install = "First time running Tukui V13 with this Character. You must reload your UI to set Action Bars, Variables and Chat Frames."
+L.popup_install = "This is your first time running Tukui V13 with this Character. You must reload your UI to set Action Bars, Variables and Chat Frames."
 L.popup_reset = "Warning! This will reset everything to Tukui default. Do you want to proceed?"
 L.popup_2raidactive = "2 raid layouts are active, please select a layout."
 L.popup_install_yes = "Yeah! (recommended!)"
@@ -118,9 +119,12 @@ L.popup_install_no = "No, it sux so hard"
 L.popup_reset_yes = "Yeah baby!"
 L.popup_reset_no = "No, or else I'll QQ in the forums!"
 
+
 L.merchant_repairnomoney = "You don't have enough money to repair!"
 L.merchant_repaircost = "Your items have been repaired for"
 L.merchant_trashsell = "Your vendor trash has been sold and you earned"
+L.merchant_guildrepair = "Repaired using guild bank."
+L.merchant_personalrepair = "Repaired using personal funds."
 
 L.goldabbrev = "|cffffd700g|r"
 L.silverabbrev = "|cffc7c7cfs|r"
@@ -144,6 +148,10 @@ L.unitframes_ouf_wrathspell = "Wrath"
 L.unitframes_ouf_starfirespell = "Starfire"
 
 L.tooltip_count = "Count"
+L.tooltip_boss = "|cffAF5050Boss|r"
+L.tooltip_rare = "|cffAF5050Rare|r"
+L.tooltip_rare_elite = "|cffAF5050+ Rare|r"
+L.tooltip_targeted_by = "Targeted By"
 
 L.addon_dep = "|cffff4400Dependencies: |r"
 
@@ -175,7 +183,7 @@ L.core_autoinv_enable_c = "Autoinvite ON: "
 L.core_autoinv_disable = "Autoinvite OFF"
 L.core_wf_unlock = "WatchFrame unlock"
 L.core_wf_lock = "WatchFrame lock"
-L.core_welcome1 = "Welcome to |cffC495DDTukui|r, version "
+L.core_welcome1 = "Hey, |cffFF6347"..myPlayerName.."|r. Welcome to |cffC495DDTukui|r, version "
 L.core_welcome2 = "Type |cff00FFFF/uihelp|r for more info or visit www.tukui.org"
 
 L.core_uihelp1 = "|cff00ff00General Slash Commands|r"
@@ -234,8 +242,8 @@ L.install_header_3 = "2. Unitframes"
 L.install_header_4 = "3. Features"
 L.install_header_5 = "4. Things you should know!"
 L.install_header_6 = "5. Commands"
-L.install_header_7 = "5. Commands"
-L.install_header_8 = "6. Finished"
+L.install_header_7 = "6. More Commands"
+L.install_header_8 = "7. Finished"
 L.install_header_9 = "1. Essential Settings"
 L.install_header_10 = "2. Social"
 L.install_header_11= "3. Frames"

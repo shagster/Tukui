@@ -17,10 +17,10 @@ local ItemRefTooltip = ItemRefTooltip
 local linkTypes = {item = true, enchant = true, spell = true, quest = true, unit = true, talent = true, achievement = true, glyph = true}
 
 local classification = {
-	worldboss = "|cffAF5050Boss|r",
-	rareelite = "|cffAF5050+ Rare|r",
+	worldboss = L.tooltip_boss,
+	rareelite = L.tooltip_rare_elite,
 	elite = "|cffAF5050+|r",
-	rare = "|cffAF5050Rare|r",
+	rare = L.tooltip_rare,
 }
 
 local NeedBackdropBorderRefresh = true
