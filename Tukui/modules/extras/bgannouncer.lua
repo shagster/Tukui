@@ -113,6 +113,7 @@ Stat:EnableMouse(true)
 
 local UpdateZone = CreateFrame("Frame")
 UpdateZone:RegisterEvent("ZONE_CHANGED")
+UpdateZone:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 UpdateZone:RegisterEvent("PLAYER_ENTERING_WORLD")
 UpdateZone:SetScript("OnEvent", OnEvent)
 UpdateZone:SetScript("OnUpdate", Update)
