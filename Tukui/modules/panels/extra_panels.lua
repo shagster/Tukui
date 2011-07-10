@@ -24,19 +24,22 @@ end
 
 -- TIME PANEL
 local watch = CreateFrame("Frame", "Tukuiwatch", UIParent)
-watch:CreatePanel("Default", 73, 17, "TOP", Minimap, "BOTTOM", T.Scale(0), 8)
-watch:CreateShadow("Default")
+if IsAddOnLoaded("TukUI_ConfigUI") then
+watch:CreatePanel("Default", ((Minimap:GetWidth()) / 2)-2, 17, "TOPLEFT", Minimap, "BOTTOMLEFT", 1, 8)
+else
+watch:CreatePanel("Default", 73, 17, "TOP", Minimap, "BOTTOM", 0, 8)
+end
 watch:SetFrameStrata("LOW")
 watch:SetFrameLevel(2)
 
 -- SWITCH LAYOUT
 if C.chat.background and C.chat.layout_switch then
-	local swl = CreateFrame("Button", "TukuiSwitchLayoutButton", TukuiTabsRightBackground, "SecureActionButtonTemplate")
-	swl:Size(114, TukuiTabsRightBackground:GetHeight())
-	swl:Point("CENTER", TukuiTabsRightBackground, "CENTER", -10, 0)
-	swl:SetFrameStrata(TukuiTabsRightBackground:GetFrameStrata())
-	swl:SetFrameLevel(TukuiTabsRightBackground:GetFrameLevel())
-	swl:RegisterForClicks("AnyUp") swl:SetScript("OnClick", function()
+	local switchbut = CreateFrame("Button", "TukuiSwitchLayoutButton", TukuiTabsRightBackground, "SecureActionButtonTemplate")
+	switchbut:Size(114, TukuiTabsRightBackground:GetHeight())
+	switchbut:Point("CENTER", TukuiTabsRightBackground, "CENTER", -10, 0)
+	switchbut:SetFrameStrata(TukuiTabsRightBackground:GetFrameStrata())
+	switchbut:SetFrameLevel(TukuiTabsRightBackground:GetFrameLevel())
+	switchbut:RegisterForClicks("AnyUp") switchbut:SetScript("OnClick", function()
 		if IsAddOnLoaded("Tukui_Raid") then
 			DisableAddOn("Tukui_Raid")
 			EnableAddOn("Tukui_Raid_Healing")
@@ -51,9 +54,9 @@ if C.chat.background and C.chat.layout_switch then
 		end
 	end)
 
-	swl.Text = T.SetFontString(swl, C.media.pixelfont, 10, "THINOUTLINE")
-	swl.Text:Point("RIGHT", swl, "RIGHT", -5, 0.5)
-	swl.Text:SetText(T.panelcolor..L.datatext_switch_layout)
+	switchbut.Text = T.SetFontString(switchbut, C.media.pixelfont, 10, "THINOUTLINE")
+	switchbut.Text:Point("RIGHT", switchbut, "RIGHT", -5, 0.5)
+	switchbut.Text:SetText(T.panelcolor..L.datatext_switch_layout)
 end
 
 -- ADDONS BUTTON
@@ -73,6 +76,18 @@ adbutton.Text = T.SetFontString(adbutton, C.media.pixelfont, 10, "THINOUTLINE")
 adbutton.Text:Point("CENTER", adbutton, "CENTER", 0, 0.5)
 adbutton.Text:SetText(T.StatColor..ADDONS)
 end
+
+-- CONFIG BUTTON
+if not IsAddOnLoaded("TukUI_ConfigUI") then return end
+local configbut = CreateFrame("Button", "TukuiConfigButton", UIParent, "SecureActionButtonTemplate")
+configbut:CreatePanel("Default", ((Minimap:GetWidth()) / 2)-2, 17, "TOPLEFT", Tukuiwatch, "TOPRIGHT", 2, 0)
+configbut:SetAttribute("type", "macro")
+configbut:SetAttribute("macrotext", "/tc")
+configbut:SetFrameLevel(2)
+configbut:SetFrameStrata("LOW")
+configbut.Text = T.SetFontString(configbut, C.media.pixelfont, 10)
+configbut.Text:Point("CENTER", configbut, "CENTER", 0, 1)
+configbut.Text:SetText(T.StatColor.."Config UI")
 
 -- World Frame 
 WorldStateAlwaysUpFrame:ClearAllPoints()
