@@ -239,6 +239,8 @@ local function Local(o)
 	if o == "TukuiConfigUIactionbarmainbarWidth" then o = TukuiL.option_actionbar_mainbarwidth end
 	if o == "TukuiConfigUIactionbarsidebarWidth" then o = TukuiL.option_actionbar_sidebarwidth end
 	if o == "TukuiConfigUIactionbarbgPanel" then o = TukuiL.option_actionbar_bgpanel end
+	if o == "TukuiConfigUIactionbarmicrobar" then o = TukuiL.option_actionbar_microbar end
+	if o == "TukuiConfigUIactionbarmousemicro" then o = TukuiL.option_actionbar_mousemicro end
 		
 	-- arena
 	if o == "TukuiConfigUIarena" then o = TukuiL.option_arena end

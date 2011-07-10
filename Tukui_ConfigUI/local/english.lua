@@ -210,6 +210,8 @@ TukuiL.option_actionbar_buttonsize = "Size of the main action buttons"
 TukuiL.option_actionbar_buttonspacing = "Spacing of the main action buttons"
 TukuiL.option_actionbar_petbuttonsize = "Size of pet/shapeshift buttons"
 TukuiL.option_actionbar_verticalshapeshift = "Make the shifbar vertical"
+TukuiL.option_actionbar_microbar = "Display blizzards default microbar"
+TukuiL.option_actionbar_mousemicro = "Display blizzards default microbar when mouse-overed"
 
 -- quest watch frame
 TukuiL.option_quest = "Quests"

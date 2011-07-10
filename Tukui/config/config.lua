@@ -96,6 +96,8 @@ C["actionbar"] = {
 	["mainbarWidth"] = 7,				    			-- amount of buttons per row on main bar (set between 1-12)
 	["sidebarWidth"] = 6,				    			-- amount of buttons per row on side bars (set between 0-6, 0 = disabled)
 	["bgPanel"] = true,				    				-- enable background panels for actionbars
+	["microbar"] = false,                				-- enable microbar display
+	["mousemicro"] = false,            					-- only show microbar on mouseover
 }
 
 C["castbar"] = { 

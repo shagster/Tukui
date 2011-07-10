@@ -87,8 +87,4 @@ configbut:SetFrameLevel(2)
 configbut:SetFrameStrata("LOW")
 configbut.Text = T.SetFontString(configbut, C.media.pixelfont, 10)
 configbut.Text:Point("CENTER", configbut, "CENTER", 0, 1)
-configbut.Text:SetText(T.StatColor.."Config UI")
-
--- World Frame 
-WorldStateAlwaysUpFrame:ClearAllPoints()
-WorldStateAlwaysUpFrame:SetPoint("TOP", UIParent, "TOP", -20, T.Scale(-35))
+configbut.Text:SetText(T.panelcolor.."Config UI")

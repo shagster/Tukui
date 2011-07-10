@@ -1,6 +1,26 @@
 local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
--- reposition capture bar to top/center of the screen
+-- World Frame 
+local anchor = CreateFrame("Frame", "TukuiWorldStateFrameAnchor", UIParent)
+anchor:Size(170, 20)
+anchor:SetFrameStrata("TOOLTIP")
+anchor:SetFrameLevel(20)
+anchor:SetClampedToScreen(true)
+anchor:SetAlpha(0)
+anchor:SetPoint("TOP", UIParent, "TOP", -25, -35)
+anchor:SetTemplate("Default")
+anchor:SetBackdropBorderColor(1, 0, 0, 1)
+anchor:SetMovable(true)
+anchor.text = T.SetFontString(anchor, C.media.uffont, 10)
+anchor.text:SetPoint("CENTER")
+anchor.text:SetText(L.move_worldstateframe)
 
+WorldStateAlwaysUpFrame:SetFrameStrata("BACKGROUND")
+WorldStateAlwaysUpFrame:SetFrameLevel(0)
+WorldStateAlwaysUpFrame:ClearAllPoints()
+WorldStateAlwaysUpFrame:SetScale(1)
+WorldStateAlwaysUpFrame:SetPoint("TOP", TukuiWorldStateFrameAnchor, "BOTTOM", 0, 10)
+
+-- reposition capture bar to top/center of the screen
 local function CaptureUpdate()
 	if NUM_EXTENDED_UI_FRAMES then
 		local captureBar

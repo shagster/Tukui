@@ -5,12 +5,12 @@ local Config = {
 						-- 2 = 10000 / 21000
 						-- 3 = 100% (1000 / 5000)
 						-- 4 = 1000 / 5000 (100%)
-	-- vShort = true,
+	--vShort = true,
 	font = C["media"].pixelfont2 or C["media"].font, C["datatext"].fontsize,
 	size = 12,
 	style = "MONOCHROMEOUTLINE",
 	alignment = { "CENTER", 0, 1 },
-	shadow = true,
+	shadow = false,
 	texture = C["media"].blank,
 	
 	colors = {
@@ -40,14 +40,16 @@ local function CreateBorder(f)
 end
 
 local addon = CreateFrame("Button", "TukuiExperience", UIParent)
+if C["map"].location_panel then
+addon:Point("TOPLEFT", TukuiXCoordsPanel, "BOTTOMLEFT", 0, -3)
+addon:Point("TOPRIGHT", TukuiYCoordsPanel, "BOTTOMRIGHT", 0, -3)
 addon:Height(10)
---addon:Point("TOPLEFT", TukuiMinimapStatsLeft or TukuiMinimap, "BOTTOMLEFT", 0, -3)
-addon:Point("TOPLEFT", TukuiXCoordsPanel, "BOTTOMLEFT", 0, -3)  ---- SHAG
---addon:Point("TOPLEFT", TukuiPlayer, "BOTTOMLEFT", 0, 15)  ---- SHAG
---addon:Point("TOPRIGHT", TukuiMinimapStatsRight or TukuiMinimap, "BOTTOMRIGHT", 0, -3)
-addon:Point("TOPRIGHT", TukuiYCoordsPanel, "BOTTOMRIGHT", 0, -3) ---- SHAG
---addon:Point("TOPRIGHT", TukuiPlayer, "BOTTOMRIGHT", 0, 15) ---- SHAG
-
+else
+addon:Point("TOPLEFT", TukuiBar4, "BOTTOMLEFT", 0, -2)
+addon:Point("TOPRIGHT", TukuiBar4, "BOTTOMRIGHT", 0, -2)
+addon:Height(10)
+addon:Width(TukuiBar4:GetWidth())
+end
 addon:SetFrameLevel(1)
 addon:SetFrameStrata("BACKGROUND")
 addon:SetBackdrop({

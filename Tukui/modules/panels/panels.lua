@@ -99,8 +99,7 @@ if C.actionbar.bgPanel then
 	
 	TukuiBar4:SetWidth((T.buttonsize * mbWidth) + (T.buttonspacing * (mbWidth+1)))
 	TukuiBar4:SetHeight((T.buttonsize * 2) + (T.buttonspacing*3))
-	--TukuiBar4.shadow:Hide()
-	
+		
 	TukuiBar5:SetWidth((T.buttonsize * 12) + (T.buttonspacing * 13))
 	TukuiBar5:SetHeight((T.buttonsize) + (T.buttonspacing*2))
 	
