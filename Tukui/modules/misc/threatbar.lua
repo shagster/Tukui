@@ -24,7 +24,7 @@ local TukuiThreatBarBG = CreateFrame("Frame", nil, TukuiThreatBar)
 TukuiThreatBarBG:CreatePanel("Default", 10, 156, "BOTTOMLEFT", TukuiInfoLeft, "BOTTOMRIGHT", 2, -1)
 TukuiThreatBarBG:Point("TOPLEFT", TukuiTabsLeftBackground, "TOPRIGHT", 2, 0)
 TukuiThreatBarBG:Point("BOTTOMLEFT", ChatFrame1, "BOTTOMRIGHT", 2, -4)
-TukuiThreatBarBG:CreateShadow("Default")
+--TukuiThreatBarBG:CreateShadow("Default")
 
 TukuiThreatBar:Point("TOPLEFT", TukuiThreatBarBG, 2, -2)
 TukuiThreatBar:Point("BOTTOMRIGHT", TukuiThreatBarBG, -2, 2)

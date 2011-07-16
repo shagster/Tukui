@@ -3,19 +3,19 @@ if not C.map.location_panel then return end
 local font, fsize, fstyle = C.media.pixelfont, C.datatext.fontsize, "THINOUTLINE"
 
 local locpanel = CreateFrame("Frame", "TukuiLocationPanel", UIParent)
-locpanel:CreatePanel("Default", 70, 22, "TOP", UIParent, "TOP", 0, -10)
-locpanel:CreateShadow("Default")
+locpanel:CreatePanel("Default", 70, 19, "TOP", UIParent, "TOP", 0, -10)
+--locpanel:CreateShadow("Default")
 locpanel:SetFrameLevel(2)
 locpanel:EnableMouse(true)
 
 local xcoords = CreateFrame("Frame", "TukuiXCoordsPanel", locpanel)
-xcoords:CreatePanel("Default", 35, 19, "RIGHT", locpanel, "LEFT", 1, 0)
-xcoords:CreateShadow("Default")
+xcoords:CreatePanel("Default", 35, 19, "BOTTOMRIGHT", locpanel, "BOTTOMLEFT", -1, 0)
+--xcoords:CreateShadow("Default")
 xcoords:SetFrameLevel(locpanel:GetFrameLevel() + 1)
 
 local ycoords = CreateFrame("Frame", "TukuiYCoordsPanel", locpanel)
-ycoords:CreatePanel("Default", 35, 19, "LEFT", locpanel, "RIGHT", -1, 0)
-ycoords:CreateShadow("Default")
+ycoords:CreatePanel("Default", 35, 19, "BOTTOMLEFT", locpanel, "BOTTOMRIGHT", 1, 0)
+--ycoords:CreateShadow("Default")
 ycoords:SetFrameLevel(locpanel:GetFrameLevel() + 1)
 
 -- Set font

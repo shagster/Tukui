@@ -273,7 +273,7 @@ local bsize = (((153) - (T.Scale(5) * 7)) / 6)
 --Create the Main bar
 local raidbuff_reminder = CreateFrame("Frame", "RaidBuffReminder", TukuiMinimap)
 raidbuff_reminder:CreatePanel("Default", 153, bsize + T.Scale(8), "TOP", TukuiMinimap, "BOTTOM", 0, T.Scale(-5))
-raidbuff_reminder:CreateShadow("Default")
+--raidbuff_reminder:CreateShadow("Default")
 raidbuff_reminder:RegisterEvent("ACTIVE_TALENT_GROUP_CHANGED")
 raidbuff_reminder:RegisterEvent("UNIT_INVENTORY_CHANGED")
 raidbuff_reminder:RegisterEvent("UNIT_AURA")

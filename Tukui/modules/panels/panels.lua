@@ -190,14 +190,14 @@ if C.chat.background then movechat = 10 ileftlv:SetAlpha(0) irightlv:SetAlpha(0)
 local ileft = CreateFrame("Frame", "TukuiInfoLeft", TukuiBar1)
 ileft:CreatePanel("Default", T.InfoLeftRightWidth + 12, 17, "LEFT", ltoabl, "LEFT", -2 - movechat, -11)
 --ileft:SetFrameLevel(2)
-ileft:CreateShadow("Default")
+--ileft:CreateShadow("Default")
 ileft:SetFrameStrata("LOW")
 
 -- INFO RIGHT (FOR STATS)
 local iright = CreateFrame("Frame", "TukuiInfoRight", TukuiBar1)
 iright:CreatePanel("Default", T.InfoLeftRightWidth + 12, 17, "RIGHT", ltoabr, "RIGHT", 2 + movechat, -11)
 --iright:SetFrameLevel(2)
-iright:CreateShadow("Default")
+--iright:CreateShadow("Default")
 iright:SetFrameStrata("LOW")
 
 
@@ -208,26 +208,26 @@ ltoabr:SetAlpha(0)
 -- CHAT BG LEFT
 local chatleftbg = CreateFrame("Frame", "TukuiChatBackgroundLeft", TukuiInfoLeft)
 chatleftbg:CreatePanel("Transparent", T.InfoLeftRightWidth + 12, 118, "BOTTOM", TukuiInfoLeft, "BOTTOM", 0, 19)
-chatleftbg:CreateShadow("Default")
+--chatleftbg:CreateShadow("Default")
 	
 -- CHAT BG RIGHT
 local chatrightbg = CreateFrame("Frame", "TukuiChatBackgroundRight", TukuiInfoRight)
 chatrightbg:CreatePanel("Transparent", T.InfoLeftRightWidth + 12, 118, "BOTTOM", TukuiInfoRight, "BOTTOM", 0, 19)
-chatrightbg:CreateShadow("Default")
+--chatrightbg:CreateShadow("Default")
 	
 -- LEFT TAB PANEL
 local tabsbgleft = CreateFrame("Frame", "TukuiTabsLeftBackground", TukuiChatBackgroundLeft)
 tabsbgleft:CreatePanel("Default", T.InfoLeftRightWidth + 12, 17, "BOTTOMLEFT", chatleftbg, "TOPLEFT", 0, T.Scale(2))
 --tabsbgleft:SetFrameLevel(1)
 tabsbgleft:SetFrameStrata("BACKGROUND")
-tabsbgleft:CreateShadow("Default")
+--tabsbgleft:CreateShadow("Default")
 
 -- RIGHT TAB PANEL
 local tabsbgright = CreateFrame("Frame", "TukuiTabsRightBackground", TukuiChatBackgroundRight)
 tabsbgright:CreatePanel("Default", T.InfoLeftRightWidth + 12, 17, "BOTTOMLEFT", chatrightbg, "TOPLEFT", 0, T.Scale(2))
 --tabsbgright:SetFrameLevel(1)
 tabsbgright:SetFrameStrata("BACKGROUND")
-tabsbgright:CreateShadow("Default")
+--tabsbgright:CreateShadow("Default")
 
 --[[
 if TukuiMinimap then
