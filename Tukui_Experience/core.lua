@@ -41,8 +41,8 @@ end
 
 local addon = CreateFrame("Button", "TukuiExperience", UIParent)
 if C["map"].location_panel then
-addon:Point("TOPLEFT", TukuiXCoordsPanel, "BOTTOMLEFT", 0, -3)
-addon:Point("TOPRIGHT", TukuiYCoordsPanel, "BOTTOMRIGHT", 0, -3)
+addon:Point("TOPLEFT", TukuiXCoordsPanel, "BOTTOMLEFT", 0, -2)
+addon:Point("TOPRIGHT", TukuiYCoordsPanel, "BOTTOMRIGHT", 0, -2)
 addon:Height(10)
 else
 addon:Point("TOPLEFT", TukuiBar4, "BOTTOMLEFT", 0, -2)

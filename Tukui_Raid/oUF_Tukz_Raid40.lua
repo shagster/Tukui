@@ -173,9 +173,9 @@ local function Shared(self, unit)
 		
 	if C["unitframes"].showsymbols == true then
 		local RaidIcon = power:CreateTexture(nil, 'OVERLAY')
-		RaidIcon:Height(18*T.raidscale)
-		RaidIcon:Width(18*T.raidscale)
-		RaidIcon:SetPoint('CENTER', self, 'TOP')
+		RaidIcon:Height(14*T.raidscale)
+		RaidIcon:Width(14*T.raidscale)
+		RaidIcon:SetPoint('CENTER', self, 'TOP', 0, 4)
 		RaidIcon:SetTexture("Interface\\AddOns\\Tukui\\medias\\textures\\raidicons.blp") -- thx hankthetank for texture
 		self.RaidIcon = RaidIcon
 	end
