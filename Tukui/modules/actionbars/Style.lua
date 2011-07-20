@@ -43,7 +43,7 @@ local function style(self)
 
 		-- create the bg/border panel
 		local panel = CreateFrame("Frame", name.."Panel", self)
-		panel:CreatePanel("Transparent", T.buttonsize, T.buttonsize, "CENTER", self, "CENTER", 0, 0)
+		panel:CreatePanel("Default", T.buttonsize, T.buttonsize, "CENTER", self, "CENTER", 0, 0)
 		if not C.actionbar.bgPanel then panel:CreateShadow() end
  
 		panel:SetFrameStrata(self:GetFrameStrata())
@@ -86,7 +86,7 @@ local function stylesmallbutton(normal, button, icon, name, pet)
 		button:SetHeight(T.petbuttonsize)
 		
 		local panel = CreateFrame("Frame", name.."Panel", button)
-		panel:CreatePanel("Transparent", T.petbuttonsize, T.petbuttonsize, "CENTER", button, "CENTER", 0, 0)
+		panel:CreatePanel("Default", T.petbuttonsize, T.petbuttonsize, "CENTER", button, "CENTER", 0, 0)
 		panel:SetBackdropColor(unpack(media.backdropcolor))
 		panel:SetFrameStrata(button:GetFrameStrata())
 		panel:SetFrameLevel(button:GetFrameLevel() - 1)
@@ -304,7 +304,7 @@ local function StyleTotemFlyout(flyout)
 	local last = nil
 	
 	for _,button in ipairs(flyout.buttons) do
-		button:SetTemplate("Transparent")
+		button:SetTemplate("Default")
 		local icon = select(1,button:GetRegions())
 		icon:SetTexCoord(.09,.91,.09,.91)
 		icon:SetDrawLayer("ARTWORK")
@@ -327,7 +327,7 @@ local function StyleTotemFlyout(flyout)
 	
 	-- Skin Close button
 	local close = MultiCastFlyoutFrameCloseButton
-	close:SetTemplate("Transparent")	
+	close:SetTemplate("Default")	
 	close:GetHighlightTexture():SetTexture([[Interface\Buttons\ButtonHilight-Square]])
 	close:GetHighlightTexture():Point("TOPLEFT",close,"TOPLEFT",1,-1)
 	close:GetHighlightTexture():Point("BOTTOMRIGHT",close,"BOTTOMRIGHT",-1,1)

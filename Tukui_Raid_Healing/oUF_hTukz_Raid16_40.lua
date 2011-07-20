@@ -25,7 +25,7 @@ local function Shared(self, unit)
 	local health = CreateFrame('StatusBar', nil, self)
 	health:SetPoint("TOPLEFT")
 	health:SetPoint("TOPRIGHT")
-	health:Height(28*C["unitframes"].gridscale*T.raidscale)
+	health:Height(33*C["unitframes"].gridscale*T.raidscale)
 	if C["unitframes"].style == "Shag" then
 	health:SetStatusBarTexture(normTex)
 	elseif C["unitframes"].style == "Smelly" then
@@ -90,9 +90,9 @@ local function Shared(self, unit)
 	end
 		
 	local power = CreateFrame("StatusBar", nil, self)
-	power:SetHeight(2*C["unitframes"].gridscale*T.raidscale)
-	power:Point("TOPLEFT", self.Health, "BOTTOMLEFT", 9, 3)
-	power:Point("TOPRIGHT", self.Health, "BOTTOMRIGHT", -9, 3)
+	power:SetHeight(1.5*C["unitframes"].gridscale*T.raidscale)
+	power:Point("TOPLEFT", self.Health, "BOTTOMLEFT", 2, 4)
+	power:Point("TOPRIGHT", self.Health, "BOTTOMRIGHT", -2, 4)
 	if C["unitframes"].style == "Shag" then
 	power:SetStatusBarTexture(normTex)
 	elseif C["unitframes"].style == "Smelly" then
@@ -151,8 +151,8 @@ local function Shared(self, unit)
     	self:RegisterEvent("PARTY_MEMBERS_CHANGED", T.MLAnchorUpdate)
 	
 	local LFDRole = health:CreateTexture(nil, "OVERLAY")
-    	LFDRole:Height(15*T.raidscale)
-    	LFDRole:Width(15*T.raidscale)
+    	LFDRole:Height(14*T.raidscale)
+    	LFDRole:Width(14*T.raidscale)
 	LFDRole:Point("TOP", 0, 10)
 	LFDRole:SetTexture("Interface\\AddOns\\Tukui\\medias\\textures\\lfdicons.blp")
 	self.LFDRole = LFDRole
@@ -167,8 +167,8 @@ local function Shared(self, unit)
 		
 	if C["unitframes"].showsymbols == true then
 		local RaidIcon = power:CreateTexture(nil, 'OVERLAY')
-		RaidIcon:Height(18*T.raidscale)
-		RaidIcon:Width(18*T.raidscale)
+		RaidIcon:Height(14*T.raidscale)
+		RaidIcon:Width(14*T.raidscale)
 		RaidIcon:SetPoint('CENTER', self, 'TOP')
 		RaidIcon:SetTexture("Interface\\AddOns\\Tukui\\medias\\textures\\raidicons.blp") -- thx hankthetank for texture
 		self.RaidIcon = RaidIcon
@@ -303,7 +303,7 @@ oUF:Factory(function(self)
 				self:SetHeight(header:GetAttribute('initial-height'))
 			]],
 			'initial-width', T.Scale(66*C["unitframes"].gridscale*T.raidscale),
-			'initial-height', T.Scale(34*C["unitframes"].gridscale*T.raidscale),	
+			'initial-height', T.Scale(33*C["unitframes"].gridscale*T.raidscale),	
 			"showRaid", true,
 			"xoffset", T.Scale(3),
 			"yOffset", T.Scale(5),
@@ -316,7 +316,7 @@ oUF:Factory(function(self)
 			"columnSpacing", T.Scale(5),
 			"columnAnchorPoint", "TOP"		
 		)
-		--raid:SetPoint("TOPLEFT", UIParent, "TOPLEFT", 18, -250*T.raidscale)
+		
 		raid:SetPoint("BOTTOM", UIParent, "BOTTOM", 0, 250*T.raidscale)
 	else
 		local raid = self:SpawnHeader("TukuiGrid", nil, "raid,party",
@@ -326,12 +326,12 @@ oUF:Factory(function(self)
 				self:SetHeight(header:GetAttribute('initial-height'))
 			]],
 			'initial-width', T.Scale(66*C["unitframes"].gridscale*T.raidscale),
-			'initial-height', T.Scale(34*C["unitframes"].gridscale*T.raidscale),
+			'initial-height', T.Scale(33*C["unitframes"].gridscale*T.raidscale),
 			"showParty", true,
 			"showPlayer", C["unitframes"].showplayerinparty, 
 			"showSolo", C["unitframes"].showsolo,
 			"showRaid", true, 
-			"xoffset", T.Scale(3),
+			"xoffset", T.Scale(5),
 			"yOffset", T.Scale(0),
 			"point", "LEFT",
 			"groupFilter", "1,2,3,4,5,6,7,8",

@@ -10,7 +10,7 @@ anchor:SetPoint("TOP", UIParent, "TOP", -25, -35)
 anchor:SetTemplate("Default")
 anchor:SetBackdropBorderColor(1, 0, 0, 1)
 anchor:SetMovable(true)
-anchor.text = T.SetFontString(anchor, C.media.uffont, 10)
+anchor.text = T.SetFontString(anchor, C.media.pixelfont, 10)
 anchor.text:SetPoint("CENTER")
 anchor.text:SetText(L.move_worldstateframe)
 
@@ -31,9 +31,9 @@ local function CaptureUpdate()
 				captureBar:ClearAllPoints()
 				
 				if( i == 1 ) then
-					captureBar:Point("TOP", UIParent, "TOP", 0, -120)
+					captureBar:Point("TOP", WorldStateAlwaysUpFrame, "BOTTOM", 0, -40)
 				else
-					captureBar:Point("TOPLEFT", getglobal("WorldStateCaptureBar" .. i - 1 ), "TOPLEFT", 0, -120)
+					captureBar:Point("TOPLEFT", getglobal("WorldStateCaptureBar" .. i - 1 ), "TOPLEFT", 0, -25)
 				end
 			end	
 		end	

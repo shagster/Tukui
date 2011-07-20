@@ -28,7 +28,7 @@ local function Shared(self, unit)
 	local health = CreateFrame('StatusBar', nil, self)
 	health:SetPoint("TOPLEFT")
 	health:SetPoint("TOPRIGHT")
-	health:Height(27*T.raidscale)
+	health:Height(33*T.raidscale)
 	if C["unitframes"].style == "Shag" then
 	health:SetStatusBarTexture(normTex)
 	elseif C["unitframes"].style == "Smelly" then
@@ -67,9 +67,9 @@ local function Shared(self, unit)
 	end
 	
 	local power = CreateFrame("StatusBar", nil, self)
-	power:Height(2*T.raidscale)
-	power:Point("TOPLEFT", health, "BOTTOMLEFT", 0, 3)
-	power:Point("TOPRIGHT", health, "BOTTOMRIGHT", 0, 3)
+	power:Height(1.5*T.raidscale)
+	power:Point("TOPLEFT", self.Health, "BOTTOMLEFT", 2, 4)
+	power:Point("TOPRIGHT", self.Health, "BOTTOMRIGHT", -2, 4)
 	if C["unitframes"].style == "Shag" then
 	power:SetStatusBarTexture(normTex)
 	elseif C["unitframes"].style == "Smelly" then
@@ -109,8 +109,8 @@ local function Shared(self, unit)
 	self.Leader = leader
 	
    local LFDRole = health:CreateTexture(nil, "OVERLAY")
-    LFDRole:Height(15*T.raidscale)
-    LFDRole:Width(15*T.raidscale)
+    LFDRole:Height(14*T.raidscale)
+    LFDRole:Width(14*T.raidscale)
 	LFDRole:Point("TOP", 0, 10)
 	LFDRole:SetTexture("Interface\\AddOns\\Tukui\\medias\\textures\\lfdicons.blp")
 	self.LFDRole = LFDRole
@@ -142,8 +142,8 @@ local function Shared(self, unit)
 		
 	if C["unitframes"].showsymbols == true then
 		local RaidIcon = health:CreateTexture(nil, 'OVERLAY')
-		RaidIcon:Height(18*T.raidscale)
-		RaidIcon:Width(18*T.raidscale)
+		RaidIcon:Height(14*T.raidscale)
+		RaidIcon:Width(14*T.raidscale)
 		RaidIcon:SetPoint('CENTER', self, 'TOP')
 		RaidIcon:SetTexture("Interface\\AddOns\\Tukui\\medias\\textures\\raidicons.blp") -- thx hankthetank for texture
 		self.RaidIcon = RaidIcon
@@ -235,9 +235,9 @@ end
 		self:SetHeight(header:GetAttribute('initial-height'))
 	]],
 	'initial-width', T.Scale(66*T.raidscale),
-	'initial-height', T.Scale(32*T.raidscale),	
+	'initial-height', T.Scale(33*T.raidscale),	
 	"showParty", true, "showPlayer", C["unitframes"].showplayerinparty, "showRaid", true, "groupFilter", "1,2,3,4,5,6,7,8", "groupingOrder", "1,2,3,4,5,6,7,8", "groupBy", "GROUP", "yOffset", T.Scale(-4))
-	--raid:SetPoint("TOPLEFT", UIParent, "TOPLEFT", 15, -300*T.raidscale)
+	
 	raid:SetPoint("BOTTOM", UIParent, "BOTTOM", 0, 150) -- SHAG
 	
 	local pets = {} 

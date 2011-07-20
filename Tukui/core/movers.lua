@@ -111,6 +111,7 @@ local function exec(self, enable)
 			TukuiWorldStateFrameAnchor:SetAlpha(0)
 		end
 	end
+	
 	if self == TukuiMicrobarAnchor then
 		if enable then
 			TukuiMicrobarAnchor:SetAlpha(1)

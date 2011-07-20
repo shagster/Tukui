@@ -127,25 +127,20 @@ local function Local(o)
 	if o == "TukuiConfigUIunitframes" then o = TukuiL.option_unitframes_unitframes end
 	if o == "TukuiConfigUIunitframescombatfeedback" then o = TukuiL.option_unitframes_combatfeedback end
 	if o == "TukuiConfigUIunitframesauratimer" then o = TukuiL.option_unitframes_auratimer end
-	if o == "TukuiConfigUIunitframestotemtimer" then o = TukuiL.option_unitframes_totembar end
 	if o == "TukuiConfigUIunitframesshowtotalhpmp" then o = TukuiL.option_unitframes_totalhpmp end
 	if o == "TukuiConfigUIunitframesshowplayerinparty" then o = TukuiL.option_unitframes_playerparty end
 	if o == "TukuiConfigUIunitframesraidunitdebuffwatch" then o = TukuiL.option_unitframes_aurawatch end
 	if o == "TukuiConfigUIunitframesunitcastbar" then o = TukuiL.option_unitframes_castbar end
 	if o == "TukuiConfigUIunitframestargetauras" then o = TukuiL.option_unitframes_targetaura end
 	if o == "TukuiConfigUIunitframespositionbychar" then o = TukuiL.option_unitframes_saveperchar end
-	if o == "TukuiConfigUIunitframesws_show_time" then o = TukuiL.option_unitframes_wstimer end
 	if o == "TukuiConfigUIunitframesplayeraggro" then o = TukuiL.option_unitframes_playeraggro end
 	if o == "TukuiConfigUIunitframesshowsmooth" then o = TukuiL.option_unitframes_smooth end
 	if o == "TukuiConfigUIunitframescharportrait" then o = TukuiL.option_unitframes_portrait end
 	if o == "TukuiConfigUIunitframesclassicon" then o = TukuiL.option_unitframes_classicon end
 	if o == "TukuiConfigUIunitframesenable" then o = TukuiL.option_unitframes_enable end
-	if o == "TukuiConfigUIunitframesws_show_target" then o = TukuiL.option_unitframes_wstarget end
 	if o == "TukuiConfigUIunitframestargetpowerpvponly" then o = TukuiL.option_unitframes_enemypower end
 	if o == "TukuiConfigUIunitframesgridonly" then o = TukuiL.option_unitframes_gridonly end
 	if o == "TukuiConfigUIunitframeshealcomm" then o = TukuiL.option_unitframes_healcomm end
-	if o == "TukuiConfigUIunitframesfocusdebuffs" then o = TukuiL.option_unitframes_focusdebuff end
-	if o == "TukuiConfigUIunitframesws_show_player" then o = TukuiL.option_unitframes_wsplayer end
 	if o == "TukuiConfigUIunitframesaggro" then o = TukuiL.option_unitframes_raidaggro end
 	if o == "TukuiConfigUIunitframesshowboss" then o = TukuiL.option_unitframes_boss end
 	if o == "TukuiConfigUIunitframesenemyhcolor" then o = TukuiL.option_unitframes_enemyhostilitycolor end
@@ -160,7 +155,6 @@ local function Local(o)
 	if o == "TukuiConfigUIunitframesplayerauras" then o = TukuiL.option_unitframes_playeraura end
 	if o == "TukuiConfigUIunitframesauratextscale" then o = TukuiL.option_unitframes_aurascale end
 	if o == "TukuiConfigUIunitframesgridscale" then o = TukuiL.option_unitframes_gridscale end
-	if o == "TukuiConfigUIunitframeshighThreshold" then o = TukuiL.option_unitframes_manahigh end
 	if o == "TukuiConfigUIunitframeslowThreshold" then o = TukuiL.option_unitframes_manalow end
 	if o == "TukuiConfigUIunitframesraidalphaoor" then o = TukuiL.option_unitframes_range end
 	if o == "TukuiConfigUIunitframesmaintank" then o = TukuiL.option_unitframes_maintank end
@@ -175,7 +169,6 @@ local function Local(o)
 	if o == "TukuiConfigUIunitframesonlyselfdebuffs" then o = TukuiL.option_unitframes_onlyselfdebuffs end
 	if o == "TukuiConfigUIunitframesshowfocustarget" then o = TukuiL.option_unitframes_showfocustarget end
 	if o == "TukuiConfigUIunitframesshowsolo" then o = TukuiL.option_unitframes_showsolo end
-	if o == "TukuiConfigUIunitframesextendedpet" then o = TukuiL.option_unitframes_extendedpet end
 	if o == "TukuiConfigUIunitframesbordercolor" then o = TukuiL.option_unitframes_bordercolor end
 	if o == "TukuiConfigUIunitframesstyle" then o = TukuiL.option_unitframes_style end
 	if o == "TukuiConfigUIunitframesbigfocuscast" then o = TukuiL.option_unitframes_bigfocuscast end
@@ -742,6 +735,7 @@ end
 do
 	SLASH_CONFIG1 = '/tc'
 	SLASH_CONFIG2 = '/tukui'
+	SLASH_CONFIG3 = '/sc'
 	function SlashCmdList.CONFIG(msg, editbox)
 		if not TukuiConfigUI or not TukuiConfigUI:IsShown() then
 			CreateTukuiConfigUI()

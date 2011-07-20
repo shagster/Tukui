@@ -1093,6 +1093,7 @@ if C["unitframes"].raidunitdebuffwatch == true then
 			SpellName(99937), -- Jagged Tear
 			
 			--Baleroc
+			SpellName(99256), -- Tormented2
 			SpellName(99403), -- Tormented
 			SpellName(99252), -- Blaze of Glory
 			SpellName(99516), -- Countdown

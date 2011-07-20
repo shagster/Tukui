@@ -226,7 +226,7 @@
 	<Script file="modules\unitframes\tags\tags.lua"/>
 	<Script file="modules\unitframes\layouts\shag.lua"/>
 	<Script file="modules\unitframes\layouts\smelly.lua"/>
-		
+			
 	<Script file="modules\misc\altpowerbar.lua"/>
 	<Script file="modules\misc\threatbar.lua"/>
 	<Script file="modules\misc\sCombo.lua"/>

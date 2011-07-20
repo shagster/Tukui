@@ -1,6 +1,5 @@
 local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
 if not IsAddOnLoaded("DBM-Core") or not C.Addon_Skins.DBM then return end
---if not IsAddOnLoaded("DBM-Core") == true then return end
 --[[
 
 Tukui_DBM skin by Affli@RU-Howling Fjord
@@ -8,6 +7,7 @@ All rights reserved.
 Thanks ALZA, Shestak, Fernir, Tukz and everyone i've forgot to mention.
 
 ]]--
+
 
 -- little config
 ----------------------------------------
@@ -116,7 +116,7 @@ local function SkinBars(self)
 					name:Point("BOTTOMLEFT", frame, "TOPLEFT", 0, 4)
 					name:SetWidth(165)
 					name:SetHeight(8)
-					name:SetFont(C["media"].font, 12, "OUTLINE")
+					name:SetFont(C["media"].pixelfont, 10, "OUTLINE")
 					name:SetJustifyH("LEFT")
 					name:SetShadowColor(0, 0, 0, 0)
 					name.SetFont = T.dummy
@@ -125,8 +125,8 @@ local function SkinBars(self)
 				
 				if not timer.styled then	
 					timer:ClearAllPoints()
-					timer:Point("BOTTOMRIGHT", frame, "TOPRIGHT", -1, 2)
-					timer:SetFont(C["media"].font, 12, "OUTLINE")
+					timer:Point("BOTTOMRIGHT", frame, "TOPRIGHT", -1, 3)
+					timer:SetFont(C["media"].pixelfont, 10, "OUTLINE")
 					timer:SetJustifyH("RIGHT")
 					timer:SetShadowColor(0, 0, 0, 0)
 					timer.SetFont = T.dummy
@@ -238,7 +238,7 @@ hooksecurefunc(DBM.BossHealth,"UpdateSettings",SkinBoss)
 DBM.RangeCheck:Show()
 DBM.RangeCheck:Hide()
 DBMRangeCheck:HookScript("OnShow",function(self)
-	self:SetTemplate("Default")
+	self:SetTemplate("Transparent")
 	if drawshadow then
 		self:CreateShadow("Default")
 	end
@@ -278,7 +278,10 @@ local UploadDBM = function()
 	DBT_SavedOptions["DBM"].Texture=C["media"].normTex
 	DBT_SavedOptions["DBM"].IconRight=false
 end
-
+--[[
+local loadOptions = CreateFrame("Frame")
+loadOptions:RegisterEvent("PLAYER_LOGIN")
+loadOptions:SetScript("OnEvent", UploadDBM)]]
 local pr = function(msg)
     print("|cffC495DDTukui DBM|r:", tostring(msg))
 end
