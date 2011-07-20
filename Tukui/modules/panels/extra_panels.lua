@@ -66,8 +66,6 @@ adbutton:SetWidth(20)
 adbutton:Height(17)
 adbutton:SetAlpha(0)
 adbutton:Point("TOPRIGHT", TukuiTabsRightBackground, "TOPRIGHT", -105, -1)
-adbutton:SetAttribute("type", "macro")
-adbutton:SetAttribute("macrotext", "/al")
 adbutton:SetFrameStrata("BACKGROUND")
 adbutton:RegisterForClicks("AnyUp")
 adbutton:SetScript("OnEnter", function(self) self:SetAlpha(1) end)
@@ -75,6 +73,14 @@ adbutton:SetScript("OnLeave", function(self) self:SetAlpha(0) end)
 adbutton.Text = T.SetFontString(adbutton, C.media.pixelfont, 10, "THINOUTLINE")
 adbutton.Text:Point("CENTER", adbutton, "CENTER", 0, 0.5)
 adbutton.Text:SetText(T.StatColor..ADDONS)
+adbutton:SetScript("OnMouseDown", function()
+if InCombatLockdown() then print(ERR_NOT_IN_COMBAT) return end
+	if aLoadFrame:IsShown() then
+			aLoadFrame:Hide()
+	else
+			aLoadFrame:Show()
+	end
+	end)
 end
 
 -- CONFIG BUTTON
