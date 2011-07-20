@@ -17,9 +17,12 @@ TinyDPS:SetScript("OnEvent", function(self, event, addon)
 
 	tdpsFrame:SetHeight(tdps.barHeight + 4)
 	tdpsFrame:SetTemplate("Default")
-	tdpsFrame:CreateShadow("Default")
-
-	tdpsAnchor:SetPoint('TOPLEFT', RaidBuffReminder, 'BOTTOMLEFT', 0, -4)
+	if C["buffreminder"].raidbuffreminder then
+	tdpsAnchor:SetPoint('TOPLEFT', RaidBuffReminder, 'BOTTOMLEFT', 0, -2)
+	else
+	tdpsAnchor:SetPoint('TOPLEFT', TukuiMinimap, 'BOTTOMLEFT', 0, -2)
+	end
+	
 
 	self:UnregisterEvent("ADDON_LOADED")
 end)
