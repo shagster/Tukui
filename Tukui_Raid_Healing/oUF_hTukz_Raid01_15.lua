@@ -123,16 +123,6 @@ local function Shared(self, unit)
     self:RegisterEvent("PARTY_LEADER_CHANGED", T.MLAnchorUpdate)
     self:RegisterEvent("PARTY_MEMBERS_CHANGED", T.MLAnchorUpdate)
 	
-	 -- portraits
-	if (C["unitframes"].charportrait == true) then
-		local portrait = CreateFrame("PlayerModel", self:GetName().."_Portrait", self)
-		portrait:SetFrameLevel(11)
-		portrait:SetAlpha(C.unitframes.portraitalpha)
-		portrait:SetAllPoints(health)
-		table.insert(self.__elements, T.HidePortrait)
-		self.Portrait = portrait
-	end
-	
 	if C["unitframes"].aggro == true then
 		table.insert(self.__elements, T.UpdateThreat)
 		self:RegisterEvent('PLAYER_TARGET_CHANGED', T.UpdateThreat)

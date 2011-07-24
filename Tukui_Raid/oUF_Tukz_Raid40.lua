@@ -8,6 +8,7 @@ ns._Headers = {}
 local T, C, L = unpack(Tukui) -- Import: T - functions, constants, variables; C - config; L - locales
 if not C["unitframes"].enable == true then return end
 
+local rwidth = T.InfoLeftRightWidth / 5 - 3.2
 local font = C["media"].pixelfont
 local font2 = C["media"].uffont
 local Font = C["media"].font
@@ -330,24 +331,24 @@ oUF:Factory(function(self)
 				self:SetWidth(header:GetAttribute('initial-width'))
 				self:SetHeight(header:GetAttribute('initial-height'))
 			]],
-			'initial-width', T.Scale(70*C["unitframes"].gridscale*T.raidscale),
+			'initial-width', rwidth,
+			--'initial-width', T.Scale(70*C["unitframes"].gridscale*T.raidscale),
 			'initial-height', T.Scale(22*C["unitframes"].gridscale*T.raidscale),  ---34
 			"showParty", true,
 			"showPlayer", C["unitframes"].showplayerinparty, 
 			"showRaid", true, 
-			"xoffset", T.Scale(7),
-			"yOffset", T.Scale(-3),  --3
+			"xoffset", T.Scale(6),  --7
 			"point", "LEFT",
 			"groupFilter", "1,2,3,4,5",
 			"groupingOrder", "1,2,3,4,5,6,7,8",
 			"groupBy", "GROUP",
 			"maxColumns", 8,
 			"unitsPerColumn", 5,
-			"columnSpacing", T.Scale(7),
-			"columnAnchorPoint", "TOP",
+			"columnSpacing", 6,  --7
+			"columnAnchorPoint", "BOTTOM",
 			"showSolo", C["unitframes"].showsolo
 		)
-		raid:SetPoint("BOTTOMLEFT", TukuiTabsLeftBackground, "TOPLEFT", 2, 6)
+		raid:SetPoint("BOTTOMLEFT", TukuiTabsLeftBackground, "TOPLEFT", 2, 6)  --2,6
 		
 		local pets = {} 
 			pets[1] = oUF:Spawn('partypet1', 'oUF_TukuiPartyPet1') 

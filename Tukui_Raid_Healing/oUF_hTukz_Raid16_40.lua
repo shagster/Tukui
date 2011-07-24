@@ -50,7 +50,6 @@ local function Shared(self, unit)
 	HealthBorder:SetPoint("BOTTOMRIGHT", health, "BOTTOMRIGHT", T.Scale(2), T.Scale(-2))
 	HealthBorder:SetTemplate("Default")
 	HealthBorder:SetBackdropColor(0,0,0,1)
-	--HealthBorder:CreateShadow("Default")
 	HealthBorder:SetFrameLevel(2)
 	self.HealthBorder = HealthBorder
 		
