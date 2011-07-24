@@ -113,7 +113,7 @@ local function SkinBars(self)
 
 				if not name.styled then
 					name:ClearAllPoints()
-					name:Point("BOTTOMLEFT", frame, "TOPLEFT", 0, 4)
+					name:Point("BOTTOMLEFT", frame, "TOPLEFT", 2, 4)
 					name:SetWidth(165)
 					name:SetHeight(8)
 					name:SetFont(C["media"].pixelfont, 10, "OUTLINE")
