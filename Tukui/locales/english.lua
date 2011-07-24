@@ -152,7 +152,7 @@ L.tooltip_boss = "|cffAF5050Boss|r"
 L.tooltip_rare = "|cffAF5050Rare|r"
 L.tooltip_rare_elite = "|cffAF5050+ Rare|r"
 L.tooltip_targeted_by = "Targeted By"
-L.tooltip_you = "<<|cffFFFFFFYOU|>>"
+L.tooltip_you = "|cffFFFFFF<<YOU>>|r"
 
 L.addon_dep = "|cffff4400Dependencies: |r"
 

@@ -13,7 +13,7 @@ local gsub, find, format = string.gsub, string.find, string.format
 
 local Tooltips = {GameTooltip,ShoppingTooltip1,ShoppingTooltip2,ShoppingTooltip3,WorldMapTooltip}
 local ItemRefTooltip = ItemRefTooltip
-
+local targetyou = L.tooltip_you
 local linkTypes = {item = true, enchant = true, spell = true, quest = true, unit = true, talent = true, achievement = true, glyph = true}
 
 local classification = {
@@ -24,6 +24,7 @@ local classification = {
 }
 
 local NeedBackdropBorderRefresh = true
+
 
 local anchor = CreateFrame("Frame", "TukuiTooltipAnchor", UIParent)
 anchor:SetSize(200, TukuiInfoRight:GetHeight())
@@ -344,6 +345,8 @@ GameTooltip:HookScript("OnTooltipSetUnit", function(self)
 		local hex, r, g, b = GetColor(unit.."target")
 		if not r and not g and not b then r, g, b = 1, 1, 1 end
 		GameTooltip:AddLine(UnitName(unit.."target"), r, g, b)
+		elseif UnitExists(unit.."target") and unit=="player" then
+		GameTooltip:AddLine(""..targetyou.."|r")
 	end
 	
 	if C["tooltip"].whotargetting == true then token = unit AddTargetedBy() end
