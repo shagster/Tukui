@@ -25,7 +25,7 @@ end
 -- TIME PANEL
 local watch = CreateFrame("Frame", "Tukuiwatch", UIParent)
 if IsAddOnLoaded("TukUI_ConfigUI") then
-watch:CreatePanel("Default", ((Minimap:GetWidth()) / 2)-2, 17, "TOPLEFT", Minimap, "BOTTOMLEFT", 1, 8)
+watch:CreatePanel("Default", ((Minimap:GetWidth()) / 2)-4, 17, "TOPRIGHT", Minimap, "BOTTOM", -1, 8)
 else
 watch:CreatePanel("Default", 73, 17, "TOP", Minimap, "BOTTOM", 0, 8)
 end
@@ -86,7 +86,7 @@ end
 -- CONFIG BUTTON
 if not IsAddOnLoaded("TukUI_ConfigUI") then return end
 local configbut = CreateFrame("Button", "TukuiConfigButton", UIParent, "SecureActionButtonTemplate")
-configbut:CreatePanel("Default", ((Minimap:GetWidth()) / 2)-2, 17, "TOPLEFT", Tukuiwatch, "TOPRIGHT", 2, 0)
+configbut:CreatePanel("Default", ((Minimap:GetWidth()) / 2)-4, 17, "TOPLEFT", Tukuiwatch, "TOPRIGHT", 2, 0)
 configbut:SetAttribute("type", "macro")
 configbut:SetAttribute("macrotext", "/tc")
 configbut:SetFrameLevel(2)
