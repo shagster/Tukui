@@ -560,19 +560,13 @@ local function AdjustNameLevel(frame, ...)
 	if UnitName("target") == frame.hp.name:GetText() and frame:GetAlpha() == 1 then
 	--Targetted Unit
 		frame.hp.name:SetTextColor(1, 1, 0)
+		frame.hp.name:SetDrawLayer("OVERLAY")
 	else
 	--Not Targetted
 		frame.hp.name:SetTextColor(1, 1, 1)
+		frame.hp.name:SetDrawLayer("BORDER")
 	end
 	end
---Force the name text of a nameplate to be behind other nameplates unless it is our target
---local function AdjustNameLevel(frame, ...)
---	if UnitName("target") == frame.hp.name:GetText() and frame:GetAlpha() == 1 then
---		frame.hp.name:SetDrawLayer("OVERLAY")
---	else
---		frame.hp.name:SetDrawLayer("BORDER")
---	end
---end
 
 --Health Text, also border coloring for certain plates depending on health
 local function ShowHealth(frame, ...)
