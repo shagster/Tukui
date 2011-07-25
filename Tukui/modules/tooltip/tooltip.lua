@@ -341,13 +341,15 @@ GameTooltip:HookScript("OnTooltipSetUnit", function(self)
 	end
 	
 	-- ToT line
-	if UnitExists(unit.."target") and (unit.."player") then
-		GameTooltip:AddLine(""..targetyou.."|r")
+	if (UnitExists(unit.."target")) and (UnitIsUnit(unit.."target", "player")) then
+	GameTooltip:AddLine(""..targetyou.."|r")
 	elseif UnitExists(unit.."target") and unit~="player" then
 		local hex, r, g, b = GetColor(unit.."target")
 		if not r and not g and not b then r, g, b = 1, 1, 1 end
 		GameTooltip:AddLine(UnitName(unit.."target"), r, g, b)
+		
 	end
+	
 	
 	
 	if C["tooltip"].whotargetting == true then token = unit AddTargetedBy() end
