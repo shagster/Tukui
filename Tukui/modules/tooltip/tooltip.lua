@@ -339,15 +339,16 @@ GameTooltip:HookScript("OnTooltipSetUnit", function(self)
 			break
 		end
 	end
-
+	
 	-- ToT line
-	if UnitExists(unit.."target") and unit~="player" then
+	if UnitExists(unit.."target") and (unit.."player") then
+		GameTooltip:AddLine(""..targetyou.."|r")
+	elseif UnitExists(unit.."target") and unit~="player" then
 		local hex, r, g, b = GetColor(unit.."target")
 		if not r and not g and not b then r, g, b = 1, 1, 1 end
 		GameTooltip:AddLine(UnitName(unit.."target"), r, g, b)
-		elseif UnitExists(unit.."target") and unit=="player" then
-		GameTooltip:AddLine(""..targetyou.."|r")
 	end
+	
 	
 	if C["tooltip"].whotargetting == true then token = unit AddTargetedBy() end
 	-- Sometimes this wasn't getting reset, the fact a cleanup isn't performed at this point, now that it was moved to "OnTooltipCleared" is very bad, so this is a fix
