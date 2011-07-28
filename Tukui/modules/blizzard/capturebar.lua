@@ -18,7 +18,7 @@ WorldStateAlwaysUpFrame:SetFrameStrata("BACKGROUND")
 WorldStateAlwaysUpFrame:SetFrameLevel(0)
 WorldStateAlwaysUpFrame:ClearAllPoints()
 WorldStateAlwaysUpFrame:SetScale(1)
-WorldStateAlwaysUpFrame:SetPoint("TOP", TukuiWorldStateFrameAnchor, "BOTTOM", 0, 10)
+WorldStateAlwaysUpFrame:SetPoint("TOP", TukuiWorldStateFrameAnchor, "TOP", 0, 0)
 
 -- reposition capture bar to top/center of the screen
 local function CaptureUpdate()

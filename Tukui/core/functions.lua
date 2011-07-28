@@ -1046,7 +1046,7 @@ if C["unitframes"].raidunitdebuffwatch == true then
 				{974, "BOTTOMRIGHT", {0.7, 0.4, 0}, true}, -- Earth Shield
 			},
 			WARLOCK = {
-				{85767, "TOPLEFT", {.804, .804, .804}}, -- Dark Intent Target
+				{85767, "BOTTOMLEFT", {.804, .804, .804}}, -- Dark Intent Target
 			},
 			ALL = {
 				{14253, "RIGHT", {0, 1, 0}}, -- Abolish Poison

@@ -1022,10 +1022,10 @@ local function Shared(self, unit)
 
 		-- create debuff for arena units
 		local debuffs = CreateFrame("Frame", nil, self)
-		debuffs:SetHeight(26)
+		debuffs:SetHeight(24)
 		debuffs:SetWidth(200)
-		debuffs:Point('LEFT', self, 'RIGHT', 4, 3)
-		debuffs.size = 26
+		debuffs:Point('TOPLEFT', self, 'TOPRIGHT', 4, 1)
+		debuffs.size = 25
 		debuffs.num = 5
 		debuffs.spacing = 2
 		debuffs.initialAnchor = 'LEFT'
