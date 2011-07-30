@@ -3,9 +3,10 @@ local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, vari
 
 local Kill = CreateFrame("Frame")
 Kill:RegisterEvent("ADDON_LOADED")
-Kill:RegisterEvent("PLAYER_LOGIN")
+Kill:RegisterEvent("PLAYER_ENTERING_WORLD")
 Kill:SetScript("OnEvent", function(self, event, addon)
-	if event == "PLAYER_LOGIN" then
+	if event == "PLAYER_ENTERING_WORLD" then
+		self:UnregisterEvent("PLAYER_ENTERING_WORLD")
 		if IsAddOnLoaded("Tukui_Raid") or IsAddOnLoaded("Tukui_Raid_Healing") then
 			InterfaceOptionsFrameCategoriesButton10:SetScale(0.00001)
 			InterfaceOptionsFrameCategoriesButton10:SetAlpha(0)		
@@ -13,8 +14,8 @@ Kill:SetScript("OnEvent", function(self, event, addon)
 			InterfaceOptionsFrameCategoriesButton11:SetAlpha(0)
 			CompactUnitFrame_UpateVisible = T.dummy
 			CompactUnitFrame_UpdateAll = T.dummy
-			CompactRaidFrameManager:Kill()  --raid utility fix?
-			CompactRaidFrameContainer:Kill() --raid utility fix?
+			CompactRaidFrameManager:Kill()
+			CompactRaidFrameContainer:Kill()
 		end	
 	else
 		if addon == "Blizzard_AchievementUI" then

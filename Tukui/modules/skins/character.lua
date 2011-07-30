@@ -130,20 +130,8 @@ local function LoadSkin()
 
 			object.Check:SetTexture(nil)
 			object.icon:SetTexCoord(.08, .92, .08, .92)
+			object:SetTemplate("Transparent")
 			
-			if not object.backdrop then
-				object:CreateBackdrop("Transparent")
-			end
-			
-			object.backdrop:Point("TOPLEFT", object.icon, "TOPLEFT", -2, 2)
-			object.backdrop:Point("BOTTOMRIGHT", object.icon, "BOTTOMRIGHT", 2, -2)
-			object.icon:SetParent(object.backdrop)
-
-			--Making all icons the same size and position because otherwise BlizzardUI tries to attach itself to itself when it refreshes
-			object.icon:SetPoint("LEFT", object, "LEFT", 4, 0)
-			object.icon.SetPoint = T.dummy
-			object.icon:Size(36, 36)
-			object.icon.SetSize = T.dummy
 		end
 		GearManagerDialogPopup:StripTextures()
 		GearManagerDialogPopup:SetTemplate("Transparent")

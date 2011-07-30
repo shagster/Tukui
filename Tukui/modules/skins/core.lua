@@ -46,15 +46,98 @@ function T.SkinButton(f, strip)
 	f:HookScript("OnLeave", T.SetOriginalBackdrop)
 end
 
-function T.SkinScrollBar(frame)
-	if _G[frame:GetName().."BG"] then _G[frame:GetName().."BG"]:SetTexture(nil) end
-	if _G[frame:GetName().."Track"] then _G[frame:GetName().."Track"]:SetTexture(nil) end
-	
-	if _G[frame:GetName().."Top"] then
-		_G[frame:GetName().."Top"]:SetTexture(nil)
-		_G[frame:GetName().."Bottom"]:SetTexture(nil)
-		_G[frame:GetName().."Middle"]:SetTexture(nil)
-	end
+function T.SkinScrollBar(frame, thumbTrim)
+if _G[frame:GetName().."BG"] then _G[frame:GetName().."BG"]:SetTexture(nil) end
+if _G[frame:GetName().."Track"] then _G[frame:GetName().."Track"]:SetTexture(nil) end
+
+if _G[frame:GetName().."Top"] then
+_G[frame:GetName().."Top"]:SetTexture(nil)
+_G[frame:GetName().."Bottom"]:SetTexture(nil)
+_G[frame:GetName().."Middle"]:SetTexture(nil)
+end
+
+if _G[frame:GetName().."ScrollUpButton"] and _G[frame:GetName().."ScrollDownButton"] then
+_G[frame:GetName().."ScrollUpButton"]:StripTextures()
+_G[frame:GetName().."ScrollUpButton"]:SetTemplate("Default", true)
+_G[frame:GetName().."ScrollUpButton"]:HookScript('OnEnter', T.SetModifiedBackdrop)
+_G[frame:GetName().."ScrollUpButton"]:HookScript('OnLeave', T.SetOriginalBackdrop)
+if not _G[frame:GetName().."ScrollUpButton"].texture then
+_G[frame:GetName().."ScrollUpButton"].texture = _G[frame:GetName().."ScrollUpButton"]:CreateTexture(nil, 'OVERLAY')
+_G[frame:GetName().."ScrollUpButton"].texture:Point("TOPLEFT", 2, -2)
+_G[frame:GetName().."ScrollUpButton"].texture:Point("BOTTOMRIGHT", -2, 2)
+_G[frame:GetName().."ScrollUpButton"].texture:SetTexture([[Interface\AddOns\Tukui\medias\textures\arrowup.tga]])
+_G[frame:GetName().."ScrollUpButton"].texture:SetVertexColor(unpack(C["media"].bordercolor))
+end
+_G[frame:GetName().."ScrollUpButton"]:HookScript('OnEnter', function(self)
+local color = RAID_CLASS_COLORS[T.myclass]
+self.texture:SetVertexColor(color.r, color.g, color.b)
+end)
+_G[frame:GetName().."ScrollUpButton"]:HookScript('OnLeave', function(self)
+self.texture:SetVertexColor(unpack(C["media"].bordercolor))
+end)
+
+_G[frame:GetName().."ScrollDownButton"]:StripTextures()
+_G[frame:GetName().."ScrollDownButton"]:SetTemplate("Default", true)
+_G[frame:GetName().."ScrollDownButton"]:HookScript('OnEnter', T.SetModifiedBackdrop)
+_G[frame:GetName().."ScrollDownButton"]:HookScript('OnLeave', T.SetOriginalBackdrop)
+if not _G[frame:GetName().."ScrollDownButton"].texture then
+_G[frame:GetName().."ScrollDownButton"].texture = _G[frame:GetName().."ScrollDownButton"]:CreateTexture(nil, 'OVERLAY')
+_G[frame:GetName().."ScrollDownButton"].texture:Point("TOPLEFT", 2, -2)
+_G[frame:GetName().."ScrollDownButton"].texture:Point("BOTTOMRIGHT", -2, 2)
+_G[frame:GetName().."ScrollDownButton"].texture:SetTexture([[Interface\AddOns\Tukui\medias\textures\arrowdown.tga]])
+_G[frame:GetName().."ScrollDownButton"].texture:SetVertexColor(unpack(C["media"].bordercolor))
+end
+
+_G[frame:GetName().."ScrollDownButton"]:HookScript('OnEnter', function(self)
+local color = RAID_CLASS_COLORS[T.myclass]
+self.texture:SetVertexColor(color.r, color.g, color.b)
+end)
+_G[frame:GetName().."ScrollDownButton"]:HookScript('OnLeave', function(self)
+self.texture:SetVertexColor(unpack(C["media"].bordercolor))
+end)
+
+if not frame.trackbg then
+frame.trackbg = CreateFrame("Frame", nil, frame)
+frame.trackbg:Point("TOPLEFT", _G[frame:GetName().."ScrollUpButton"], "BOTTOMLEFT", 0, -1)
+frame.trackbg:Point("BOTTOMRIGHT", _G[frame:GetName().."ScrollDownButton"], "TOPRIGHT", 0, 1)
+frame.trackbg:SetTemplate("Default")
+end
+
+if frame:GetThumbTexture() then
+if not thumbTrim then thumbTrim = 3 end
+frame:GetThumbTexture():SetTexture(nil)
+if not frame.thumbbg then
+frame.thumbbg = CreateFrame("Frame", nil, frame)
+frame.thumbbg:Point("TOPLEFT", frame:GetThumbTexture(), "TOPLEFT", 2, -thumbTrim)
+frame.thumbbg:Point("BOTTOMRIGHT", frame:GetThumbTexture(), "BOTTOMRIGHT", -2, thumbTrim)
+frame.thumbbg:SetTemplate("Default", true)
+if frame.trackbg then
+frame.thumbbg:SetFrameLevel(frame.trackbg:GetFrameLevel())
+end
+end
+end
+end
+end
+
+function T.SkinSlideBar(frame,height,movetext)
+
+frame:SetTemplate("Default")
+frame:SetBackdropColor(0,0,0,.8)
+
+if not height then height = frame:GetHeight() end
+frame:Height(height)
+
+if movetext then
+if _G[frame:GetName().."Low"] then _G[frame:GetName().."Low"]:Point("BOTTOM",0,-18) end
+if _G[frame:GetName().."High"] then _G[frame:GetName().."High"]:Point("BOTTOM",0,-18) end
+if _G[frame:GetName().."Text"] then _G[frame:GetName().."Text"]:Point("TOP",0,19) end
+end
+
+if _G[frame:GetName().."Thumb"] then
+_G[frame:GetName().."Thumb"]:SetTexture([[Interface\AddOns\Tukui\medias\textures\blank.tga]])
+_G[frame:GetName().."Thumb"]:SetVertexColor(unpack(C["media"].bordercolor))
+_G[frame:GetName().."Thumb"]:Size(height-4,height+4)
+end
 end
 
 --Tab Regions

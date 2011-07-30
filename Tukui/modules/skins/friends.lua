@@ -1,6 +1,9 @@
 local T, C, L = unpack(select(2, ...))
 
 local function LoadSkin()
+	T.SkinScrollBar(FriendsFrameFriendsScrollFrameScrollBar, 5)
+	T.SkinScrollBar(WhoListScrollFrameScrollBar, 5)
+	T.SkinScrollBar(ChannelRosterScrollFrameScrollBar, 5)
 	local tabs = {
 		"LeftDisabled",
 		"MiddleDisabled",
