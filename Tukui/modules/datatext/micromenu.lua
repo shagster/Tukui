@@ -18,10 +18,10 @@ if C["datatext"].micromenu and C["datatext"].micromenu > 0 then
 	Stat:SetFrameStrata("BACKGROUND")
 	Stat:SetFrameLevel(3)
 
-	local Text  = TukuiInfoLeft:CreateFontString(nil, "OVERLAY")
-	Text:SetFont(C.media.pixelfont, C["datatext"].fontsize, "THINOUTLINE")
+	local Text  = TukuiChatBackgroundLeft:CreateFontString(nil, "OVERLAY")
+	Text:SetFont(C.media.pixelfont, C["datatext"].fontsize, "MONOCHROMEOUTLINE")
 	T.PP(C["datatext"].micromenu, Text)
-
+	Stat:SetParent(Text:GetParent())
 	local function OnEvent(self, event, ...)
 		Text:SetText(T.panelcolor.."Micromenu")
 		self:SetAllPoints(Text)
@@ -67,6 +67,8 @@ if C["datatext"].micromenu and C["datatext"].micromenu > 0 then
 			func = function() ToggleFrame(LFDParentFrame) end},
 			{text = LOOKING_FOR_RAID,
 			func = function() ToggleFrame(LFRParentFrame) end},
+			{text = ENCOUNTER_JOURNAL, 
+			func = function() ToggleFrame(EncounterJournal) end},
 			{text = HELP_BUTTON,
 			func = function() ToggleHelpFrame() end},
 			{text = CALENDAR_VIEW_EVENT,

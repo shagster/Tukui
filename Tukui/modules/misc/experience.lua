@@ -1,7 +1,7 @@
 local T, C, L = unpack(Tukui)
 
 local Config = {
-	tFormat = 4, -- 1 = 100%
+	tFormat = 0, -- 1 = 100%
 						-- 2 = 10000 / 21000
 						-- 3 = 100% (1000 / 5000)
 						-- 4 = 1000 / 5000 (100%)
@@ -40,16 +40,10 @@ local function CreateBorder(f)
 end
 
 local addon = CreateFrame("Button", "TukuiExperience", UIParent)
-if C["map"].location_panel then
-addon:Point("TOPLEFT", TukuiXCoordsPanel, "BOTTOMLEFT", 0, -2)
-addon:Point("TOPRIGHT", TukuiYCoordsPanel, "BOTTOMRIGHT", 0, -2)
-addon:Height(10)
-else
-addon:Point("TOPLEFT", TukuiBar4, "BOTTOMLEFT", 0, -2)
-addon:Point("TOPRIGHT", TukuiBar4, "BOTTOMRIGHT", 0, -2)
-addon:Height(10)
-addon:Width(TukuiBar4:GetWidth())
-end
+addon:Point("TOPLEFT", TukuiInfoLeftMinimap, "BOTTOMLEFT", 0, -5)
+addon:Point("TOPRIGHT", extraToggle, "BOTTOMRIGHT", 0, -5)
+addon:Height(5)
+addon:Width(Minimap:GetWidth() + 27)
 addon:SetFrameLevel(1)
 addon:SetFrameStrata("BACKGROUND")
 addon:SetBackdrop({
@@ -207,8 +201,7 @@ local function Tooltip()
 	local perGain = format("%.1f%%", (rGained / rMax) * 100)
 	local perNeed = format("%.1f%%", (rNeed / rMax) * 100)
 	
-	--GameTooltip:SetOwner(TukuiInfoLeft, "ANCHOR_TOPLEFT", 0, select(4, T.DataTextTooltipAnchor(expText)))
-	GameTooltip:SetOwner(TukuiInfoRight, "ANCHOR_TOPRIGHT", 0, select(4, T.DataTextTooltipAnchor(expText)))
+	GameTooltip:SetOwner(TukuiChatBackgroundRight, "ANCHOR_TOPRIGHT", 0, select(4, T.DataTextTooltipAnchor(expText)))
 
 	if UnitLevel("player") < MAX_PLAYER_LEVEL then
 		local eCurrent = UnitXP("player")

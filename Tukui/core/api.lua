@@ -83,58 +83,37 @@ local function Point(obj, arg1, arg2, arg3, arg4, arg5)
 	obj:SetPoint(arg1, arg2, arg3, arg4, arg5)
 end
 
-function innerBorder(f)
-	if f.iborder then return end
-	f.iborder = CreateFrame("Frame", nil, f)
-	f.iborder:SetPoint("TOPLEFT", mult, -mult)
-	f.iborder:SetPoint("BOTTOMRIGHT", -mult, mult)
-	f.iborder:SetBackdrop({
-		edgeFile = C["media"].blank, 
-		edgeSize = mult, 
-		insets = { left = mult, right = mult, top = mult, bottom = mult }
-	})
-	f.iborder:SetBackdropBorderColor(0,0,0)
-	return f.iborder
-end
-
-function outerBorder(f)
-	if f.oborder then return end
-	f.oborder = CreateFrame("Frame", nil, f)
-	f.oborder:SetPoint("TOPLEFT", -mult, mult)
-	f.oborder:SetPoint("BOTTOMRIGHT", mult, -mult)
-	f.oborder:SetBackdrop({
-		edgeFile = C["media"].blank, 
-		edgeSize = mult, 
-		insets = { left = mult, right = mult, top = mult, bottom = mult }
-	})
-	f.oborder:SetBackdropBorderColor(0,0,0)
-	return f.oborder
-end
 ----new skin function
-local function CreateBackdrop(f, t)
-if not t then t = "Default" end
+local function CreateBackdrop(f, t, tex)
+	if not t then t = "Default" end
 
-local b = CreateFrame("Frame", nil, f)
-b:Point("TOPLEFT", -2, 2)
-b:Point("BOTTOMRIGHT", 2, -2)
-b:SetTemplate(t)
+	local b = CreateFrame("Frame", nil, f)
+	b:Point("TOPLEFT", -2, 2)
+	b:Point("BOTTOMRIGHT", 2, -2)
+	b:SetTemplate(t, tex)
 
-if f:GetFrameLevel() - 1 >= 0 then
-b:SetFrameLevel(f:GetFrameLevel() - 1)
-else
-b:SetFrameLevel(0)
+	if f:GetFrameLevel() - 1 >= 0 then
+		b:SetFrameLevel(f:GetFrameLevel() - 1)
+	else
+		b:SetFrameLevel(0)
+	end
+
+	f.backdrop = b
 end
 
-f.backdrop = b
-end
 
 local function SetTemplate(f, t, tex)
 	if tex then texture = C.media.normTex else texture = C.media.blank end
 	
 	GetTemplate(t)
-	--if f.oborder then f.oborder:Hide() end
-	--if f.iborder then f.iborder:Hide() end
 	
+	f:SetBackdrop({
+	  bgFile = texture, 
+	  edgeFile = C.media.blank, 
+	  tile = false, tileSize = 0, edgeSize = mult, 
+	  insets = { left = -mult, right = -mult, top = -mult, bottom = -mult}
+	})
+		
 	if t == "Thin" then
 		f:SetBackdrop({
 			bgFile = texture, 
@@ -172,45 +151,16 @@ local function SetTemplate(f, t, tex)
 	
 	f:SetBackdropColor(backdropr, backdropg, backdropb, backdropa)
 	f:SetBackdropBorderColor(borderr, borderg, borderb, bordera)
+	f.bg = f
 end
 
-local function CreatePanel(f, t, w, h, a1, p, a2, x, y)
+local function CreatePanel(f, t, w, h, a1, p, a2, x, y, text)
 	GetTemplate(t)
-
-	if t == "Transparent" then backdropa = 0.8 else backdropa = 1 end	
-
-	if t == "Thin" then
-		f:SetBackdrop({
-			bgFile = texture, 
-			edgeFile = C.media.blank, 
-			tile = false, tileSize = 0, edgeSize = mult, 
-			insets = { left = 0, right = 0, top = 0, bottom = 0 }
-		})
-	else
-		f:SetBackdrop({
-			bgFile = texture, 
-			edgeFile = C.media.blank, 
-			tile = false, tileSize = 0, edgeSize = mult, 
-			insets = { left = -mult, right = -mult, top = -mult, bottom = -mult }
-		})
-	end
 	
-	if t == "ThickTransparent" then
-		outerBorder(f)
-		innerBorder(f)
-		backdropa = 0.8
-	elseif t == "Transparent" then
-		backdropa = 0.8
-	elseif t == "Invisible" then
-		backdropa = 0
-		bordera = 0
-	elseif t == "ThickBorder" then
-		outerBorder(f)
-		innerBorder(f)
-		bordera = 1
-		backdropa = 1
-	else
-		bordera = 1
+	if t == "Transparent" then
+		f:CreateBorder(true, true)
+		backdropa = .7
+	else 
 		backdropa = 1
 	end
 	
@@ -222,14 +172,28 @@ local function CreatePanel(f, t, w, h, a1, p, a2, x, y)
 	f:SetFrameStrata("BACKGROUND")
 	f:SetPoint(a1, p, a2, Scale(x), Scale(y))
 	f:SetBackdrop({
-	  bgFile = C["media"].normTex, 
+	  bgFile = C["media"].blank, 
 	  edgeFile = C["media"].blank, 
 	  tile = false, tileSize = 0, edgeSize = mult, 
 	  insets = { left = -mult, right = -mult, top = -mult, bottom = -mult}
 	})
 	
 	f:SetBackdropColor(backdropr, backdropg, backdropb, backdropa)
-	f:SetBackdropBorderColor(borderr, borderg, borderb, bordera)
+	f:SetBackdropBorderColor(borderr, borderg, borderb)
+	
+	--[[if t == "Transparent" then
+		f:CreateShadow()
+	else
+		f:CreateOverlay()
+	end
+	]]
+	if text then
+		if f.text then return end
+		local text = T.SetFontString(f, C.media.pixelfont, 10, "MONOCHROMEOUTLINE")
+		text:Point("CENTER", f, 1, 1)
+		text:SetJustifyH("CENTER")
+		f.text = text
+	end
 end
 
 local function CreateShadow(f, t)
@@ -258,6 +222,19 @@ local function CreateShadow(f, t)
 	shadow:SetBackdropColor(backdropr, backdropg, backdropb, 0)
 	shadow:SetBackdropBorderColor(borderr, borderg, borderb, 0.8)
 	f.shadow = shadow
+end
+
+-- Credits to Eclipse
+local function CreateOverlay(f)
+	if f.overlay then return end
+	
+	local overlay = f:CreateTexture(f:GetName() and f:GetName().."Overlay" or nil, "BORDER", f)
+	overlay:ClearAllPoints()
+	overlay:Point("TOPLEFT", 2, -2)
+	overlay:Point("BOTTOMRIGHT", -2, 2)
+	overlay:SetTexture(C.media.blank)
+	overlay:SetVertexColor(.05, .05, .05)
+	f.overlay = overlay
 end
 
 local function Kill(object)
@@ -371,7 +348,7 @@ local function CreateBorder(f, i, o)
 			edgeSize = mult, 
 			insets = { left = mult, right = mult, top = mult, bottom = mult }
 		})
-		border:SetBackdropBorderColor(unpack(C["media"].backdropcolor))
+		border:SetBackdropBorderColor(unpack(C["media"].altbordercolor2))
 		f.iborder = border
 	end
 	
@@ -386,7 +363,7 @@ local function CreateBorder(f, i, o)
 			edgeSize = mult, 
 			insets = { left = mult, right = mult, top = mult, bottom = mult }
 		})
-		border:SetBackdropBorderColor(unpack(C["media"].backdropcolor))
+		border:SetBackdropBorderColor(unpack(C["media"].altbordercolor2))
 		f.oborder = border
 	end
 end
@@ -405,8 +382,11 @@ local function addapi(object)
 	if not object.Width then mt.Width = Width end
 	if not object.Height then mt.Height = Height end
 	if not object.FontString then mt.FontString = FontString end
+	if not object.CreateOverlay then mt.CreateOverlay = CreateOverlay end
 	if not object.HighlightUnit then mt.HighlightUnit = HighlightUnit end
 	if not object.CreateBorder then mt.CreateBorder = CreateBorder end
+	if not object.FadeIn then mt.FadeIn = FadeIn end
+	if not object.FadeOut then mt.FadeOut = FadeOut end
 end
 
 local handled = {["Frame"] = true}

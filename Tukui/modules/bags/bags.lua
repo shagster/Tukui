@@ -396,7 +396,7 @@ function Stuffing:CreateBagFrame(w)
 
 	local function bagUpdate(f, ...)
 		if w == "Bank" then
-			f:Point("BOTTOM", TukuiTabsLeftBackground, "TOP", 0, 3)
+			f:Point("BOTTOM", TukuiChatBackgroundLeft, "TOP", 0, 3)
 		else
 			if HasPetUI() then
 				f:ClearAllPoints()
@@ -408,7 +408,7 @@ function Stuffing:CreateBagFrame(w)
 				f:Point("BOTTOM", TukuiBar5, "TOP", 0, 3)
 			elseif not TukuiBar5:IsShown() then
 				f:ClearAllPoints()
-				f:SetPoint("BOTTOM", TukuiTabsRightBackground, "TOP", 0, 3)
+				f:SetPoint("BOTTOM", TukuiChatBackgroundRight, "TOP", 0, 3)
 			end
 		end
 	end
@@ -447,13 +447,12 @@ end
 	f.b_close:SetFrameStrata("HIGH")
 	f.b_text = f.b_close:CreateFontString(nil, "OVERLAY")
 	f.b_text:SetFont(C.media.pixelfont, C["datatext"].fontsize)
-	f.b_text:SetPoint("CENTER", 0, 0)
+	f.b_text:SetPoint("CENTER", 0, 1)
 	f.b_text:SetText(T.panelcolor.."Close")
 	f.b_close:SetWidth(f.b_text:GetWidth() + 20)
 	
-	f.b_close:HookScript("OnEnter", ModifiedBackdrop)
-	f.b_close:HookScript("OnLeave", OriginalBackdrop)
-
+	T.ApplyHover(f.b_close)
+	
 	-- create the bags frame
 	local fb = CreateFrame ("Frame", n .. "BagsFrame", f)
 	fb:Point("BOTTOMLEFT", f, "TOPLEFT", 0, 2)
@@ -645,6 +644,7 @@ function Stuffing:Layout(lb)
 	})
 	f:SetBackdropColor(unpack(C["media"].backdropcolor))
 	f:SetBackdropBorderColor(unpack(C["media"].bordercolor))
+	f:CreateBorder(true, true)
 
 
 	-- bag frame stuff
@@ -705,6 +705,7 @@ function Stuffing:Layout(lb)
 			b.frame:SetTemplate("Default")
 			b.frame:SetBackdropColor(.05, .05, .05)
 			b.frame:StyleButton()
+			b.frame:CreateBorder(true, true)
 			
 			idx = idx + 1
 		end
@@ -736,6 +737,7 @@ function Stuffing:Layout(lb)
 	sf:Height(f:GetHeight() - (6))
 	sf:Point("BOTTOM", f, "BOTTOM")
 
+
 	local idx = 0
 	for _, i in ipairs(bs) do
 		local bag_cnt = GetContainerNumSlots(i)
@@ -759,6 +761,7 @@ function Stuffing:Layout(lb)
 				xoff = (x * 31) + (x * 1)
 
 				yoff = off + 12 + (y * 30) + ((y - 1) * 2)
+
 
 				yoff = yoff * -1
 				

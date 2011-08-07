@@ -268,12 +268,12 @@ local function OnAuraChange(self, event, arg1, unit)
 
 end
 
-local bsize = (((153) - (T.Scale(5) * 7)) / 6)
+local bsize = 24
 
 --Create the Main bar
 local raidbuff_reminder = CreateFrame("Frame", "RaidBuffReminder", TukuiMinimap)
-raidbuff_reminder:CreatePanel("Default", 153, bsize + T.Scale(8), "TOP", TukuiMinimap, "BOTTOM", 0, T.Scale(-6))
---raidbuff_reminder:CreateShadow("Default")
+raidbuff_reminder:CreatePanel("Transparent", bsize + 4, 153, "LEFT", TukuiMinimap, "RIGHT", 3, 0)
+raidbuff_reminder:CreateBorder(false, true)
 raidbuff_reminder:RegisterEvent("ACTIVE_TALENT_GROUP_CHANGED")
 raidbuff_reminder:RegisterEvent("UNIT_INVENTORY_CHANGED")
 raidbuff_reminder:RegisterEvent("UNIT_AURA")
@@ -289,19 +289,16 @@ raidbuff_reminder:SetScript("OnEvent", OnAuraChange)
 local function CreateButton(name, relativeTo, firstbutton)
 	local button = CreateFrame("Frame", name, RaidBuffReminder)
 	if firstbutton == true then
-		button:CreatePanel("Default", bsize, bsize, "LEFT", relativeTo, "LEFT", T.Scale(4), 0)
+		button:CreatePanel("Default", bsize, bsize, "TOP", relativeTo, "TOP", 0, -2)
 	else
-		button:CreatePanel("Default", bsize, bsize, "LEFT", relativeTo, "RIGHT", T.Scale(5), 0)
+		button:CreatePanel("Default", bsize, bsize, "TOP", relativeTo, "BOTTOM", 0, -1)
 	end
-	button:SetFrameLevel(RaidBuffReminder:GetFrameLevel() + 2)
-	button.FrameBackdrop = CreateFrame("Frame", nil, button)
-	button.FrameBackdrop:SetTemplate("Default")
-	button.FrameBackdrop:SetPoint("TOPLEFT", T.Scale(-2), T.Scale(2))
-	button.FrameBackdrop:SetPoint("BOTTOMRIGHT", T.Scale(2), T.Scale(-2))
-	button.FrameBackdrop:SetFrameLevel(button:GetFrameLevel() - 1)	
+	button:SetFrameLevel(RaidBuffReminder:GetFrameLevel() + 1)
+
 	button.t = button:CreateTexture(name..".t", "OVERLAY")
 	button.t:SetTexCoord(0.1, 0.9, 0.1, 0.9)
-	button.t:SetAllPoints(button)
+	button.t:Point("TOPLEFT", 2, -2)
+	button.t:Point("BOTTOMRIGHT", -2, 2)
 end
 
 --Create Buttons

@@ -9,10 +9,10 @@ if C["datatext"].armor and C["datatext"].armor > 0 then
 	Stat:SetFrameStrata("BACKGROUND")
 	Stat:SetFrameLevel(3)
 
-	local Text  = TukuiInfoLeft:CreateFontString(nil, "OVERLAY")
-	Text:SetFont(C.media.pixelfont, C["datatext"].fontsize, "THINOUTLINE")
+	local Text  = TukuiChatBackgroundLeft:CreateFontString(nil, "OVERLAY")
+	Text:SetFont(C.media.pixelfont, C["datatext"].fontsize, "MONOCHROMEOUTLINE")
 	T.PP(C["datatext"].armor, Text)
-
+	Stat:SetParent(Text:GetParent())
 	local function Update(self)
 		baseArmor , effectiveArmor, armor, posBuff, negBuff = UnitArmor("player");
 		Text:SetText(L.datatext_armor..": "..T.panelcolor..(effectiveArmor))

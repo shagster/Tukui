@@ -44,7 +44,7 @@ local function style(self)
 		-- create the bg/border panel
 		local panel = CreateFrame("Frame", name.."Panel", self)
 		panel:CreatePanel("Default", T.buttonsize, T.buttonsize, "CENTER", self, "CENTER", 0, 0)
-		if not C.actionbar.bgPanel then panel:CreateShadow() end
+		--if not C.actionbar.bgPanel then panel:CreateShadow() end
  
 		panel:SetFrameStrata(self:GetFrameStrata())
 		panel:SetFrameLevel(self:GetFrameLevel() - 1)

@@ -46,6 +46,7 @@ C["media"] = {
 	-- colors
 	["bordercolor"] = C.general.bordercolor or { 0, 0, 0, 1 }, -- border color of tukui panels
 	["altbordercolor"] = { 0,0,0 }, -- alternative border color, mainly for unitframes text panels.
+	["altbordercolor2"] = { 0,0,0 }, -- alternative border color2, mainly for unitframes text panels.
 	["backdropcolor"] = C.general.backdropcolor or {.1,.1,.1,1}, -- background color of tukui panels
 	["buttonhover"] = [[Interface\AddOns\Tukui\medias\textures\button_hover]],
 

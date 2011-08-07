@@ -7,10 +7,10 @@ local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, vari
 if not C["datatext"].hit == nil or C["datatext"].hit > 0 then
 	local Stat = CreateFrame("Frame")
 
-	local Text  = TukuiInfoLeft:CreateFontString(nil, "OVERLAY")
-	Text:SetFont(C.media.pixelfont, C["datatext"].fontsize, "THINOUTLINE")
+	local Text  = TukuiChatBackgroundLeft:CreateFontString(nil, "OVERLAY")
+	Text:SetFont(C.media.pixelfont, C["datatext"].fontsize, "MONOCHROMEOUTLINE")
 	T.PP(C["datatext"].hit, Text)
-
+	Stat:SetParent(Text:GetParent())
 	local int = 1
 
 	local function Update(self, t)
@@ -26,11 +26,11 @@ if not C["datatext"].hit == nil or C["datatext"].hit > 0 then
 
 		if int < 0 then
 			if attackpwr > spellpwr and select(2, UnitClass("Player")) ~= "HUNTER" then
-				Text:SetText("Hit Rating: "..T.panelcolor..format("%.2f", GetCombatRatingBonus(6)).."%")
+				Text:SetText("Hit: "..T.panelcolor..format("%.2f", GetCombatRatingBonus(6)).."%")
 			elseif select(2, UnitClass("Player")) == "HUNTER" then
-				Text:SetText("Hit Rating: "..T.panelcolor..format("%.2f", GetCombatRatingBonus(7)).."%")
+				Text:SetText("Hit: "..T.panelcolor..format("%.2f", GetCombatRatingBonus(7)).."%")
 			else
-				Text:SetText("Hit Rating: "..T.panelcolor..format("%.2f", GetCombatRatingBonus(8)).."%")
+				Text:SetText("Hit: "..T.panelcolor..format("%.2f", GetCombatRatingBonus(8)).."%")
 			end
 			int = 1
 		end

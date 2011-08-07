@@ -26,6 +26,7 @@ end
 
 local NamePlates = CreateFrame("Frame", nil, UIParent)
 NamePlates:SetScript("OnEvent", function(self, event, ...) self[event](self, ...) end)
+NamePlates:CreateBorder(true, false)
 
 SetCVar("bloatthreat", 0)
 SetCVar("bloattest", 0)
@@ -418,6 +419,7 @@ local function SkinObjects(frame)
 	cb:SetFrameLevel(1)
 	cb:SetStatusBarTexture(TEXTURE)
 	CreateVirtualFrame(cb)
+	cb:CreateBorder(false, true)
 	
 	--Create Cast Time Text
 	cb.time = cb:CreateFontString(nil, "ARTWORK")

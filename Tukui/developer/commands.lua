@@ -69,6 +69,17 @@ SlashCmdList["TESTARENA"] = function()
 	end
 end
 
+-- ready check shortcut
+SlashCmdList.RCSLASH = DoReadyCheck
+SLASH_RCSLASH1 = "/rc"
+
+SlashCmdList["GROUPDISBAND"] = function()
+	if UnitIsRaidOfficer("player") then
+		StaticPopup_Show("TUKUIDISBAND_RAID")
+	end
+end
+SLASH_GROUPDISBAND1 = '/rd'
+
 local mes = function(msg)
 	print("|cffFF6347-|r", tostring(msg))
 end

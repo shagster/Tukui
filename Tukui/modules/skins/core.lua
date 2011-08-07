@@ -3,22 +3,6 @@ local T, C, L = unpack(select(2, ...)) -- Import Functions/Constants, Config, Lo
 T.SkinFuncs = {}
 T.SkinFuncs["Tukui"] = {}
 
-
-function T.SetModifiedBackdrop(self)
-	local color = RAID_CLASS_COLORS[T.myclass]
-	self:SetBackdropColor(color.r*.1, color.g*.1, color.b*.1)
-	self:SetBackdropBorderColor(color.r, color.g, color.b)
-end
-
-function T.SetOriginalBackdrop(self)
-	local color = RAID_CLASS_COLORS[T.myclass]
-	if C["general"].classcolortheme == true then
-		self:SetBackdropBorderColor(color.r, color.g, color.b)
-	else
-		self:SetTemplate("Default")
-	end
-end
-
 function T.SkinButton(f, strip)
 	if f:GetName() then
 		local l = _G[f:GetName().."Left"]

@@ -114,8 +114,7 @@ local function LoadSkin()
 	end
 	hooksecurefunc("SpellBookFrame_UpdateSkillLineTabs", SkinSkillLine)			
 	SpellBookFrame:SetTemplate("Transparent")
-	SpellBookFrame:CreateShadow("Default")
-
+	
 	--Profession Tab
 	local professionbuttons = {
 		"PrimaryProfession1SpellButtonTop",

@@ -238,7 +238,6 @@ TukuiL.option_chat = "Chat"
 TukuiL.option_chat_enable = "Enable Tukui Chat"
 TukuiL.option_chat_whispersound = "Play sound when receiving private message"
 TukuiL.option_chat_background = "Enable chat panel background"
-TukuiL.option_chat_layout_switch = "Enable the layout switcher button thing on right chat tab"
 
 -- buff
 TukuiL.option_auras = "Auras"

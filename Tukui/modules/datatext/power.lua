@@ -9,10 +9,10 @@ if C["datatext"].power and C["datatext"].power > 0 then
 	Stat:SetFrameStrata("BACKGROUND")
 	Stat:SetFrameLevel(3)
 
-	local Text  = TukuiInfoLeft:CreateFontString(nil, "OVERLAY")
-	Text:SetFont(C.media.pixelfont, C["datatext"].fontsize, "THINOUTLINE")
+	local Text  = TukuiChatBackgroundLeft:CreateFontString(nil, "OVERLAY")
+	Text:SetFont(C.media.pixelfont, C["datatext"].fontsize, "MONOCHROMEOUTLINE")
 	T.PP(C["datatext"].power, Text)
-
+	Stat:SetParent(Text:GetParent())
 	local int = 1
 
 	local function Update(self, t)

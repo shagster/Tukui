@@ -4,15 +4,15 @@ local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, vari
 --------------------------------------------------------------------
 	
 if C["datatext"].dur and C["datatext"].dur > 0 then
-	local Stat = CreateFrame("Frame")
+	local Stat = CreateFrame("Frame", nil, TukuiChatBackgroundLeft)
 	Stat:EnableMouse(true)
 	Stat:SetFrameStrata("BACKGROUND")
 	Stat:SetFrameLevel(3)
 
-	local Text  = TukuiInfoLeft:CreateFontString(nil, "OVERLAY")
-	Text:SetFont(C.media.pixelfont, C["datatext"].fontsize, "THINOUTLINE")
+	local Text  = TukuiChatBackgroundLeft:CreateFontString(nil, "OVERLAY")
+	Text:SetFont(C.media.pixelfont, C["datatext"].fontsize, "MONOCHROMEOUTLINE")
 	T.PP(C["datatext"].dur, Text)
-
+	Stat:SetParent(Text:GetParent())
 	local Total = 0
 	local current, max
 

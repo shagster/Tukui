@@ -6,10 +6,10 @@ local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, vari
 if not C["datatext"].mastery == nil or C["datatext"].mastery > 0 then
 	local Stat = CreateFrame("Frame")
 
-	local Text  = TukuiInfoLeft:CreateFontString(nil, "OVERLAY")
-	Text:SetFont(C.media.pixelfont, C["datatext"].fontsize, "THINOUTLINE")
+	local Text  = TukuiChatBackgroundLeft:CreateFontString(nil, "OVERLAY")
+	Text:SetFont(C.media.pixelfont, C["datatext"].fontsize, "MONOCHROMEOUTLINE")
 	T.PP(C["datatext"].mastery, Text)
-
+	Stat:SetParent(Text:GetParent())
 	local int = 1
 	
 	local function Update(self, t)

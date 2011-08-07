@@ -1,42 +1,35 @@
-local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
+local T, C, L = unpack(select(2, ...))
 -- Very simple threat bar for T.
 
--- cannot work without Info Right DataText Panel.
-if not TukuiInfoRight then return end
+if not ICenterMid then return end
 if not C["extra_panels"].threatbar == true then return end
-local aggroColors = {
+--[[local aggroColors = {
 	[1] = {12/255, 151/255,  15/255},
 	[2] = {166/255, 171/255,  26/255},
 	[3] = {163/255,  24/255,  24/255},
-}
+}]]
 
--- create the bar
-local TukuiThreatBar = CreateFrame("StatusBar", "TukuiThreatBar", UIParent)
+local TukuiThreatBar = CreateFrame("StatusBar", "TukuiThreatBar", ICenterMid)
+TukuiThreatBar:Point("TOPLEFT", 2, -2)
+TukuiThreatBar:Point("BOTTOMRIGHT", -2, 2)
+
 TukuiThreatBar:SetStatusBarTexture(C.media.normTex)
 TukuiThreatBar:GetStatusBarTexture():SetHorizTile(false)
 TukuiThreatBar:SetBackdrop({bgFile = C.media.blank})
 TukuiThreatBar:SetBackdropColor(0, 0, 0, 0)
 TukuiThreatBar:SetMinMaxValues(0, 100)
-TukuiThreatBar:SetOrientation("VERTICAL")
 
-local TukuiThreatBarBG = CreateFrame("Frame", nil, TukuiThreatBar)
---TukuiThreatBarBG:CreatePanel("Default", 15, 156.137, "BOTTOMLEFT", TukuiInfoLeft, "BOTTOMRIGHT", 2, -1)
-TukuiThreatBarBG:CreatePanel("Default", 10, 156, "BOTTOMLEFT", TukuiInfoLeft, "BOTTOMRIGHT", 2, -1)
-TukuiThreatBarBG:Point("TOPLEFT", TukuiTabsLeftBackground, "TOPRIGHT", 2, 0)
-TukuiThreatBarBG:Point("BOTTOMLEFT", ChatFrame1, "BOTTOMRIGHT", 2, -4)
---TukuiThreatBarBG:CreateShadow("Default")
+TukuiThreatBar.text = T.SetFontString(TukuiThreatBar, C.media.pixelfont, 10, "MONOCHROMEOUTLINE")
+TukuiThreatBar.text:Point("RIGHT", TukuiThreatBar, "RIGHT", -30, 1)
 
-TukuiThreatBar:Point("TOPLEFT", TukuiThreatBarBG, 2, -2)
-TukuiThreatBar:Point("BOTTOMRIGHT", TukuiThreatBarBG, -2, 2)
+TukuiThreatBar.Title = T.SetFontString(TukuiThreatBar, C.media.pixelfont, 10, "MONOCHROMEOUTLINE")
+TukuiThreatBar.Title:SetText(L.unitframes_ouf_threattext)
+TukuiThreatBar.Title:SetPoint("LEFT", TukuiThreatBar, "LEFT", T.Scale(30), 1)
+	  
+TukuiThreatBar.bg = TukuiThreatBar:CreateTexture(nil, 'BORDER')
+TukuiThreatBar.bg:SetAllPoints(TukuiThreatBar)
+TukuiThreatBar.bg:SetTexture(0,0,0)
 
---TukuiThreatBar.text = T.SetFontString(TukuiThreatBar, C.media.pixelfont, 10)
---TukuiThreatBar.text:Point("TOP", TukuiThreatBar, "TOP", 0, 12)
-
---TukuiThreatBar.Title = T.SetFontString(TukuiThreatBar, C.media.pixelfont, 10)
---TukuiThreatBar.Title:SetText(L.unitframes_ouf_threattext)
---TukuiThreatBar.Title:SetPoint("LEFT", TukuiThreatBar, "LEFT", T.Scale(30), 0)
-
--- event func
 local function OnEvent(self, event, ...)
 	local party = GetNumPartyMembers()
 	local raid = GetNumRaidMembers()
@@ -61,17 +54,18 @@ local function OnEvent(self, event, ...)
 	end
 end
 
+-- update status bar func
 local function OnUpdate(self, event, unit)
 	if UnitAffectingCombat(self.unit) then
 		local _, _, threatpct, rawthreatpct, _ = UnitDetailedThreatSituation(self.unit, self.tar)
 		local threatval = threatpct or 0
 		
 		self:SetValue(threatval)
-		--self.text:SetFormattedText("%3.1f", threatval)
+		self.text:SetFormattedText("%3.1f", threatval)
 		
 		local r, g, b = oUFTukui.ColorGradient(threatval/100, 0,.8,0,.8,.8,0,.8,0,0)
 		self:SetStatusBarColor(r, g, b)
-
+				
 		if threatval > 0 then
 			self:SetAlpha(1)
 		else
@@ -89,5 +83,3 @@ TukuiThreatBar.unit = "player"
 TukuiThreatBar.tar = TukuiThreatBar.unit.."target"
 TukuiThreatBar.Colors = aggroColors
 TukuiThreatBar:SetAlpha(0)
-
--- THAT'S IT!

@@ -12,65 +12,61 @@ end
 
 -- datatext panel position
 T.PP = function(p, obj)
-	local left = TukuiInfoLeft
-	local right = TukuiInfoRight
-	local mapleft = TukuiMinimapStatsLeft
-	local mapright = TukuiMinimapStatsRight
+	local left = TukuiChatBackgroundLeft
+	local right = TukuiChatBackgroundRight
+	local center = ICenterMid
+	local mapleft = TukuiInfoLeftMinimap
+	local mapright = TukuiInfoRightMinimap
 	
 	if p == 1 then
 		obj:SetParent(left)
-		obj:SetHeight(left:GetHeight())
-		obj:SetPoint("LEFT", left, 30, 0)
-		obj:SetPoint('TOP', left)
-		obj:SetPoint('BOTTOM', left)
+		obj:SetHeight(20)
+		obj:SetPoint("BOTTOMLEFT", left, "BOTTOMLEFT",30, -1)
 	elseif p == 2 then
 		obj:SetParent(left)
-		obj:SetHeight(left:GetHeight())
-		obj:SetPoint('TOP', left)
-		obj:SetPoint('BOTTOM', left)
+		obj:SetHeight(20)
+		obj:SetPoint("BOTTOM", left, "BOTTOM", 0, -1)
 	elseif p == 3 then
 		obj:SetParent(left)
-		obj:SetHeight(left:GetHeight())
-		obj:SetPoint("RIGHT", left, -30, 0)
-		obj:SetPoint('TOP', left)
-		obj:SetPoint('BOTTOM', left)
+		obj:SetHeight(20)
+		obj:SetPoint("BOTTOMRIGHT", left, "BOTTOMRIGHT", -30, -1)
 	elseif p == 4 then
 		obj:SetParent(right)
-		obj:SetHeight(right:GetHeight())
-		obj:SetPoint("LEFT", right, 30, 0)
-		obj:SetPoint('TOP', right)
-		obj:SetPoint('BOTTOM', right)
+		obj:SetHeight(20)
+		obj:SetPoint("BOTTOMLEFT", right, "BOTTOMLEFT", 30, -1)
 	elseif p == 5 then
 		obj:SetParent(right)
-		obj:SetHeight(right:GetHeight())
-		obj:SetPoint('TOP', right)
-		obj:SetPoint('BOTTOM', right)
+		obj:SetHeight(20)
+		obj:SetPoint("BOTTOM", right, "BOTTOM", 0, -1)
 	elseif p == 6 then
 		obj:SetParent(right)
-		obj:SetHeight(right:GetHeight())
-		obj:SetPoint("RIGHT", right, -30, 0)
-		obj:SetPoint('TOP', right)
-		obj:SetPoint('BOTTOM', right)
+		obj:SetHeight(20)
+		obj:SetPoint("BOTTOMRIGHT", right, "BOTTOMRIGHT", -30, -1)
 	elseif p == 7 then
-		obj:SetParent(Tukuiwatch)
-		obj:Height(Tukuiwatch:GetHeight())
-		obj:Point("CENTER", Tukuiwatch, 0, 1)	
+		obj:SetParent(center)
+		obj:SetHeight(20)
+		obj:SetPoint("BOTTOMLEFT", center, "BOTTOMLEFT", 4, -1)
+	elseif p == 8 then
+		obj:SetParent(center)
+		obj:SetHeight(20)
+		obj:SetPoint("BOTTOM", center, "BOTTOM", 0, -1)
+	elseif p == 9 then
+		obj:SetParent(center)
+		obj:SetHeight(20)
+		obj:SetPoint("BOTTOMRIGHT", center, "BOTTOMRIGHT", -4, -1)
+	elseif p == 10 then
+		obj:SetParent(mapleft)
+		obj:SetHeight(mapleft:GetHeight())
+		obj:SetPoint('TOP', mapleft, 0, 2)
+		obj:SetPoint('BOTTOM', mapleft)
+	elseif p == 11 then
+		obj:SetParent(mapright)
+		obj:SetHeight(mapright:GetHeight())
+		obj:SetPoint('TOP', mapright, 0, 2)
+		obj:SetPoint('BOTTOM', mapright)
 	end
-	
-	--[[if TukuiMinimap then
-		if p == 7 then
-			obj:SetParent(mapleft)
-			obj:SetHeight(mapleft:GetHeight())
-			obj:SetPoint('TOP', mapleft)
-			obj:SetPoint('BOTTOM', mapleft)
-		elseif p == 8 then
-			obj:SetParent(mapright)
-			obj:SetHeight(mapright:GetHeight())
-			obj:SetPoint('TOP', mapright)
-			obj:SetPoint('BOTTOM', mapright)
-		end
-	end--]]
 end
+
 -- Classcolored Panel Text  -- SHAG
 if C["datatext"].classpanel then
 	C["media"].statcolor = T.oUF_colors.class[T.myclass]
@@ -93,10 +89,12 @@ T.DataTextTooltipAnchor = function(self)
 	local xoff = 0
 	local yoff = T.Scale(5)
 	
-	if panel == TukuiInfoLeft then
+	if panel == TukuiChatBackgroundLeft then
 		anchor = "ANCHOR_TOPLEFT"
-	elseif panel == TukuiInfoRight then
+		yoff = T.Scale(-TukuiChatBackgroundLeft:GetHeight() + 21)
+	elseif panel == TukuiChatBackgroundRight then
 		anchor = "ANCHOR_TOPRIGHT"
+		yoff = T.Scale(-TukuiChatBackgroundRight:GetHeight() + 21)
 	elseif panel == TukuiMinimapStatsLeft or panel == TukuiMinimapStatsRight then
 		local position = TukuiMinimap:GetPoint()
 		if position:match("LEFT") then
@@ -114,23 +112,6 @@ T.DataTextTooltipAnchor = function(self)
 	end
 	
 	return anchor, panel, xoff, yoff
-end
-
-T.DataBarPoint = function(p, obj)
-	obj:SetPoint("TOPRIGHT", T.databars[p], "TOPRIGHT", -2, -2)
-	obj:SetPoint("BOTTOMLEFT", T.databars[p], "BOTTOMLEFT", 2, 2)
-end
-
-T.DataBarTooltipAnchor = function(barNum)
-	local xoff = -T.databars[barNum]:GetWidth()
-	local yoff = T.Scale(-5)
-	
-	if C.databars.settings.vertical then
-		xoff = T.Scale(5)
-		yoff = T.databars[barNum]:GetHeight()
-	end
-	
-	return xoff, yoff
 end
 
 T.TukuiShiftBarUpdate = function()
@@ -329,6 +310,81 @@ function T.CommaValue(amount)
 	return formatted
 end
 
+--Add time before calling a function
+--Usage T.Delay(seconds, functionToCall, ...)
+local waitTable = {}
+local waitFrame
+function T.Delay(delay, func, ...)
+	if(type(delay)~="number" or type(func)~="function") then
+		return false
+	end
+	if(waitFrame == nil) then
+		waitFrame = CreateFrame("Frame","WaitFrame", UIParent)
+		waitFrame:SetScript("onUpdate",function (self,elapse)
+			local count = #waitTable
+			local i = 1
+			while(i<=count) do
+				local waitRecord = tremove(waitTable,i)
+				local d = tremove(waitRecord,1)
+				local f = tremove(waitRecord,1)
+				local p = tremove(waitRecord,1)
+				if(d>elapse) then
+				  tinsert(waitTable,i,{d-elapse,f,p})
+				  i = i + 1
+				else
+				  count = count - 1
+				  f(unpack(p))
+				end
+			end
+		end)
+	end
+	tinsert(waitTable,{delay,func,{...}})
+	return true
+end
+
+function T.SetModifiedBackdrop(self)
+	local color = RAID_CLASS_COLORS[T.myclass]
+	self:SetBackdropColor(color.r*.15, color.g*.15, color.b*.15)
+	self:SetBackdropBorderColor(color.r, color.g, color.b)
+end
+
+function T.SetOriginalBackdrop(self)
+	local color = RAID_CLASS_COLORS[T.myclass]
+	if C["general"].classcolortheme == true then
+		self:SetBackdropBorderColor(color.r, color.g, color.b)
+	else
+		self:SetTemplate("Transparent")
+	end
+end
+
+function T.update_alpha(self)
+	if self.parent:GetAlpha() == 0 then 
+		self.parent:Hide()
+		self:Hide()
+	end
+end
+
+function T.fadeOut(self) 
+	UIFrameFadeOut(self,.4,1,0) 
+	self.frame:Show() 
+end
+
+function T.fadeIn(p)
+	p.frame = CreateFrame("Frame", nil , p)
+	p.frame:Hide()
+	p.frame.parent = p -- lol!
+	p.frame:SetScript("OnUpdate",T.update_alpha)
+	p:SetScript("OnShow", function() 
+		p.frame:Hide() 
+		UIFrameFadeIn(p,.4,0,1)
+	end)
+	p.fadeOut = T.fadeOut
+end
+
+function T.ApplyHover(self)
+	self:HookScript("OnEnter", T.SetModifiedBackdrop)
+	self:HookScript("OnLeave", T.SetOriginalBackdrop)
+end
 ------------------------------------------------------------------------
 --	unitframes Functions
 ------------------------------------------------------------------------
@@ -521,19 +577,7 @@ T.PostUpdatePetColor = function(health, unit, min, max)
 		if health.bg then health.bg:SetTexture(.1, .1, .1) end
 	end
 end
---[[ gonna fix this one day
-T.PostNamePosition = function(self)
-	self.Name:ClearAllPoints()
-	if C["unitframes"].style == "Shag" and C["unitframes"].targetpowerpvponly == true or C["unitframes"].style == "Shag" and C["unitframes"].targetpowerpvponly == false then
-		self.Name:SetPoint("CENTER", self.panel, "CENTER", 0, 1)
-	elseif C["unitframes"].style == "Smelly" and C["unitframes"].targetpowerpvponly == true or C["unitframes"].style == "Smelly" and C["unitframes"].targetpowerpvponly == false then
-		self.Name:SetPoint("CENTER", self.panel, "CENTER", -4, 2)
-	else
-		self.Power.value:SetAlpha(0)
-		self.Name:SetPoint("CENTER", self.panel, "CENTER", 0, 2)
-	end
-	end
-]]
+
 T.PostNamePosition = function(self)
 	self.Name:ClearAllPoints()
 	if (self.Power.value:GetText() and UnitIsEnemy("player", "target") and C["unitframes"].targetpowerpvponly == true) or (self.Power.value:GetText() and C["unitframes"].targetpowerpvponly == false) then
@@ -657,7 +701,7 @@ local CreateAuraTimer = function(self, elapsed)
 end
 
 T.PostCreateAura = function(element, button)
-	button:SetTemplate("Default")
+	button:SetTemplate("Transparent")
 	
 	button.remaining = T.SetFontString(button, C["media"].font, C["unitframes"].auratextscale, "THINOUTLINE")
 	button.remaining:Point("CENTER", 1, 0)

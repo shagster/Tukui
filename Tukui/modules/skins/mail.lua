@@ -5,7 +5,6 @@ local function LoadSkin()
 	MailFrame:CreateBackdrop("Transparent")
 	MailFrame.backdrop:Point("TOPLEFT", 4, 0)
 	MailFrame.backdrop:Point("BOTTOMRIGHT", 2, 74)
-	MailFrame.backdrop:CreateShadow("Default")
 	MailFrame:SetWidth(360)
 
 	for i = 1, INBOXITEMS_TO_DISPLAY do
@@ -80,7 +79,6 @@ local function LoadSkin()
 	OpenMailFrame:CreateBackdrop("Transparent")
 	OpenMailFrame.backdrop:Point("TOPLEFT", 4, 0)
 	OpenMailFrame.backdrop:Point("BOTTOMRIGHT", 2, 74)
-	OpenMailFrame.backdrop:CreateShadow("Default")
 	OpenMailFrame:SetWidth(360)
 
 	T.SkinCloseButton(OpenMailCloseButton)

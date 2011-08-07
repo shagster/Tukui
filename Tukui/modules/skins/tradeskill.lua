@@ -9,7 +9,6 @@ local function LoadSkin()
 	TradeSkillDetailScrollChildFrame:StripTextures()
 	
 	TradeSkillFrame:SetTemplate("Transparent")
-	TradeSkillFrame:CreateShadow("Default")
 	TradeSkillFrame:Height(TradeSkillFrame:GetHeight() + 12)
 	TradeSkillRankFrame:StripTextures()
 	TradeSkillRankFrame:CreateBackdrop("Transparent")

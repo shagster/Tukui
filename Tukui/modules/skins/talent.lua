@@ -82,7 +82,6 @@ local function LoadSkin()
 	PlayerTalentFramePanel3:CreateBackdrop("Transparent")
 	PlayerTalentFramePanel3.backdrop:Point( "TOPLEFT", PlayerTalentFramePanel3, "TOPLEFT", 3, -3 )
 	PlayerTalentFramePanel3.backdrop:Point( "BOTTOMRIGHT", PlayerTalentFramePanel3, "BOTTOMRIGHT", -3, 3 )
-	PlayerTalentFrame:CreateShadow("Default")
 	T.SkinCloseButton(PlayerTalentFrameCloseButton)
 
 	function talentpairs(inspect,pet)

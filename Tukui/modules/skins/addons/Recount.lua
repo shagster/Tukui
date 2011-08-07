@@ -21,8 +21,7 @@ AddonSkins_Mod:RegisterSkin("Recount",function(Skin, skin, Layout, layout, confi
 
 	local function SkinFrame(frame)
 		frame.bgMain = CreateFrame("Frame",nil,frame)
-		--frame.bgMain = CreateShadow("")
-		--frame.bgMain = SetAlpha(0)
+		frame.bgMain = SetAlpha(0)
 		skin:SkinBackgroundFrame(frame.bgMain)
 		frame.bgMain:SetPoint("BOTTOMLEFT",frame,"BOTTOMLEFT")
 		frame.bgMain:SetPoint("BOTTOMRIGHT",frame,"BOTTOMRIGHT")
@@ -50,12 +49,10 @@ AddonSkins_Mod:RegisterSkin("Recount",function(Skin, skin, Layout, layout, confi
 			v.StatusBar:GetStatusBarTexture():SetVertTile(false)
 			v.LeftText:SetPoint("LEFT", 4, 0)
 			v.LeftText:SetFont(C.media.pixelfont, C["datatext"].fontsize)
-			--v.LeftText:SetFont(C.media.pixelfont2, 13, "THINOUTLINE")
 			v.RightText:SetPoint("RIGHT", -4, 0)
 			v.RightText:SetFont(C.media.pixelfont, C["datatext"].fontsize)
-			--v.RightText:SetFont(C.media.pixelfont2, 13, "THINOUTLINE")
 		end
-		-- Recount:SetFont("Tukui Font")
+		
 	end
 	Recount.SetBarTextures = Recount.UpdateBarTextures
 	

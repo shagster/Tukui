@@ -8,10 +8,10 @@ if C["datatext"].haste and C["datatext"].haste > 0 then
 	Stat:SetFrameStrata("BACKGROUND")
 	Stat:SetFrameLevel(3)
 
-	local Text  = TukuiInfoLeft:CreateFontString(nil, "OVERLAY")
-	Text:SetFont(C.media.pixelfont, C["datatext"].fontsize, "THINOUTLINE")
+	local Text  = TukuiChatBackgroundLeft:CreateFontString(nil, "OVERLAY")
+	Text:SetFont(C.media.pixelfont, C["datatext"].fontsize, "MONOCHROMEOUTLINE")
 	T.PP(C["datatext"].haste, Text)
-
+	Stat:SetParent(Text:GetParent())
 	local int = 1
 
 	local function Update(self, t)

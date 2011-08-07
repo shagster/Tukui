@@ -9,10 +9,10 @@ if C["datatext"].currency and C["datatext"].currency > 0 then
 	Stat:SetFrameStrata("BACKGROUND")
 	Stat:SetFrameLevel(3)
 
-	local Text  = TukuiInfoLeft:CreateFontString(nil, "OVERLAY")
-	Text:SetFont(C.media.pixelfont, C["datatext"].fontsize, "THINOUTLINE")
+	local Text  = TukuiChatBackgroundLeft:CreateFontString(nil, "OVERLAY")
+	Text:SetFont(C.media.pixelfont, C["datatext"].fontsize, "MONOCHROMEOUTLINE")
 	T.PP(C["datatext"].currency, Text)
-	
+	Stat:SetParent(Text:GetParent())
 	local function update()
 		local _text = T.panelcolor.."---"
 		for i = 1, MAX_WATCHED_TOKENS do

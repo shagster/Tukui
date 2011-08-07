@@ -1,7 +1,4 @@
 local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
--- This is the file for our action bars settings in game via mouseover buttons around action bars.
--- I really hope you'll understand the code, because I was totally drunk when I wrote this file.
--- At least, it work fine. :P (lol)
 
 local function ShowOrHideBar(bar, button)
 	local db = TukuiDataPerChar
@@ -11,19 +8,11 @@ local function ShowOrHideBar(bar, button)
 			if button == TukuiBar5ButtonTop then
 				if TukuiBar7:IsShown() then
 					TukuiBar7:Hide()
-					if C.actionbar.bgPanel then
-						bar:SetWidth((T.buttonsize * 2) + (T.buttonspacing * 3))
-					else
-						bar:SetWidth((T.buttonsize * 2) + (T.buttonspacing))
-					end
+					bar:SetWidth((T.buttonsize * 2) + (T.buttonspacing * 3))
 					db.hidebar7 = true
 				elseif TukuiBar6:IsShown() then
 					TukuiBar6:Hide()
-					if C.actionbar.bgPanel then
-						bar:SetWidth((T.buttonsize) + (T.buttonspacing * 2))
-					else
-						bar:SetWidth((T.buttonsize))
-					end
+					bar:SetWidth((T.buttonsize * 1) + (T.buttonspacing * 2))
 					db.hidebar6 = true
 				else
 					bar:Hide()
@@ -32,26 +21,14 @@ local function ShowOrHideBar(bar, button)
 				if button == TukuiBar5ButtonBottom then
 					if not bar:IsShown() then
 						bar:Show()
-						if C.actionbar.bgPanel then
-							bar:SetWidth((T.buttonsize) + (T.buttonspacing * 2))
-						else
-							bar:SetWidth((T.buttonsize))
-						end
+						bar:SetWidth((T.buttonsize * 1) + (T.buttonspacing * 2))
 					elseif not TukuiBar6:IsShown() then
 						TukuiBar6:Show()
-						if C.actionbar.bgPanel then
-							bar:SetWidth((T.buttonsize * 2) + (T.buttonspacing * 3))
-						else
-							bar:SetWidth((T.buttonsize * 2) + (T.buttonspacing))
-						end
+						bar:SetWidth((T.buttonsize * 2) + (T.buttonspacing * 3))
 						db.hidebar6 = false
 					else
 						TukuiBar7:Show()
-						if C.actionbar.bgPanel then
-							bar:SetWidth((T.buttonsize * 3) + (T.buttonspacing * 4))
-						else
-							bar:SetWidth((T.buttonsize * 3) + (T.buttonspacing * 2))
-						end
+						bar:SetWidth((T.buttonsize * 3) + (T.buttonspacing * 4))
 						db.hidebar7 = false
 					end
 				end
@@ -62,15 +39,9 @@ local function ShowOrHideBar(bar, button)
 		
 		-- for bar 2�+3�+4, high reso only
 		if bar == TukuiBar4 then
-			local bsize = T.buttonsize
-			if C.actionbar.bgPanel then
-				bsize = (T.buttonsize + (T.buttonspacing*2))
-			end
-			TukuiBar1:SetHeight(bsize)
-			TukuiBar2:SetHeight(bsize)
-			TukuiBar3:SetHeight(bsize)
-			TukuiBar2Button:SetHeight(bsize)
-			TukuiBar3Button:SetHeight(bsize)
+			TukuiBar1:SetHeight((T.buttonsize * 1) + (T.buttonspacing * 2))
+			TukuiBar2:SetHeight(TukuiBar1:GetHeight())
+			TukuiBar3:SetHeight(TukuiBar1:GetHeight())
 			if not T.lowversion then
 				for i = 7, 12 do
 					local left = _G["MultiBarBottomLeftButton"..i]
@@ -97,22 +68,16 @@ local function ShowOrHideBar(bar, button)
 		
 		-- for bar 2�+3�+4, high reso only
 		if bar == TukuiBar4 then
-			if C.actionbar.bgPanel then
-				TukuiBar1:SetHeight((T.buttonsize * 2) + (T.buttonspacing*3))
-			else
-				TukuiBar1:SetHeight((T.buttonsize * 2) + (T.buttonspacing))
-			end
+			TukuiBar1:SetHeight((T.buttonsize * 2) + (T.buttonspacing * 3))
 			TukuiBar2:SetHeight(TukuiBar4:GetHeight())
 			TukuiBar3:SetHeight(TukuiBar4:GetHeight())
-			TukuiBar2Button:SetHeight(TukuiBar2:GetHeight())
-			TukuiBar3Button:SetHeight(TukuiBar3:GetHeight())
 			if not T.lowversion then
 				for i = 7, 12 do
 					local left = _G["MultiBarBottomLeftButton"..i]
 					local right = _G["MultiBarBottomRightButton"..i]
 					left:SetAlpha(1)
 					right:SetAlpha(1)
-				end	
+				end
 			end
 		end
 	end
@@ -124,155 +89,103 @@ local function MoveButtonBar(button, bar)
 	if button == TukuiBar2Button then
 		if bar:IsShown() then
 			db.hidebar2 = false
-			button:ClearAllPoints()
-			button:Point("BOTTOMRIGHT", TukuiBar2, "BOTTOMLEFT", -3, 0)
-			button.text:SetText(T.StatColor..">")
+			button.text:SetText("|cff4BAF4C>|r")
 		else
 			db.hidebar2 = true
-			button:ClearAllPoints()
-			button:Point("BOTTOMRIGHT", TukuiBar1, "BOTTOMLEFT", -3, 0)
-			button.text:SetText(T.StatColor.."<")
+			button.text:SetText("|cff4BAF4C<|r")
 		end
 	end
 	
 	if button == TukuiBar3Button then
 		if bar:IsShown() then
 			db.hidebar3 = false
-			button:ClearAllPoints()
-			button:Point("BOTTOMLEFT", TukuiBar3, "BOTTOMRIGHT", 3, 0)
-			button.text:SetText(T.StatColor.."<")
+			button.text:SetText("|cff4BAF4C<|r")
 		else
 			db.hidebar3 = true
-			button:ClearAllPoints()
-			button:Point("BOTTOMLEFT", TukuiBar1, "BOTTOMRIGHT", 3, 0)
-			button.text:SetText(T.StatColor..">")
+			button.text:SetText("|cff4BAF4C>|r")
 		end
 	end
 
 	if button == TukuiBar4Button then
 		if bar:IsShown() then
 			db.hidebar4 = false
-			button.text:SetText(T.StatColor.."Collapse")
+			button.text:SetText("|cff4BAF4C- - - - - -|r")
 		else
 			db.hidebar4 = true
-			button.text:SetText(T.StatColor.."Expand")
+			button.text:SetText("|cff4BAF4C+ + + + + +|r")
 		end
 	end
-
-if button == TukuiBar5ButtonTop then	
+	
+	if button == TukuiBar5ButtonTop or button == TukuiBar5ButtonBottom then		
 		local buttontop = TukuiBar5ButtonTop
-		buttontop:ClearAllPoints()
-		buttontop:Size(20, 17)
-		buttontop:Point("TOPRIGHT", TukuiTabsRightBackground, "TOPRIGHT", -55, -1)
+		local buttonbot = TukuiBar5ButtonBottom
 		if bar:IsShown() then
 			db.hidebar5 = false
-			
-			if not T.lowversion then buttontop.text:SetText(T.StatColor.."Hide") end		
+			if not T.lowversion then buttontop.text:SetText("|cff4BAF4C>|r") end
+			if not T.lowversion then buttonbot.text:SetText("|cff4BAF4C>|r") end		
 		else
 			db.hidebar5 = true
-			
-			if not T.lowversion then buttontop.text:SetText(T.StatColor.."Show") end
+			if not T.lowversion then buttonbot.text:SetText("|cff4BAF4C<|r") end
+			if not T.lowversion then buttontop.text:SetText("|cff4BAF4C<|r") end
 		end	
 	end
 end
 
-local function DrPepper(self, bar) -- guess what! :P
-	-- yep, you cannot drink DrPepper while in combat. :(
+local function DrPepper(self, bar)
 	if InCombatLockdown() then print(ERR_NOT_IN_COMBAT) return end
-	
 	local button = self
-	
 	ShowOrHideBar(bar, button)
 	MoveButtonBar(button, bar)
 end
 
-local TukuiBar2Button = CreateFrame("Button", "TukuiBar2Button", UIParent)
-TukuiBar2Button:Width(17)
-TukuiBar2Button:SetHeight(TukuiBar2:GetHeight())
-TukuiBar2Button:Point("BOTTOMRIGHT", TukuiBar2, "BOTTOMLEFT", -3, 0)
-TukuiBar2Button:SetTemplate("Thin")
---TukuiBar2Button:CreateShadow()
-TukuiBar2Button:RegisterForClicks("AnyUp")
-TukuiBar2Button:SetAlpha(0)
-TukuiBar2Button:SetScript("OnClick", function(self) DrPepper(self, TukuiBar2) end)
-TukuiBar2Button:SetScript("OnEnter", function(self) self:SetAlpha(1) end)
-TukuiBar2Button:SetScript("OnLeave", function(self) self:SetAlpha(0) end)
-TukuiBar2Button.text = T.SetFontString(TukuiBar2Button, C.media.pixelfont, 10)
-TukuiBar2Button.text:Point("CENTER", 1, 1)
-TukuiBar2Button.text:SetText(T.StatColor..">")
+local TukuiBar4Button = CreateFrame("Button", "TukuiBar4Button", actionBarBG)
+TukuiBar4Button:CreatePanel("Default", extrasBG:GetWidth() - 8, 15, "TOP", actionBarBG, "TOP", 0, -4, true)
+TukuiBar4Button:SetFrameLevel(actionBarBG:GetFrameLevel() + 1)
+TukuiBar4Button:SetScript("OnMouseDown", function(self) DrPepper(self, TukuiBar4) end)
+TukuiBar4Button.text:SetText("|cff4BAF4C- - - - - -|r")
+T.ApplyHover(TukuiBar4Button)
 
-local TukuiBar3Button = CreateFrame("Button", "TukuiBar3Button", UIParent)
-TukuiBar3Button:Width(17)
-TukuiBar3Button:SetHeight(TukuiBar3:GetHeight())
-TukuiBar3Button:Point("BOTTOMLEFT", TukuiBar3, "BOTTOMRIGHT", 3, 0)
-TukuiBar3Button:SetTemplate("Thin")
---TukuiBar3Button:CreateShadow()
-TukuiBar3Button:RegisterForClicks("AnyUp")
-TukuiBar3Button:SetAlpha(0)
-TukuiBar3Button:SetScript("OnClick", function(self) DrPepper(self, TukuiBar3) end)
-TukuiBar3Button:SetScript("OnEnter", function(self) self:SetAlpha(1) end)
-TukuiBar3Button:SetScript("OnLeave", function(self) self:SetAlpha(0) end)
-TukuiBar3Button.text = T.SetFontString(TukuiBar3Button, C.media.pixelfont, 10)
-TukuiBar3Button.text:Point("CENTER", 1, 1)
-TukuiBar3Button.text:SetText(T.StatColor.."<")
+local TukuiBar5ButtonTop = CreateFrame("Button", "TukuiBar5ButtonTop", actionBarBG)
+TukuiBar5ButtonTop:CreatePanel("Default", (TukuiBar4Button:GetWidth() / 2) - 2, 15, "TOPRIGHT", TukuiBar4Button, "BOTTOMRIGHT", 0, -4, true)
+TukuiBar5ButtonTop:SetFrameLevel(actionBarBG:GetFrameLevel() + 1)
+TukuiBar5ButtonTop:SetScript("OnMouseDown", function(self) DrPepper(self, TukuiBar5) end)
+TukuiBar5ButtonTop.text:SetText("|cff4BAF4C>|r")
+T.ApplyHover(TukuiBar5ButtonTop)
 
-local TukuiBar4Button = CreateFrame("Button", "TukuiBar4Button", UIParent)
-TukuiBar4Button:SetWidth(TukuiBar1:GetWidth())
-TukuiBar4Button:Height(12)
-TukuiBar4Button:Point("BOTTOM", TukuiBar1, "TOP", 0, 3)
-TukuiBar4Button:SetTemplate("Thin")
---TukuiBar4Button:CreateShadow()
-TukuiBar4Button:RegisterForClicks("AnyUp")
-TukuiBar4Button:SetAlpha(0)
-TukuiBar4Button:SetScript("OnClick", function(self) DrPepper(self, TukuiBar4) end)
-TukuiBar4Button:SetScript("OnEnter", function(self) self:SetAlpha(1) end)
-TukuiBar4Button:SetScript("OnLeave", function(self) self:SetAlpha(0) end)
-TukuiBar4Button.text = T.SetFontString(TukuiBar4Button, C.media.pixelfont, 10)
-TukuiBar4Button.text:SetPoint("CENTER", 0, 1)
-TukuiBar4Button.text:SetText(T.StatColor.."Collapse")
+local TukuiBar5ButtonBottom = CreateFrame("Button", "TukuiBar5ButtonBottom", actionBarBG)
+TukuiBar5ButtonBottom:CreatePanel("Default", (TukuiBar4Button:GetWidth() / 2) - 2, 15, "TOPLEFT", TukuiBar4Button, "BOTTOMLEFT", 0, -4, true)
+TukuiBar5ButtonBottom:SetFrameLevel(actionBarBG:GetFrameLevel() + 1)
+TukuiBar5ButtonBottom:SetScript("OnMouseDown", function(self) DrPepper(self, TukuiBar5) end)
+TukuiBar5ButtonBottom.text:SetText("|cff4BAF4C<|r")
+T.ApplyHover(TukuiBar5ButtonBottom)
 
-local TukuiBar5ButtonTop = CreateFrame("Button", "TukuiBar5ButtonTop", UIParent)
-TukuiBar5ButtonTop:SetWidth(20)
-TukuiBar5ButtonTop:Height(17)
-TukuiBar5ButtonTop:Point("TOPRIGHT", TukuiTabsRightBackground, "TOPRIGHT", -55, -1)
-TukuiBar5ButtonTop:RegisterForClicks("AnyUp")
-TukuiBar5ButtonTop:SetAlpha(0)
-TukuiBar5ButtonTop:SetScript("OnClick", function(self) DrPepper(self, TukuiBar5) end)
-TukuiBar5ButtonTop:SetScript("OnEnter", function(self) self:SetAlpha(1) end)
-TukuiBar5ButtonTop:SetScript("OnLeave", function(self) self:SetAlpha(0) end)
-TukuiBar5ButtonTop.text = T.SetFontString(TukuiBar5ButtonTop, C.media.pixelfont, 10, "OUTLINE")
-TukuiBar5ButtonTop.text:Point("CENTER", 1, 1)
-TukuiBar5ButtonTop.text:SetText(T.StatColor.."Hide")
-TukuiBar5ButtonTop:SetBackdropBorderColor(unpack(C["media"].bordercolor))	
+local TukuiBar2Button = CreateFrame("Button", "TukuiBar2Button", actionBarBG)
+TukuiBar2Button:CreatePanel("Default", (TukuiBar4Button:GetWidth() / 2) - 2, 15, "TOPLEFT", TukuiBar5ButtonBottom, "BOTTOMLEFT", 0, -4, true)
+TukuiBar2Button:SetFrameLevel(actionBarBG:GetFrameLevel() + 1)
+TukuiBar2Button:SetScript("OnMouseDown", function(self) DrPepper(self, TukuiBar2) end)
+TukuiBar2Button.text:SetText("|cff4BAF4C>|r")
+T.ApplyHover(TukuiBar2Button)
+
+local TukuiBar3Button = CreateFrame("Button", "TukuiBar3Button", actionBarBG)
+TukuiBar3Button:CreatePanel("Default", (TukuiBar4Button:GetWidth() / 2) - 2, 15, "TOPRIGHT", TukuiBar5ButtonTop, "BOTTOMRIGHT", 0, -4, true)
+TukuiBar3Button:SetFrameLevel(actionBarBG:GetFrameLevel() + 1)
+TukuiBar3Button:SetScript("OnMouseDown", function(self) DrPepper(self, TukuiBar3) end)
+TukuiBar3Button.text:SetText("|cff4BAF4C<|r")
+T.ApplyHover(TukuiBar3Button)
 
 -- exit vehicle button on left side of bottom action bar
 local vehicleleft = CreateFrame("Button", "TukuiExitVehicleButtonLeft", UIParent, "SecureHandlerClickTemplate")
-vehicleleft:SetAllPoints(TukuiBar2Button)
-vehicleleft:SetFrameStrata(TukuiBar2Button:GetFrameStrata())
-vehicleleft:SetFrameLevel(TukuiBar2Button:GetFrameLevel() + 1)
-vehicleleft:SetTemplate("Thin")
---vehicleleft:CreateShadow()
-vehicleleft:SetBackdropBorderColor(75/255,  175/255, 76/255)
-vehicleleft:RegisterForClicks("AnyUp")
-vehicleleft:SetScript("OnClick", function() VehicleExit() end)
-vehicleleft.text = T.SetFontString(vehicleleft, C.media.pixelfont, 10)
-vehicleleft.text:SetPoint("CENTER", T.Scale(1), T.Scale(1))
-vehicleleft.text:SetText(T.StatColor.."V")
+vehicleleft:CreatePanel("Default", 20, 20, "BOTTOMRIGHT", TukuiBar1, "BOTTOMLEFT", -4, 0, true)
+vehicleleft:SetScript("OnMouseDown", function() VehicleExit() end)
+vehicleleft.text:SetText("|cff4BAF4CV|r")
 RegisterStateDriver(vehicleleft, "visibility", "[target=vehicle,exists] show;hide")
 
 -- exit vehicle button on right side of bottom action bar
 local vehicleright = CreateFrame("Button", "TukuiExitVehicleButtonRight", UIParent, "SecureHandlerClickTemplate")
-vehicleright:SetAllPoints(TukuiBar3Button)
-vehicleright:SetTemplate("Thin")
---vehicleright:CreateShadow()
-vehicleright:SetFrameStrata(TukuiBar3Button:GetFrameStrata())
-vehicleright:SetFrameLevel(TukuiBar3Button:GetFrameLevel() + 1)
-vehicleright:SetBackdropBorderColor(75/255,  175/255, 76/255)
+vehicleright:CreatePanel("Default", 20, 20, "BOTTOMLEFT", TukuiBar1, "BOTTOMRIGHT", 4, 0, true)
 vehicleright:RegisterForClicks("AnyUp")
 vehicleright:SetScript("OnClick", function() VehicleExit() end)
-vehicleright.text = T.SetFontString(vehicleright, C.media.pixelfont, 10)
-vehicleright.text:SetPoint("CENTER", T.Scale(1), T.Scale(1))
-vehicleright.text:SetText(T.StatColor.."V")
+vehicleright.text:SetText("|cff4BAF4CV|r")
 RegisterStateDriver(vehicleright, "visibility", "[target=vehicle,exists] show;hide")
 
 --------------------------------------------------------------
@@ -308,15 +221,8 @@ init:SetScript("OnEvent", function(self, event)
 		
 		if db.hidebar6 then
 			TukuiBar6:Hide()
-			if C.actionbar.bgPanel then
-				TukuiBar5:SetWidth(T.buttonsize + (T.buttonspacing * 2))
-			else
-				TukuiBar5:SetWidth(T.buttonsize)
-			end
+			TukuiBar5:SetWidth((T.buttonsize * 1) + (T.buttonspacing * 2))
 		end
-		
-		TukuiBar5ButtonTop:SetWidth(TukuiBar5:GetWidth())
-		TukuiBar5ButtonBottom:SetWidth(TukuiBar5:GetWidth())
 	end
 	
 	if db.hidebar5 then

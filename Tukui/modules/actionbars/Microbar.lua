@@ -138,4 +138,3 @@ CharacterMicroButton.ClearAllPoints = T.dummy
 
 local bg = CreateFrame("Frame", "TukuiMicrobarBG", MicroParent)
 bg:CreatePanel("Default", MicroParent:GetWidth() + 9, MicroParent:GetHeight() + 10, "CENTER", MicroParent, "CENTER", 2, 0)
-bg:CreateShadow("Default")

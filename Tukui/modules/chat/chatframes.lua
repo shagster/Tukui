@@ -59,6 +59,7 @@ local function SetChatStyle(frame)
 	local chat = frame:GetName()
 	local tab = _G[chat.."Tab"]
 	
+	GeneralDockManager:SetParent(TukuiChatBackgroundLeft)
 	-- always set alpha to 1, don't fade it anymore
 	tab:SetAlpha(1)
 	tab.SetAlpha = UIFrameFadeRemoveFrame
@@ -74,7 +75,7 @@ local function SetChatStyle(frame)
 	
 	-- Tab font
 	_G[chat.."TabText"]:SetTextColor(unpack(C["media"].statcolor))
-	_G[chat.."TabText"]:SetFont(C.media.pixelfont,10,"THINOUTLINE")
+	_G[chat.."TabText"]:SetFont(C.media.pixelfont,10,"MONOCHROMEOUTLINE")
 	_G[chat.."TabText"].SetTextColor = T.dummy
 	
 	-- yeah baby
@@ -92,9 +93,10 @@ local function SetChatStyle(frame)
 	
 	-- move the chat edit box
 	_G[chat.."EditBox"]:ClearAllPoints()
-	_G[chat.."EditBox"]:Point("TOPLEFT", TukuiTabsLeftBackground or TukuiInfoLeft, 2, -2)
-	_G[chat.."EditBox"]:Point("BOTTOMRIGHT", TukuiTabsLeftBackground or TukuiInfoLeft, -2, 2)	
-	
+	_G[chat.."EditBox"]:SetSize(TukuiChatBackgroundLeft:GetWidth(), 20)
+	_G[chat.."EditBox"]:Point("BOTTOMLEFT", TukuiChatBackgroundLeft, "BOTTOMLEFT", 0, 0)
+	_G[chat.."EditBox"]:Point("BOTTOMRIGHT", TukuiChatBackgroundLeft, "BOTTOMRIGHT", 0, 0)
+		
 	-- Hide textures
 	for j = 1, #CHAT_FRAME_TEXTURES do
 		_G[chat..CHAT_FRAME_TEXTURES[j]]:SetTexture(nil)
@@ -154,7 +156,7 @@ local function SetChatStyle(frame)
 	local EditBoxBackground = CreateFrame("frame", "TukuiChatchatEditBoxBackground", _G[chat.."EditBox"])
 	EditBoxBackground:CreatePanel("Default", 1, 1, "LEFT", _G[chat.."EditBox"], "LEFT", 0, 0)
 	EditBoxBackground:ClearAllPoints()
-	EditBoxBackground:SetAllPoints(TukuiTabsLeftBackground or TukuiInfoLeft)
+	EditBoxBackground:SetAllPoints(_G[chat.."EditBox"])
 	EditBoxBackground:SetFrameStrata("LOW")
 	EditBoxBackground:SetFrameLevel(1)
 	
@@ -221,17 +223,22 @@ local function SetupChatPosAndFont(self)
 		-- also set original width and height of chatframes 1 and 4 if first time we run tukui.
 		-- doing resize of chat also here for users that hit "cancel" when default installation is show.
 		if i == 1 then
-			chat:Point("BOTTOMLEFT", TukuiInfoLeft, "TOPLEFT", 3, 6)
-			chat:Point("BOTTOMRIGHT", TukuiInfoLeft, "TOPRIGHT", -2, 6)
+			chat:Point("BOTTOMLEFT", TukuiChatBackgroundLeft, "BOTTOMLEFT", 3, 23)
+			chat:Point("BOTTOMRIGHT", TukuiChatBackgroundLeft, "BOTTOMRIGHT", -2, 23)
 			chat:SetParent(TukuiChatBackgroundLeft)
+			tab:SetParent(TukuiChatBackgroundLeft)
 			FCF_SavePositionAndDimensions(chat)
 		elseif i == 2 or i == 3 or i == 4 then
 			chat:SetParent(TukuiChatBackgroundLeft)
+			tab:SetParent(TukuiChatBackgroundLeft)
 		elseif i == 5 and name == LOOT then
+			chat:SetParent(TukuiChatBackgroundRight)
+
+			tab:SetParent(TukuiChatBackgroundRight)
 			if not chat.isDocked then
 				chat:ClearAllPoints()
-				chat:Point("BOTTOMRIGHT", TukuiInfoRight, "TOPRIGHT", -2, 6)
-				chat:Point("BOTTOMLEFT", TukuiInfoRight, "TOPLEFT", 3, 6)
+				chat:Point("BOTTOMLEFT", TukuiChatBackgroundRight, "BOTTOMLEFT", 3, 23)
+				chat:Point("BOTTOMRIGHT", TukuiChatBackgroundRight, "BOTTOMRIGHT", -2, 23)
 				chat:SetJustifyH("LEFT") 
 				chat:SetParent(TukuiChatBackgroundRight)
 				FCF_SavePositionAndDimensions(chat)

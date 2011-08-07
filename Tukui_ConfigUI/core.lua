@@ -22,7 +22,6 @@ local ALLOWED_GROUPS = {
 	["buffreminder"]=1,
 	["auras"]=1,
 	["Addon_Skins"]=1,
-	["im"]=1,
 	["sCombo"]=1,
 	["castbar"]=1,
 	["extra_panels"]=1,
@@ -261,8 +260,7 @@ local function Local(o)
 	if o == "TukuiConfigUIchatwhispersound" then o = TukuiL.option_chat_whispersound end
 	if o == "TukuiConfigUIchatbackground" then o = TukuiL.option_chat_background end
 	if o == "TukuiConfigUIchatnamealert" then o = TukuiL.option_chat_namealert end
-	if o == "TukuiConfigUIchatlayout_switch" then o = TukuiL.option_chat_layout_switch end
-	
+		
 	-- aura
 	if o == "TukuiConfigUIauras" then o = TukuiL.option_auras end
 	if o == "TukuiConfigUIaurasplayer" then o = TukuiL.option_auras_player end
@@ -728,7 +726,7 @@ function CreateTukuiConfigUI()
 			button:SetChecked(false)
 		end
 	end	
-	
+
 	ShowGroup("general")
 end
 

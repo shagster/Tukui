@@ -9,6 +9,7 @@ Thanks ALZA, Shestak, Fernir, Tukz and everyone i've forgot to mention.
 ]]--
 
 
+
 -- little config
 ----------------------------------------
 local croprwicons=true			-- crops blizz shitty borders from icons in RaidWarning messages
@@ -71,7 +72,8 @@ local function SkinBars(self)
 					frame:SetScale(1)
 					frame.SetScale=T.dummy
 					frame:SetHeight(buttonsize/3)
-					frame:SetTemplate("Default")
+					frame:SetTemplate("Transparent")
+					frame:CreateBorder(true, true)
 					if drawshadow then
 						frame:CreateShadow("Default")
 					end
@@ -192,7 +194,7 @@ local SkinBoss=function()
 
 		if not bar.styled then
 			bar:SetHeight(buttonsize/3)
-			bar:SetTemplate("Default")
+			bar:SetTemplate("Transparent")
 			if drawshadow then
 				bar:CreateShadow("Default")
 			end
@@ -243,6 +245,14 @@ DBMRangeCheck:HookScript("OnShow",function(self)
 		self:CreateShadow("Default")
 	end
 end)
+
+DBMRangeCheckRadar:HookScript("OnShow",function(self)
+	self:SetTemplate("Default")
+	if drawshadow then
+		self:CreateShadow("Default")
+	end
+end)
+
 if (croprwicons) then
 	local replace=string.gsub
 	local old=RaidNotice_AddMessage

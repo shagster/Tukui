@@ -5,7 +5,7 @@ C["general"] = {
 	["uiscale"] = .7111111,                                 -- set your value (between 0.64 and 1) of your uiscale if autoscale is off
 	["overridelowtohigh"] = false,                      -- EXPERIMENTAL ONLY! override lower version to higher version on a lower reso.
 	["multisampleprotect"] = false,                     -- i don't recommend this because of shitty border but, voila!
-	["backdropcolor"] = { .05, .05, .05},            	-- default backdrop color of panels
+	["backdropcolor"] = { 0, 0, 0, 1},            		-- default backdrop color of panels
 	["bordercolor"] = { .125, .125, .125, 1},           -- default border color of panels
 	["skinblizz"] = true,				   			    -- skin blizzard frames (other)
 }
@@ -93,8 +93,8 @@ C["actionbar"] = {
 	["buttonsize"] = 27,                                -- normal buttons size
 	["petbuttonsize"] = 26,                             -- pet & stance buttons size
 	["buttonspacing"] = 3,                              -- buttons spacing
-	["mainbarWidth"] = 7,				    			-- amount of buttons per row on main bar (set between 1-12)
-	["sidebarWidth"] = 6,				    			-- amount of buttons per row on side bars (set between 0-6, 0 = disabled)
+	["mainbarWidth"] = 12,				    			-- amount of buttons per row on main bar (set between 1-12)
+	["sidebarWidth"] = 3,				    			-- amount of buttons per row on side bars (set between 0-6, 0 = disabled)
 	["bgPanel"] = true,				    				-- enable background panels for actionbars
 	["microbar"] = false,                				-- enable microbar display
 	["mousemicro"] = false,            					-- only show microbar on mouseover
@@ -119,16 +119,10 @@ C["Addon_Skins"] = {
 	["Bigwigs"] = true,									-- Enable Bigiwgs Skin
 }
 
-C["im"] = {	--Integrated Modules						
-	["acpheight"] = 525,								-- addon control panel height
-	["acpwidth"] = 370,									-- addon control panel width
-}
-
 C["sCombo"] = {
 	["enable"] = true,				    				-- Enable sCombo-Addon for combopoints instead of default cp-display
 	["energybar"] = true,				    			-- show energy-Bar below cp bar
 }
-
 
 C["bags"] = {
 	["enable"] = true,                                  -- enable an all in one bag mod that fit tukui perfectly
@@ -136,7 +130,7 @@ C["bags"] = {
 
 C["map"] = {
 	["enable"] = true,                                  -- reskin the map to fit tukui
-	["location_panel"] = true,							-- show location panel at top of the screen
+	["location_panel"] = false,							-- show location panel at top of the screen
 }
 
 C["loot"] = {
@@ -162,21 +156,21 @@ C["datatext"] = {
 	["system"] = 5,                                     -- show total memory and others systems infos on panels
 	["bags"] = 0,                                       -- show space used in bags on panels
 	["gold"] = 0,                                       -- show your current gold on panels
-	["wowtime"] = 7,                                    -- show time on panels
+	["wowtime"] = 10,                                    -- show time on panels
 	["guild"] = 2,                                      -- show number on guildmate connected on panels
 	["dur"] = 6,                                        -- show your equipment durability on panels.
 	["friends"] = 3,                                    -- show number of friends connected.
 	["dps_text"] = 0,                                   -- show a dps meter on panels
 	["hps_text"] = 0,                                   -- show a heal meter on panels
-	["power"] = 0,                                      -- show your attackpower/spellpower/healpower/rangedattackpower whatever stat is higher gets displayed
-	["haste"] = 0,                                      -- show your haste rating on panels.
+	["power"] = 8,                                      -- show your attackpower/spellpower/healpower/rangedattackpower whatever stat is higher gets displayed
+	["haste"] = 7,                                      -- show your haste rating on panels.
 	["crit"] = 0,                                       -- show your crit rating on panels.
 	["avd"] = 0,                                        -- show your current avoidance against the level of the mob your targeting
 	["armor"] = 0,                                      -- show your armor value against the level mob you are currently targeting
 	["currency"] = 0,                                   -- show your tracked currency on panels
-	["hit"] = 0,                                        -- show hit rating
+	["hit"] = 9,                                        -- show hit rating
 	["mastery"] = 0,                                    -- show mastery rating
-	["micromenu"] = 0,                                  -- add a micro menu thought datatext
+	["micromenu"] = 11,                                  -- add a micro menu thought datatext
 	["regen"] = 0,					    				-- show mana regeneration
 	["specswitcher"] = 1,				    			-- show current spec and allows mouse-click spec change. Set to position 1 for best results.
 		
@@ -199,7 +193,6 @@ C["chat"] = {
 	["enable"] = true,                                  -- blah
 	["whispersound"] = true,                            -- play a sound when receiving whisper
 	["background"] = true,								-- Dont make it false!!!
-	["layout_switch"] = false,							-- Enable the layout switcher button thing on right chat tab
 }
 
 

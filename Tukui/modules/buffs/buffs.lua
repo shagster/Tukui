@@ -50,7 +50,7 @@ local function UpdateWeapons(button, slot, active, expiration)
 		button.bg:CreatePanel("Default", 30, 30, "CENTER", button, "CENTER", 0, 0)
 		button.bg:SetFrameLevel(button:GetFrameLevel() - 1)
 		button.bg:SetFrameStrata(button:GetFrameStrata())
-		button.bg:CreateShadow("Default")
+		button.bg:CreateBorder(false, true)
 		button.bg:SetAlpha(0)
 	end
 	
@@ -99,7 +99,7 @@ local function UpdateAuras(header, button, weapon)
 		button.bg:CreatePanel("Default", 30, 30, "CENTER", button, "CENTER", 0, 0)
 		button.bg:SetFrameLevel(button:GetFrameLevel() - 1)
 		button.bg:SetFrameStrata(button:GetFrameStrata())
-		--button.bg:CreateShadow()
+		button.bg:CreateBorder(false, true)
 	end
 		
 	if(name) then
@@ -181,7 +181,7 @@ local function CreateAuraHeader(filter, ...)
 	header:SetAttribute("minWidth", 300)
 	header:SetAttribute("minHeight", 94)
 	header:SetAttribute("xOffset", -36)
-	header:SetAttribute("wrapYOffset", -68)
+	header:SetAttribute("wrapYOffset", -40)
 	header:SetAttribute("wrapAfter", 16)
 	header:SetAttribute("maxWraps", 2)
 	
@@ -209,10 +209,10 @@ local function CreateAuraHeader(filter, ...)
 	return header
 end
 
-local framepos = Minimap:GetWidth() + 35
+--local framepos = Minimap:GetWidth() + 35
 
-ScanAuras(CreateAuraHeader("HELPFUL", "TOPRIGHT", -framepos, -12))
-ScanAuras(CreateAuraHeader("HARMFUL", "TOPRIGHT", -framepos, -148))
+ScanAuras(CreateAuraHeader("HELPFUL", "TOPRIGHT", -210, -12))
+ScanAuras(CreateAuraHeader("HARMFUL", "TOPRIGHT", -210, -156))
 
 -- create our aura
 local start = CreateFrame("Frame")
@@ -229,7 +229,7 @@ start:SetScript("OnEvent", function(self)
 			frame:SetAttribute("xOffset", 36)
 		end
 		if position:match("BOTTOM") then
-			frame:SetAttribute("wrapYOffset", 68)
+			frame:SetAttribute("wrapYOffset", 46)
 		end
 		if T.lowversion then
 			frame:SetAttribute("wrapAfter", 8)

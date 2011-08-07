@@ -4,7 +4,6 @@ local function LoadSkin()
 	T.SkinCloseButton(QuestLogFrameCloseButton)
 	QuestLogFrame:StripTextures()
 	QuestLogFrame:SetTemplate("Transparent")
-	QuestLogFrame:CreateShadow("Default")
 	QuestLogCount:StripTextures()
 	
 	T.SkinCloseButton(QuestLogFrameCompleteButton)

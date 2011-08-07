@@ -42,8 +42,8 @@ L.datatext_deficit = "Deficit:"
 L.datatext_profit = "Profit:"
 L.datatext_timeto = "Time to"
 L.datatext_friendlist = "Friends list:"
-L.datatext_playersp = "Spell Power"
-L.datatext_playerap = "Attack Power"
+L.datatext_playersp = "SP"
+L.datatext_playerap = "AP"
 L.datatext_playerhaste = "haste"
 L.datatext_dps = "dps"
 L.datatext_hps = "hps"
@@ -184,8 +184,10 @@ L.core_autoinv_enable_c = "Autoinvite ON: "
 L.core_autoinv_disable = "Autoinvite OFF"
 L.core_wf_unlock = "WatchFrame unlock"
 L.core_wf_lock = "WatchFrame lock"
-L.core_welcome1 = "Hey, |cffFF6347"..myPlayerName.."|r. Welcome to |cffC495DDTukui|r, version "
+--L.core_welcome1 = "Hey, |cffFF6347"..myPlayerName.."|r. Welcome to |cffC495DDTukui - |cff9482C9Shag's Edit|r v"..T.version
+L.core_welcome1 = "Hey, |cffFF6347"..myPlayerName.."|r. Welcome to |cffC495DDTukui v"..T.version
 L.core_welcome2 = "Type |cff00FFFF/uihelp|r for more info or visit www.tukui.org"
+
 
 L.core_uihelp1 = "|cff00ff00General Slash Commands|r"
 L.core_uihelp2 = "|cffFF0000/moveui|r - Unlock and move elements around the screen."
@@ -216,6 +218,9 @@ L.bind_discard = "All newly set keybindings have been discarded."
 L.bind_instruct = "Hover your mouse over any actionbutton to bind it. Press the escape key or right click to clear the current actionbuttons keybinding."
 L.bind_save = "Save bindings"
 L.bind_discardbind = "Discard bindings"
+
+L.core_raidutil = "Raid Utility"
+L.core_raidutil_disbandgroup = "Disband Group"
 
 L.hunter_unhappy = "Your pet is unhappy!"
 L.hunter_content = "Your pet is content!"

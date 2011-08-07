@@ -25,10 +25,17 @@ local function Shared(self, unit)
 	
 	self.menu = T.SpawnMenu
 	
+	-- here we create an invisible frame for all element we want to show over health/power.
+	local InvFrame = CreateFrame("Frame", nil, self)
+	InvFrame:SetFrameStrata("HIGH")
+	InvFrame:SetFrameLevel(5)
+	InvFrame:SetAllPoints()
+	
 	--self:SetBackdrop({bgFile = C["media"].blank, insets = {top = -T.mult, left = -T.mult, bottom = -T.mult, right = -T.mult}})
 	--self:SetBackdropColor(0, 0, 0)
 	self:HighlightUnit(0,.8,0) -- R,G,B
 	local health = CreateFrame('StatusBar', nil, self)
+	health:CreateBorder(false, true)
 	health:SetPoint("TOPLEFT")
 	health:SetPoint("TOPRIGHT")
 	health:Height(22*C["unitframes"].gridscale*T.raidscale)
@@ -88,6 +95,7 @@ local function Shared(self, unit)
 	end
 		
 	local power = CreateFrame("StatusBar", nil, self)
+	power:CreateBorder(false, true)
 	power:SetHeight(1.5*C["unitframes"].gridscale*T.raidscale)
 	power:Point("TOPLEFT", self.Health, "BOTTOMLEFT", 2, 2)
 	power:Point("TOPRIGHT", self.Health, "BOTTOMRIGHT", -2, 2)
@@ -126,7 +134,7 @@ local function Shared(self, unit)
 	end
 	
 	local name = self.Health:CreateFontString(nil, "OVERLAY")
-   	name:SetPoint("TOP", 0, 15) 
+   	name:SetPoint("TOP", 0, 10) 
 	name:SetPoint("BOTTOM") 
 	name:SetPoint("LEFT", 4, 0) 
 	name:SetPoint("RIGHT")
@@ -135,20 +143,20 @@ local function Shared(self, unit)
 	self:Tag(name, "[Tukui:getnamecolor][Tukui:nameshort]")
 	self.Name = name
 	
-	local leader = health:CreateTexture(nil, "OVERLAY")
+	local leader = InvFrame:CreateTexture(nil, "OVERLAY")
     leader:Height(12*T.raidscale)
     leader:Width(12*T.raidscale)
     leader:SetPoint("TOPLEFT", 0, 6)
 	self.Leader = leader
 	
-	local LFDRole = health:CreateTexture(nil, "OVERLAY")
+	local LFDRole = InvFrame:CreateTexture(nil, "OVERLAY")
     LFDRole:Height(15*T.raidscale)
     LFDRole:Width(15*T.raidscale)
-	LFDRole:Point("TOP", 0, 10)
+	LFDRole:Point("TOPRIGHT", 0, 10)
 	LFDRole:SetTexture("Interface\\AddOns\\Tukui\\medias\\textures\\lfdicons.blp")
 	self.LFDRole = LFDRole
 	
-    local MasterLooter = health:CreateTexture(nil, "OVERLAY")
+    local MasterLooter = InvFrame:CreateTexture(nil, "OVERLAY")
     MasterLooter:Height(12*T.raidscale)
     MasterLooter:Width(12*T.raidscale)
 	self.MasterLooter = MasterLooter
@@ -173,7 +181,7 @@ local function Shared(self, unit)
 	end
 		
 	if C["unitframes"].showsymbols == true then
-		local RaidIcon = power:CreateTexture(nil, 'OVERLAY')
+		local RaidIcon = InvFrame:CreateTexture(nil, 'OVERLAY')
 		RaidIcon:Height(14*T.raidscale)
 		RaidIcon:Width(14*T.raidscale)
 		RaidIcon:SetPoint('CENTER', self, 'TOP', 0, 4)
@@ -348,7 +356,21 @@ oUF:Factory(function(self)
 			"columnAnchorPoint", "BOTTOM",
 			"showSolo", C["unitframes"].showsolo
 		)
-		raid:SetPoint("BOTTOMLEFT", TukuiTabsLeftBackground, "TOPLEFT", 2, 6)  --2,6
+		
+		local elapsed = 0
+			raid:SetScript("OnUpdate",function(self, u)
+			if InCombatLockdown() then return end
+			elapsed = elapsed + u
+			if elapsed > .5 then -- 2 seconds
+			raid:ClearAllPoints()
+			if not TukuiChatBackgroundLeft:IsVisible() then
+			raid:SetPoint("BOTTOMLEFT", TukuiChatBackgroundLeft, "BOTTOMLEFT", 2, 24)
+			else
+			raid:SetPoint("BOTTOMLEFT", TukuiChatBackgroundLeft, "TOPLEFT", 2, 6)  --2,6
+			end
+			elapsed = 0
+			end
+			end)
 		
 		local pets = {} 
 			pets[1] = oUF:Spawn('partypet1', 'oUF_TukuiPartyPet1') 

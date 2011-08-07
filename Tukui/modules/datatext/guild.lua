@@ -23,10 +23,10 @@ Stat:SetFrameStrata("BACKGROUND")
 Stat:SetFrameLevel(3)
 Stat.update = false
 
-local Text  = TukuiInfoLeft:CreateFontString(nil, "OVERLAY")
-Text:SetFont(C.media.pixelfont, C["datatext"].fontsize, "THINOUTLINE")
+local Text  = TukuiChatBackgroundLeft:CreateFontString(nil, "OVERLAY")
+Text:SetFont(C.media.pixelfont, C["datatext"].fontsize, "MONOCHROMEOUTLINE")
 T.PP(C["datatext"].guild, Text)
-
+Stat:SetParent(Text:GetParent())
 local function BuildGuildTable()
 	totalOnline = 0
 	wipe(guildTable)

@@ -12,10 +12,10 @@ Stat:SetFrameLevel(3)
 Stat:EnableMouse(true)
 Stat.tooltip = false
 
-local Text  = TukuiInfoLeft:CreateFontString(nil, "OVERLAY")
-Text:SetFont(C.media.pixelfont, C["datatext"].fontsize, "THINOUTLINE")
+local Text  = TukuiChatBackgroundLeft:CreateFontString(nil, "OVERLAY")
+Text:SetFont(C.media.pixelfont, C["datatext"].fontsize, "MONOCHROMEOUTLINE")
 T.PP(C["datatext"].system, Text)
-
+Stat:SetParent(Text:GetParent())
 local bandwidthString = "%.2f Mbps"
 local percentageString = "%.2f%%"
 

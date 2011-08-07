@@ -22,10 +22,17 @@ local function Shared(self, unit)
 	
 	self.menu = T.SpawnMenu
 	
+	-- here we create an invisible frame for all element we want to show over health/power.
+	local InvFrame = CreateFrame("Frame", nil, self)
+	InvFrame:SetFrameStrata("HIGH")
+	InvFrame:SetFrameLevel(5)
+	InvFrame:SetAllPoints()
+	
 	self:SetBackdrop({bgFile = C["media"].blank, insets = {top = -T.mult, left = -T.mult, bottom = -T.mult, right = -T.mult}})
 	self:SetBackdropColor(0.1, 0.1, 0.1)
 	
 	local health = CreateFrame('StatusBar', nil, self)
+	health:CreateBorder(false, true)
 	health:SetPoint("TOPLEFT")
 	health:SetPoint("TOPRIGHT")
 	health:Height(33*T.raidscale)
@@ -67,6 +74,7 @@ local function Shared(self, unit)
 	end
 	
 	local power = CreateFrame("StatusBar", nil, self)
+	power:CreateBorder(false, true)
 	power:Height(1.5*T.raidscale)
 	power:Point("TOPLEFT", self.Health, "BOTTOMLEFT", 2, 4)
 	power:Point("TOPRIGHT", self.Health, "BOTTOMRIGHT", -2, 4)
@@ -102,21 +110,21 @@ local function Shared(self, unit)
 	self:Tag(name, "[Tukui:namemedium]")
 	self.Name = name
 	
-    local leader = health:CreateTexture(nil, "OVERLAY")
+    local leader = InvFrame:CreateTexture(nil, "OVERLAY")
     leader:Height(12*T.raidscale)
     leader:Width(12*T.raidscale)
     leader:SetPoint("TOPLEFT", 0, 6)
 	self.Leader = leader
 	
-   local LFDRole = health:CreateTexture(nil, "OVERLAY")
+   local LFDRole = InvFrame:CreateTexture(nil, "OVERLAY")
     LFDRole:Height(14*T.raidscale)
     LFDRole:Width(14*T.raidscale)
-	LFDRole:Point("TOP", 0, 10)
+	LFDRole:Point("TOPRIGHT", 0, 10)
 	LFDRole:SetTexture("Interface\\AddOns\\Tukui\\medias\\textures\\lfdicons.blp")
 	self.LFDRole = LFDRole
 	
 	
-    local MasterLooter = health:CreateTexture(nil, "OVERLAY")
+    local MasterLooter = InvFrame:CreateTexture(nil, "OVERLAY")
     MasterLooter:Height(12*T.raidscale)
     MasterLooter:Width(12*T.raidscale)
 	self.MasterLooter = MasterLooter
@@ -131,7 +139,7 @@ local function Shared(self, unit)
     end
 		
 	if C["unitframes"].showsymbols == true then
-		local RaidIcon = health:CreateTexture(nil, 'OVERLAY')
+		local RaidIcon = InvFrame:CreateTexture(nil, 'OVERLAY')
 		RaidIcon:Height(14*T.raidscale)
 		RaidIcon:Width(14*T.raidscale)
 		RaidIcon:SetPoint('CENTER', self, 'TOP')

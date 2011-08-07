@@ -29,7 +29,7 @@ local function LoadSkin()
 	for i = 1, getn(skins) do
 		_G[skins[i]]:SetTemplate("Transparent")
 		if _G[skins[i]] ~= _G["AutoCompleteBox"] then -- frame to blacklist from create shadow function
-			_G[skins[i]]:CreateShadow("Default")
+			--_G[skins[i]]:CreateShadow("Default")
 		end
 	end
 
@@ -182,11 +182,42 @@ local function LoadSkin()
 	_G["StackSplitFrame"]:GetRegions():Hide()
 
 	RolePollPopup:SetTemplate("Transparent")
-	RolePollPopup:CreateShadow("Default")
 	LFDDungeonReadyDialog:SetTemplate("Transparent")
-	LFDDungeonReadyDialog:CreateShadow("Default")
 	T.SkinButton(LFDDungeonReadyDialogEnterDungeonButton)
 	T.SkinButton(LFDDungeonReadyDialogLeaveQueueButton)
+	
+	-- reskin sliders
+	local slides = {
+	"InterfaceOptionsCombatPanelSpellAlertOpacitySlider",
+	"InterfaceOptionsCombatPanelMaxSpellStartRecoveryOffset",
+	"InterfaceOptionsBattlenetPanelToastDurationSlider",
+	"InterfaceOptionsCameraPanelMaxDistanceSlider",
+	"InterfaceOptionsCameraPanelFollowSpeedSlider",
+	"InterfaceOptionsMousePanelMouseSensitivitySlider",
+	"InterfaceOptionsMousePanelMouseLookSpeedSlider",
+	"Advanced_MaxFPSSlider",
+	"Advanced_MaxFPSBKSlider",
+	"AudioOptionsSoundPanelSoundQuality",
+	"AudioOptionsSoundPanelMasterVolume",
+	"AudioOptionsSoundPanelSoundVolume",
+	"AudioOptionsSoundPanelMusicVolume",
+	"AudioOptionsSoundPanelAmbienceVolume",
+	"AudioOptionsVoicePanelMicrophoneVolume",
+	"AudioOptionsVoicePanelSpeakerVolume",
+	"AudioOptionsVoicePanelSoundFade",
+	"AudioOptionsVoicePanelMusicFade",
+	"AudioOptionsVoicePanelAmbienceFade",
+}
+
+		for i = 1, getn(slides) do
+		if _G[slides[i]] then
+		if _G[slides[i]] ~= AudioOptionsSoundPanelSoundVolume then
+			T.SkinSlideBar(_G[slides[i]],8,true)
+		else
+			T.SkinSlideBar(_G[slides[i]],8)
+		end
+	end
+	end
 end
 
 tinsert(T.SkinFuncs["Tukui"], LoadSkin)

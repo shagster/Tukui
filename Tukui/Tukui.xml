@@ -58,6 +58,7 @@
 	
 	<Script file="modules\misc\invite.lua"/>
 	<Script file="modules\misc\damage.lua"/>
+	<Script file="modules\misc\experience.lua"/>
 	
 	
 	
@@ -106,12 +107,11 @@
 	<Script file="modules\datatext\regen.lua"/>
 	
 	
-	<Script file="modules\extras\addonmanager.lua"/>
 	<Script file="modules\extras\bgannouncer.lua"/>
 	<Script file="modules\extras\mail.lua"/>
 	<Script file="modules\extras\tooltipicon.lua"/>
 	<Script file="modules\extras\raidutility.lua"/>
-	
+	<Script file="modules\chat\chatframes.lua"/>
 	<Script file="modules\buffs\raidbuffsreminder.lua"/>
 	<Script file="modules\actionbars\Bind.lua"/>
 	<Script file="modules\actionbars\Hide.lua"/>
@@ -132,7 +132,7 @@
 	<Script file="modules\actionbars\Cooldowns.lua"/>
 	<Script file="modules\actionbars\Microbar.lua"/>	
 	
-	<Script file="modules\chat\chatframes.lua"/>
+	
 	<Script file="modules\chat\telltarget.lua"/>
 	<Script file="modules\chat\copychat.lua"/>
 	<Script file="modules\chat\mousescroll.lua"/>
@@ -185,6 +185,7 @@
 	<Script file="modules\skins\mail.lua"/>
 	<Script file="modules\skins\merchant.lua"/>
 	<Script file="modules\skins\opacity.lua"/>
+	<Script file="modules\skins\options.lua"/>
 	<Script file="modules\skins\others.lua"/>
 	<Script file="modules\skins\petition.lua"/>
 	<Script file="modules\skins\pvp.lua"/>
@@ -206,7 +207,7 @@
 	<Script file="modules\skins\watchframe.lua"/>
 	<Script file="modules\skins\worldmap.lua"/>
 	
-	
+	<Script file="modules\misc\experience.lua"/>
 	
 	
 	<Script file="modules\skins\addons\LoadSkins.lua"/>

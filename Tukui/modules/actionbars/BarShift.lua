@@ -1,23 +1,16 @@
 local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
 if not C["actionbar"].enable == true then return end
-local TukuiPlayer = TukuiPlayer
+
 ---------------------------------------------------------------------------
 -- Setup Shapeshift Bar
 ---------------------------------------------------------------------------
 
 -- used for anchor totembar or shapeshiftbar
 local TukuiShift = CreateFrame("Frame","TukuiShiftBar",UIParent)
-TukuiShift:RegisterEvent("ADDON_LOADED")
-TukuiShift:SetScript("OnEvent", function(self, event, addon)
-if C["unitframes"].style == "Shag" and addon == "Tukui_Raid" then
-TukuiShift:SetPoint("BOTTOMLEFT", InvTukuiActionBarBackground, "TOP", -313, 42)
-elseif C["unitframes"].style == "Shag" and addon == "Tukui_Raid_Healing" then
-TukuiShift:SetPoint("TOP", UIParent, "BOTTOM", -305, 262)
-elseif C["unitframes"].style == "Smelly" and addon == "Tukui_Raid" then
-TukuiShift:SetPoint("TOP", UIParent, "BOTTOM", -175, 159)
-elseif C["unitframes"].style == "Smelly" and addon == "Tukui_Raid_Healing" then
-TukuiShift:SetPoint("TOP", UIParent, "BOTTOM", -305, 257)
-end
+TukuiShift:RegisterEvent("PLAYER_ENTERING_WORLD")
+TukuiShift:SetScript("OnEvent", function()
+TukuiShift:ClearAllPoints()
+TukuiShift:SetPoint("TOPLEFT", TukuiPlayer, "BOTTOMLEFT", 1, -6)
 end)
 TukuiShift:SetWidth((T.petbuttonsize * 5) + (T.petbuttonsize * 4))
 TukuiShift:SetHeight(T.petbuttonsize/2)
@@ -72,7 +65,8 @@ bar:SetScript("OnEvent", function(self, event, ...)
 			button:ClearAllPoints()
 			button:SetParent(self)
 			button:SetFrameStrata("LOW")
-			
+			button:CreateBorder(false, true)
+						
 			if i == 1 then
 				button:Point("LEFT", TukuiShift, 0, 0)
 			else
@@ -115,6 +109,7 @@ end)
 -- Border
 local ssborder = CreateFrame("Frame", "ShapeShiftBorder", ShapeshiftButton1)
 ssborder:SetTemplate("Default")
+ssborder:CreateBorder(false, true)
 ssborder:SetFrameLevel(1)
 ssborder:SetFrameStrata("BACKGROUND")
 ssborder:Point("LEFT", -T.buttonspacing, 0)

@@ -143,7 +143,6 @@ local function Shared(self, unit)
 	})
 	panel:SetBackdropColor(unpack(C["media"].bordercolor))
 	panel:CreateBorder(true, true)
-	--panel:CreateShadow("Default")
 	self.panel = panel
 	
 	------------------------------------------------------------------------
@@ -290,7 +289,6 @@ local function Shared(self, unit)
 					
 					eclipseBar.FrameBackdrop = CreateFrame("Frame", nil, eclipseBar)
 					eclipseBar.FrameBackdrop:SetTemplate("Default")
-					--eclipseBar.FrameBackdrop:CreateShadow("Default")
 					eclipseBar.FrameBackdrop:SetPoint("TOPLEFT", T.Scale(-2), T.Scale(2))
 					eclipseBar.FrameBackdrop:SetPoint("BOTTOMRIGHT", T.Scale(2), T.Scale(-2))
 					eclipseBar.FrameBackdrop:SetFrameLevel(eclipseBar:GetFrameLevel() - 1)
@@ -332,7 +330,6 @@ local function Shared(self, unit)
 					    bars[i].border:SetFrameStrata("BACKGROUND")
 						bars[i].border:SetFrameLevel(2)
 					    bars[i].border:SetTemplate("Default")
-					    --bars[i].border:CreateShadow("Default")
 					    --bars[i].border:SetBackdropColor(.1,.1,.1,1)
 						bars[i].border:SetBackdropColor(0,0,0,1)
 					end
@@ -385,8 +382,7 @@ local function Shared(self, unit)
 					--Runes[i].border:SetBackdropColor(.1,.1,.1,1 )
 					Runes[i].border:SetBackdropColor(0,0,0,1)
 					Runes[i].border:SetTemplate("Default")
-					--Runes[i].border:CreateShadow("Default")
-                end
+				end
 
                     self.Runes = Runes
                 end
@@ -423,7 +419,6 @@ local function Shared(self, unit)
 					TotemBar[i].border:SetFrameLevel(4)
 					--TotemBar[i].border:SetBackdropColor(.1,.1,.1,1)
 					TotemBar[i].border:SetBackdropColor(0,0,0,1)
-					--TotemBar[i].border:CreateShadow("Default")
 					TotemBar[i].border:SetTemplate("Default")
 				end
 				self.TotemBar = TotemBar
@@ -464,7 +459,8 @@ local function Shared(self, unit)
 			cp:SetPoint("RIGHT", health.border, "LEFT", -5, 0)
 			self.CPoints = cp
 			end
-		if (unit == "target" and C["unitframes"].targetauras) or (unit == "player" and C["unitframes"].playerauras) then
+			
+			if (unit == "target" and C["unitframes"].targetauras) or (unit == "player" and C["unitframes"].playerauras) then
 			local buffs = CreateFrame("Frame", nil, self)
 			local debuffs = CreateFrame("Frame", nil, self)
 			
@@ -478,7 +474,7 @@ local function Shared(self, unit)
 				if T.lowversion then
 					buffs:SetPoint("TOPLEFT", self, "TOPLEFT", 0, 26)
 				else
-					buffs:SetPoint("TOPLEFT", self, "TOPLEFT", 0, 30)
+					buffs:SetPoint("TOPLEFT", self, "TOPLEFT", -2, 30)
 				end
 			end
 			
@@ -501,7 +497,7 @@ local function Shared(self, unit)
 				
 				debuffs:SetHeight(26)
 				debuffs:SetWidth(252)
-				debuffs:SetPoint("BOTTOMLEFT", buffs, "TOPLEFT", -2, 2)
+				debuffs:SetPoint("BOTTOMLEFT", buffs, "TOPLEFT", -24, 2)
 				debuffs.size = 26
 				debuffs.num = 27
 			end
@@ -540,7 +536,7 @@ local function Shared(self, unit)
 						
 			if unit == "player" then
 				if C["unitframes"].cbicons == true then
-					castbar:SetWidth(320)
+					castbar:SetWidth(300)
 				else
 					castbar:SetWidth(TukuiBar1:GetWidth() - 4)
 				end
@@ -816,7 +812,6 @@ local function Shared(self, unit)
 		castbar.bg = CreateFrame("Frame", nil, castbar)
 		castbar.bg:SetTemplate("Default")
 		castbar.bg:SetBackdropColor(0,0,0,1)
-		--castbar.bg:CreateShadow("Default")
 		--castbar.bg:SetBackdropBorderColor(unpack(C["media"].altbordercolor))
 		castbar.bg:Point("TOPLEFT", -2, 2)
 		castbar.bg:Point("BOTTOMRIGHT", 2, -2)
@@ -847,7 +842,6 @@ local function Shared(self, unit)
 		castbar.button:Point("RIGHT", castbar, "LEFT", -5, 0)
 		castbar.button:SetTemplate("Default")
 		castbar.button:SetBackdropColor(0,0,0,1)
-		--castbar.button:CreateShadow("Default")
 		--castbar.button:SetBackdropBorderColor(unpack(C["media"].altbordercolor))
 		castbar.icon = castbar.button:CreateTexture(nil, "ARTWORK")
 		castbar.icon:Point("TOPLEFT", castbar.button, 2, -2)
@@ -905,7 +899,6 @@ local function Shared(self, unit)
 		castbar.bg = CreateFrame("Frame", nil, castbar)
 		castbar.bg:SetTemplate("Default")
 		castbar.bg:SetBackdropColor(0,0,0,1)
-		--castbar.bg:CreateShadow("Default")
 		--castbar.bg:SetBackdropBorderColor(unpack(C["media"].altbordercolor))
 		castbar.bg:Point("TOPLEFT", -2, 2)
 		castbar.bg:Point("BOTTOMRIGHT", 2, -2)
@@ -932,7 +925,6 @@ local function Shared(self, unit)
 		castbar.button:Point("RIGHT", castbar, "LEFT", -5, 0)
 		castbar.button:SetTemplate("Default")
 		castbar.button:SetBackdropColor(0,0,0,1)
-		--castbar.button:CreateShadow("Default")
 		--castbar.button:SetBackdropBorderColor(unpack(C["media"].altbordercolor))
 		castbar.icon = castbar.button:CreateTexture(nil, "ARTWORK")
 		castbar.icon:Point("TOPLEFT", castbar.button, 2, -2)
@@ -1033,7 +1025,7 @@ local function Shared(self, unit)
 		debuffs.PostCreateIcon = T.PostCreateAura
 		debuffs.PostUpdateIcon = T.PostUpdateAura
 		-- an option to show only our debuffs on target
-		if (unit and unit:find("boss%d")) then
+		if (unit and (unit:find("boss%d") or unit:find("arena%d"))) then
 		debuffs.onlyShowPlayer = C.unitframes.onlyselfdebuffs
 		end
 		self.Debuffs = debuffs
@@ -1071,7 +1063,6 @@ local function Shared(self, unit)
 		castbar.bg = CreateFrame("Frame", nil, castbar)
 		castbar.bg:SetTemplate("Default")
 		castbar.bg:SetBackdropColor(0,0,0,1)
-		--castbar.bg:CreateShadow("Default")
 		--castbar.bg:SetBackdropBorderColor(unpack(C["media"].altbordercolor))
 		castbar.bg:Point("TOPLEFT", -2, 2)
 		castbar.bg:Point("BOTTOMRIGHT", 2, -2)
@@ -1097,7 +1088,6 @@ local function Shared(self, unit)
 		castbar.button:Point("RIGHT", castbar, "LEFT", -5, 0)
 		castbar.button:SetTemplate("Default")
 		castbar.button:SetBackdropColor(0,0,0,1)
-		--castbar.button:CreateShadow("Default")
 		--castbar.button:SetBackdropBorderColor(unpack(C["media"].altbordercolor))
 		castbar.icon = castbar.button:CreateTexture(nil, "ARTWORK")
 		castbar.icon:Point("TOPLEFT", castbar.button, 2, -2)
@@ -1167,7 +1157,7 @@ end
 --	Default position of Tukui unitframes
 ------------------------------------------------------------------------
 oUF:RegisterStyle('Tukui', Shared)
-T.Player, T.Target, T.ToT, T.Pet, T.Focus, T.Boss, T.Pettarget = 225, 225, 130, 130, 115, 200, 130
+T.Player, T.Target, T.ToT, T.Pet, T.Focus, T.Focustarget, T.Boss, T.Pettarget = 225, 225, 130, 130, 115, 115, 200, 130
 
 -- spawn
 local player = oUF:Spawn('player', "TukuiPlayer")
@@ -1195,7 +1185,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		target:Point("BOTTOM", InvTukuiActionBarBackground, "TOP", 201, 60)
 		tot:Point("BOTTOM", InvTukuiActionBarBackground, "TOP", 0, 60)
 		pet:Point("BOTTOM", InvTukuiActionBarBackground, "TOP", 0, 92)
-		focus:Point("TOP", UIParent, "BOTTOM", 350, 530)
+		focus:Point("RIGHT", UIParent, "RIGHT", -412, -253)
 		if C.unitframes.showpettarget then
 		pettarget:SetPoint("TOPLEFT", tot, "BOTTOMLEFT", 0, -3) ---- SHAG pettarg
 		end
@@ -1204,7 +1194,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		player:Point("TOP", UIParent, "BOTTOM", -310 , 300)
 		target:Point("TOP", UIParent, "BOTTOM", 310, 300)
 		tot:Point("TOPRIGHT", TukuiTarget, "BOTTOMRIGHT", 0, -25)
-		pet:Point("TOPLEFT", TukuiPlayer, "BOTTOMLEFT", 0, -25)
+		pet:Point("TOPLEFT", TukuiPlayer, "BOTTOMLEFT", 0, -32)
 		focus:Point("TOP", UIParent, "BOTTOM", -400, 450)
 		
 	end
@@ -1212,7 +1202,7 @@ end)
 
 if C.unitframes.showfocustarget then
 	local focustarget = oUF:Spawn("focustarget", "TukuiFocusTarget")
-	focustarget:SetPoint("TOP", focus, "BOTTOM", 0 , -35)
+	focustarget:SetPoint("TOP", TukuiFocus, "BOTTOM", 0 , -35)
 	focustarget:Size(180, 29)
 end
 
@@ -1222,7 +1212,7 @@ if C.arena.unitframes then
 	for i = 1, 5 do
 		arena[i] = oUF:Spawn("arena"..i, "TukuiArena"..i)
 		if i == 1 then
-			arena[i]:SetPoint("BOTTOMLEFT", InvTukuiActionBarBackground, "BOTTOM", 500 , 300)
+			arena[i]:SetPoint("RIGHT", UIParent, "RIGHT", -280 , -120)
 		else
 			arena[i]:SetPoint("BOTTOM", arena[i-1], "TOP", 0, 35)
 		end
@@ -1244,7 +1234,7 @@ if C["unitframes"].showboss then
 	for i = 1, MAX_BOSS_FRAMES do
 		boss[i] = oUF:Spawn("boss"..i, "TukuiBoss"..i)
 		if i == 1 then
-			boss[i]:SetPoint("BOTTOMLEFT", InvTukuiActionBarBackground, "BOTTOM", 600, 300)
+			boss[i]:SetPoint("RIGHT", UIParent, "RIGHT", -115, -140)
 		else
 			boss[i]:SetPoint('BOTTOM', boss[i-1], 'TOP', 0, 35)             
 		end

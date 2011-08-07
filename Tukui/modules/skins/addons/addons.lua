@@ -4,13 +4,11 @@ if C.Addon_Skins.background then
 	-- Addons Background (same size as right chat background)
 	local bg = CreateFrame("Frame", "AddonBGPanel", UIParent)
 	bg:CreatePanel("Transparent", 376, 151, "BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -4, 4)
-	bg:CreateShadow("Default")
-
+	
 	local bgtab = CreateFrame("Frame", nil, bg)
 	bgtab:CreatePanel("Transparent", 1, 20, "TOPLEFT", bg, "TOPLEFT", 5, -5)
 	bgtab:Point("TOPRIGHT", bg, "TOPRIGHT", -5, -5)
-	bgtab:CreateShadow("Default")
-	
+		
 	if C.chat.rightchatbackground then
 		-- Use Chatsize if there is the rightchatbackground
 		bg:ClearAllPoints()
@@ -23,7 +21,6 @@ if C.Addon_Skins.background then
 		
 		local bgc = CreateFrame("Frame", nil, bgtab)
 		bgc:CreatePanel("Transparent", 20, 20, "LEFT", bgtab, "RIGHT", 3, 0)
-		bgc:CreateShadow("Default")
 		bgc:SetFrameStrata("HIGH")
 		bgc:SetFrameLevel(10)
 		
@@ -115,13 +112,11 @@ if IsAddOnLoaded("spellstealer") then
 	local sslist = CreateFrame("Frame", nil, SSFrameList)
 	sslist:CreatePanel("", 1, 1, "TOPLEFT", SSFrameList, "TOPLEFT", -2, 2)
 	sslist:Point("BOTTOMRIGHT", 2, -2)
-	sslist:CreateShadow("")
-	
+		
 	local ssframeb = CreateFrame("Frame", nil, sslist)
 	ssframeb:CreatePanel("", 1, 16, "BOTTOMLEFT", sslist, "TOPLEFT", 0, 3)
 	ssframeb:Point("BOTTOMRIGHT", sslist, "TOPRIGHT", 0, 3)
-	ssframeb:CreateShadow("")
-	
+		
 	SSFrametitletext:SetFont(C.media.pixelfont, 10)
 	SSFrametitletext:SetTextColor(unpack(C.datatext.color))
 	SSFrameListText:SetFont(C.media.font, 10)

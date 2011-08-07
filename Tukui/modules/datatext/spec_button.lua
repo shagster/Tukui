@@ -1,9 +1,8 @@
 local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
 if C["datatext"].specswitcher == 1 then
 
-local talenticon = CreateFrame("Frame", "TukuiTalentIcon", TukuiInfoLeft)
-talenticon:CreatePanel("Default", 14, 14, "LEFT", TukuiInfoLeft, "LEFT", 10, 0)
---talenticon:SetFrameLevel(2)
+local talenticon = CreateFrame("Frame", "TukuiTalentIcon", TukuiChatBackgroundLeft)
+talenticon:CreatePanel("Default", 14, 14, "BOTTOMLEFT", TukuiChatBackgroundLeft, "BOTTOMLEFT", 10, 4)
 talenticon:SetFrameStrata("LOW")
 talenticon:SetTemplate("Thin")
 
@@ -19,19 +18,14 @@ local UpdateTexture = function(self)
 	
 	self.tex:SetTexture(tex)
 end
-
-local ChangeSpec = function()
-	local spec = GetActiveTalentGroup()
-	
-	if spec == 1 then
-		SetActiveTalentGroup(2)
+talenticon:SetScript("OnMouseDown", function(self, btn)
+	if btn == 'RightButton'  then
+		ToggleTalentFrame()
 	else
-		SetActiveTalentGroup(1)
+		SetActiveTalentGroup(active == 1 and 2 or 1)
 	end
-end
-
+	end)
 	
-	talenticon:SetScript("OnMouseDown", ChangeSpec)
 	talenticon:RegisterEvent("PLAYER_ENTERING_WORLD")
 	talenticon:RegisterEvent("ACTIVE_TALENT_GROUP_CHANGED")
 	talenticon:RegisterEvent("PLAYER_TALENT_UPDATE")

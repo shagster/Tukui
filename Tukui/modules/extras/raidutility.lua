@@ -74,7 +74,7 @@ CloseButton:SetScript("OnMouseUp", function(self) RaidUtilityPanel.toggled = fal
 CreateButton("DisbandRaidButton", RaidUtilityPanel, "UIMenuButtonStretchTemplate", RaidUtilityPanel:GetWidth() * 0.8, T.Scale(18), "TOP", RaidUtilityPanel, "TOP", 0, T.Scale(-5), L.core_raidutil_disbandgroup, nil)
 DisbandRaidButton:SetScript("OnMouseUp", function(self)
 	if CheckRaidStatus() then
-		StaticPopup_Show("DISBAND_RAID")
+		StaticPopup_Show("TUKUIDISBAND_RAID")
 	end
 end)
 

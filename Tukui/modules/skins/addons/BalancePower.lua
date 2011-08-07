@@ -6,7 +6,6 @@ if T.myclass == "DRUID" then
 	eclipseBar:ClearAllPoints()
 	eclipseBar:Point("TOPLEFT", BalancePowerTrackerBackgroundFrame, "TOPLEFT", 0, 0)
 	eclipseBar:Point("BOTTOMRIGHT", BalancePowerTrackerBackgroundFrame, "BOTTOMRIGHT", 0, 0)
-	--eclipseBar:CreateShadow("Default")
 	eclipseBar:SetTemplate("Thin")
 	eclipseBar:SetBackdropColor(0,0,0,1)
 	
@@ -46,24 +45,18 @@ if T.myclass == "DRUID" then
 	local t11bar3 = CreateFrame("Frame", "T11Bar3", UIParent)
 	
 	t11bar1:CreatePanel(nil, 1, 2, "TOPLEFT", BalancePowerTrackerBackgroundFrame, "BOTTOMLEFT", 3, 2)
-	--t11bar1:CreateShadow("Default")
-	--t11bar1.shadow:SetBackdropBorderColor(192, 0, 0, 1)
 	t11bar1:SetWidth(78)
 	t11bar1:SetBackdropBorderColor(192, 0, 0, 1)
 	t11bar1:SetFrameStrata("HIGH")
 	t11bar1:Hide()
 	
 	t11bar2:CreatePanel(nil, 1, 2, "TOP", BalancePowerTrackerBackgroundFrame, "BOTTOM", 0, 2)
-	--t11bar2:CreateShadow("Default")
-	--t11bar2.shadow:SetBackdropBorderColor(192, 0, 0, 1)
 	t11bar2:SetWidth(78)
 	t11bar2:SetBackdropBorderColor(192, 0, 0, 1)
 	t11bar2:SetFrameStrata("HIGH")
 	t11bar2:Hide()
 	
 	t11bar3:CreatePanel(nil, 1, 2, "TOPRIGHT", BalancePowerTrackerBackgroundFrame, "BOTTOMRIGHT", -3, 2)
-	--t11bar3:CreateShadow("Default")
-	--t11bar3.shadow:SetBackdropBorderColor(192, 0, 0, 1)
 	t11bar3:SetWidth(78)
 	t11bar3:SetBackdropBorderColor(192, 0, 0, 1)
 	t11bar3:SetFrameStrata("HIGH")

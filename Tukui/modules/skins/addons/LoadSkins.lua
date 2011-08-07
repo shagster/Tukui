@@ -28,7 +28,6 @@ local function skinFrame(self, frame)
 	else
 		frame:SetTemplate("Default")
 	end
-	frame:CreateShadow("Default")
 end
 local function skinButton(self, button)
 	skinFrame(self, button)

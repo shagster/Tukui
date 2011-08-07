@@ -22,7 +22,6 @@ local Options = {
 local Anchor = CreateFrame("Frame", "sComboAnchor", UIParent)
 Anchor:CreatePanel("", ((Options.comboWidth + Options.spacing)*5)-Options.spacing, 12, "CENTER", UIParent, "CENTER", 0, -175)
 Anchor:SetBackdropBorderColor(1,0,0)
-Anchor:CreateShadow("")
 Anchor:SetMovable(true)
 Anchor:Hide()
 Anchor.text = Anchor:CreateFontString(nil, "OVERLAY")
@@ -34,7 +33,6 @@ local sCombo = CreateFrame("Frame", "sCombo", UIParent)
 for i = 1, 5 do
 	sCombo[i] = CreateFrame("Frame", "sCombo"..i, UIParent)
 	sCombo[i]:CreatePanel("Default", Options.comboWidth, Options.comboHeight, "CENTER", UIParent, "CENTER", 0, 0)
-	sCombo[i]:CreateShadow("Default")
 	if C.datatext.fontsize == 8 then
 		sCombo[i].text = sCombo[i]:CreateFontString(nil, "OVERLAY")
 		sCombo[i].text:SetFont(C.media.pixelfont, C["datatext"].fontsize)
@@ -101,7 +99,6 @@ end
 if not C.sCombo.energybar or not C.unitframes.enable then return end
 local sPowerBG = CreateFrame("Frame", "sPowerBG", TukuiTarget)
 sPowerBG:CreatePanel(nil, (Options.comboWidth * 5) + (Options.spacing * 5) - Options.spacing, Options.comboHeight, "TOPLEFT", Anchor, "BOTTOMLEFT", 0, -(Options.comboHeight+6))
-sPowerBG:CreateShadow()
 local sPowerStatus = CreateFrame("StatusBar", "sPowerStatus", TukuiTarget)
 sPowerStatus:SetStatusBarTexture(C.media.normTex)
 sPowerStatus:SetFrameLevel(6)
