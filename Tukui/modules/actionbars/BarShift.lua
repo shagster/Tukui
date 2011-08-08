@@ -10,7 +10,11 @@ local TukuiShift = CreateFrame("Frame","TukuiShiftBar",UIParent)
 TukuiShift:RegisterEvent("PLAYER_ENTERING_WORLD")
 TukuiShift:SetScript("OnEvent", function()
 TukuiShift:ClearAllPoints()
+if T.myclass == "SHAMAN" then
+TukuiShift:SetPoint("BOTTOMLEFT", TukuiChatBackgroundLeft, "BOTTOMRIGHT", 0, 0)
+else
 TukuiShift:SetPoint("TOPLEFT", TukuiPlayer, "BOTTOMLEFT", 1, -6)
+end
 end)
 TukuiShift:SetWidth((T.petbuttonsize * 5) + (T.petbuttonsize * 4))
 TukuiShift:SetHeight(T.petbuttonsize/2)
