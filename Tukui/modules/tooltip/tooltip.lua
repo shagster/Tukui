@@ -32,12 +32,13 @@ anchor:SetFrameStrata("TOOLTIP")
 anchor:SetFrameLevel(20)
 anchor:SetClampedToScreen(true)
 anchor:SetAlpha(0)
-if C.chat.background and TukuiChatBackgroundRight then
+if TukuiChatBackgroundRight:IsVisible() then
 	anchor:SetPoint("BOTTOMRIGHT", TukuiChatBackgroundRight, "TOPRIGHT", 0, -17)
 else
-	anchor:SetPoint("BOTTOMRIGHT", TukuiChatBackgroundRight)
+	anchor:ClearAllPoints()
+	anchor:SetPoint("BOTTOMRIGHT", TukuiChatBackgroundRight, "TOPRIGHT", 0, -17)
 end
-anchor:SetTemplate("Transparent")
+anchor:SetTemplate("Default")
 anchor:SetBackdropBorderColor(1, 0, 0, 1)
 anchor:SetMovable(true)
 anchor.text = T.SetFontString(anchor, C.media.pixelfont, 10)
@@ -100,10 +101,10 @@ local function UpdateTooltip(self)
 			if TukuiBags and TukuiBags:IsShown() then
 				self:ClearAllPoints()
 				self:SetPoint("BOTTOMRIGHT", TukuiBags, "TOPRIGHT", 0, x)
-			elseif HasPetUI() then
+			elseif HasPetUI() and TukuiChatBackgroundRight:IsVisible() then
 					self:ClearAllPoints()
 					self:SetPoint("BOTTOMRIGHT", TukuiPetBar, "TOPRIGHT", 0, x)
-			elseif TukuiBar5 and TukuiBar5:IsShown() then
+			elseif TukuiBar5 and TukuiBar5:IsShown() and TukuiChatBackgroundRight:IsVisible() then
 					self:ClearAllPoints()
 					self:SetPoint("BOTTOMRIGHT", TukuiBar5, "TOPRIGHT", 0, x)	
 			else	

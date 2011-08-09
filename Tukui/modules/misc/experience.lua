@@ -180,7 +180,7 @@ local function Update()
 			restedBar:Hide()
 		end
 		
-		expText:SetText(perGain)
+		--expText:SetText(perGain)
 	end
 end
 addon:SetScript("OnEvent", Update)

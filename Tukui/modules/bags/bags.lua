@@ -1,5 +1,6 @@
 local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
 
+
 --[[
 	A featureless, 'pure' version of Stuffing. 
 	This version should work on absolutely everything, 
@@ -38,6 +39,7 @@ local Loc = setmetatable({}, {
 })
 
 
+
 local function Print (x)
 	DEFAULT_CHAT_FRAME:AddMessage("|cffC495DDTukui:|r " .. x)
 end
@@ -51,6 +53,7 @@ local function Stuffing_Sort(args)
 	Stuffing:SetBagsForSorting(args)
 	Stuffing:SortBags()
 end
+
 
 
 local function Stuffing_OnShow()
@@ -318,6 +321,7 @@ function Stuffing:BagNew (bag, f)
 		end
 	end
 
+
 	local ret
 
 	if #trashBag > 0 then
@@ -406,9 +410,12 @@ function Stuffing:CreateBagFrame(w)
 			elseif TukuiBar5 and TukuiBar5:IsShown() then
 				f:ClearAllPoints()
 				f:Point("BOTTOM", TukuiBar5, "TOP", 0, 3)
-			elseif not TukuiBar5:IsShown() then
+			elseif not TukuiBar5:IsShown() and TukuiChatBackgroundRight:IsVisible() then
 				f:ClearAllPoints()
 				f:SetPoint("BOTTOM", TukuiChatBackgroundRight, "TOP", 0, 3)
+			elseif not TukuiBar5:IsShown() and not TukuiChatBackgroundRight:IsVisible() then
+				f:ClearAllPoints()
+				f:SetPoint("BOTTOMRIGHT", TukuiChatBackgroundRight, "BOTTOMRIGHT", 0, 22)
 			end
 		end
 	end
@@ -763,6 +770,7 @@ function Stuffing:Layout(lb)
 				yoff = off + 12 + (y * 30) + ((y - 1) * 2)
 
 
+
 				yoff = yoff * -1
 				
 				b.frame:ClearAllPoints()
@@ -844,6 +852,7 @@ function Stuffing:SetBagsForSorting(c)
 			table.insert(self.sortBags, tonumber(s))
 		end
 	end
+
 
 	local bids = L.bags_bids
 	for _, i in ipairs(self.sortBags) do
@@ -987,6 +996,7 @@ function Stuffing:BANKFRAME_OPENED()
 	end
 	self.bankFrame:Show()
 end
+
 
 
 function Stuffing:BANKFRAME_CLOSED()

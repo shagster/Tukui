@@ -1,4 +1,4 @@
---[[
+﻿--[[
 	Recount Skin by Darth Android / Telroth - Black Dragonflight
 	
 	Skins Recount to look like TelUI.
@@ -21,7 +21,6 @@ AddonSkins_Mod:RegisterSkin("Recount",function(Skin, skin, Layout, layout, confi
 
 	local function SkinFrame(frame)
 		frame.bgMain = CreateFrame("Frame",nil,frame)
-		frame.bgMain = SetAlpha(0)
 		skin:SkinBackgroundFrame(frame.bgMain)
 		frame.bgMain:SetPoint("BOTTOMLEFT",frame,"BOTTOMLEFT")
 		frame.bgMain:SetPoint("BOTTOMRIGHT",frame,"BOTTOMRIGHT")
@@ -29,12 +28,12 @@ AddonSkins_Mod:RegisterSkin("Recount",function(Skin, skin, Layout, layout, confi
 		frame.bgMain:SetFrameStrata("BACKGROUND")
 		frame.CloseButton:SetPoint("TOPRIGHT",frame,"TOPRIGHT",-1,-9)
 		frame:SetBackdrop(nil)
-		frame.Title:SetFont(C.media.pixelfont, C["datatext"].fontsize)
+		frame.Title:SetFont(C.media.pixelfont, C["datatext"].fontsize, "MONOCHROMEOUTLINE")
 		frame.CloseButton:SetNormalTexture("")
 		frame.CloseButton:SetPushedTexture("")
 		frame.CloseButton:SetHighlightTexture("")
 		frame.CloseButton.t = frame.CloseButton:CreateFontString(nil, "OVERLAY")
-		frame.CloseButton.t:SetFont(C.media.pixelfont, C["datatext"].fontsize)
+		frame.CloseButton.t:SetFont(C.media.pixelfont, C["datatext"].fontsize, "MONOCHROMEOUTLINE")
 		frame.CloseButton.t:SetPoint("CENTER")
 		frame.CloseButton.t:SetText("X")
 		frame.CloseButton:SetScript("OnEnter", function() frame.CloseButton.t:SetText(T.panelcolor.."X") end)
@@ -48,11 +47,10 @@ AddonSkins_Mod:RegisterSkin("Recount",function(Skin, skin, Layout, layout, confi
 			v.StatusBar:GetStatusBarTexture():SetHorizTile(false)
 			v.StatusBar:GetStatusBarTexture():SetVertTile(false)
 			v.LeftText:SetPoint("LEFT", 4, 0)
-			v.LeftText:SetFont(C.media.pixelfont, C["datatext"].fontsize)
+			v.LeftText:SetFont(C.media.pixelfont, C["datatext"].fontsize, "MONOCHROMEOUTLINE")
 			v.RightText:SetPoint("RIGHT", -4, 0)
-			v.RightText:SetFont(C.media.pixelfont, C["datatext"].fontsize)
+			v.RightText:SetFont(C.media.pixelfont, C["datatext"].fontsize, "MONOCHROMEOUTLINE")
 		end
-		
 	end
 	Recount.SetBarTextures = Recount.UpdateBarTextures
 	
