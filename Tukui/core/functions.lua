@@ -984,8 +984,8 @@ end
 T.countOffsets = {
 	TOPLEFT = {8*C["unitframes"].gridscale, 1},
 	TOPRIGHT = {-8*C["unitframes"].gridscale, 1},
-	BOTTOMLEFT = {8*C["unitframes"].gridscale, 4},
-	BOTTOMRIGHT = {-8*C["unitframes"].gridscale, 4},
+	BOTTOMLEFT = {8*C["unitframes"].gridscale, 2},
+	BOTTOMRIGHT = {-8*C["unitframes"].gridscale, 2},
 	LEFT = {6*C["unitframes"].gridscale, 1},
 	RIGHT = {-6*C["unitframes"].gridscale, 1},
 	TOP = {0, 0},
@@ -994,6 +994,7 @@ T.countOffsets = {
 
 T.CreateAuraWatchIcon = function(self, icon)
 	icon:SetTemplate("Default")
+	icon:SetFrameStrata("HIGH")
 	icon.icon:Point("TOPLEFT", 1, -1)
 	icon.icon:Point("BOTTOMRIGHT", -1, 1)
 	icon.icon:SetTexCoord(.08, .92, .08, .92)
@@ -1006,6 +1007,7 @@ end
 
 T.createAuraWatch = function(self, unit)
 	local auras = CreateFrame("Frame", nil, self)
+	auras:SetFrameStrata("HIGH")
 	auras:SetPoint("TOPLEFT", self.Health, 2, -2)
 	auras:SetPoint("BOTTOMRIGHT", self.Health, -2, 4)
 	auras.presentAlpha = 1
@@ -1051,7 +1053,7 @@ T.createAuraWatch = function(self, unit)
 			end
 
 			local count = icon:CreateFontString(nil, "OVERLAY")
-			count:SetFont(C["media"].pixelfont2, 14*C["unitframes"].gridscale, "MONOCHROMEOUTLINE")
+			count:SetFont(C["media"].pixelfont, 10*C["unitframes"].gridscale, "MONOCHROMEOUTLINE")
 			count:SetPoint("CENTER", unpack(T.countOffsets[spell[2]]))
 			icon.count = count
 

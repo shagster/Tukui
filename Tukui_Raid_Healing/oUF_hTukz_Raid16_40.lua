@@ -147,7 +147,7 @@ local function Shared(self, unit)
 	local leader = InvFrame:CreateTexture(nil, "OVERLAY")
     	leader:Height(12*T.raidscale)
     	leader:Width(12*T.raidscale)
-    	leader:SetPoint("TOPLEFT", 0, 6)
+    	leader:SetPoint("TOPLEFT", 0, 8)
 	self.Leader = leader
 	
     	local MasterLooter = InvFrame:CreateTexture(nil, "OVERLAY")
