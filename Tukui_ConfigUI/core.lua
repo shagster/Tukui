@@ -60,6 +60,7 @@ local function Local(o)
 	
 	--addon skins
 	if o == "TukuiConfigUIAddon_Skins" then o = TukuiL.option_Addon_Skins end
+	if o == "TukuiConfigUIAddon_Skinsembedright" then o = TukuiL.option_skin_embedright end
 	if o == "TukuiConfigUIAddon_Skinsbackground" then o = TukuiL.option_Addon_background end
 	if o == "TukuiConfigUIAddon_Skinscombat_toggle" then o = TukuiL.option_Addon_combat_toggle end
 	if o == "TukuiConfigUIAddon_SkinsSkada" then o = TukuiL.option_skin_skada end
@@ -70,6 +71,7 @@ local function Local(o)
 	if o == "TukuiConfigUIAddon_SkinsTinyDPS" then o = TukuiL.option_skin_tinydps end
 	if o == "TukuiConfigUIAddon_SkinsAuctionator" then o = TukuiL.option_skin_auctionator end
 	if o == "TukuiConfigUIAddon_SkinsBigwigs" then o = TukuiL.option_skin_bigwigs end
+	
 	
 	--integrated modules
 	if o == "TukuiConfigUIim" then o = TukuiL.option_im end

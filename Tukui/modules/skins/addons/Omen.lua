@@ -77,3 +77,18 @@ AddonSkins_Mod:RegisterSkin("Omen",function(Skin, skin, Layout, layout, config)
 	Omen:ReAnchorBars()
 	Omen:ResizeBars()
 end)
+
+if C["Addon_Skins"].embedright == "Omen" then
+	local Omen_Skin = CreateFrame("Frame")
+	Omen_Skin:RegisterEvent("PLAYER_ENTERING_WORLD")
+	Omen_Skin:SetScript("OnEvent", function(self)
+		self:UnregisterAllEvents()
+		self = nil
+		
+		Omen.UpdateTitleBar = function() end
+		OmenTitle:Kill()
+		OmenBarList:ClearAllPoints()
+		OmenBarList:SetAllPoints(AddonBGPanel)
+		Omen.db.profile.FrameStrata = "4-HIGH"
+	end)
+end

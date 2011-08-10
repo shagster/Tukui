@@ -76,6 +76,7 @@ local function Shared(self, unit)
 	local power = CreateFrame("StatusBar", nil, self)
 	power:CreateBorder(false, true)
 	power:Height(1.5*T.raidscale)
+	
 	power:Point("TOPLEFT", self.Health, "BOTTOMLEFT", 2, 4)
 	power:Point("TOPRIGHT", self.Health, "BOTTOMRIGHT", -2, 4)
 	if C["unitframes"].style == "Shag" then

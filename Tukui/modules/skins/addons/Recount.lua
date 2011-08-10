@@ -87,3 +87,18 @@ AddonSkins_Mod:RegisterSkin("Recount",function(Skin, skin, Layout, layout, confi
 	-- Let's update me some textures!
 	Recount:UpdateBarTextures()
 end)
+if C["Addon_Skins"].embedright == "Recount" then
+	local Recount_Skin = CreateFrame("Frame")
+	Recount_Skin:RegisterEvent("PLAYER_ENTERING_WORLD")
+	Recount_Skin:SetScript("OnEvent", function(self)
+		self:UnregisterAllEvents()
+		self = nil
+
+		Recount_MainWindow:ClearAllPoints()
+		Recount_MainWindow:SetPoint("TOPLEFT", AddonBGPanel,"TOPLEFT", 0, 7)
+		Recount_MainWindow:SetPoint("BOTTOMRIGHT", AddonBGPanel,"BOTTOMRIGHT", 0, 0)
+		Recount.db.profile.FrameStrata = "4-HIGH"
+		Recount.db.profile.MainWindowWidth = (AddonBGPanel:GetWidth() - 4)	
+	end)
+end
+

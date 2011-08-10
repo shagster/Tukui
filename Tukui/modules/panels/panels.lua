@@ -48,7 +48,7 @@ TukuiBar4:SetBackdrop(nil)
 
 
 local TukuiBar5 = CreateFrame("Frame", "TukuiBar5", UIParent)
-TukuiBar5:CreatePanel("Invisible", (T.buttonsize * 12) + (T.buttonspacing * 11), T.buttonsize, "RIGHT", UIParent, "RIGHT", -24, -14)
+TukuiBar5:CreatePanel("Invisible", (T.buttonsize * 12) + (T.buttonspacing * 11), T.buttonsize, "BOTTOM", TukuiChatBackgroundRight, "TOP", 0, 4)
 TukuiBar5:SetFrameStrata("BACKGROUND")
 TukuiBar5:SetFrameLevel(2)
 TukuiBar5:SetAlpha(0)
@@ -232,10 +232,12 @@ if InCombatLockdown() then return end
 	elapsed = elapsed + u
 	if elapsed > .5 then -- 2 seconds
 		TukuiBar5:ClearAllPoints()
-		if not TukuiChatBackgroundRight:IsVisible() then
-		TukuiBar5:SetPoint("BOTTOMRIGHT", TukuiChatBackgroundRight, "BOTTOMRIGHT", 0, 22)
-		else
+		if TukuiChatBackgroundRight:IsVisible() then
 		TukuiBar5:SetPoint("BOTTOM", TukuiChatBackgroundRight, "TOP", 0, 4)
+		elseif not C["Addon_Skins"].embedright == "None" then
+		TukuiBar5:SetPoint("BOTTOM", TukuiChatBackgroundRight, "TOP", 0, 4)
+		else
+		TukuiBar5:SetPoint("BOTTOMRIGHT", TukuiChatBackgroundRight, "BOTTOMRIGHT", 0, 22)
 		elapsed = 0
 	end
 	end

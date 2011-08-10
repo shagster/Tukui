@@ -19,6 +19,6 @@ TinyDPS:SetScript("OnEvent", function(self, event, addon)
 	tdpsFrame:SetTemplate("Transparent")
 	tdpsFrame:CreateBorder(true, true)
 	tdpsAnchor:SetPoint('BOTTOMLEFT', TukuiInfoLeftMinimap, 'BOTTOMLEFT', 0, -16)
-		
+	
 	self:UnregisterEvent("ADDON_LOADED")
 end)

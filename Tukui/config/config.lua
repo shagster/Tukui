@@ -107,16 +107,16 @@ C["castbar"] = {
 }
 
 C["Addon_Skins"] = {
-	["background"] = false,				    			-- Create a Panel that has the exactly same size as the left chat, placed at the bottomright (for addon placement)
-	["combat_toggle"] = false,			    			-- Shows the Addon Background, Omen, Recount & Skada infight, hides outfight
 	["Recount"] = true,				    				-- Enable Recount Skin
 	["Skada"] = false,			            			-- Enable Skada Skin
 	["Omen"] = false,				    				-- Enable Omen Skin
 	["KLE"] = false,				    				-- Enable KLE Skin
 	["DBM"] = true,										-- Enable DBM Skin. Must run "/dbmskin apply" per character in game
 	["TinyDPS"] = true,				    				-- Enable TinyDPS Skin
-	["Auctionator"] = false,							-- Enable Auctionator Skin
+	["Auctionator"] = true,							-- Enable Auctionator Skin
 	["Bigwigs"] = true,									-- Enable Bigiwgs Skin
+	["combat_toggle"] = true,			    			-- Shows the Addon Background, Omen, Recount & Skada infight, hides outfight
+	["embedright"] = "None",							-- testing, recount, omen, skada embed one to chat right panel
 }
 
 C["sCombo"] = {

@@ -27,7 +27,7 @@ TukuiL.option_nameplates_transitioncolor = "Losing/Gaining threat color"
 -- Skins
 TukuiL.option_Addon_Skins = "Addon Skins"
 TukuiL.option_Addon_background = "Enable addon background at bottom right"
-TukuiL.option_Addon_combat_toggle = "Shows the addon background, Omen, Recount & Skada infight, hides out of fight"
+TukuiL.option_Addon_combat_toggle = "Toggle the addons, Omen, Recount & Skada infight, hides out of fight"
 TukuiL.option_Addon_Skins = "Addon skins"
 TukuiL.option_skin_skada = "Skada"
 TukuiL.option_skin_omen = "Omen"
@@ -37,6 +37,7 @@ TukuiL.option_skin_dbm = "DBM"
 TukuiL.option_skin_tinydps = "TinyDPS"
 TukuiL.option_skin_auctionator = "Auctionator"
 TukuiL.option_skin_bigwigs = "BigWigs"
+TukuiL.option_skin_embedright = "Embed Recount or Omen in the right chat frame. None for none"
 
 -- Integrated Modules
 TukuiL.option_im = "Integrated Modules"
