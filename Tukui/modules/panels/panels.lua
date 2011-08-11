@@ -244,17 +244,17 @@ if InCombatLockdown() then return end
 end)
 
 local elapsed = 0
-petbg:SetScript("OnUpdate",function(self, u)
+TukuiPetBar:SetScript("OnUpdate",function(self, u)
 if InCombatLockdown() then return end
 	elapsed = elapsed + u
 	if elapsed > .5 then -- 2 seconds
-		petbg:ClearAllPoints()
+		TukuiPetBar:ClearAllPoints()
 		if TukuiBar5:IsVisible() then
-		petbg:Point("BOTTOM", TukuiBar5, "TOP", 0, 3)
+		TukuiPetBar:Point("BOTTOM", TukuiBar5, "TOP", 0, 3)
 		elseif not TukuiBar5:IsVisible() and TukuiChatBackgroundRight:IsVisible() then
-		petbg:SetPoint("BOTTOM", TukuiChatBackgroundRight, "TOP", 0, 4)
+		TukuiPetBar:SetPoint("BOTTOM", TukuiChatBackgroundRight, "TOP", 0, 4)
 		else
-		petbg:SetPoint("BOTTOMRIGHT", TukuiChatBackgroundRight, "BOTTOMRIGHT", 0, 22)
+		TukuiPetBar:SetPoint("BOTTOMRIGHT", TukuiChatBackgroundRight, "BOTTOMRIGHT", 0, 22)
 	end
 		elapsed = 0
 	end

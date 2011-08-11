@@ -1,6 +1,6 @@
 local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
 	
-	if C["Addon_Skins"].embedright == "None" then return end
+	if C["Addon_Skins"].embedright == "None" or C["Addon_Skins"].embedright == "" then return end
 	-- Addons Background (same size as right chat background)
 	local AddonBGPanel = CreateFrame("Frame", "AddonBGPanel", UIParent)
 	AddonBGPanel:CreatePanel("Transparent", TukuiChatBackgroundRight:GetWidth(), TukuiChatBackgroundRight:GetHeight(), "BOTTOMRIGHT", TukuiChatBackgroundRight, "BOTTOMRIGHT", 0, 0)

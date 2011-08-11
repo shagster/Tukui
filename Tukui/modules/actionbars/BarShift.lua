@@ -11,7 +11,7 @@ TukuiShift:RegisterEvent("PLAYER_ENTERING_WORLD")
 TukuiShift:SetScript("OnEvent", function()
 TukuiShift:ClearAllPoints()
 if T.myclass == "SHAMAN" then
-TukuiShift:SetPoint("BOTTOMLEFT", TukuiChatBackgroundLeft, "BOTTOMRIGHT", 0, 0)
+TukuiShift:SetPoint("TOPLEFT", UIParent, "TOPLEFT", 14, -20)
 else
 TukuiShift:SetPoint("TOPLEFT", TukuiPlayer, "BOTTOMLEFT", 1, -6)
 end

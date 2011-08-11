@@ -30,7 +30,7 @@ local function style(self)
  
 	Count:ClearAllPoints()
 	Count:Point("BOTTOMRIGHT", 0, 2)
-	Count:SetFont(C["media"].pixelfont, 10, "OUTLINE")
+	Count:SetFont(C["media"].pixelfont, 10, "MONOCHROMEOUTLINE")
  
 	Btname:SetText("")
 	Btname:Kill()
@@ -56,7 +56,7 @@ local function style(self)
 
 	HotKey:ClearAllPoints()
 	HotKey:Point("TOPRIGHT", 0, -3)
-	HotKey:SetFont(C["media"].pixelfont, 10, "OUTLINE")
+	HotKey:SetFont(C["media"].pixelfont, 10, "MONOCHROMEOUTLINE")
 	HotKey.ClearAllPoints = T.dummy
 	HotKey.SetPoint = T.dummy
  
@@ -310,9 +310,11 @@ local function StyleTotemFlyout(flyout)
 		icon:SetDrawLayer("ARTWORK")
 		icon:Point("TOPLEFT",button,"TOPLEFT",2,-2)
 		icon:Point("BOTTOMRIGHT",button,"BOTTOMRIGHT",-2,2)			
-		button:Size(30,30)
-		button:ClearAllPoints()
-		button:Point("BOTTOM",last,"TOP",0,4)
+		if not InCombatLockdown() then
+			button:Size(30,30)
+			button:ClearAllPoints()
+			button:Point("BOTTOM",last,"TOP",0,4)
+		end	
 		if button:IsVisible() then last = button end
 		button:SetBackdropBorderColor(flyout.parent:GetBackdropBorderColor())
 		button:StyleButton()
@@ -381,7 +383,8 @@ local function StyleTotemSlotButton(button, index)
 	button.background:ClearAllPoints()
 	button.background:SetPoint("TOPLEFT",button,"TOPLEFT",T.Scale(2),T.Scale(-2))
 	button.background:SetPoint("BOTTOMRIGHT",button,"BOTTOMRIGHT",T.Scale(-2),T.Scale(2))
-	button:Size(30)
+	if not InCombatLockdown() then button:Size(30) end
+	
 	button:SetBackdropBorderColor(unpack(bordercolors[((index-1) % 4) + 1]))
 	button:StyleButton()
 end
@@ -418,7 +421,8 @@ local function StyleTotemSpellButton(button, index)
 	icon:Point("BOTTOMRIGHT",button,"BOTTOMRIGHT",-2,2)
 	button:SetTemplate("Transparent")
 	button:GetNormalTexture():SetTexture(nil)
-	button:Size(30, 30)
+	if not InCombatLockdown() then button:Size(30, 30) end
+	
 	_G[button:GetName().."Highlight"]:SetTexture(nil)
 	_G[button:GetName().."NormalTexture"]:SetTexture(nil)
 	button:StyleButton()
