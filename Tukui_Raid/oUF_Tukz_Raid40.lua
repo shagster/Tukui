@@ -184,15 +184,15 @@ local function Shared(self, unit)
 		local RaidIcon = InvFrame:CreateTexture(nil, 'OVERLAY')
 		RaidIcon:Height(14*T.raidscale)
 		RaidIcon:Width(14*T.raidscale)
-		RaidIcon:SetPoint('CENTER', self, 'TOP', 0, 4)
+		RaidIcon:SetPoint('CENTER', self, 'TOP', 0, 2)
 		RaidIcon:SetTexture("Interface\\AddOns\\Tukui\\medias\\textures\\raidicons.blp") -- thx hankthetank for texture
 		self.RaidIcon = RaidIcon
 	end
 	
-	local ReadyCheck = power:CreateTexture(nil, "OVERLAY")
+	local ReadyCheck = InvFrame:CreateTexture(nil, "OVERLAY")
 	ReadyCheck:Height(12*C["unitframes"].gridscale*T.raidscale)
 	ReadyCheck:Width(12*C["unitframes"].gridscale*T.raidscale)
-	ReadyCheck:SetPoint('CENTER') 	
+	ReadyCheck:SetPoint('BOTTOM') 	
 	self.ReadyCheck = ReadyCheck
 	
 	--local picon = self.Health:CreateTexture(nil, 'OVERLAY')
