@@ -21,8 +21,12 @@ bottompanel:SetFrameLevel(0)
 end
 
 -- Center Panel Dtext x3 and Threatbar
-local icmid = CreateFrame("Frame", "ICenterMid", TukuiBar1)
+local icmid = CreateFrame("Frame", "ICenterMid", UIParent)
+if not TukuiBar1:IsVisible() then
+icmid:CreatePanel("Transparent", 363, 17, "BOTTOM", UIParent, "BOTTOM", 0, 11)
+else
 icmid:CreatePanel("Transparent", TukuiBar1:GetWidth(), 17, "TOP", TukuiBar1, "BOTTOM", 0, -3)
+end
 icmid:CreateBorder(false, true)
 icmid:SetFrameLevel(2)
 icmid:SetFrameStrata("BACKGROUND")
@@ -38,8 +42,12 @@ irmmap:CreatePanel("Transparent", (TukuiMinimap:GetWidth() / 2) - 1.5, ilmmap:Ge
 irmmap:CreateBorder(false, true)
 
 --- Chat Toggle Button
-local toggleFrame = CreateFrame("Frame", "toggleFrame", TukuiBar2)
+local toggleFrame = CreateFrame("Frame", "toggleFrame", UIParent)
+if not TukuiBar2:IsVisible() then
+toggleFrame:CreatePanel("Transparent", 93, 17, "RIGHT", ICenterMid, "LEFT", -5, 0, true)
+else
 toggleFrame:CreatePanel("Transparent", TukuiBar2:GetWidth(), 17, "TOP", TukuiBar2, "BOTTOM", 0, -3, true)
+end
 toggleFrame:SetFrameLevel(2)
 toggleFrame:SetFrameStrata("LOW")
 toggleFrame:EnableMouse()
@@ -223,8 +231,12 @@ closeButton.text:SetText(T.StatColor.."Cancel")
 closeButton:SetScript("OnClick", function() T.fadeOut(addonBG) end)
 T.ApplyHover(closeButton)
 
-local addonToggle = CreateFrame("Frame", "addonToggle", TukuiBar3)
+local addonToggle = CreateFrame("Frame", "addonToggle", UIParent)
+if not TukuiBar3:IsVisible() then
+addonToggle:CreatePanel("Transparent", 93, 17, "LEFT", ICenterMid, "RIGHT", 5, 0, true)
+else
 addonToggle:CreatePanel("Transparent", TukuiBar3:GetWidth(), 17, "TOP", TukuiBar3, "BOTTOM", 0, -3, true)
+end
 addonToggle.text:SetText(T.StatColor.."Addons")
 addonToggle:SetFrameLevel(2)
 addonToggle:SetFrameStrata("Low")

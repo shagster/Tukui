@@ -75,6 +75,7 @@ local function LoadSkin()
 	for i=1, 4 do
 		ArenaHeader(nil, true, i)
 	end	
+	T.SkinScrollBar(PVPHonorFrameTypeScrollFrameScrollBar)
 
 	PVPBannerFrameEditBox:CreateBackdrop("Transparent")
 	PVPBannerFrameEditBox.backdrop:Point( "TOPLEFT", PVPBannerFrameEditBox, "TOPLEFT" ,-5,-5)

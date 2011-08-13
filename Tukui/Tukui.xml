@@ -62,7 +62,6 @@
 	<Script file="modules\misc\experience.lua"/>
 	
 	
-	
 	<Script file="modules\loot\autodez.lua"/>
 	<Script file="modules\loot\merchant.lua"/>
 	
@@ -106,8 +105,7 @@
 	<Script file="modules\datatext\micromenu.lua"/>
 	<Script file="modules\datatext\mastery.lua"/>
 	<Script file="modules\datatext\regen.lua"/>
-	
-	
+		
 	<Script file="modules\extras\bgannouncer.lua"/>
 	<Script file="modules\extras\mail.lua"/>
 	<Script file="modules\extras\tooltipicon.lua"/>
@@ -124,7 +122,7 @@
 	<Script file="modules\actionbars\Bar6.lua"/>
 	<Script file="modules\actionbars\Bar7.lua"/>
 	<Script file="modules\actionbars\BarPet.lua"/>
-	<Script file="modules\actionbars\BarShift.lua"/>
+	
 	<Script file="modules\actionbars\BarTotem.lua"/>
 	<Script file="modules\actionbars\buttons.lua"/>	
 	<Script file="modules\actionbars\Style.lua"/>
@@ -132,8 +130,7 @@
 	<Script file="modules\actionbars\Others.lua"/>
 	<Script file="modules\actionbars\Cooldowns.lua"/>
 	<Script file="modules\actionbars\Microbar.lua"/>	
-	
-	
+		
 	<Script file="modules\chat\telltarget.lua"/>
 	<Script file="modules\chat\copychat.lua"/>
 	<Script file="modules\chat\mousescroll.lua"/>
@@ -148,10 +145,7 @@
 	<Script file="modules\blizzard\mirror.lua"/>
 	<Script file="modules\blizzard\achievements.lua"/>
 	<Script file="modules\notifications\selfbuffs.lua"/>
-	
-
-	
-	
+		
 	<Script file="modules\skins\achievement.lua"/>
 	<Script file="modules\skins\achievementpopup.lua"/>
 	<Script file="modules\skins\archeology.lua"/>
@@ -208,8 +202,7 @@
 	<Script file="modules\skins\worldmap.lua"/>
 	
 	<Script file="modules\misc\experience.lua"/>
-	
-	
+		
 	<Script file="modules\skins\addons\LoadSkins.lua"/>
 	<Script file="modules\skins\addons\addons.lua"/>
 	<Script file="modules\skins\addons\Auctionator_Skin.lua"/>
@@ -230,14 +223,10 @@
 			
 	<Script file="modules\misc\altpowerbar.lua"/>
 	<Script file="modules\misc\threatbar.lua"/>
-	<Script file="modules\misc\sCombo.lua"/>
-	
-	
-	
-	
+	<Script file="modules\extras\sCombo.lua"/>
+	<Script file="modules\actionbars\BarShift.lua"/>
 	<Script file="core\movers.lua"/>
 	
 	<Script file="developer\test.lua"/>
-	
 		
 </Ui>

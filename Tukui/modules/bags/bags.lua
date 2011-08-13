@@ -406,7 +406,7 @@ function Stuffing:CreateBagFrame(w)
 				f:ClearAllPoints()
 				f:Point("BOTTOM", TukuiPetBar, "TOP", 0, 3)
 			elseif UnitHasVehicleUI("player") then
-				f:SetPoint("BOTTOMRIGHT", TukuiChatRight, "TOPRIGHT", 0, 3)
+				f:SetPoint("BOTTOMRIGHT", TukuiChatBackgroundRight, "TOPRIGHT", 0, 3)
 			elseif TukuiBar5 and TukuiBar5:IsShown() then
 				f:ClearAllPoints()
 				f:Point("BOTTOM", TukuiBar5, "TOP", 0, 3)

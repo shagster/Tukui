@@ -173,16 +173,16 @@ TukuiBar3Button:SetScript("OnMouseDown", function(self) DrPepper(self, TukuiBar3
 TukuiBar3Button.text:SetText("|cff4BAF4C<|r")
 T.ApplyHover(TukuiBar3Button)
 
--- exit vehicle button on left side of bottom action bar
 local vehicleleft = CreateFrame("Button", "TukuiExitVehicleButtonLeft", UIParent, "SecureHandlerClickTemplate")
-vehicleleft:CreatePanel("Default", 20, 20, "BOTTOMRIGHT", TukuiBar1, "BOTTOMLEFT", -4, 0, true)
+vehicleleft:CreatePanel("Transparent", 20, 17, "BOTTOMRIGHT", toggleFrame, "BOTTOMLEFT", -4, 0, true)
+T.ApplyHover(vehicleleft)
 vehicleleft:SetScript("OnMouseDown", function() VehicleExit() end)
 vehicleleft.text:SetText("|cff4BAF4CV|r")
 RegisterStateDriver(vehicleleft, "visibility", "[target=vehicle,exists] show;hide")
 
--- exit vehicle button on right side of bottom action bar
 local vehicleright = CreateFrame("Button", "TukuiExitVehicleButtonRight", UIParent, "SecureHandlerClickTemplate")
-vehicleright:CreatePanel("Default", 20, 20, "BOTTOMLEFT", TukuiBar1, "BOTTOMRIGHT", 4, 0, true)
+vehicleright:CreatePanel("Transparent", 20, 17, "BOTTOMLEFT", addonToggle, "BOTTOMRIGHT", 4, 0, true)
+T.ApplyHover(vehicleright)
 vehicleright:RegisterForClicks("AnyUp")
 vehicleright:SetScript("OnClick", function() VehicleExit() end)
 vehicleright.text:SetText("|cff4BAF4CV|r")

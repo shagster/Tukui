@@ -1234,7 +1234,7 @@ if C["unitframes"].showboss then
 	for i = 1, MAX_BOSS_FRAMES do
 		boss[i] = oUF:Spawn("boss"..i, "TukuiBoss"..i)
 		if i == 1 then
-			boss[i]:SetPoint("RIGHT", UIParent, "RIGHT", -130, -140)
+			boss[i]:SetPoint("RIGHT", UIParent, "RIGHT", -140, -140)
 		else
 			boss[i]:SetPoint('BOTTOM', boss[i-1], 'TOP', 0, 35)             
 		end
