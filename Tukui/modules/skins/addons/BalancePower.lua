@@ -6,9 +6,8 @@ if T.myclass == "DRUID" then
 	eclipseBar:ClearAllPoints()
 	eclipseBar:Point("TOPLEFT", BalancePowerTrackerBackgroundFrame, "TOPLEFT", 0, 0)
 	eclipseBar:Point("BOTTOMRIGHT", BalancePowerTrackerBackgroundFrame, "BOTTOMRIGHT", 0, 0)
-	eclipseBar:SetTemplate("Thin")
-	eclipseBar:SetBackdropColor(0,0,0,1)
-	
+	eclipseBar:SetTemplate("Transparent")
+		
 	local eclipseBarfunc = CreateFrame("Frame")
 	eclipseBarfunc:RegisterEvent("PLAYER_ENTERING_WORLD")
 	eclipseBarfunc:RegisterEvent("UNIT_AURA")

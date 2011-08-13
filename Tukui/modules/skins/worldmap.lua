@@ -25,7 +25,8 @@ local function LoadSkin()
 	T.SkinCheckBox(WorldMapTrackQuest)
 	T.SkinCheckBox(WorldMapQuestShowObjectives)
 	T.SkinCheckBox(WorldMapShowDigSites)
-
+	T.SkinScrollBar(WorldMapQuestScrollFrameScrollBar)
+	
 	--Mini
 	local function SmallSkin()
 		WorldMapLevelDropDown:ClearAllPoints()

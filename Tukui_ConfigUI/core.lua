@@ -280,6 +280,8 @@ local NewButton = function(text,parent)
 	result:SetWidth(label:GetWidth())
 	result:SetHeight(label:GetHeight())
 	result:SetFontString(label)
+	result:SetScript("OnEnter", function() label:SetTextColor(unpack(C["datatext"].color)) end)
+	result:SetScript("OnLeave", function() label:SetTextColor(1,1,1) end)
 
 	return result
 end
@@ -372,7 +374,7 @@ local function ShowGroup(group)
 	if _G["TukuiConfigUI"..group] then
 		local o = "TukuiConfigUI"..group
 		Local(o)
-		_G["TukuiConfigUITitle"]:SetText(T.option)
+		_G["TukuiConfigUITitle"]:SetText(T.panelcolor..T.option)
 		local height = _G["TukuiConfigUI"..group]:GetHeight()
 		_G["TukuiConfigUI"..group]:Show()
 		local scrollamntmax = 305
@@ -418,12 +420,7 @@ function CreateTukuiConfigUI()
 		TukuiConfigUI:Show()
 		return
 	end
-	
-	local version = tonumber(T.version)
-	if version < 12.59 then
-		print(TukuiL.option_update)
-	end
-	
+		
 	-- MAIN FRAME
 	local TukuiConfigUI = CreateFrame("Frame","TukuiConfigUI",UIParent)
 	TukuiConfigUI:SetPoint("CENTER", UIParent, "CENTER", 90, 0)
@@ -442,7 +439,7 @@ function CreateTukuiConfigUI()
 	
 	local title = TukuiConfigUITitleBox:CreateFontString("TukuiConfigUITitle", "OVERLAY")
 	title:SetFont(C.media.font, 12)
-	title:SetPoint("LEFT", TukuiConfigUITitleBox, "LEFT", 4, 0)
+	title:SetPoint("LEFT", TukuiConfigUITitleBox, "LEFT", 10, 0)
 		
 	local TukuiConfigUIBG = CreateFrame("Frame","TukuiConfigUI",TukuiConfigUI)
 	TukuiConfigUIBG:SetPoint("TOPLEFT", -10, 10)

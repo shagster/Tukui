@@ -14,6 +14,7 @@ local function LoadSkin()
 	end
 	
 	T.SkinCheckBox(KeyBindingFrameCharacterButton)
+	T.SkinScrollBar(KeyBindingFrameScrollFrameScrollBar)
 	KeyBindingFrameHeaderText:ClearAllPoints()
 	KeyBindingFrameHeaderText:Point("TOP", KeyBindingFrame, "TOP", 0, -4)
 	KeyBindingFrame:StripTextures()

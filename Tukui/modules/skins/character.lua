@@ -3,6 +3,8 @@ local T, C, L = unpack(select(2, ...))
 local function LoadSkin()
 	T.SkinCloseButton(CharacterFrameCloseButton)
 
+	T.SkinScrollBar(CharacterStatsPaneScrollBar)
+	T.SkinScrollBar(ReputationListScrollFrameScrollBar)
 	local slots = {
 		"HeadSlot",
 		"NeckSlot",

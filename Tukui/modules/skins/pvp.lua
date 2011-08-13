@@ -132,7 +132,7 @@ local function LoadSkin()
 	WarGameStartButton:ClearAllPoints()
 	WarGameStartButton:Point("LEFT", PVPFrameLeftButton, "RIGHT", 2, 0)
 	WarGamesFrameDescription:SetTextColor(1, 1, 1)
-	
+	T.SkinScrollBar(WarGamesFrameScrollFrameScrollBar, 5)
 	--Freaking gay Cancel Button FFSlocal
 	local f = PVPBannerFrameCancelButton
 	local l = _G[f:GetName().."Left"]

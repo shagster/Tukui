@@ -18,7 +18,12 @@ local function LoadSkin()
 	T.SkinButton(QuestFrameGoodbyeButton, true)
 	T.SkinButton(QuestFrameCompleteQuestButton, true)
 	T.SkinCloseButton(QuestFrameCloseButton, QuestFrame.backdrop)
-
+	T.SkinScrollBar(QuestLogDetailScrollFrameScrollBar)
+	T.SkinScrollBar(QuestLogScrollFrameScrollBar, 5)
+	T.SkinScrollBar(QuestDetailScrollFrameScrollBar, 5)
+	T.SkinScrollBar(QuestRewardScrollFrameScrollBar, 5)
+	T.SkinScrollBar(QuestProgressScrollFrameScrollBar, 5)
+	
 	for i=1, 6 do
 		local button = _G["QuestProgressItem"..i]
 		local texture = _G["QuestProgressItem"..i.."IconTexture"]

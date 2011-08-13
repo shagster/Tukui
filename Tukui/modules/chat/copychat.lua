@@ -41,7 +41,7 @@ local function CreatCopyFrame()
 	end
 	editBox:Height(250)
 	editBox:SetScript("OnEscapePressed", function() frame:Hide() end)
-
+	T.SkinScrollBar(CopyScrollScrollBar)
 	scrollArea:SetScrollChild(editBox)
 
 	local close = CreateFrame("Button", "CopyCloseButton", frame, "UIPanelCloseButton")

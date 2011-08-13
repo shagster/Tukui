@@ -201,6 +201,7 @@ addonHeader.text:SetText(T.StatColor.."Addon Control Menu")
 local scrollFrame = CreateFrame("ScrollFrame", "scrollFrame", addonBG, "UIPanelScrollFrameTemplate")
 scrollFrame:SetPoint("TOPLEFT", addonBG, "TOPLEFT", 10, -10)
 scrollFrame:SetPoint("BOTTOMRIGHT", addonBG, "BOTTOMRIGHT", -30, 40)
+T.SkinScrollBar(scrollFrameScrollBar)
 
 -- Create inside BG (uses scroll frame)
 local buttonsBG = CreateFrame("Frame", "buttonsBG", scrollFrame)
