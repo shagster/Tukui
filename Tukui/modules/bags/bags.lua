@@ -422,18 +422,6 @@ function Stuffing:CreateBagFrame(w)
 	f:HookScript("OnUpdate", bagUpdate)
 	
 	-- CLOSE BUTTON
-	
-local function ModifiedBackdrop(self)
-	local color = RAID_CLASS_COLORS[T.myclass]
-	self:SetBackdropColor(unpack(C["media"].backdropcolor))
-	self:SetBackdropBorderColor(color.r, color.g, color.b)
-end
-
-local function OriginalBackdrop(self)
-	self:SetBackdropColor(unpack(C["media"].backdropcolor))
-	self:SetBackdropBorderColor(unpack(C["media"].bordercolor))
-end
-	
 	f.b_close = CreateFrame("Button", "Stuffing_CloseButton" .. w, f)
 	f.b_close:Width(50)
 	f.b_close:Height(20)
@@ -771,6 +759,9 @@ function Stuffing:Layout(lb)
 
 
 
+
+
+
 				yoff = yoff * -1
 				
 				b.frame:ClearAllPoints()
@@ -783,6 +774,7 @@ function Stuffing:Layout(lb)
 				b.frame:SetTemplate("Thin")
 				b.frame:SetBackdropColor(.05, .05, .05) -- we just need border with SetTemplate, not the backdrop. Hopefully this will fix invisible item that some users have.
 				b.frame:StyleButton()
+				b.frame:CreateBorder(true, true)
 				
 				-- color fish bag border slot to red
 				if bagType == ST_FISHBAG then b.frame:SetBackdropBorderColor(1, 0, 0) b.frame.lock = true end

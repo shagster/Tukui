@@ -73,8 +73,12 @@ TukuiBar7:SetAlpha(0)
 TukuiBar7:SetBackdrop(nil)
 
 local petbg = CreateFrame("Frame", "TukuiPetBar", UIParent, "SecureHandlerStateTemplate")
-petbg:CreatePanel("Invisible", (T.petbuttonsize * 10) + (T.petbuttonspacing * 9), T.petbuttonsize, "BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -12, 200)
-petbg:SetBackdrop(nil)
+petbg:CreatePanel("Transparent", (T.petbuttonsize * 10) + (T.petbuttonspacing * 9), T.petbuttonsize, "BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -12, 200)
+-- fucking spirit wolves.
+if T.myclass == "SHAMAN" then
+	petbg:Point("BOTTOM", TukuiBar1 or TukuiBar4, "TOP", 0, 13)
+end
+petbg:SetAlpha(0)
 
 local ltpetbg1 = CreateFrame("Frame", "TukuiLineToPetActionBarBackground", petbg)
 ltpetbg1:CreatePanel("Invisible", 24, 265, "LEFT", petbg, "RIGHT", 0, 0)
@@ -260,4 +264,6 @@ if C["datatext"].battleground == true then
 	bgframe:SetFrameLevel(0)
 	bgframe:EnableMouse(true)
 end
+
+
 
