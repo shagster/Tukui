@@ -3,17 +3,9 @@
 	<Script file="developer\commands.lua"/>
 	<Script file="core\init.lua"/>
 	<Script file="core\constants.lua"/>	
-
 	
 	<Script file="locales\english.lua"/>
-	<!--<Script file="locales\french.lua"/>
-	<Script file="locales\russian.lua"/>
-	<Script file="locales\german.lua"/>
-	<Script file="locales\taiwan.lua"/>
-	<Script file="locales\spanish.lua"/>
-	<Script file="locales\korean.lua"/>	-->
-
-
+	
 	<Script file="config\config.lua"/>
 	<Script file="config\profiles.lua"/>
 	<Script file="medias\medias.lua"/>	
