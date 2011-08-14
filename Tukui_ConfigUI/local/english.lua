@@ -98,6 +98,7 @@ TukuiL.datatext_specswitcher = "Show current spec and allows mouse-click spec ch
 TukuiL.option_unitframes_unitframes = "Unit Frames"
 TukuiL.option_unitframes_combatfeedback = "Combat Feedback on player and target"
 TukuiL.option_unitframes_deathknight = "Enable rune bar for Death Knight"
+TukuiL.option_unitframes_druid = "Enable Eclipse bar for Druid"
 TukuiL.option_unitframes_auratimer = "Enable timer on auras"
 TukuiL.option_unitframes_shaman = "Enable totem bar for Shaman"
 TukuiL.option_unitframes_totalhpmp = "Display total of health/power"
