@@ -11,7 +11,7 @@ Text:SetFont(C.media.pixelfont, C["datatext"].fontsize, "MONOCHROMEOUTLINE")
 local curmapid = GetCurrentMapAreaID()
 	
 -- Create Main Button Frame
-local buttonframe = CreateFrame("Frame", "BGAnnouncerButtonFrame", UIParent)
+local buttonframe = CreateFrame("Frame", "BGAnnouncerButtonFrame", UIParent, "SecureActionButtonTemplate")
 buttonframe:Size(TukuiChatBackgroundRight:GetWidth(), 17)
 --buttonframe:SetAllPoints()
 buttonframe:SetFrameStrata("MEDIUM")
@@ -112,7 +112,7 @@ UpdateZone:RegisterEvent("ZONE_CHANGED")
 UpdateZone:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 UpdateZone:RegisterEvent("PLAYER_ENTERING_WORLD")
 UpdateZone:SetScript("OnEvent", OnEvent)
-UpdateZone:SetScript("OnUpdate", Update)
+
 UpdateZone:SetScript("OnEvent", function()
 	button1:SetAttribute("macrotext", "/bg Light attack incoming to "..GetMinimapZoneText())
 	button2:SetAttribute("macrotext", "/bg Medium attack Incoming to "..GetMinimapZoneText())
@@ -134,6 +134,3 @@ end
 
 Stat:RegisterEvent("PLAYER_ENTERING_WORLD")
 Stat:SetScript("OnEvent", OnEvent)
-Stat:SetScript("OnUpdate", Update)
-
-
