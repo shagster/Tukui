@@ -73,7 +73,7 @@ TukuiBar7:SetAlpha(0)
 TukuiBar7:SetBackdrop(nil)
 
 local petbg = CreateFrame("Frame", "TukuiPetBar", UIParent, "SecureHandlerStateTemplate")
-petbg:CreatePanel("Transparent", (T.petbuttonsize * 10) + (T.petbuttonspacing * 9), T.petbuttonsize, "BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -12, 200)
+petbg:CreatePanel("Transparent", (T.petbuttonsize * 10) + (T.petbuttonspacing * 9), T.petbuttonsize, "BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -48, 168)
 -- fucking spirit wolves.
 if T.myclass == "SHAMAN" then
 	petbg:Point("BOTTOM", TukuiBar1 or TukuiBar4, "TOP", 0, 13)

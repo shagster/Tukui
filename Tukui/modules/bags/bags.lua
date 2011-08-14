@@ -1,6 +1,5 @@
 local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
 
-
 --[[
 	A featureless, 'pure' version of Stuffing. 
 	This version should work on absolutely everything, 
@@ -39,7 +38,6 @@ local Loc = setmetatable({}, {
 })
 
 
-
 local function Print (x)
 	DEFAULT_CHAT_FRAME:AddMessage("|cffC495DDTukui:|r " .. x)
 end
@@ -53,7 +51,6 @@ local function Stuffing_Sort(args)
 	Stuffing:SetBagsForSorting(args)
 	Stuffing:SortBags()
 end
-
 
 
 local function Stuffing_OnShow()
@@ -321,7 +318,6 @@ function Stuffing:BagNew (bag, f)
 		end
 	end
 
-
 	local ret
 
 	if #trashBag > 0 then
@@ -398,33 +394,16 @@ function Stuffing:CreateBagFrame(w)
 	f:SetFrameStrata("HIGH")
 	f:SetFrameLevel(20)
 
-	local function bagUpdate(f, ...)
-		if w == "Bank" then
-			f:Point("BOTTOM", TukuiChatBackgroundLeft, "TOP", 0, 3)
-		else
-			if HasPetUI() then
-				f:ClearAllPoints()
-				f:Point("BOTTOM", TukuiPetBar, "TOP", 0, 3)
-			elseif UnitHasVehicleUI("player") then
-				f:SetPoint("BOTTOMRIGHT", TukuiChatBackgroundRight, "TOPRIGHT", 0, 3)
-			elseif TukuiBar5 and TukuiBar5:IsShown() then
-				f:ClearAllPoints()
-				f:Point("BOTTOM", TukuiBar5, "TOP", 0, 3)
-			elseif not TukuiBar5:IsShown() and TukuiChatBackgroundRight:IsVisible() then
-				f:ClearAllPoints()
-				f:SetPoint("BOTTOM", TukuiChatBackgroundRight, "TOP", 0, 3)
-			elseif not TukuiBar5:IsShown() and not TukuiChatBackgroundRight:IsVisible() then
-				f:ClearAllPoints()
-				f:SetPoint("BOTTOMRIGHT", TukuiChatBackgroundRight, "BOTTOMRIGHT", 0, 22)
-			end
-		end
+	if w == "Bank" then
+		f:Point("BOTTOMLEFT", TukuiChatBackgroundLeft, "TOPLEFT", 0, 3)
+	else
+		f:Point("BOTTOMRIGHT", TukuiChatBackgroundRight, "TOPRIGHT", 0, 3)
 	end
-	f:HookScript("OnUpdate", bagUpdate)
 	
-	-- CLOSE BUTTON
-	f.b_close = CreateFrame("Button", "Stuffing_CloseButton" .. w, f)
-	f.b_close:Width(50)
-	f.b_close:Height(20)
+	-- close button
+	f.b_close = CreateFrame("Button", "Stuffing_CloseButton" .. w, f, "UIPanelCloseButton")
+	f.b_close:Width(32)
+	f.b_close:Height(32)
 	f.b_close:Point("TOPRIGHT", -3, -3)
 	f.b_close:SetScript("OnClick", function(self, btn)
 		if self:GetParent():GetName() == "TukuiBags" and btn == "RightButton" then
@@ -438,16 +417,8 @@ function Stuffing:CreateBagFrame(w)
 		self:GetParent():Hide()
 	end)
 	f.b_close:RegisterForClicks("AnyUp")
-	f.b_close:SetTemplate("Default")
-	f.b_close:SetFrameStrata("HIGH")
-	f.b_text = f.b_close:CreateFontString(nil, "OVERLAY")
-	f.b_text:SetFont(C.media.pixelfont, C["datatext"].fontsize)
-	f.b_text:SetPoint("CENTER", 0, 1)
-	f.b_text:SetText(T.panelcolor.."Close")
-	f.b_close:SetWidth(f.b_text:GetWidth() + 20)
-	
-	T.ApplyHover(f.b_close)
-	
+	f.b_close:GetNormalTexture():SetDesaturated(1)
+
 	-- create the bags frame
 	local fb = CreateFrame ("Frame", n .. "BagsFrame", f)
 	fb:Point("BOTTOMLEFT", f, "TOPLEFT", 0, 2)
@@ -521,10 +492,10 @@ function Stuffing:InitBags()
 
 
 	local detail = f:CreateFontString(nil, "ARTWORK", "GameFontHighlightLarge")
-	detail:Point("TOPLEFT", f, 12, -14)
+	detail:Point("TOPLEFT", f, 12, -10)
 	detail:Point("RIGHT",-(16 + 24), 0)
 	detail:SetJustifyH("LEFT")
-	detail:SetText("|cff9999ff" .. L.bags_search)
+	detail:SetText("|cff9999ff" .. "Search")
 	editbox:SetAllPoints(detail)
 
 	local gold = f:CreateFontString(nil, "ARTWORK", "GameFontHighlightLarge")
@@ -621,9 +592,9 @@ function Stuffing:Layout(lb)
 		f = self.frame
 
 		f.gold:SetText(GetMoneyString(GetMoney(), 12))
-		f.editbox:SetFont(C.media.pixelfont, C["datatext"].fontsize)
-		f.detail:SetFont(C.media.pixelfont, C["datatext"].fontsize)
-		f.gold:SetFont(C.media.pixelfont, C["datatext"].fontsize)
+		f.editbox:SetFont(BAGSFONT, 10, "MONOCHROMEOUTLINE")
+		f.detail:SetFont(BAGSFONT, 10, "MONOCHROMEOUTLINE")
+		f.gold:SetFont(BAGSFONT, 10, "MONOCHROMEOUTLINE")
 
 		f.detail:ClearAllPoints()
 		f.detail:Point("TOPLEFT", f, 12, -10)
@@ -631,15 +602,9 @@ function Stuffing:Layout(lb)
 	end
 
 	f:SetClampedToScreen(1)
-	f:SetBackdrop({
-		bgFile = C["media"].normTex,
-		edgeFile = C["media"].blank,
-		edgeSize = T.mult,
-		insets = {left = -T.mult, right = -T.mult, top = -T.mult, bottom = -T.mult}
-	})
-	f:SetBackdropColor(unpack(C["media"].backdropcolor))
-	f:SetBackdropBorderColor(unpack(C["media"].bordercolor))
+	f:SetTemplate("Default")
 	f:CreateBorder(true, true)
+	
 
 
 	-- bag frame stuff
@@ -647,7 +612,7 @@ function Stuffing:Layout(lb)
 	if bag_bars == 1 then
 		fb:SetClampedToScreen(1)
 		fb:SetBackdrop({
-			bgFile = C["media"].normTex,
+			bgFile = C["media"].blank,
 			edgeFile = C["media"].blank,
 			edgeSize = T.mult,
 			insets = {left = -T.mult, right = -T.mult, top = -T.mult, bottom = -T.mult}
@@ -655,8 +620,8 @@ function Stuffing:Layout(lb)
 		fb:SetBackdropColor(unpack(C["media"].backdropcolor))
 		fb:SetBackdropBorderColor(unpack(C["media"].bordercolor))
 
-		local bsize = 24
-		if lb then bsize = 23.3 end
+		local bsize = 30
+		if lb then bsize = 37 end
 
 		local w = 2 * 12
 		w = w + ((#bs - 1) * bsize)
@@ -675,7 +640,7 @@ function Stuffing:Layout(lb)
 	for _, v in ipairs(bs) do
 		if (not lb and v <= 3 ) or (lb and v ~= -1) then
 			local bsize = 30
-			if lb then bsize = 30 end
+			if lb then bsize = 37 end
 
 			local b = self:BagFrameSlotNew(v, fb)
 
@@ -688,20 +653,14 @@ function Stuffing:Layout(lb)
 			b.frame:Point("LEFT", fb, "LEFT", xoff, 0)
 			b.frame:Show()
 
-			-- this is for the bagbar icons
-			local iconTex = _G[b.frame:GetName() .. "IconTexture"]
-			iconTex:SetTexCoord(.09, .91, .09, .91)
-			iconTex:Point("TOPLEFT", b.frame, 2, -2)
-			iconTex:Point("BOTTOMRIGHT", b.frame, -2, 2)
 
-			iconTex:Show()
-			b.iconTex = iconTex
 
-			b.frame:SetTemplate("Default")
-			b.frame:SetBackdropColor(.05, .05, .05)
-			b.frame:StyleButton()
-			b.frame:CreateBorder(true, true)
-			
+
+
+
+
+
+
 			idx = idx + 1
 		end
 	end
@@ -723,14 +682,13 @@ function Stuffing:Layout(lb)
 	if (slots % cols) ~= 0 then
 		rows = rows + 1
 	end
-	
-	f:Width(T.InfoLeftRightWidth + 12)
-	f:Height(rows * 30 + (rows - 1) * 2 + off + 12 * 2)
 
-	local sf = CreateFrame("Frame", "SlotFrame", f)
-	sf:Width((31 + 1) * cols)
-	sf:Height(f:GetHeight() - (6))
-	sf:Point("BOTTOM", f, "BOTTOM")
+
+
+
+
+	f:Width(cols * 31 + (cols - 1) * 4 + 12 * 2)
+	f:Height(rows * 31 + (rows - 1) * 4 + off + 12 * 2)
 
 
 	local idx = 0
@@ -752,27 +710,28 @@ function Stuffing:Layout(lb)
 				if isnew then
 					table.insert(self.buttons, idx + 1, b)
 				end
-				
-				xoff = (x * 31) + (x * 1)
-
-				yoff = off + 12 + (y * 30) + ((y - 1) * 2)
 
 
 
 
 
+				xoff = 12 + (x * 31)
+						+ (x * 4)
 
+				yoff = off + 12 + (y * 31)
+						+ ((y - 1) * 4)
 				yoff = yoff * -1
-				
+
+
 				b.frame:ClearAllPoints()
-				b.frame:Point("TOPLEFT", sf, "TOPLEFT", xoff, yoff)
-				b.frame:Height(29)
-				b.frame:Width(29)
+				b.frame:Point("TOPLEFT", f, "TOPLEFT", xoff, yoff)
+				b.frame:Height(31)
+				b.frame:Width(31)
 				b.frame:SetPushedTexture("")
 				b.frame:SetNormalTexture("")
 				b.frame:Show()
-				b.frame:SetTemplate("Thin")
-				b.frame:SetBackdropColor(.05, .05, .05) -- we just need border with SetTemplate, not the backdrop. Hopefully this will fix invisible item that some users have.
+				b.frame:SetTemplate("Default")
+				b.frame:SetBackdropColor(0, 0, 0, 0) -- we just need border with SetTemplate, not the backdrop. Hopefully this will fix invisible item that some users have.
 				b.frame:StyleButton()
 				b.frame:CreateBorder(true, true)
 				
@@ -844,7 +803,6 @@ function Stuffing:SetBagsForSorting(c)
 			table.insert(self.sortBags, tonumber(s))
 		end
 	end
-
 
 	local bids = L.bags_bids
 	for _, i in ipairs(self.sortBags) do
@@ -932,7 +890,6 @@ end
 function Stuffing:PLAYER_ENTERING_WORLD()
 	-- please don't do anything after 1 player_entering_world event.
 	Stuffing:UnregisterEvent("PLAYER_ENTERING_WORLD")
-
 end
 
 function Stuffing:PLAYERBANKSLOTS_CHANGED(id)
@@ -988,7 +945,6 @@ function Stuffing:BANKFRAME_OPENED()
 	end
 	self.bankFrame:Show()
 end
-
 
 
 function Stuffing:BANKFRAME_CLOSED()
@@ -1412,7 +1368,6 @@ function Stuffing.Menu(self, level)
 
 	end
 	UIDropDownMenu_AddButton(info, level)
-
 	wipe(info)
 	info.disabled = nil
 	info.notCheckable = 1
