@@ -792,6 +792,7 @@ local function Shared(self, unit)
 
 		self:Tag(Name, '[Tukui:getnamecolor][Tukui:namemedium]')
 		self.Name = Name
+		self:RegisterEvent("UNIT_AURA", T.updateAllElements)
 		
 		if (C["unitframes"].unitcastbar == true) then
 		local castbar = CreateFrame("StatusBar", self:GetName().."CastBar", self)
