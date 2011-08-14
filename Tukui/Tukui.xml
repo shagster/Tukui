@@ -115,7 +115,6 @@
 	<Script file="modules\actionbars\Bar7.lua"/>
 	<Script file="modules\actionbars\BarPet.lua"/>
 	
-	<Script file="modules\actionbars\BarTotem.lua"/>
 	<Script file="modules\actionbars\buttons.lua"/>	
 	<Script file="modules\actionbars\Style.lua"/>
 	<Script file="modules\actionbars\Range.lua"/>
@@ -217,6 +216,7 @@
 	<Script file="modules\misc\threatbar.lua"/>
 	<Script file="modules\extras\sCombo.lua"/>
 	<Script file="modules\actionbars\BarShift.lua"/>
+	<Script file="modules\actionbars\BarTotem.lua"/>
 	<Script file="core\movers.lua"/>
 	
 	<Script file="developer\test.lua"/>

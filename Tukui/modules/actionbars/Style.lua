@@ -400,7 +400,7 @@ local function StyleTotemActionButton(button, index)
 	button.overlayTex:SetTexture(nil)
 	button.overlayTex:Hide()
 	button:GetNormalTexture():SetTexCoord(0,0,0,0)
-	if button.slotButton then
+	if not InCombatLockdown() and button.slotButton then
 		button:ClearAllPoints()
 		button:SetAllPoints(button.slotButton)
 		button:SetFrameLevel(button.slotButton:GetFrameLevel()+1)
