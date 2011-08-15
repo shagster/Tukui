@@ -10,10 +10,10 @@ local TukuiShift = CreateFrame("Frame","TukuiShiftBar",UIParent)
 if T.myclass == "SHAMAN" then
 TukuiShift:SetPoint("TOPLEFT", 14, -20)
 else
-TukuiShift:SetPoint("TOPLEFT", TukuiPlayer, "BOTTOMLEFT", 1, -6)
+TukuiShift:SetPoint("TOPLEFT", TukuiPlayer, "BOTTOMLEFT", 1, -2)
 end
 TukuiShift:SetWidth((T.petbuttonsize * 5) + (T.petbuttonsize * 4))
-TukuiShift:SetHeight(T.petbuttonsize/2)
+TukuiShift:SetHeight(20)
 TukuiShift:SetFrameStrata("MEDIUM")
 TukuiShift:SetMovable(true)
 TukuiShift:SetClampedToScreen(true)

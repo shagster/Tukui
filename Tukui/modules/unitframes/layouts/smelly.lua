@@ -245,6 +245,44 @@ local function Shared(self, unit)
 			-- show druid mana when shapeshifted in bear, cat or whatever
 			if C["unitframes"].classbar then
 			if T.myclass == "DRUID" and C["unitframes"].druid then
+				CreateFrame("Frame"):SetScript("OnUpdate", function() T.UpdateDruidMana(self) end)
+				local DruidMana = T.SetFontString(health, font, 10, "MONOCHROMEOUTLINE")
+				DruidMana:SetTextColor(1, 0.49, 0.04)
+				self.DruidManaText = DruidMana
+				
+				local DruidManaBackground = CreateFrame("Frame", nil, self)
+				DruidManaBackground:Point("BOTTOMLEFT", self, "TOPLEFT", 0, 5)
+				DruidManaBackground:Size(225, 5)
+				DruidManaBackground:SetFrameLevel(8)
+				DruidManaBackground:SetFrameStrata("MEDIUM")
+				DruidManaBackground:CreateBorder(true, true)
+				DruidManaBackground:SetTemplate("Transparent")
+				DruidManaBackground:SetBackdropBorderColor(0,0,0,0)
+				
+				local DruidManaBarStatus = CreateFrame('StatusBar', nil, DruidManaBackground)
+				DruidManaBarStatus:SetPoint('LEFT', DruidManaBackground, 'LEFT', 0, 0)
+				DruidManaBarStatus:SetSize(DruidManaBackground:GetWidth(), DruidManaBackground:GetHeight())
+				DruidManaBarStatus:SetStatusBarTexture(normTex)
+				DruidManaBarStatus:SetStatusBarColor(.30, .52, .90)
+				
+				DruidManaBarStatus:SetScript("OnShow", function() T.DruidBarDisplay(self, false) end)
+				DruidManaBackground:SetScript("OnUpdate", function() T.DruidBarDisplay(self, true) end) -- just forcing 1 update on login for buffs/shadow/etc.
+				DruidManaBarStatus:SetScript("OnHide", function() T.DruidBarDisplay(self, false) end)
+				
+				self.DruidManaBackground = DruidManaBackground
+				self.DruidMana = DruidManaBarStatus
+				
+				DruidManaBackground.FrameBackdrop = CreateFrame("Frame", nil, DruidManaBackground)
+				DruidManaBackground.FrameBackdrop:SetTemplate("Transparent")
+				DruidManaBackground.FrameBackdrop:SetPoint("TOPLEFT", T.Scale(-2), T.Scale(2))
+				DruidManaBackground.FrameBackdrop:SetPoint("BOTTOMRIGHT", T.Scale(2), T.Scale(-2))
+				DruidManaBackground.FrameBackdrop:SetFrameLevel(DruidManaBackground:GetFrameLevel() - 1)
+			end	
+			end
+			
+			-- eclipse bar
+			if C["unitframes"].classbar then
+			if T.myclass == "DRUID" and C["unitframes"].druid then
 
 					local eclipseBar = CreateFrame('Frame', nil, self)
 					eclipseBar:Point("BOTTOMLEFT", self, "TOPLEFT", 0, 5)
@@ -252,9 +290,9 @@ local function Shared(self, unit)
 					eclipseBar:SetFrameStrata("MEDIUM")
 					eclipseBar:SetFrameLevel(8)
 					eclipseBar:SetBackdropBorderColor(0,0,0,1)
-					eclipseBar:SetScript("OnShow", function() T.EclipseDisplay(self, false) end)
-					eclipseBar:SetScript("OnUpdate", function() T.EclipseDisplay(self, true) end) -- just forcing 1 update on login for buffs/shadow/etc.
-					eclipseBar:SetScript("OnHide", function() T.EclipseDisplay(self, false) end)
+					eclipseBar:SetScript("OnShow", function() T.DruidBarDisplay(self, false) end)
+					--eclipseBar:SetScript("OnUpdate", function() T.DruidBarDisplay(self, true) end) -- just forcing 1 update on login for buffs/shadow/etc.
+					eclipseBar:SetScript("OnHide", function() T.DruidBarDisplay(self, false) end)
 					
 					local lunarBar = CreateFrame('StatusBar', nil, eclipseBar)
 					lunarBar:SetPoint('LEFT', eclipseBar, 'LEFT', 0, 0)
@@ -285,7 +323,7 @@ local function Shared(self, unit)
 					self.EclipseBar.Text = eclipseBarText
 					
 					eclipseBar.FrameBackdrop = CreateFrame("Frame", nil, eclipseBar)
-					eclipseBar.FrameBackdrop:SetTemplate("Default")
+					eclipseBar.FrameBackdrop:SetTemplate("Transparent")
 					eclipseBar.FrameBackdrop:SetPoint("TOPLEFT", T.Scale(-2), T.Scale(2))
 					eclipseBar.FrameBackdrop:SetPoint("BOTTOMRIGHT", T.Scale(2), T.Scale(-2))
 					eclipseBar.FrameBackdrop:SetFrameLevel(eclipseBar:GetFrameLevel() - 1)

@@ -861,28 +861,37 @@ T.EclipseDirection = function(self)
 	end
 end
 
-T.EclipseDisplay = function(self, login)
+T.DruidBarDisplay = function(self, login)
 	local eb = self.EclipseBar
+	local dm = self.DruidMana
 	local txt = self.EclipseBar.Text
 
 	if login then
-		eb:SetScript("OnUpdate", nil)
+		dm:SetScript("OnUpdate", nil)
 	end
 	
-	if eb:IsShown() then
-		txt:Show()
-		self.FlashInfo:Hide()
-		--self.shadow:Point("TOPLEFT", -4, 12)
-		
-		if self.Buffs then self.Buffs:SetPoint("TOPLEFT", self, "TOPLEFT", 0, 38) end
-					
+	if eb:IsShown() or dm:IsShown() then
+		if eb:IsShown() then
+			txt:Show()
+			self.FlashInfo:Hide()
+		end
+		self.shadow:Point("TOPLEFT", -4, 12)
+		self.DruidManaBackground:Show()
+		if T.lowversion then
+			if self.Buffs then self.Buffs:SetPoint("TOPLEFT", self, "TOPLEFT", 0, 34) end
+		else
+			if self.Buffs then self.Buffs:SetPoint("TOPLEFT", self, "TOPLEFT", 0, 38) end
+		end				
 	else
 		txt:Hide()
 		self.FlashInfo:Show()
-		--self.shadow:Point("TOPLEFT", -4, 4)
-		
-		if self.Buffs then self.Buffs:SetPoint("TOPLEFT", self, "TOPLEFT", 0, 30) end
-		
+		self.shadow:Point("TOPLEFT", -4, 4)
+		self.DruidManaBackground:Hide()
+		if T.lowversion then
+			if self.Buffs then self.Buffs:SetPoint("TOPLEFT", self, "TOPLEFT", 0, 26) end
+		else
+			if self.Buffs then self.Buffs:SetPoint("TOPLEFT", self, "TOPLEFT", 0, 30) end
+		end
 	end
 end
 
@@ -939,19 +948,19 @@ T.UpdateDruidMana = function(self)
 
 		if min ~= max then
 			if self.Power.value:GetText() then
-				self.DruidMana:SetPoint("LEFT", self.Power.value, "RIGHT", 1, 0)
-				self.DruidMana:SetFormattedText("|cffD7BEA5-|r  |cff4693FF%d%%|r|r", floor(min / max * 100))
+				self.DruidManaText:SetPoint("LEFT", self.Power.value, "RIGHT", 1, 0)
+				self.DruidManaText:SetFormattedText("|cffD7BEA5-|r  |cff4693FF%d%%|r|r", floor(min / max * 100))
 			else
-				self.DruidMana:SetPoint("LEFT", self.panel, "LEFT", 4, 1)
-				self.DruidMana:SetFormattedText("%d%%", floor(min / max * 100))
+				self.DruidManaText:SetPoint("LEFT", self.panel, "LEFT", 4, 1)
+				self.DruidManaText:SetFormattedText("%d%%", floor(min / max * 100))
 			end
 		else
-			self.DruidMana:SetText()
+			self.DruidManaText:SetText()
 		end
 
-		self.DruidMana:SetAlpha(1)
+		self.DruidManaText:SetAlpha(1)
 	else
-		self.DruidMana:SetAlpha(0)
+		self.DruidManaText:SetAlpha(0)
 	end
 end
 
