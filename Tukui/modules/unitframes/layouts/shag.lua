@@ -269,7 +269,7 @@ local function Shared(self, unit)
 				DruidManaBarStatus:SetStatusBarColor(.30, .52, .90)
 				
 				DruidManaBarStatus:SetScript("OnShow", function() T.DruidBarDisplay(self, false) end)
-				DruidManaBackground:SetScript("OnUpdate", function() T.DruidBarDisplay(self, true) end) -- just forcing 1 update on login for buffs/shadow/etc.
+				DruidManaBarStatus:SetScript("OnUpdate", function() T.DruidBarDisplay(self, true) end) -- just forcing 1 update on login for buffs/shadow/etc.
 				DruidManaBarStatus:SetScript("OnHide", function() T.DruidBarDisplay(self, false) end)
 				
 				self.DruidManaBackground = DruidManaBackground
@@ -301,7 +301,7 @@ local function Shared(self, unit)
 					lunarBar:SetPoint('LEFT', eclipseBar, 'LEFT', 0, 0)
 					lunarBar:SetSize(eclipseBar:GetWidth(), eclipseBar:GetHeight())
 					lunarBar:SetStatusBarTexture(blankTex)
-					lunarBar:SetStatusBarColor(.50, .52, .70)
+					lunarBar:SetStatusBarColor(.30, .52, .90)
 					eclipseBar.LunarBar = lunarBar
 
 					local solarBar = CreateFrame('StatusBar', nil, eclipseBar)
@@ -830,8 +830,7 @@ local function Shared(self, unit)
 
 		self:Tag(Name, '[Tukui:getnamecolor][Tukui:namemedium]')
 		self.Name = Name
-		self:RegisterEvent("UNIT_AURA", T.updateAllElements)
-		
+				
 		if (C["unitframes"].unitcastbar == true) then
 		local castbar = CreateFrame("StatusBar", self:GetName().."CastBar", self)
 		if C.unitframes.bigfocuscast then

@@ -73,7 +73,7 @@ TukuiBar7:SetAlpha(0)
 TukuiBar7:SetBackdrop(nil)
 
 local petbg = CreateFrame("Frame", "TukuiPetBar", UIParent, "SecureHandlerStateTemplate")
-petbg:CreatePanel("Transparent", (T.petbuttonsize * 10) + (T.petbuttonspacing * 9), T.petbuttonsize, "BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -48, 168)
+petbg:CreatePanel("Transparent", (T.petbuttonsize * 10) + (T.petbuttonspacing * 9), T.petbuttonsize, "BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -50, 170)
 -- fucking spirit wolves.
 if T.myclass == "SHAMAN" then
 	petbg:Point("BOTTOM", TukuiBar1 or TukuiBar4, "TOP", 0, 13)
@@ -206,10 +206,10 @@ chatleftbg:CreatePanel("Transparent", T.InfoLeftRightWidth + 12, 160, "BOTTOMLEF
 chatleftbg:CreateBorder(true, false)
 
 local linfolinebot = CreateFrame("Frame", "TukuiLeftInfoLineBot", TukuiChatBackgroundLeft)
-linfolinebot:CreatePanel("Default", chatleftbg:GetWidth() - 16, 2, "BOTTOMLEFT", chatleftbg, "BOTTOMLEFT", 8, 20)
+linfolinebot:CreatePanel("Default", chatleftbg:GetWidth() - 16, 2, "BOTTOMLEFT", chatleftbg, "BOTTOMLEFT", 8, 18)
 
 local linfolinetop = CreateFrame("Frame", "TukuiLeftInfoLineTop", TukuiChatBackgroundLeft)
-linfolinetop:CreatePanel("Default", chatleftbg:GetWidth() - 16, 2, "TOPLEFT", chatleftbg, "TOPLEFT", 8, -20)	
+linfolinetop:CreatePanel("Default", chatleftbg:GetWidth() - 16, 2, "TOPLEFT", chatleftbg, "TOPLEFT", 8, -18)	
 
 -- CHAT BG RIGHT
 local chatrightbg = CreateFrame("Frame", "TukuiChatBackgroundRight", UIParent)
@@ -217,10 +217,10 @@ chatrightbg:CreatePanel("Transparent", T.InfoLeftRightWidth + 12, 160, "BOTTOMRI
 chatrightbg:CreateBorder(true, false)
 
 local rinfolinebot = CreateFrame("Frame", "TukuiRightInfoLineBot", TukuiChatBackgroundRight)
-rinfolinebot:CreatePanel("Default", chatrightbg:GetWidth() - 16, 2, "BOTTOMLEFT", chatrightbg, "BOTTOMLEFT", 8, 20)
+rinfolinebot:CreatePanel("Default", chatrightbg:GetWidth() - 16, 2, "BOTTOMLEFT", chatrightbg, "BOTTOMLEFT", 8, 18)
 
 local rinfolinetop = CreateFrame("Frame", "TukuiRightInfoLineTop", TukuiChatBackgroundRight)
-rinfolinetop:CreatePanel("Default", chatrightbg:GetWidth() - 16, 2, "TOPLEFT", chatrightbg, "TOPLEFT", 8, -20)	
+rinfolinetop:CreatePanel("Default", chatrightbg:GetWidth() - 16, 2, "TOPLEFT", chatrightbg, "TOPLEFT", 8, -18)	
 
 local elapsed = 0
 TukuiBar5:SetScript("OnUpdate",function(self, u)

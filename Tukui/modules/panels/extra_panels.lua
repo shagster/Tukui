@@ -36,7 +36,7 @@ local ilmmap = CreateFrame("Frame", "TukuiInfoLeftMinimap", TukuiMinimap)
 ilmmap:CreatePanel("Transparent", (TukuiMinimap:GetWidth() / 2) - 1.5, 19, "TOPLEFT", TukuiMinimap, "BOTTOMLEFT", 0, -3)
 ilmmap:CreateBorder(false, true)
 
--- MINIMAP IFNO RIGHT(FOR STATS)
+-- MINIMAP INFO RIGHT(FOR STATS)
 local irmmap = CreateFrame("Frame", "TukuiInfoRightMinimap", TukuiMinimap)
 irmmap:CreatePanel("Transparent", (TukuiMinimap:GetWidth() / 2) - 1.5, ilmmap:GetHeight(), "TOPRIGHT", TukuiMinimap, "BOTTOMRIGHT", 0, -3)
 irmmap:CreateBorder(false, true)
