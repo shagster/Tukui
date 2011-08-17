@@ -115,11 +115,7 @@
 	<Script file="modules\actionbars\Bar7.lua"/>
 	<Script file="modules\actionbars\BarPet.lua"/>
 	
-	<Script file="modules\actionbars\buttons.lua"/>	
-	<Script file="modules\actionbars\Style.lua"/>
-	<Script file="modules\actionbars\Range.lua"/>
-	<Script file="modules\actionbars\Others.lua"/>
-	<Script file="modules\actionbars\Cooldowns.lua"/>
+	
 	<Script file="modules\actionbars\Microbar.lua"/>	
 		
 	<Script file="modules\chat\telltarget.lua"/>
@@ -217,6 +213,11 @@
 	<Script file="modules\extras\sCombo.lua"/>
 	<Script file="modules\actionbars\BarShift.lua"/>
 	<Script file="modules\actionbars\BarTotem.lua"/>
+	<Script file="modules\actionbars\buttons.lua"/>	
+	<Script file="modules\actionbars\Style.lua"/>
+	<Script file="modules\actionbars\Range.lua"/>
+	<Script file="modules\actionbars\Others.lua"/>
+	<Script file="modules\actionbars\Cooldowns.lua"/>
 	<Script file="core\movers.lua"/>
 	
 	<Script file="developer\test.lua"/>

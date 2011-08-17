@@ -3,6 +3,7 @@
 ## Project Collaborators: Elv22, Nightcracker
 ## Credits to: Caith, Caellian, Shestak, Haste, Tekkub, Alza, Roth, P3lim, Tulla, Hungtar, hankthetank, Ishtara, Haleth and others...
 ## Special Thanks to: Admins, Moderator and VIP's from tukui.org
+## Additional thanks to Smelly, Jasje, Ext
 ## Version: 13.41 (Shag UI v2.1.1)
 ## S-Release: 2.1.1
 ## Title: |cffC495DDTukui|r

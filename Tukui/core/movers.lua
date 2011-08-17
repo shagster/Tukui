@@ -165,8 +165,8 @@ local function moving()
 	
 	if enable then enable = false else enable = true end
 end
-SLASH_MOVING1 = "/mtukui"
-SLASH_MOVING2 = "/moveui"
+SLASH_MOVING1 = "/moveui"
+SLASH_MOVING2 = "/mtukui"
 SlashCmdList["MOVING"] = moving
 
 local protection = CreateFrame("Frame")
