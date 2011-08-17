@@ -88,8 +88,8 @@ SLASH_ALI1 = "/ali"
 SlashCmdList["ALI"] = function(gridsize)
 
 local defsize = 16
-local w = tonumber(string.match(({GetScreenResolutions()})[GetCurrentResolution()], "(%d+)x+%d"))
-local h = tonumber(string.match(({GetScreenResolutions()})[GetCurrentResolution()], "%d+x(%d+)"))
+local w = tonumber(string.match(T.resolution, "(%d+)x+%d"))
+local h = tonumber(string.match(T.resolution, "%d+x(%d+)"))
 local x = tonumber(gridsize) or defsize
 
 function Grid()
