@@ -285,7 +285,7 @@ L.tutorial_step_3_line_3 = "Users may want to visit our extra mods section into 
 L.tutorial_step_3_line_4 = ""
 
 -- tutorial 4
-L.tutorial_step_4_line_1 = "To set how many bars you want, mouseover on left or right of bottom action bar background. Mouseover the right chat frame header to view more options. To copy text from the chat frame, click the copy button on the right corner of chat frames."
+L.tutorial_step_4_line_1 = "To set how many bars you want, click on the 'C' by the minimap or type /ab to directly open the actionbar configuration panel. To copy text from the chat frame, click the copy button on the right corner of chat frames."
 L.tutorial_step_4_line_2 = "The minimap border changes colour. It is green when you have new mail, red when you have a new calendar invite, and orange when you have both."
 L.tutorial_step_4_line_3 = "You can left-click through 80% of datatext to show various panels from Blizzard. Friend and Guild Datatext have right-click features aswell."
 L.tutorial_step_4_line_4 = "There are some dropdown menus available. Right-clicking on [X] (Close) bag button will show a dropdown menu to show bags, sort items, show keyring, etc. Middle-clicking through Minimap will show the micro menu."
@@ -297,10 +297,10 @@ L.tutorial_step_5_line_3 = "/tt lets you whisper your target. /rc initiates a re
 L.tutorial_step_5_line_4 = "/gm toggles the Help frame. /install, /resetui or /tutorial loads this installer. /frame print the name and parent of the frame below the cursor respectively with additionnal information."
 
 -- tutorial 6
-L.tutorial_step_6_line_1 = "Additional skin support is incuded with this version. Consult the config file for details."
+L.tutorial_step_6_line_1 = "Additional skin support is incuded with this version. Consult the config file or in game config UI for details."
 L.tutorial_step_6_line_2 = "/scp will allow you to move the sCombo points bar (if enabled) *Smelly*."
 L.tutorial_step_6_line_3 = "/ali will enable an onscreen grid for help aligning your moveable frames."
-L.tutorial_step_6_line_4 = "Mouseover the top of the right chat frame for additional buttons."
+L.tutorial_step_6_line_4 = "Click on the 'C' next to the minimap to get started. Addon control panel and chat show/hide buttons are at the bottom of the UI."
 
 -- tutorial 7
 L.tutorial_step_7_line_1 = "The tutorial is complete. You can choose to reconsult it at any time by typing /tutorial."

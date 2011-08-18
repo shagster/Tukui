@@ -21,7 +21,8 @@ StaticPopupDialogs.SET_BN_BROADCAST = {
 	timeout = 0,
 	exclusive = 1,
 	whileDead = 1,
-	hideOnEscape = 1
+	hideOnEscape = 1,
+	preferredIndex = 3,
 }
 local Text  = TukuiChatBackgroundLeft:CreateFontString(nil, "OVERLAY")
 Text:SetFont(C.media.pixelfont, C["datatext"].fontsize)
