@@ -1203,50 +1203,58 @@ local player = oUF:Spawn('player', "TukuiPlayer")
 local target = oUF:Spawn('target', "TukuiTarget")
 local tot = oUF:Spawn('targettarget', "TukuiTargetTarget")
 local pet = oUF:Spawn('pet', "TukuiPet")
-local pettarget = oUF:Spawn('pettarget', "TukuiPettarget")
 local focus = oUF:Spawn('focus', "TukuiFocus")
 
 -- sizes
 player:Size(T.Player, player.Health:GetHeight() + player.Power:GetHeight() + player.panel:GetHeight() + 6)
 target:Size(T.Target, target.Health:GetHeight() + target.Power:GetHeight() + target.panel:GetHeight() + 6)
-tot:SetSize(T.ToT, tot.Health:GetHeight() + tot.Power:GetHeight() + tot.panel:GetHeight() + 6)
-pet:SetSize(T.Pet, pet.Health:GetHeight() + pet.Power:GetHeight() + pet.panel:GetHeight() + 6)	
-pettarget:SetSize(T.Pettarget, pettarget.Health:GetHeight() + pettarget.Power:GetHeight() + pettarget.panel:GetHeight() + 6)
-focus:SetSize(180, 29)
+tot:Size(T.ToT, tot.Health:GetHeight() + tot.Power:GetHeight() + tot.panel:GetHeight() + 6)
+pet:Size(T.Pet, pet.Health:GetHeight() + pet.Power:GetHeight() + pet.panel:GetHeight() + 6)	
+focus:Size(180, 29)
 
 ---- Positions per layout -----
 local f = CreateFrame("Frame")
-f:RegisterEvent("ADDON_LOADED")
 f:RegisterEvent("PLAYER_ENTERING_WORLD")
 f:SetScript("OnEvent", function(self, event, addon)
-
-if addon == "Tukui_Raid" then
+	player:ClearAllPoints()
+	target:ClearAllPoints()
+	tot:ClearAllPoints()
+	pet:ClearAllPoints()
+	focus:ClearAllPoints()
+if IsAddOnLoaded("Tukui_Raid") then
 	--[ DPS ]--
 		player:Point("BOTTOM", InvTukuiActionBarBackground, "TOP", -201 , 60)
 		target:Point("BOTTOM", InvTukuiActionBarBackground, "TOP", 201, 60)
 		tot:Point("BOTTOM", InvTukuiActionBarBackground, "TOP", 0, 60)
 		pet:Point("BOTTOM", InvTukuiActionBarBackground, "TOP", 0, 92)
 		focus:Point("RIGHT", UIParent, "RIGHT", -412, -253)
-		if C.unitframes.showpettarget then
-		pettarget:SetPoint("TOPLEFT", tot, "BOTTOMLEFT", 0, -3) ---- SHAG pettarg
-		end
-elseif addon == "Tukui_Raid_Healing" then
+elseif IsAddOnLoaded("Tukui_Raid_Healing") then
 	--[ HEAL ]--
 		player:Point("TOP", UIParent, "BOTTOM", -310 , 300)
 		target:Point("TOP", UIParent, "BOTTOM", 310, 300)
 		tot:Point("TOPRIGHT", TukuiTarget, "BOTTOMRIGHT", 0, -25)
 		pet:Point("TOPLEFT", TukuiPlayer, "BOTTOMLEFT", 0, -32)
 		focus:Point("TOP", UIParent, "BOTTOM", -400, 450)
-		end
-	end)
+else
+		player:Point("TOP", UIParent, "BOTTOM", -310 , 300)
+		target:Point("TOP", UIParent, "BOTTOM", 310, 300)
+		tot:Point("TOPRIGHT", TukuiTarget, "BOTTOMRIGHT", 0, -25)
+		pet:Point("TOPLEFT", TukuiPlayer, "BOTTOMLEFT", 0, -32)
+		focus:Point("TOP", UIParent, "BOTTOM", -400, 450)
+	end
+end)
 
+if C.unitframes.showpettarget then
+	local pettarget = oUF:Spawn('pettarget', "TukuiPettarget")
+	pettarget:SetPoint("TOPLEFT", tot, "BOTTOMLEFT", 0, -3)
+	pettarget:Size(T.Pettarget, pettarget.Health:GetHeight() + pettarget.Power:GetHeight() + pettarget.panel:GetHeight() + 6)
+end
 
 if C.unitframes.showfocustarget then
 	local focustarget = oUF:Spawn("focustarget", "TukuiFocusTarget")
 	focustarget:SetPoint("TOP", TukuiFocus, "BOTTOM", 0 , -35)
 	focustarget:Size(180, 29)
 end
-
 
 if C.arena.unitframes then
 	local arena = {}
