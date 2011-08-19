@@ -169,12 +169,12 @@ local TRINKET_FILTER = {
 		--Throne of the Four Winds
 		
 		--Firelands
-		CreateSpellEntry( 96963, nil, {0, 1, 0, 1} ),  -- necromantic (Normal)
-		CreateSpellEntry( 96962, nil, {0, 1, 0, 1} ),  -- necromantic (Normal) soul fragment
-		CreateSpellEntry( 97132, nil, {0, 1, 0, 1} ),  -- necromantic (Heroic)
-		CreateSpellEntry( 97131, nil, {0, 1, 0, 1} ),  -- necromantic (Heroic) soul fragment
-		CreateSpellEntry( 96890, nil, {0, 1, 0, 1} ),  -- variable pulse lightning gen (normal) electrical charge
-		CreateSpellEntry( 97007, nil, {0, 1, 0, 1} ),  -- Rune of Zeth - Mark of the firelord
+		CreateSpellEntry( 96963 ),  -- necromantic (Normal)
+		CreateSpellEntry( 96962 ),  -- necromantic (Normal) soul fragment
+		CreateSpellEntry( 97132 ),  -- necromantic (Heroic)
+		CreateSpellEntry( 97131 ),  -- necromantic (Heroic) soul fragment
+		CreateSpellEntry( 96890 ),  -- variable pulse lightning gen (normal) electrical charge
+		CreateSpellEntry( 97007 ),  -- Rune of Zeth - Mark of the firelord
 		
 		
 		--T11 set procs
