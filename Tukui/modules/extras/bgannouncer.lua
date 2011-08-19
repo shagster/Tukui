@@ -11,7 +11,7 @@ Text:SetFont(C.media.pixelfont, C["datatext"].fontsize, "MONOCHROMEOUTLINE")
 local curmapid = GetCurrentMapAreaID()
 	
 -- Create Main Button Frame
-local buttonframe = CreateFrame("Frame", "BGAnnouncerButtonFrame", UIParent, "SecureActionButtonTemplate")
+local buttonframe = CreateFrame("Frame", "BGAnnouncerButtonFrame", UIParent)
 buttonframe:Size(TukuiChatBackgroundRight:GetWidth(), 17)
 --buttonframe:SetAllPoints()
 buttonframe:SetFrameStrata("MEDIUM")
@@ -104,23 +104,7 @@ button6_text:Point("Center",1,1)
 button6_text:SetText(T.StatColor.."Hidden")
 T.ApplyHover(button6)
 
-local Stat = CreateFrame("Frame")
-Stat:EnableMouse(true)
-
 local UpdateZone = CreateFrame("Frame")
-UpdateZone:RegisterEvent("ZONE_CHANGED")
-UpdateZone:RegisterEvent("ZONE_CHANGED_NEW_AREA")
-UpdateZone:RegisterEvent("PLAYER_ENTERING_WORLD")
-UpdateZone:SetScript("OnEvent", OnEvent)
-
-UpdateZone:SetScript("OnEvent", function()
-	button1:SetAttribute("macrotext", "/bg Light attack incoming to "..GetMinimapZoneText())
-	button2:SetAttribute("macrotext", "/bg Medium attack Incoming to "..GetMinimapZoneText())
-	button3:SetAttribute("macrotext", "/bg Heavy Incoming to "..GetMinimapZoneText())
-	button4:SetAttribute("macrotext", "/bg All Secure at "..GetMinimapZoneText())
-end)
-
---hide text when not in an bg
 local function OnEvent(self, event)
 	if event == "PLAYER_ENTERING_WORLD" then
 		local inInstance, instanceType = IsInInstance()
@@ -130,7 +114,16 @@ local function OnEvent(self, event)
 			buttonframe:Hide()
 		end
 	end
+	
+	button1:SetAttribute("macrotext", "/bg Light attack incoming to "..GetMinimapZoneText())
+	button2:SetAttribute("macrotext", "/bg Medium attack Incoming to "..GetMinimapZoneText())
+	button3:SetAttribute("macrotext", "/bg Heavy Incoming to "..GetMinimapZoneText())
+	button4:SetAttribute("macrotext", "/bg all clear at "..GetMinimapZoneText())
+	
 end
 
-Stat:RegisterEvent("PLAYER_ENTERING_WORLD")
-Stat:SetScript("OnEvent", OnEvent)
+UpdateZone:RegisterEvent("PLAYER_ENTERING_WORLD")
+UpdateZone:RegisterEvent("ZONE_CHANGED_NEW_AREA")
+UpdateZone:RegisterEvent("ZONE_CHANGED")
+
+UpdateZone:SetScript("OnEvent", OnEvent)
