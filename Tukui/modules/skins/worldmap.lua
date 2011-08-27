@@ -1,10 +1,10 @@
 local T, C, L = unpack(select(2, ...))
 
 local function LoadSkin()
-	WorldMapFrame:CreateBackdrop("Transparent")
+	WorldMapFrame:CreateBackdrop("Default")
 	-- WorldMapDetailFrame:SetFrameLevel(WorldMapDetailFrame:GetFrameLevel() + 1)
 	WorldMapDetailFrame.backdrop = CreateFrame("Frame", nil, WorldMapFrame)
-	WorldMapDetailFrame.backdrop:SetTemplate("Transparent")
+	WorldMapDetailFrame.backdrop:SetTemplate("Default")
 	WorldMapDetailFrame.backdrop:Point("TOPLEFT", WorldMapDetailFrame, "TOPLEFT", -2, 2)
 	WorldMapDetailFrame.backdrop:Point("BOTTOMRIGHT", WorldMapDetailFrame, "BOTTOMRIGHT", 2, -2)
 	WorldMapDetailFrame.backdrop:SetFrameLevel(WorldMapDetailFrame:GetFrameLevel() - 2)
@@ -26,7 +26,7 @@ local function LoadSkin()
 	T.SkinCheckBox(WorldMapQuestShowObjectives)
 	T.SkinCheckBox(WorldMapShowDigSites)
 	T.SkinScrollBar(WorldMapQuestScrollFrameScrollBar)
-	
+
 	--Mini
 	local function SmallSkin()
 		WorldMapLevelDropDown:ClearAllPoints()
@@ -96,11 +96,9 @@ local function LoadSkin()
 		if not InCombatLockdown() then
 			WorldMapFrame:SetScale(1)
 			WorldMapFrameSizeDownButton:Show()
-			WorldMapFrame:SetFrameLevel(10)
-		else
-			WorldMapFrameSizeDownButton:Disable()
-			WorldMapFrameSizeUpButton:Disable()
-		end	
+			WorldMapFrame:SetFrameLevel(40)
+			WorldMapFrame:SetFrameStrata("HIGH")
+		end
 		
 		WorldMapFrameAreaLabel:SetFont(C["media"].font, 50, "OUTLINE")
 		WorldMapFrameAreaLabel:SetShadowOffset(2, -2)
@@ -123,6 +121,7 @@ local function LoadSkin()
 	WorldMapFrame:RegisterEvent("PLAYER_REGEN_DISABLED") -- fix taint with small map & big map
 	WorldMapFrame:HookScript("OnEvent", function(self, event)
 		local miniWorldMap = GetCVarBool("miniWorldMap")
+		local quest = WorldMapQuestShowObjectives:GetChecked()
 		
 		if event == "PLAYER_LOGIN" then
 			if not miniWorldMap then
@@ -130,53 +129,54 @@ local function LoadSkin()
 				ToggleFrame(WorldMapFrame)
 			end
 		elseif event == "PLAYER_REGEN_DISABLED" then
-			HideUIPanel(WorldMapFrame)
-			
-			if not miniWorldMap and WatchFrame.showObjectives then
-				WorldMapFrame_SetFullMapView()
-			end
-		
 			WorldMapFrameSizeDownButton:Disable()
 			WorldMapFrameSizeUpButton:Disable()
 			
-			HideUIPanel(WorldMapFrame)
-			WatchFrame.showObjectives = nil
-			WorldMapQuestShowObjectives:SetChecked(false)
-			WorldMapTitleButton:Hide()
-			WorldMapBlobFrame:Hide()
-			WorldMapPOIFrame:Hide()
+			if quest then
+				if WorldMapFrame:IsShown() then
+					HideUIPanel(WorldMapFrame)
+				end
 
-			WorldMapQuestShowObjectives.Show = T.dummy
-			WorldMapTitleButton.Show = T.dummy
-			WorldMapBlobFrame.Show = T.dummy
-			WorldMapPOIFrame.Show = T.dummy       
+				if not miniWorldMap then
+					WorldMapFrame_SetFullMapView()
+				end
 
-			WatchFrame_Update()
-			
+				WatchFrame.showObjectives = nil
+				WorldMapTitleButton:Hide()
+				WorldMapBlobFrame:Hide()
+				WorldMapPOIFrame:Hide()
+
+				WorldMapQuestShowObjectives.Show = T.dummy
+				WorldMapTitleButton.Show = T.dummy
+				WorldMapBlobFrame.Show = T.dummy
+				WorldMapPOIFrame.Show = T.dummy
+
+				WatchFrame_Update()
+			end
 			WorldMapQuestShowObjectives:Hide()
 		elseif event == "PLAYER_REGEN_ENABLED" then
 			WorldMapFrameSizeDownButton:Enable()
 			WorldMapFrameSizeUpButton:Enable()
 			
-			WorldMapQuestShowObjectives.Show = WorldMapQuestShowObjectives:Show()
-			WorldMapTitleButton.Show = WorldMapTitleButton:Show()
-			WorldMapBlobFrame.Show = WorldMapBlobFrame:Show()
-			WorldMapPOIFrame.Show = WorldMapPOIFrame:Show()
+			if quest then
+				WorldMapQuestShowObjectives.Show = WorldMapQuestShowObjectives:Show()
+				WorldMapTitleButton.Show = WorldMapTitleButton:Show()
+				WorldMapBlobFrame.Show = WorldMapBlobFrame:Show()
+				WorldMapPOIFrame.Show = WorldMapPOIFrame:Show()
 
-			WorldMapTitleButton:Show()
+				WorldMapTitleButton:Show()
 
-			WatchFrame.showObjectives = true
-			WorldMapQuestShowObjectives:SetChecked(true)
-			
-			if not miniWorldMap and WatchFrame.showObjectives then
-				WorldMapFrame_SetQuestMapView()
+				WatchFrame.showObjectives = true
+
+				if not miniWorldMap then
+					WorldMapFrame_SetQuestMapView()
+				end
+
+				WorldMapBlobFrame:Show()
+				WorldMapPOIFrame:Show()
+
+				WatchFrame_Update()
 			end
-
-			WorldMapBlobFrame:Show()
-			WorldMapPOIFrame:Show()
-
-			WatchFrame_Update()
-			
 			WorldMapQuestShowObjectives:Show()
 		end
 	end)
@@ -241,8 +241,8 @@ local function LoadSkin()
 	end)
 
 	-- dropdown on full map is scaled incorrectly
-		WorldMapContinentDropDownButton:HookScript("OnClick", function() DropDownList1:SetScale(C.general.uiscale) end)
-		WorldMapZoneDropDownButton:HookScript("OnClick", function(self)
+	WorldMapContinentDropDownButton:HookScript("OnClick", function() DropDownList1:SetScale(C.general.uiscale) end)
+	WorldMapZoneDropDownButton:HookScript("OnClick", function(self) 
 		DropDownList1:SetScale(C.general.uiscale)
 		DropDownList1:ClearAllPoints()
 		DropDownList1:Point("TOPRIGHT", self, "BOTTOMRIGHT", 2, -4)

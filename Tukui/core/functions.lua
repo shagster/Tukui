@@ -1161,6 +1161,7 @@ if C["unitframes"].raidunitdebuffwatch == true then
 
 			--Majordomo Staghelm
 			SpellName(98450), -- Searing Seeds
+			SpellName(98565), -- Burning Orb
 
 
 			--Ragnaros

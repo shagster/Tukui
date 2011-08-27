@@ -263,10 +263,10 @@ end)
 ----------------------------------------------------------------------------------------
 if C["map"].location_panel == true then return end
 local m_zone = CreateFrame("Frame",nil,UIParent)
-m_zone:CreatePanel("Transparent", 0, 20, "TOPLEFT", Minimap, "TOPLEFT", 2,-2)
+m_zone:CreatePanel("Transparent", 0, 20, "TOPLEFT", TukuiMinimap, "TOPLEFT", 2,-2)
 m_zone:SetFrameLevel(5)
 m_zone:SetFrameStrata("LOW")
-m_zone:Point("TOPRIGHT",Minimap,-2,-2)
+m_zone:Point("TOPRIGHT",TukuiMinimap,-2,-2)
 m_zone:SetAlpha(0)
 
 local m_zone_text = m_zone:CreateFontString(nil,"Overlay")
@@ -277,8 +277,8 @@ m_zone_text:Height(12)
 m_zone_text:Width(m_zone:GetWidth()-6)
 m_zone_text:SetAlpha(0)
 
-local m_coord = CreateFrame("Frame",nil,UIParent)
-m_coord:CreatePanel("Transparent", 40, 20, "BOTTOMLEFT", Minimap, "BOTTOMLEFT", 2,2)
+local m_coord = CreateFrame("Frame",nil,TukuiMinimap)
+m_coord:CreatePanel("Transparent", 40, 20, "BOTTOMLEFT", TukuiMinimap, "BOTTOMLEFT", 2,2)
 m_coord:SetFrameStrata("LOW")
 m_coord:SetAlpha(0)
 
