@@ -4,8 +4,8 @@
 ## Credits to: Caith, Caellian, Shestak, Haste, Tekkub, Alza, Roth, P3lim, Tulla, Hungtar, hankthetank, Ishtara, Haleth and others...
 ## Special Thanks to: Admins, Moderator and VIP's from tukui.org
 ## Additional thanks to Smelly, Jasje, Ext
-## Version: 13.51 (Shag UI v2.2.1)
-## S-Release: 2.2.1
+## Version: 13.53 (Shag UI v2.2.3)
+## S-Release: 2.2.3
 ## Title: |cffC495DDTukui|r
 ## Notes: UI of awesomeness!
 ## SavedVariables: TukuiData
