@@ -1,5 +1,5 @@
 local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
-if IsAddOnLoaded("BalancePowerTracker") then
+if not IsAddOnLoaded("BalancePowerTracker") then return end
 if T.myclass == "DRUID" then
 	local eclipseBar = CreateFrame("Frame", "EclipseBar", UIParent)
 	eclipseBar:CreatePanel(nil, 1, 1, "CENTER", BalancePowerTrackerBackgroundFrame, "CENTER", 0, 0)
@@ -37,7 +37,7 @@ if T.myclass == "DRUID" then
 
 	
 end
-end
+
 if T.myclass == "DRUID" then
 	local t11bar1 = CreateFrame("Frame", "T11Bar1", UIParent)
 	local t11bar2 = CreateFrame("Frame", "T11Bar2", UIParent)

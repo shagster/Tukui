@@ -2,6 +2,7 @@
 	<Script file="developer\reloadui.lua"/>
 	<Script file="core\init.lua"/>
 	<Script file="core\constants.lua"/>	
+	<Script file="config\raid_reminder.lua"/>	
 	<Script file="developer\commands.lua"/>
 	
 	<Script file="locales\english.lua"/>

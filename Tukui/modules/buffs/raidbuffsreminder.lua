@@ -1,78 +1,15 @@
 local T, C, L = unpack(select(2, ...)) -- Import Functions/Constants, Config, Locales
 if C["buffreminder"].raidbuffreminder ~= true then return end
 
---------------------------------------------------------------------------------------------
--- Raid Buff Reminder (Bar in the topright corner below minimap)
---------------------------------------------------------------------------------------------
-
-BuffReminderRaidBuffs = {
-	Flask = {
-		79470, --"Flask of the Draconic Mind"
-		94160, --"Flask of Flowing Water"
-		79469, --"Flask of Steelskin"
-		79471, --"Flask of the Winds
-		79472, --"Flask of Titanic Strength"
-		79638, --"Flask of Enhancement-STR"
-		79639, --"Flask of Enhancement-AGI"
-		79640, --"Flask of Enhancement-INT"
-		92679, --Flask of battle
-	},
-	BattleElixir = {
-		--Scrolls
-		89343, --Agility
-		63308, --Armor 
-		89347, --Int
-		89342, --Spirit
-		63306, --Stam
-		89346, --Strength
-
-		--Elixirs
-		79481, --Hit
-		79632, --Haste
-		79477, --Crit
-		79635, --Mastery
-		79474, --Expertise
-		79468, --Spirit
-	},
-	GuardianElixir = {
-		79480, --Armor
-		79631, --Resistance+90
-	},
-	Food = {
-		87545, --90 STR
-		87546, --90 AGI
-		87547, --90 INT
-		87548, --90 SPI
-		87549, --90 MAST
-		87550, --90 HIT
-		87551, --90 CRIT
-		87552, --90 HASTE
-		87554, --90 DODGE
-		87555, --90 PARRY
-		87635, --90 EXP
-		87556, --60 STR
-		87557, --60 AGI
-		87558, --60 INT
-		87559, --60 SPI
-		87560, --60 MAST
-		87561, --60 HIT
-		87562, --60 CRIT
-		87563, --60 HASTE
-		87564, --60 DODGE
-		87634, --60 EXP
-		87554, --Seafood Feast
-	},
-}
-
 --Locals
-local flaskbuffs = BuffReminderRaidBuffs["Flask"]
-local battleelixirbuffs = BuffReminderRaidBuffs["BattleElixir"]
-local guardianelixirbuffs = BuffReminderRaidBuffs["GuardianElixir"]
-local foodbuffs = BuffReminderRaidBuffs["Food"]	
+local flaskbuffs = T.BuffReminderRaidBuffs["Flask"]
+local battleelixirbuffs = T.BuffReminderRaidBuffs["BattleElixir"]
+local guardianelixirbuffs = T.BuffReminderRaidBuffs["GuardianElixir"]
+local foodbuffs = T.BuffReminderRaidBuffs["Food"]	
 local battleelixired	
 local guardianelixired	
 
---Setup Caster Buffs (atm for Warlock)
+--Setup Caster Buffs
 local function SetCasterOnlyBuffs()
 	if T.myclass == "WARLOCK" then
 		Spell3Buff = {
@@ -92,51 +29,56 @@ local function SetCasterOnlyBuffs()
 			85768, -- Warlock buff 3% haste (self)
 		}
 	else
-		Spell3Buff = {
-			1126, -- "Mark of the wild"
-			90363, --"Embrace of the Shale Spider"
-			20217, --"Greater Blessing of Kings",
-		}
-		Spell4Buff = {
-			61316, --"Dalaran Brilliance"
-			1459, --"Arcane Brilliance"
-		}
-		Spell5Buff = {
-			19740, --"Blessing of Might"
-			5675, --"Mana Spring Totem"
-		}
-		Spell6Buff = {
-			53646, --10% spd aura
-			77747, -- 10% spd totem
-		}
-	end
-end
-
---Setup everyone else's buffs
-local function SetBuffs()
-	Spell3Buff = {
+	Spell3Buff = { --Total Stats
 		1126, -- "Mark of the wild"
 		90363, --"Embrace of the Shale Spider"
 		20217, --"Greater Blessing of Kings",
 	}
-	Spell4Buff = {
-		19740, --"Blessing of Might"
-		30808, --"Unleashed Rage"
-		53138, --Abom Might
-		19506, --Trushot
-	}
-	Spell5Buff = {
+	Spell4Buff = { --Total Stamina
 		469, -- Commanding
 		6307, -- Blood Pact
 		90364, -- Qiraji Fortitude
 		72590, -- Drums of fortitude
 		21562, -- Fortitude
 	}
-	Spell6Buff = {
-		57330, --DK str/agi
-		8075, --Totem str/agi
+	Spell5Buff = { --Total Mana
+		61316, --"Dalaran Brilliance"
+		1459, --"Arcane Brilliance"
+	}
+	Spell6Buff = { --Mana Regen
+		5675, --"Mana Spring Totem"
+		19740, --"Blessing of Might"
+	}
+	end
+end
+
+--Setup everyone else's buffs
+local function SetBuffs()
+	Spell3Buff = { --Total Stats
+		1126, -- "Mark of the wild"
+		90363, --"Embrace of the Shale Spider"
+		20217, --"Greater Blessing of Kings",
+	}
+	Spell4Buff = { --Total Stamina
+		469, -- Commanding
+		6307, -- Blood Pact
+		90364, -- Qiraji Fortitude
+		72590, -- Drums of fortitude
+		21562, -- Fortitude
+	}
+	Spell5Buff = { --Total Mana
+		61316, --"Dalaran Brilliance"
+		1459, --"Arcane Brilliance"
+	}
+	Spell6Buff = { --Total AP
+		19740, --"Blessing of Might" placing it twice because i like the icon better :D code will stop after this one is read, we want this first 
+		30808, --"Unleashed Rage"
+		53138, --Abom Might
+		19506, --Trushot
+		19740, --"Blessing of Might"
 	}
 end
+
 
 -- we need to check if you have two differant elixirs if your not flasked, before we say your not flasked
 local function CheckElixir(unit)
@@ -177,6 +119,7 @@ local function CheckElixir(unit)
 end
 
 --Main Script
+RaidReminderShown = true
 local function OnAuraChange(self, event, arg1, unit)
 	if (event == "UNIT_AURA" and arg1 ~= "player") then 
 		return
@@ -264,8 +207,7 @@ local function OnAuraChange(self, event, arg1, unit)
 			Spell6Frame:SetAlpha(1)
 			Spell6Frame.t:SetTexture(select(3, GetSpellInfo(Spell6Buff)))
 		end
-	end
-
+	end	
 end
 
 local bsize = 24
@@ -274,6 +216,7 @@ local bsize = 24
 local raidbuff_reminder = CreateFrame("Frame", "RaidBuffReminder", TukuiMinimap)
 raidbuff_reminder:CreatePanel("Transparent", bsize + 4, 153, "LEFT", TukuiMinimap, "RIGHT", 3, 0)
 raidbuff_reminder:CreateBorder(false, true)
+raidbuff_reminder:SetFrameLevel(Minimap:GetFrameLevel() + 2)
 raidbuff_reminder:RegisterEvent("ACTIVE_TALENT_GROUP_CHANGED")
 raidbuff_reminder:RegisterEvent("UNIT_INVENTORY_CHANGED")
 raidbuff_reminder:RegisterEvent("UNIT_AURA")
@@ -293,8 +236,8 @@ local function CreateButton(name, relativeTo, firstbutton)
 	else
 		button:CreatePanel("Default", bsize, bsize, "TOP", relativeTo, "BOTTOM", 0, -1)
 	end
-	button:SetFrameLevel(RaidBuffReminder:GetFrameLevel() + 1)
-
+	button:SetFrameLevel(RaidBuffReminder:GetFrameLevel() + 2)
+	
 	button.t = button:CreateTexture(name..".t", "OVERLAY")
 	button.t:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 	button.t:Point("TOPLEFT", 2, -2)

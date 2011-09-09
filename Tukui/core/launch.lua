@@ -173,7 +173,7 @@ local function positionsetup()
 end
 
 local v = CreateFrame("Button", "TukuiVersionFrame", UIParent)
-v:SetSize(160, 36)
+v:SetSize(220, 36)
 v:SetPoint("CENTER")
 v:SetTemplate("Default")
 v:FontString("Text", C.media.font, 12)

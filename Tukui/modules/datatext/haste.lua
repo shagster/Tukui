@@ -3,7 +3,7 @@ local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, vari
 -- player haste
 --------------------------------------------------------------------
 
-if C["datatext"].haste and C["datatext"].haste > 0 then
+if not C["datatext"].haste or C["datatext"].haste == 0 then return end
 	local Stat = CreateFrame("Frame")
 	Stat:SetFrameStrata("BACKGROUND")
 	Stat:SetFrameLevel(3)
@@ -15,25 +15,26 @@ if C["datatext"].haste and C["datatext"].haste > 0 then
 	local int = 1
 
 	local function Update(self, t)
-		spellhaste = GetCombatRating(20)
-		rangedhaste = GetCombatRating(19)
-		attackhaste = GetCombatRating(18)
+		spellhaste = UnitSpellHaste("player");
+		rangedhaste = GetRangedHaste();
+		attackhaste = GetMeleeHaste();
 		
-		if attackhaste > spellhaste and select(2, UnitClass("Player")) ~= "HUNTER" then
-			haste = attackhaste
-		elseif select(2, UnitClass("Player")) == "HUNTER" then
+		if T.Role == "Caster" then
+			haste = spellhaste
+		else
+		if T.myclass == "HUNTER" then
 			haste = rangedhaste
 		else
-			haste = spellhaste
+			haste = attackhaste
+		end
 		end
 		
 		int = int - t
 		if int < 0 then
-			Text:SetText(SPELL_HASTE_ABBR..": "..T.panelcolor..haste)
+			Text:SetText(format("%.2f", haste).."% "..T.panelcolor..L.datatext_playerhaste)
 			int = 1
 		end     
 	end
 
 	Stat:SetScript("OnUpdate", Update)
 	Update(Stat, 10)
-end
