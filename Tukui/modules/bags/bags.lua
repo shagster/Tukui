@@ -218,6 +218,15 @@ function Stuffing:BagFrameSlotNew (slot, p)
 		slot = slot - 4
 		tpl = "BankItemButtonBagTemplate"
 		ret.frame = CreateFrame("CheckButton", "StuffingBBag" .. slot, p, tpl)
+		ret.frame:StyleButton()
+		ret.frame:SetTemplate("Default")
+		local icon = _G["StuffingBBag" .. slot .. "IconTexture"]
+		local border = _G["StuffingBBag" .. slot .. "NormalTexture"]
+		icon:SetTexCoord(.08, .92, .08, .92)
+		icon:ClearAllPoints()
+		icon:Point("TOPLEFT", 2, -2)
+		icon:Point("BOTTOMRIGHT", -2, 2)
+		border:SetTexture("")
 		ret.frame:SetID(slot + 4)
 		table.insert(self.bagframe_buttons, ret)
 
@@ -230,6 +239,15 @@ function Stuffing:BagFrameSlotNew (slot, p)
 	else
 		tpl = "BagSlotButtonTemplate"
 		ret.frame = CreateFrame("CheckButton", "StuffingFBag" .. slot .. "Slot", p, tpl)
+		ret.frame:StyleButton()
+		ret.frame:SetTemplate("Default")
+		local icon = _G["StuffingFBag" .. slot .. "SlotIconTexture"]
+		local border = _G["StuffingFBag" .. slot .. "SlotNormalTexture"]
+		icon:SetTexCoord(.08, .92, .08, .92)
+		icon:ClearAllPoints()
+		icon:Point("TOPLEFT", 2, -2)
+		icon:Point("BOTTOMRIGHT", -2, 2)
+		border:SetTexture("")
 		ret.slot = slot
 		table.insert(self.bagframe_buttons, ret)
 	end
@@ -417,7 +435,13 @@ function Stuffing:CreateBagFrame(w)
 		self:GetParent():Hide()
 	end)
 	f.b_close:RegisterForClicks("AnyUp")
-	f.b_close:GetNormalTexture():SetDesaturated(1)
+	f.b_close:SetNormalTexture("")
+	f.b_close:SetPushedTexture("")
+	f.b_close:SetHighlightTexture("")
+	f.b_close.t = f.b_close:CreateFontString(nil, "OVERLAY")
+	f.b_close.t:SetFont(C.media.pixelfont, 12, "MONOCHROME")
+	f.b_close.t:SetPoint("CENTER", 0, 1)
+	f.b_close.t:SetText("X")
 
 	-- create the bags frame
 	local fb = CreateFrame ("Frame", n .. "BagsFrame", f)
@@ -603,38 +627,23 @@ function Stuffing:Layout(lb)
 
 	f:SetClampedToScreen(1)
 	f:SetTemplate("Default")
-	f:CreateBorder(true, true)
 	
-
-
 	-- bag frame stuff
 	local fb = f.bags_frame
 	if bag_bars == 1 then
-		fb:SetClampedToScreen(1)
-		fb:SetBackdrop({
-			bgFile = C["media"].blank,
-			edgeFile = C["media"].blank,
-			edgeSize = T.mult,
-			insets = {left = -T.mult, right = -T.mult, top = -T.mult, bottom = -T.mult}
-		})
-		fb:SetBackdropColor(unpack(C["media"].backdropcolor))
-		fb:SetBackdropBorderColor(unpack(C["media"].bordercolor))
+		fb:SetTemplate("Default")
+		
 
 		local bsize = 30
 		if lb then bsize = 37 end
 
-		local w = 2 * 12
-		w = w + ((#bs - 1) * bsize)
-		w = w + (12 * (#bs - 2))
 
-		fb:Height(2 * 12 + bsize)
-		fb:Width(w)
+		fb:Height(bsize + 16)
+		fb:Width(f:GetWidth())
 		fb:Show()
 	else
 		fb:Hide()
 	end
-
-
 
 	local idx = 0
 	for _, v in ipairs(bs) do
@@ -652,14 +661,6 @@ function Stuffing:Layout(lb)
 			b.frame:ClearAllPoints()
 			b.frame:Point("LEFT", fb, "LEFT", xoff, 0)
 			b.frame:Show()
-
-
-
-
-
-
-
-
 
 			idx = idx + 1
 		end
@@ -733,7 +734,7 @@ function Stuffing:Layout(lb)
 				b.frame:SetTemplate("Default")
 				b.frame:SetBackdropColor(0, 0, 0, 0) -- we just need border with SetTemplate, not the backdrop. Hopefully this will fix invisible item that some users have.
 				b.frame:StyleButton()
-				b.frame:CreateBorder(true, true)
+				
 				
 				-- color fish bag border slot to red
 				if bagType == ST_FISHBAG then b.frame:SetBackdropBorderColor(1, 0, 0) b.frame.lock = true end
@@ -781,20 +782,6 @@ function Stuffing:SetBagsForSorting(c)
 					end
 				end
 			end
-		elseif s == "p" then
-			if not self.bankFrame or not self.bankFrame:IsShown() then
-				for _, i in ipairs(bags_BACKPACK) do
-					if self.bags[i] and self.bags[i].bagType == ST_SPECIAL then
-						table.insert(self.sortBags, i)
-					end
-				end
-			else
-				for _, i in ipairs(bags_BANK) do
-					if self.bags[i] and self.bags[i].bagType == ST_SPECIAL then
-						table.insert(self.sortBags, i)
-					end
-				end
-			end
 		else
 			if tonumber(s) == nil then
 				Print(string.format(Loc["Error: don't know what \"%s\" means."], s))
@@ -821,8 +808,6 @@ local function StuffingSlashCmd(Cmd)
 		Stuffing_OpenConfig()
 	elseif cmd == "sort" then
 		Stuffing_Sort(args)
-	elseif cmd == "psort" then
-		Stuffing_Sort("c/p")
 	elseif cmd == "stack" then
 		Stuffing:SetBagsForSorting(args)
 		Stuffing:Restack()
@@ -1227,7 +1212,6 @@ function Stuffing:SortBags()
 	end
 end
 
-
 function Stuffing:RestackOnUpdate(e)
 	if not self.elapsed then
 		self.elapsed = 0
@@ -1242,7 +1226,6 @@ function Stuffing:RestackOnUpdate(e)
 	self.elapsed = 0
 	self:Restack()
 end
-
 
 function Stuffing:Restack()
 	local st = {}
@@ -1322,29 +1305,12 @@ function Stuffing.Menu(self, level)
 		Stuffing_Sort("d")
 	end
 	UIDropDownMenu_AddButton(info, level)
-	
-	wipe(info)
-	info.text = L.bags_sortspecial
-	info.notCheckable = 1
-	info.func = function()
-		Stuffing_Sort("c/p")
-	end
-	UIDropDownMenu_AddButton(info, level)
 
 	wipe(info)
 	info.text = L.bags_stackmenu
 	info.notCheckable = 1
 	info.func = function()
 		Stuffing:SetBagsForSorting("d")
-		Stuffing:Restack()
-	end
-	UIDropDownMenu_AddButton(info, level)
-	
-	wipe(info)
-	info.text = L.bags_stackspecial
-	info.notCheckable = 1
-	info.func = function()
-		Stuffing:SetBagsForSorting("c/p")
 		Stuffing:Restack()
 	end
 	UIDropDownMenu_AddButton(info, level)

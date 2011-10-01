@@ -25,24 +25,10 @@ local Config = {
 	},
 }
 
-local function CreateBorder(f)
-	if f.b then return end
-	
-	local b = CreateFrame("Frame", f:GetName() and f:GetName() .. "Border" or nil, f)
-	b:Point("TOPLEFT", -1, 1)
-	b:Point("BOTTOMRIGHT", 1, -1)
-	b:SetBackdrop({
-		edgeFile = C["media"].blank, 
-		edgeSize = 1,
-	})
-	b:SetBackdropBorderColor(unpack(C["media"].backdropcolor))
-	f.b = b
-end
-
 local addon = CreateFrame("Button", "TukuiExperience", UIParent)
-addon:Point("TOPLEFT", TukuiInfoLeftMinimap, "BOTTOMLEFT", 0, -5)
-addon:Point("TOPRIGHT", extraToggle, "BOTTOMRIGHT", 0, -5)
-addon:Height(5)
+addon:Point("TOPLEFT", TukuiInfoLeftMinimap, "BOTTOMLEFT", 0, -3)
+addon:Point("TOPRIGHT", extraToggle, "BOTTOMRIGHT", 0, -3)
+addon:Height(8)
 addon:Width(Minimap:GetWidth() + 27)
 addon:SetFrameLevel(1)
 addon:SetFrameStrata("BACKGROUND")
@@ -50,7 +36,7 @@ addon:SetBackdrop({
 	bgFile = C["media"].blank,
 })
 addon:SetBackdropColor(unpack(C["media"].bordercolor))
-CreateBorder(addon)
+addon:CreateBorder(false, true)
 if Config.shadow then
 	addon:CreateShadow("Default")
 end
@@ -61,7 +47,7 @@ expBar:Point("TOPLEFT", 2, -2)
 expBar:Point("BOTTOMRIGHT", -2, 2)
 expBar:SetStatusBarTexture(Config.texture)
 expBar:SetStatusBarColor(.3, .3, .8)
-CreateBorder(expBar)
+--expBar:CreateBorder(false, true)
 expBar:Hide()
 
 local restedBar = CreateFrame("StatusBar", nil, expBar)
@@ -69,7 +55,7 @@ restedBar:SetFrameLevel(expBar:GetFrameLevel())
 restedBar:SetAllPoints()
 restedBar:SetStatusBarTexture(Config.texture)
 restedBar:SetStatusBarColor(.3, .3, .8, .4)
-CreateBorder(restedBar)
+--restedBar:CreateBorder(false, true)
 restedBar:Hide()
 
 local expBG = expBar:CreateTexture(nil, 'BORDER')
@@ -85,7 +71,7 @@ local repBar = CreateFrame("StatusBar", nil, addon)
 repBar:Point("TOPLEFT", 2, -2)
 repBar:Point("BOTTOMRIGHT", -2, 2)
 repBar:SetStatusBarTexture(Config.texture)
-CreateBorder(repBar)
+--repBar:CreateBorder(false, true)
 repBar:Hide()
 
 local repBG = repBar:CreateTexture(nil, 'BORDER')
@@ -142,7 +128,7 @@ local function Update()
 			expBar:ClearAllPoints()
 			expBar:Point("TOPLEFT", 2, -2)
 			expBar:Point("TOPRIGHT", -2, -2)
-			expBar:Height(11)
+			expBar:Height(1)
 			
 			repBar:Show()
 			repBar:ClearAllPoints()

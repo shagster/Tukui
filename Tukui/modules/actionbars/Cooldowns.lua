@@ -19,7 +19,7 @@ local FONT_FACE = C["media"].font --what font to use
 local FONT_SIZE = 27 --the base font size to use at a scale of 1
 local MIN_SCALE = 0.5 --the minimum scale we want to show cooldown counts at, anything below this will be hidden
 local MIN_DURATION = 2.5 --the minimum duration to show cooldown text for
-local EXPIRING_DURATION = C["cooldown"].treshold --the minimum number of seconds a cooldown must be to use to display in the expiring format
+local EXPIRING_DURATION = C["cooldown"].threshold --the minimum number of seconds a cooldown must be to use to display in the expiring format
 
 local EXPIRING_FORMAT = T.RGBToHex(1, 0, 0)..'%.1f|r' --format for timers that are soon to expire
 local SECONDS_FORMAT = T.RGBToHex(1, 1, 0)..'%d|r' --format for timers that have seconds remaining

@@ -22,6 +22,7 @@ L.chat_ERR_FRIEND_OFFLINE_S = "is now |cffff0000offline|r"
 
 L.chat_general = "General"
 L.chat_trade = "Trade"
+L.chat_messages = "Whisper"
 L.chat_defense = "LocalDefense"
 L.chat_recrutment = "GuildRecruitment"
 L.chat_lfg = "LookingForGroup"
@@ -95,6 +96,8 @@ L.datatext_control = "Controlled by:"
 L.datatext_notalents = "No Talents"
 L.datatext_switch_layout = "Switch Layout"
 L.datatext_addon_manager = "Addons"
+L.datatext_cta_allunavailable = "Could not get Call To Arms information."
+L.datatext_cta_nodungeons = "No dungeons are currently offering a Call To Arms."
 
 L.Slots = {
 	[1] = {1, "Head", 1000},

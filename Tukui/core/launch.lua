@@ -51,8 +51,7 @@ local function chatsetup()
 		-- rename windows general and combat log
 		if i == 1 then FCF_SetWindowName(frame, "G, S & R") end
 		if i == 2 then FCF_SetWindowName(frame, "Log") end
-		if i == 4 then FCF_SetWindowName(frame, "Whisper") end
-		
+			
 	end
 	
 	ChatFrame_RemoveAllMessageGroups(ChatFrame1)
