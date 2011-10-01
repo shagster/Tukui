@@ -207,6 +207,7 @@ local function LoadSkin()
 	"InterfaceOptionsMousePanelMouseLookSpeedSlider",
 	"Advanced_MaxFPSSlider",
 	"Advanced_MaxFPSBKSlider",
+	"Advanced_GammaSlider",
 	"AudioOptionsSoundPanelSoundQuality",
 	"AudioOptionsSoundPanelMasterVolume",
 	"AudioOptionsSoundPanelSoundVolume",

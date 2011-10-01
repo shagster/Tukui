@@ -141,7 +141,7 @@ C["loot"] = {
 
 C["cooldown"] = {
 	["enable"] = true,                                  -- do i really need to explain this?
-	["treshold"] = 5,                                   -- show decimal under X seconds and text turn red
+	["threshold"] = 5,                                   -- show decimal under X seconds and text turn red
 }
 
 C["extra_panels"] = {
@@ -172,6 +172,7 @@ C["datatext"] = {
 	["mastery"] = 0,                                    -- show mastery rating
 	["micromenu"] = 11,                                  -- add a micro menu thought datatext
 	["regen"] = 0,					    				-- show mana regeneration
+	["calltoarms"] = 0,                                 -- show dungeon and call to arms
 	["specswitcher"] = 1,				    			-- show current spec and allows mouse-click spec change. Set to position 1 for best results.
 		
 	-- Color Datatext
