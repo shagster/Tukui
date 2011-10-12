@@ -165,7 +165,6 @@ local function LoadSkin()
 	
 	T.SkinScrollBar(CalendarViewEventInviteListScrollFrameScrollBar)
 
-	CalendarInviteStatusContextMenu:SetTemplate("Transparent")
 	local buttons = {
 		"CalendarViewEventAcceptButton",
 		"CalendarViewEventTentativeButton",
